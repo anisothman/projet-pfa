@@ -1,5 +1,5 @@
 import json
-from src.serp_client import rechercher
+from serp_client import rechercher
 from typing import Dict, List, Any
 
 class JSONExtractor:
