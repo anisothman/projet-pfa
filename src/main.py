@@ -1,6 +1,6 @@
 import json
-from src.serp_client import rechercher
-from src.json_extractor import JSONExtractor
+from serp_client import rechercher
+from json_extractor import JSONExtractor
 
 
 def rechercher_et_extraire(nom_entreprise: str) -> None:
