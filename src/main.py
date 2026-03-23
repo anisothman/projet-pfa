@@ -3,6 +3,7 @@ from serp_client import rechercher
 from json_extractor import JSONExtractor
 
 
+
 def rechercher_et_extraire(nom_entreprise: str) -> None:
     """
     Recherche une entreprise via SerpAPI et extrait les données en JSON
