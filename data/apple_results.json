@@ -2,8 +2,8 @@
   "company": "Apple",
   "search_metadata": {
     "status": "Success",
-    "processed_at": "2026-03-21 22:05:22 UTC",
-    "total_results": 231
+    "processed_at": "2026-03-23 11:22:22 UTC",
+    "total_results": 230
   },
   "organic_results": [
     {
@@ -22,58 +22,58 @@
     },
     {
       "position": 3,
-      "title": "Mac - Apple (TN)",
-      "link": "https://www.apple.com/tn/mac/",
-      "snippet": "Les ordinateurs Mac les plus puissants jamais créés. Boostés par les puces Apple. MacBook Air, MacBook Pro, iMac, Mac mini, Mac Studio et Mac Pro.",
-      "date": null
-    },
-    {
-      "position": 4,
       "title": "Boutique Apple Tunisie | Mageek Store | Mac | iPhone | iPad",
-      "link": "https://www.mageekstore.tn/acheter-iphone-macbookboutique-prix?srsltid=AfmBOopx1yp_o-Hfqy58wGpQIpMaDpIsoDidNs7DvBUm8WTxB_Za15gl",
+      "link": "https://www.mageekstore.tn/acheter-iphone-macbookboutique-prix?srsltid=AfmBOooHn8v_cnlm2QBNwl8m14CZjlCCPaTXxpJVI1oGpyytluFM7Hft",
       "snippet": "Revendeur Agrée Apple. Dédié principalement aux produits Apple : MacBook, iPad, iPhone, AirPods, Apple Watch... Faites confiance à nos spécialistes Apple.",
       "date": null
     },
     {
-      "position": 5,
+      "position": 4,
       "title": "Apple",
       "link": "https://fr.wikipedia.org/wiki/Apple",
       "snippet": "Apple est créée le 1er avril 1976 à Los Altos en Californie par Steve Jobs, Steve Wozniak et Ronald Wayne, puis constituée sous forme de société le 3 janvier ...",
       "date": null
     },
     {
-      "position": 6,
+      "position": 5,
       "title": "iStore Tunisie | Apple Premium Reseller",
       "link": "https://www.istore.com.tn/",
       "snippet": "iStore Tunisie assure la maintenance software et hardware de vos produits Apple en Tunisie. Confiez vos produits Apple à des pros pour un résultat de qualité.",
       "date": null
     },
     {
+      "position": 6,
+      "title": "Apple Store Online",
+      "link": "https://www.apple.com/store",
+      "snippet": "Shop the latest Apple products, accessories and offers. Compare models, get expert shopping help, plus flexible payment and delivery options.",
+      "date": null
+    },
+    {
       "position": 7,
+      "title": "Univers Apple | Tokyo Store | Prix Réduit en Tunisie",
+      "link": "https://tokyostores.tn/3-apple",
+      "snippet": "Univers Apple: iPhone, iPad, Mac, AirPods, Apple Watch et accessoires MagSafe. Large choix et prix réduits chez Tokyo Store en Tunisie.",
+      "date": null
+    },
+    {
+      "position": 8,
       "title": "Apple en Tunisie chez Zoom, Meilleur Prix",
       "link": "https://zoom.com.tn/993-apple",
       "snippet": "Apple Tunisie. Le revendeur agréé Apple en Tunisie : IPhone, MacBook, MacBook Air, MacBook Pro, Mac Pro et Mac mini, disponibles aux meilleurs prix.",
       "date": null
     },
     {
-      "position": 8,
-      "title": "iSpace.tn | Premier Revendeur Agréé Apple Tunisie",
-      "link": "https://ispaceservices.com/",
-      "snippet": "Payez vos produits Apple en 3 à 60 mois, quelle que soit votre banque. Facilité de Paiement. iPhone. Découvrez la toute dernière génération d'iPhone. acheter. À ...",
-      "date": null
-    },
-    {
       "position": 9,
-      "title": "APPLE Tunisie IPHONE TUNISIE - Lofficielshop.tn",
-      "link": "https://lofficielshop.tn/fr/brand/5-apple?srsltid=AfmBOoowPveUzspaste5aL7JDZ4byrDgeJwLmTPhnscbdPmWAAz0w82X",
-      "snippet": "Découvrez les nouveautés de la marque Apple en Tunisie: iPhone 11, iPhone 12, iPhone 12 pro, iPhone 13, iPhone 14 Pro et iPhone 14 Pro Max à prix moins ...",
+      "title": "Mac - Continuité avec l'iPhone",
+      "link": "https://www.apple.com/tn/mac/?focus=mac-and-iphone",
+      "snippet": "Votre Mac se connecte à vos produits Apple préférés, tels que votre iPhone, pour enrichir votre expérience en toute fluidité.",
       "date": null
     },
     {
       "position": 10,
-      "title": "Mac - Continuité avec l'iPhone",
-      "link": "https://www.apple.com/tn/mac/?focus=mac-and-iphone",
-      "snippet": "Votre Mac se connecte à vos produits Apple préférés, tels que votre iPhone, pour enrichir votre expérience en toute fluidité.",
+      "title": "iSpace.tn | Premier Revendeur Agréé Apple Tunisie",
+      "link": "https://ispaceservices.com/",
+      "snippet": "Payez vos produits Apple en 3 à 60 mois, quelle que soit votre banque. Facilité de Paiement. iPhone. Découvrez la toute dernière génération d'iPhone. acheter. À ...",
       "date": null
     }
   ],
@@ -85,81 +85,81 @@
     "serpapi_knowledge_graph_search_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=tn&google_domain=google.com&hl=fr-TN&kgmid=%2Fm%2F0k8z&num=10&q=Apple",
     "header_images": [
       {
-        "image": "https://serpapi.com/searches/69bf1622217ade4ca5e130ad/images/P_87YL0xnp26BRuDb2d9yBCK0bgy8OQRpy4kyOEPpKlzmTPdadYMtX7PShlXbiFa.webp",
+        "image": "https://serpapi.com/searches/69c1226e9b762df4f046e37f/images/P_87YL0xnp26BRuDb2d9yBCK0bgy8OQRpy4kyOEPpKlzmTPdadYMtX7PShlXbiFa.webp",
         "source": "https://www.apple.com/fr/shop/buy-iphone"
       },
       {
-        "image": "https://serpapi.com/searches/69bf1622217ade4ca5e130ad/images/P_87YL0xnp26BRuDb2d9yNwAdluVdoA2zJQsH2bPGpj7DoxFPAIrptFMAUASJ_in.webp",
+        "image": "https://serpapi.com/searches/69c1226e9b762df4f046e37f/images/P_87YL0xnp26BRuDb2d9yNwAdluVdoA2zJQsH2bPGpj7DoxFPAIrptFMAUASJ_in.webp",
         "source": "https://www.apple.com/fr/shop/buy-iphone"
       },
       {
-        "image": "https://serpapi.com/searches/69bf1622217ade4ca5e130ad/images/P_87YL0xnp26BRuDb2d9yA1n7F5k5oiEFEWAjklJYAJ-Y-9ZHSDyu6ZGqNesgpOY.webp",
-        "source": "https://www.apple.com/fr/iphone/"
+        "image": "https://serpapi.com/searches/69c1226e9b762df4f046e37f/images/P_87YL0xnp26BRuDb2d9yA1n7F5k5oiEFEWAjklJYAJ-Y-9ZHSDyu6ZGqNesgpOY.webp",
+        "source": "https://www.apple.com/fr/shop/buy-iphone"
       }
     ],
     "fondateurs": "Steve Jobs, Steve Wozniak, Ronald Wayne",
     "fondateurs_links": [
       {
         "text": "Steve Jobs",
-        "link": "https://www.google.com/search?sca_esv=f03daf4eddc76bb6&hl=fr&gl=tn&q=Steve+Jobs&si=AL3DRZHmwLjWhgnaPB3UTu10R6S5qNLXiQiKMeezfKyB1FMsRp5AN7pSj-df7-yeAd-O-MNJO6DWFu93Fx7HxxRxSLNYbZhrS9eCUInkfV5vKpITcyvb7NpEgHcnaxTN1VrHmJZ0pTpnwCcRQ5hLE1YiWzuWWDUsNYWvJIz41_GsxzyJFf-kV44w1orncxlrC6QZTINxSuNkacAywPfdC5DUzD7VAEjB2N850yNRmaqt1EWbwVFkX4q2q1GdX9e9Ym1hArQijSLC&sa=X&ved=2ahUKEwi8st_8_7GTAxWwEUQIHZn8CWkQmxN6BAgZEAI"
+        "link": "https://www.google.com/search?sca_esv=e2250487dc351849&hl=fr&gl=tn&q=Steve+Jobs&si=AL3DRZHmwLjWhgnaPB3UTu10R6S5qNLXiQiKMeezfKyB1FMsRp5AN7pSj-df7-yeAd-O-MNJO6DWFu93Fx7HxxRxSLNYbZhrS9eCUInkfV5vKpITcyvb7NpEgHcnaxTN1VrHmJZ0pTpnwCcRQ5hLE1YiWzuWWDUsNYWvJIz41_GsxzyJFf-kV44w1orncxlrC6QZTINxSuNkacAywPfdC5DUzD7VAEjB2N850yNRmaqt1EWbwVFkX4q2q1GdX9e9Ym1hArQijSLC&sa=X&ved=2ahUKEwjy0b_987WTAxUkKkQIHQRLIPAQmxN6BAgUEAI"
       },
       {
         "text": "Steve Wozniak",
-        "link": "https://www.google.com/search?sca_esv=f03daf4eddc76bb6&hl=fr&gl=tn&q=Steve+Wozniak&si=AL3DRZHmwLjWhgnaPB3UTu10R6S5qNLXiQiKMeezfKyB1FMsRjjsFYlFp_giRDDSJ2emYt_Hps87ShTohpMdFcmzT_qgw4DOFbER_K-g0oYpsfEyVMZkoguItEPhtqpfD4yWCxbFWLIpBST8zKXq7F3MrsOlzWyH71fSVk6-dp0hGwMZOGMpojlC1CV21LCBHPcAzQgxs-R04a-L0TflY5NOwTdx2ANPfOGOF5JfSkHz83JFQVobbUBcc_eNZAevRz8jbQZtO2vc&sa=X&ved=2ahUKEwi8st_8_7GTAxWwEUQIHZn8CWkQmxN6BAgZEAM"
+        "link": "https://www.google.com/search?sca_esv=e2250487dc351849&hl=fr&gl=tn&q=Steve+Wozniak&si=AL3DRZHmwLjWhgnaPB3UTu10R6S5qNLXiQiKMeezfKyB1FMsRjjsFYlFp_giRDDSJ2emYt_Hps87ShTohpMdFcmzT_qgw4DOFbER_K-g0oYpsfEyVMZkoguItEPhtqpfD4yWCxbFWLIpBST8zKXq7F3MrsOlzWyH71fSVk6-dp0hGwMZOGMpojlC1CV21LCBHPcAzQgxs-R04a-L0TflY5NOwTdx2ANPfOGOF5JfSkHz83JFQVobbUBcc_eNZAevRz8jbQZtO2vc&sa=X&ved=2ahUKEwjy0b_987WTAxUkKkQIHQRLIPAQmxN6BAgUEAM"
       },
       {
         "text": "Ronald Wayne",
-        "link": "https://www.google.com/search?sca_esv=f03daf4eddc76bb6&hl=fr&gl=tn&q=Ronald+Wayne&si=AL3DRZEaipurC9pse1xO2aCwuJWfKA_Njx1c7Qs8ap9rx81jmo0-bSY6oiZZO1OVwcm8AHECxaP4V7M7v0L-Ei9VHyO9K24wWmFJi8aRg_68hsfcXbwxpVZFb5isOPf4gA3PZNJvP8qSwgfcBxyxAfARXIvW9Z6rEwgHkYTEnAnb7r3qu9n8oPvbZnBKdtKZPyFhbUxu89qw2Xc6MHmRQlnO0bZ4bCzN-JouKWtk3JB4kCyy3tgj1d1hdtav_jPmG8F7Qwu47y83&sa=X&ved=2ahUKEwi8st_8_7GTAxWwEUQIHZn8CWkQmxN6BAgZEAQ"
+        "link": "https://www.google.com/search?sca_esv=e2250487dc351849&hl=fr&gl=tn&q=Ronald+Wayne&si=AL3DRZEaipurC9pse1xO2aCwuJWfKA_Njx1c7Qs8ap9rx81jmo0-bSY6oiZZO1OVwcm8AHECxaP4V7M7v0L-Ei9VHyO9K24wWmFJi8aRg_68hsfcXbwxpVZFb5isOPf4gA3PZNJvP8qSwgfcBxyxAfARXIvW9Z6rEwgHkYTEnAnb7r3qu9n8oPvbZnBKdtKZPyFhbUxu89qw2Xc6MHmRQlnO0bZ4bCzN-JouKWtk3JB4kCyy3tgj1d1hdtav_jPmG8F7Qwu47y83&sa=X&ved=2ahUKEwjy0b_987WTAxUkKkQIHQRLIPAQmxN6BAgUEAQ"
       }
     ],
     "pdg": "Tim Cook (24 août 2011–)",
     "pdg_links": [
       {
         "text": "Tim Cook",
-        "link": "https://www.google.com/search?sca_esv=f03daf4eddc76bb6&hl=fr&gl=tn&q=Tim+Cook&si=AL3DRZEaipurC9pse1xO2aCwuJWfKA_Njx1c7Qs8ap9rx81jmtNOjCzcEsa9uj8lo5PdA6XLDyfg9wNvLe0lwrl12BAvh97h9-OwoJyl-RW6XYad3Vw85bQBCViBQcdCUr2PVNW73ZAwKY_mY-QMKEVB7Fx-Q-miP-waJJ_0KPdpK8WhGeRyx2NyVB_KwLfeoQJi6jigzKGu&sa=X&ved=2ahUKEwi8st_8_7GTAxWwEUQIHZn8CWkQmxN6BAguEAI"
+        "link": "https://www.google.com/search?sca_esv=e2250487dc351849&hl=fr&gl=tn&q=Tim+Cook&si=AL3DRZEaipurC9pse1xO2aCwuJWfKA_Njx1c7Qs8ap9rx81jmtNOjCzcEsa9uj8lo5PdA6XLDyfg9wNvLe0lwrl12BAvh97h9-OwoJyl-RW6XYad3Vw85bQBCViBQcdCUr2PVNW73ZAwKY_mY-QMKEVB7Fx-Q-miP-waJJ_0KPdpK8WhGeRyx2NyVB_KwLfeoQJi6jigzKGu&sa=X&ved=2ahUKEwjy0b_987WTAxUkKkQIHQRLIPAQmxN6BAgfEAI"
       }
     ],
     "siège_social": "Cupertino, Californie, États-Unis",
     "siège_social_links": [
       {
         "text": "Cupertino, Californie, États-Unis",
-        "link": "https://www.google.com/search?sca_esv=f03daf4eddc76bb6&hl=fr&gl=tn&q=Cupertino&si=AL3DRZHmwLjWhgnaPB3UTu10R6S5qNLXiQiKMeezfKyB1FMsRvxlFRj6UQ4pyEpMZ2ecxArdTNDGaV-G_YTGaySpyNh1BUdbV8sVMMsO9OH9bVY0bLVKsMb-bGcKX-kbRclQH6ps7MqJrBi2Cxiia71W3zLrvueAVFsbFQUtjTbpAreKAQm2HmnvzMew8SWCXvk7LMRA3AVK&sa=X&ved=2ahUKEwi8st_8_7GTAxWwEUQIHZn8CWkQmxN6BAgzEAI"
+        "link": "https://www.google.com/search?sca_esv=e2250487dc351849&hl=fr&gl=tn&q=Cupertino&si=AL3DRZHmwLjWhgnaPB3UTu10R6S5qNLXiQiKMeezfKyB1FMsRvxlFRj6UQ4pyEpMZ2ecxArdTNDGaV-G_YTGaySpyNh1BUdbV8sVMMsO9OH9bVY0bLVKsMb-bGcKX-kbRclQH6ps7MqJrBi2Cxiia71W3zLrvueAVFsbFQUtjTbpAreKAQm2HmnvzMew8SWCXvk7LMRA3AVK&sa=X&ved=2ahUKEwjy0b_987WTAxUkKkQIHQRLIPAQmxN6BAhGEAI"
       }
     ],
     "directeur_d_exploitation": "Sabih Khan",
     "directeur_d_exploitation_links": [
       {
         "text": "Sabih Khan",
-        "link": "https://www.google.com/search?sca_esv=f03daf4eddc76bb6&hl=fr&gl=tn&q=sabih+khan&si=AL3DRZGNtcdgKOqVhotcr-UG2kkYpwR2WO4qu3O00NmpwBmLnRNtuTBjiezPyGHvoCaMn31IJOVTKJdQ0Ub7MIf0QC0xXKbM5Fqv5f7f7cFM2MdJ3LH4jkEFVl6t35UGDm2Ey0G5LY2Uk345kFwA28VVO7ZmnBIWZgvZQoZSZV827GELOBdJm1JvhtobREu9Pt-ZdaeMLM4eRT5y6eKaHHG978WaxKBq8Q%3D%3D&sa=X&ved=2ahUKEwi8st_8_7GTAxWwEUQIHZn8CWkQmxN6BAg0EAI"
+        "link": "https://www.google.com/search?sca_esv=e2250487dc351849&hl=fr&gl=tn&q=sabih+khan&si=AL3DRZGNtcdgKOqVhotcr-UG2kkYpwR2WO4qu3O00NmpwBmLnRNtuTBjiezPyGHvoCaMn31IJOVTKJdQ0Ub7MIf0QC0xXKbM5Fqv5f7f7cFM2MdJ3LH4jkEFVl6t35UGDm2Ey0G5LY2Uk345kFwA28VVO7ZmnBIWZgvZQoZSZV827GELOBdJm1JvhtobREu9Pt-ZdaeMLM4eRT5y6eKaHHG978WaxKBq8Q%3D%3D&sa=X&ved=2ahUKEwjy0b_987WTAxUkKkQIHQRLIPAQmxN6BAhFEAI"
       }
     ],
     "création": "1 avril 1976, Los Altos, Californie, États-Unis",
     "création_links": [
       {
         "text": "Los Altos, Californie, États-Unis",
-        "link": "https://www.google.com/search?sca_esv=f03daf4eddc76bb6&hl=fr&gl=tn&q=Los+Altos&si=AL3DRZHmwLjWhgnaPB3UTu10R6S5qNLXiQiKMeezfKyB1FMsRpFZIToXHvuSbi8erQ7I6qyyatMWK56bWzRmFOXVp8h6o1ORpxEQM2Q24sXokF6lFa06nKH1z2Bewu5EfGNR4nseexeox0Oujn70qV5681O4jAGQ0RHrF-p311rXUI2tobtVyQHAHr-R_sLeIlKt--sA9UH_&sa=X&ved=2ahUKEwi8st_8_7GTAxWwEUQIHZn8CWkQmxN6BAg1EAI"
+        "link": "https://www.google.com/search?sca_esv=e2250487dc351849&hl=fr&gl=tn&q=Los+Altos&si=AL3DRZHmwLjWhgnaPB3UTu10R6S5qNLXiQiKMeezfKyB1FMsRpFZIToXHvuSbi8erQ7I6qyyatMWK56bWzRmFOXVp8h6o1ORpxEQM2Q24sXokF6lFa06nKH1z2Bewu5EfGNR4nseexeox0Oujn70qV5681O4jAGQ0RHrF-p311rXUI2tobtVyQHAHr-R_sLeIlKt--sA9UH_&sa=X&ved=2ahUKEwjy0b_987WTAxUkKkQIHQRLIPAQmxN6BAg3EAI"
       }
     ],
     "profils": [
       {
         "name": "LinkedIn",
         "link": "https://www.linkedin.com/company/apple",
-        "image": "https://serpapi.com/searches/69bf1622217ade4ca5e130ad/images/P_87YL0xnp26BRuDb2d9yCLg8fsFoHGrxXLRCRgUUsY.png"
+        "image": "https://serpapi.com/searches/69c1226e9b762df4f046e37f/images/P_87YL0xnp26BRuDb2d9yCLg8fsFoHGrxXLRCRgUUsY.png"
       },
       {
         "name": "Facebook",
         "link": "https://www.facebook.com/apple",
-        "image": "https://serpapi.com/searches/69bf1622217ade4ca5e130ad/images/P_87YL0xnp26BRuDb2d9yNfFtrJT8x9fes9Rxt5nx5k.png"
+        "image": "https://serpapi.com/searches/69c1226e9b762df4f046e37f/images/P_87YL0xnp26BRuDb2d9yNfFtrJT8x9fes9Rxt5nx5k.png"
       },
       {
         "name": "YouTube",
         "link": "https://www.youtube.com/Apple",
-        "image": "https://serpapi.com/searches/69bf1622217ade4ca5e130ad/images/P_87YL0xnp26BRuDb2d9yKTC411IsYD144vVM1iCk9E.png"
+        "image": "https://serpapi.com/searches/69c1226e9b762df4f046e37f/images/P_87YL0xnp26BRuDb2d9yKTC411IsYD144vVM1iCk9E.png"
       },
       {
         "name": "Instagram",
         "link": "https://www.instagram.com/apple",
-        "image": "https://serpapi.com/searches/69bf1622217ade4ca5e130ad/images/P_87YL0xnp26BRuDb2d9yMnVng4OcFGU0ygHgFJP1zY.png"
+        "image": "https://serpapi.com/searches/69c1226e9b762df4f046e37f/images/P_87YL0xnp26BRuDb2d9yMnVng4OcFGU0ygHgFJP1zY.png"
       }
     ]
   },
@@ -167,10 +167,10 @@
     "Apple (FR)",
     "Apple login",
     "Apple Store",
+    "Apple i d",
     "Apple Store FR",
-    "Apple iCloud compte",
     "Apple vérification",
-    "Apple Connexion",
-    "Apple Check"
+    "Apple Check",
+    "Apple iCloud compte"
   ]
 }
