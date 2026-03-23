@@ -1,6 +1,6 @@
 import json
-from serp_client import rechercher
-from json_extractor import JSONExtractor
+from src.serp_client import rechercher
+from src.json_extractor import JSONExtractor
 
 
 
