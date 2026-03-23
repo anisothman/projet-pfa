@@ -1,0 +1,71 @@
+{
+  "company": "Microsoft",
+  "search_metadata": {
+    "status": "Success",
+    "processed_at": "2026-03-21 22:05:28 UTC",
+    "total_results": 204
+  },
+  "organic_results": [
+    {
+      "position": 1,
+      "title": "Microsoft – IA, Cloud, Productivité, Informatique, Jeux et ...",
+      "link": "https://www.microsoft.com/fr-tn",
+      "snippet": "Découvrez les produits et services Microsoft et l'assistance pour votre famille ou votre entreprise. Découvrez Microsoft 365, Copilot, Teams, Xbox, Windows, ...",
+      "date": null
+    },
+    {
+      "position": 2,
+      "title": "Microsoft 365 Copilot | Create, Share and Collaborate",
+      "link": "https://www.office.com/",
+      "snippet": "Your place for AI and productivity tools to create and collaborate on documents, presentations, and data.",
+      "date": null
+    },
+    {
+      "position": 3,
+      "title": "Microsoft — Wikipédia",
+      "link": "https://fr.wikipedia.org/wiki/Microsoft",
+      "snippet": "Microsoft Corporation (/ˈmaɪkɹəˌsɔft ˌkɔɹpəˈɹeɪʃən/) est une multinationale informatique et micro-informatique américaine, fondée en 1975 par Bill Gates et ...",
+      "date": null
+    },
+    {
+      "position": 4,
+      "title": "Microsoft",
+      "link": "https://www.youtube.com/microsoft",
+      "snippet": "Our mission is to empower every person and every organization on the planet to achieve more. ...more. Our mission is to empower every person and every ...",
+      "date": null
+    },
+    {
+      "position": 5,
+      "title": "Microsoft (@microsoft) · Redmond, WA",
+      "link": "https://www.instagram.com/microsoft/",
+      "snippet": "#MicrosoftPartner being raised by Hispanic parents means you're taught resilience early. you're taught to move, to adapt, to figure it out!!! and that ...",
+      "date": null
+    },
+    {
+      "position": 6,
+      "title": "Microsoft Tunisie : microsoft office et windows au meilleur prix",
+      "link": "https://spacenet.tn/86-microsoft?srsltid=AfmBOoom3G80wp0Kk8vUxojt8Q9cP_0Wf7X3UHdoL4nnpyjbrZCpdrve",
+      "snippet": "Microsoft Office Famille ou Entreprise en Tunisie sur Spacenet. Achetez les logiciels Microsoft windows en ligne: Word, Excel, PowerPoint, Outlook avec prix ...",
+      "date": null
+    }
+  ],
+  "knowledge_graph": {
+    "afficher_les_résultats_pour": [
+      {
+        "name": "Microsoft",
+        "link": "https://www.google.com/search?sca_esv=f03daf4eddc76bb6&gl=tn&hl=fr&q=MICROSOFT&si=AL3DRZELggRpGIGvaNmADlAoxLa7oGwHFuLTw7Wp7VV_i94LknmtAT7oVfY8LsrMKzLXP1-E1c4HPGtVnv2BfD3VqaT0QYHCT_7OOvyxvtCMGolh-o2lOlAL1-OS-dQA5ljz9gUnY_kQLbK2_9dJYqEHiWgL6HlONIskXmgHfNWCj1O9yFyj_iqXPR70pJTauo2OFr9997zt&sa=X&ved=2ahUKEwiSuaj__7GTAxWzwskDHcKMFpkQ6RN6BAgmEAE",
+        "image": "https://serpapi.com/searches/69bf162871577f7e12ab441a/images/mmOxcJMSvyvCwOY2-VfXZHAE30QkF5YzgTp7WLGThCW1AXAjXmthqi9lQbj4FWFiQyiE5wksYqlVz7FHpFEL5g.jpeg"
+      }
+    ]
+  },
+  "related_searches": [
+    "Microsoft login",
+    "Microsoft 365",
+    "Microsoft compte",
+    "Microsoft Store",
+    "Microsoft en Français",
+    "Microsoft en ligne",
+    "Microsoft Office",
+    "Microsoft account"
+  ]
+}
