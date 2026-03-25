@@ -1,9 +1,9 @@
-from serpapi.google_search import GoogleSearch
+from serpapi import GoogleSearch
 from dotenv import load_dotenv
 import os
 
 load_dotenv()
-API_KEY = os.getenv("SERP_API_KEY")
+API_KEY = os.getenv("SERPAPI_KEY")
 
 def rechercher(entreprise):
     params = {
