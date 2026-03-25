@@ -1,11 +1,214 @@
 {
   "company": "Microsoft",
   "search_metadata": {
-    "status": null,
-    "processed_at": null,
-    "total_results": null
+    "status": "Success",
+    "processed_at": "2026-03-25 09:14:50 UTC",
+    "total_results": 97
   },
-  "organic_results": [],
-  "knowledge_graph": {},
-  "related_searches": []
+  "organic_results": [
+    {
+      "position": 1,
+      "title": "Microsoft Fabric - Analytique données",
+      "link": "https://www.microsoft.com/fr/microsoft-fabric",
+      "snippet": "Tirez davantage parti de vos données grâce à Microsoft Fabric, notre plateforme d'analytique basée sur l'intelligence artificielle qui rassemble les données ...",
+      "date": null
+    },
+    {
+      "position": 2,
+      "title": "Les game changer de Microsoft 365",
+      "link": "https://www.youtube.com/shorts/Mq28djUTxAI",
+      "snippet": "Tu veux tout savoir sur Office 365 et les licences perpétuelles en un clin d'œil ? Dans ce short, je te présente les différences clés ...",
+      "date": null
+    },
+    {
+      "position": 3,
+      "title": "La présence insoupçonnée de Microsoft (et pourquoi on l ...",
+      "link": "https://www.youtube.com/watch?v=a8PCtOfKihM",
+      "snippet": "Merci à Microsoft de m'avoir invité pour fêter leur 50 ans ! J'espère que voir l'envers du décor vous plaira autant que ça m'a plu ...",
+      "date": null
+    },
+    {
+      "position": 4,
+      "title": "La vie sans Microsoft est-elle possible ? - Vidéo Dailymotion",
+      "link": "https://www.dailymotion.com/video/x9z28qi",
+      "snippet": "Bye bye Excel, Word, Outlook, Teams... Depuis le retour de Donald Trump, on sent en Europe une envie d'indépendance de plus en plus grande vis-à ...",
+      "date": null
+    },
+    {
+      "position": 5,
+      "title": "Découvrez la gamme Microsoft Surface : puissance, mobilité ...",
+      "link": "https://www.facebook.com/LDLC.com/videos/une-exp%C3%A9rience-microsoft-/982244210200259/",
+      "snippet": "Découvrez la gamme Microsoft Surface : puissance, mobilité et confort ultime pour vous accompagner au quotidien. Profitez-en maintenant !",
+      "date": null
+    },
+    {
+      "position": 6,
+      "title": "Qu'est-ce que Microsoft 365 ? | Qwerio",
+      "link": "https://www.youtube.com/watch?v=Y30spMY07u4",
+      "snippet": "Ce qu'est Microsoft 365 et comment l'utiliser, · Quels sont les différents types d'applications existantes dans Microsoft 365 et comment peuvent ...",
+      "date": null
+    },
+    {
+      "position": 7,
+      "title": "Disponible – Episode 1 – News Centre",
+      "link": "https://news.microsoft.com/fr-fr/videos/disponible-episode-1/",
+      "snippet": "Microsoft France ouvre les candidatures au Microsoft GenAI Studio, son nouveau programme pour soutenir l'innovation des startups françaises.",
+      "date": null
+    },
+    {
+      "position": 8,
+      "title": "Microsoft : 50 ans de domination logicielle",
+      "link": "https://www.youtube.com/watch?v=auJHNtf9fKM",
+      "snippet": "Le 4 avril 2025 marque le 50e anniversaire de Microsoft, une entreprise qui a profondément façonné l'histoire de l'informatique.",
+      "date": null
+    },
+    {
+      "position": 9,
+      "title": "L'emprise inquiétante de Microsoft sur les écoles françaises",
+      "link": "https://www.youtube.com/watch?v=rdRDGj0GiUM",
+      "snippet": "Il FAUT absolument que vous fassiez un sujet sur la “Suite Numérique” de l'État (DINUM). On a l'image de l'administration poussiéreuse, mais en ...",
+      "date": null
+    }
+  ],
+  "knowledge_graph": {
+    "title": "Microsoft",
+    "type": "Entreprise",
+    "entity_type": "companies, chains, company",
+    "kgmid": "/m/04sv4",
+    "knowledge_graph_search_link": "https://www.google.com/search?kgmid=/m/04sv4&hl=fr-TN&q=Microsoft",
+    "serpapi_knowledge_graph_search_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=tn&google_domain=google.com&hl=fr-TN&kgmid=%2Fm%2F04sv4&num=10&q=Microsoft",
+    "description": "Microsoft Corporation est une multinationale informatique et micro-informatique américaine, fondée en 1975 par Bill Gates et Paul Allen. Microsoft fait partie des principales capitalisations boursières du NASDAQ, aux côtés d'Apple et d'Amazon.",
+    "source": {
+      "name": " Wikipédia",
+      "link": "https://fr.wikipedia.org/wiki/Microsoft"
+    },
+    "fondateurs": "Bill Gates, Paul Allen",
+    "fondateurs_links": [
+      {
+        "text": "Bill Gates",
+        "link": "https://www.google.com/search?sca_esv=d196a2435af0af2e&gl=tn&hl=fr&q=Bill+Gates&si=AL3DRZHmwLjWhgnaPB3UTu10R6S5qNLXiQiKMeezfKyB1FMsRg8tPllixMEk5Zbe6-PXdXz2PglPKHnZNPNJFeXhD7oqD-a2COmZizKbTsR-aEMDddV6QFLiYRW1JMcUKJDXQcgd10TSDf6H4xw5gYNq2WBHnCScbTSyAitoY-f3uAuod86EpwdgLQQUctqJjfu_e15XUQ8pkU4J3bXXuXbBJS2Aw_h_1cxMfxKnrG1XGQUMqkBvvapyoe3ySh9NNNjSzmAU9iaR&sa=X&ved=2ahUKEwiZ5_ab27qTAxWWliYFHagoO1oQmxN6BAgUEAI"
+      },
+      {
+        "text": "Paul Allen",
+        "link": "https://www.google.com/search?sca_esv=d196a2435af0af2e&gl=tn&hl=fr&q=Paul+Allen&si=AL3DRZHmwLjWhgnaPB3UTu10R6S5qNLXiQiKMeezfKyB1FMsRnfOJLB2boKdyyfx4XKTc9wRRvwptxJNxsSj7hhStm9xAPjmyvyk6toFd9rCm_gltqHciLFXQLWFXBJk57g3qS8jRTmTg_tn1miGG5xS-5mjly6V-VQb1_3t92oMekKqZAoXUbPw2VdOo9BpTBHOT6Be9ImTgEe4YJmeOyMbe2lyrDZPy9t14PVSSLe7NHAj88lOe8_l3zJSdoiJmapY6Jd-dPzU&sa=X&ved=2ahUKEwiZ5_ab27qTAxWWliYFHagoO1oQmxN6BAgUEAM"
+      }
+    ],
+    "pdg": "Satya Nadella (4 févr. 2014–)",
+    "pdg_links": [
+      {
+        "text": "Satya Nadella",
+        "link": "https://www.google.com/search?sca_esv=d196a2435af0af2e&gl=tn&hl=fr&q=Satya+Nadella&si=AL3DRZGDMkmBg1SB5TH8o8Xeh03tgmwpgZCgiYi5BFB_ELNOTIJJ5Ht_Ar0zxJQM4fUgBm4gEprz6IMdwrOEFh6husjE67UKsIWGtIJ1-ddErlzyixihkQdCOqNVEasKS5uVFGOYcmcsha4wmME7iBHpFl1AqA3ytIgK4gW4jWA-6lUMvdN7BDjft2WNVz-5yLC_iRfjPYkK&sa=X&ved=2ahUKEwiZ5_ab27qTAxWWliYFHagoO1oQmxN6BAgXEAI"
+      }
+    ],
+    "directrice_financière": "Amy Hood",
+    "directrice_financière_links": [
+      {
+        "text": "Amy Hood",
+        "link": "https://www.google.com/search?sca_esv=d196a2435af0af2e&gl=tn&hl=fr&q=Amy+Hood&si=AL3DRZGDMkmBg1SB5TH8o8Xeh03tgmwpgZCgiYi5BFB_ELNOTGq4JyBO-DJ1Gy9ZccCvPFTKDcKegRQAfA7oKg6nS2meQB-u7NLKjoK2w0SAp4O75RbqQ3G9_8S0Kp0gKqV10LmgpNHr92fCdohMvTc1xDT6n2QhatD2wKlBlzJfUF7LcdYBsIiqaAr0xE9pzJEoQQsM80Z0&sa=X&ved=2ahUKEwiZ5_ab27qTAxWWliYFHagoO1oQmxN6BAgbEAI"
+      }
+    ],
+    "directeur_technique": "Kevin Scott, Victor Bahl",
+    "directeur_technique_links": [
+      {
+        "text": "Kevin Scott",
+        "link": "https://www.google.com/search?sca_esv=d196a2435af0af2e&gl=tn&hl=fr&q=Kevin+Scott&si=AL3DRZGNtcdgKOqVhotcr-UG2kkYpwR2WO4qu3O00NmpwBmLnZJYX55PGiFbqUHH1AmpZYNbGl3v-m_1q-HR9fYTyY34PNl_NHaxvlocWqR0_9OlGtkXE6gbed7M7kiYQz6DD_YX2IhdWKOfRA3RBx4-FU249t7UomuocnJvoTIgxaBn2rVnttLOmg1Y935IDmJ9TvOgJK3YRGImvYTV-xFv0jYoB08owjthuq1c6CW1CblfERjqlLvZ6Rd6gTNabpXdrcTfC9umjsFLlnJjzEKlC0w3bpdLyQ%3D%3D&sa=X&ved=2ahUKEwiZ5_ab27qTAxWWliYFHagoO1oQmxN6BAgdEAI"
+      },
+      {
+        "text": "Victor Bahl",
+        "link": "https://www.google.com/search?sca_esv=d196a2435af0af2e&gl=tn&hl=fr&q=Victor+Bahl&si=AL3DRZELanY_V96Y0q8q1FLKlfOvBdnHgF7jIt9ftVkN5kp-lMafkW-nLD9dbSzCgB0F_ZDD7JjM07BEnwgBv9nrA6wVyCdWp0qbBoLxTYU_9eiWtafAMHiPFZSQ4p_QjJRXk5H3-OURYhxMjZR3wJd9guaF9c5HRvhKo8T-liNf8nivb2yXLLTpSHEhb8N9K4_WzERnBLTaCm28wgA3BIbY0vladxuyR0jZ4zZheOGrHbj8hwXdFOBxZgrKPC1UbcUfIHn8zZKaVDmr3kWhExPUAw22pUnCvA%3D%3D&sa=X&ved=2ahUKEwiZ5_ab27qTAxWWliYFHagoO1oQmxN6BAgdEAM"
+      }
+    ],
+    "présidents": "Bill Gates, Julia Liuson, Bradford L. Smith",
+    "présidents_links": [
+      {
+        "text": "Bill Gates",
+        "link": "https://www.google.com/search?sca_esv=d196a2435af0af2e&gl=tn&hl=fr&q=Bill+Gates&si=AL3DRZHmwLjWhgnaPB3UTu10R6S5qNLXiQiKMeezfKyB1FMsRg8tPllixMEk5Zbe6-PXdXzBKJZjL0t5jwt5DqStUh-PKjKQ4A1cLtR6MJ7RFh0smHRKcIsI7wl_QifnZ_wIKYkH2hxwO3GlM5Uo7nP3gmcjybualdVzn6I6Ny8pUQldSrC4tqODVtvdh4xmn-5z-xquGWZquyePGTJAMCPRbm1JwrZnILQ_KTKx_zPxBH0zINe3F7cEG1w2Pvf877QME0Y2GIWQyQ-qjlrQ4ktAF_1ibPJurh46f_fYIE3ON6qEvlMJhXU%3D&sa=X&ved=2ahUKEwiZ5_ab27qTAxWWliYFHagoO1oQmxN6BAgiEAI"
+      },
+      {
+        "text": "Julia Liuson",
+        "link": "https://www.google.com/search?sca_esv=d196a2435af0af2e&gl=tn&hl=fr&q=Julia+Liuson&si=AL3DRZGNtcdgKOqVhotcr-UG2kkYpwR2WO4qu3O00NmpwBmLnYhFEy_6UdKg_JzOzQhjsnANHE7cS4X9n2fGLgnXa4Xody4JnZ9sLw3jv9FMMIQdu1CkPbEKgGmSivmq7x4YyuGa9mrnnu_pglZNMqKGPb_yPi7uqn35sc9virgCFbskcJrAIarwZzRPXuqpbZnhBnwG7-7tngK-ysMze5Pj4XfxPGkW-aXXEC7-IRQPA5nNLb0g7rklxu_4PGQ7n-z5nfvwl9d-8OfT0NRZ9lDr62IcV_DjYVS-Mk4dKkMRU6RU2bEmkGI%3D&sa=X&ved=2ahUKEwiZ5_ab27qTAxWWliYFHagoO1oQmxN6BAgiEAM"
+      },
+      {
+        "text": "Bradford L. Smith",
+        "link": "https://www.google.com/search?sca_esv=d196a2435af0af2e&gl=tn&hl=fr&q=microsoft+bradford+l.+smith&si=AL3DRZGDMkmBg1SB5TH8o8Xeh03tgmwpgZCgiYi5BFB_ELNOTNwcghN9qou-s6P-qPKQo5_wdlQpBqnY8o7aKUYku2vq7n6ui0GJjskDm0YN4T4-Fjo5gVvXPpgPM-vXrze4CZq8oXwiydJFaMeNNABgXNHWgKWDHkPs6dBeSwpgf6c7fgpNbqBi0IBK5VmSU2ZQ5wIaX1HYtw6Rojdq3rbXq_zz_kRg22mOieSL0LIFR7YBopYRwSojsn9ED3JWZo30Kprc__UnBktjnomLgl0vS5dHJibMhVcCeFtc1Qvrx3X2a5NY28TnLrY8iEZIkia7GWvALF80&sa=X&ved=2ahUKEwiZ5_ab27qTAxWWliYFHagoO1oQmxN6BAgiEAQ"
+      }
+    ],
+    "création": "4 avril 1975, Albuquerque, Nouveau-Mexique, États-Unis",
+    "création_links": [
+      {
+        "text": "Albuquerque, Nouveau-Mexique, États-Unis",
+        "link": "https://www.google.com/search?sca_esv=d196a2435af0af2e&gl=tn&hl=fr&q=Albuquerque&si=AL3DRZHmwLjWhgnaPB3UTu10R6S5qNLXiQiKMeezfKyB1FMsRguPhHSlIT2IZcQcXobek6PnBT594yz6snfjS9O0CayKFxazzOjfD-vDDUcoJX2JEbi_SN5fETfo6SGF7mVpLRLCeY8-9tC3Bfuuzlh9qyIzcOgbydo1RCtZudO3wCKo4u_JAtO5WDZ_M6u5RvZuQqUKvhDW&sa=X&ved=2ahUKEwiZ5_ab27qTAxWWliYFHagoO1oQmxN6BAgaEAI"
+      }
+    ],
+    "profils": [
+      {
+        "name": "LinkedIn",
+        "link": "https://www.linkedin.com/company/microsoft",
+        "image": "https://serpapi.com/searches/69c3a78ae396eb0f84851015/images/mmOxcJMSvyvCwOY2-VfXZL7LidE3a-dGvwRSESDy-AU.png"
+      },
+      {
+        "name": "Facebook",
+        "link": "https://www.facebook.com/Microsoft",
+        "image": "https://serpapi.com/searches/69c3a78ae396eb0f84851015/images/mmOxcJMSvyvCwOY2-VfXZJ_xcZxabE89wqze-n4AYsk.png"
+      },
+      {
+        "name": "YouTube",
+        "link": "https://www.youtube.com/user/Microsoft",
+        "image": "https://serpapi.com/searches/69c3a78ae396eb0f84851015/images/mmOxcJMSvyvCwOY2-VfXZF2lcpqxaaYmd9YsdaPmcUI.png"
+      },
+      {
+        "name": "Instagram",
+        "link": "https://www.instagram.com/microsoft",
+        "image": "https://serpapi.com/searches/69c3a78ae396eb0f84851015/images/mmOxcJMSvyvCwOY2-VfXZGc79GTb_J50rGZwTjfTRgo.png"
+      }
+    ],
+    "albums": [
+      {
+        "name": "Halo 2 Anniversary (Original Soundtrack) (2014, Finishing Move Inc.)",
+        "extensions": [
+          "2014, Finishing Move Inc."
+        ],
+        "link": "https://www.google.com/search?sca_esv=d196a2435af0af2e&gl=tn&hl=fr&q=microsoft+halo+2+anniversary+(original+soundtrack)&stick=H4sIAAAAAAAAAAXBwQrCMAwA0IMIu-ziXSie1EvsmJf9jKRZnWVpA8la2O_4pXuvO106yPAarY23HhbwnnzLFN7787rSBLlaItBIovOHMUSekEPN9j8POZGKyXdzP2Rxg8NSUotqqLu7i6YlFWRnUsu8KdL6OABikDd5bwAAAA&sa=X&ved=2ahUKEwiZ5_ab27qTAxWWliYFHagoO1oQxA16BAgZEAM",
+        "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=tn&google_domain=google.com&hl=fr&num=10&q=microsoft+halo+2+anniversary+%28original+soundtrack%29&stick=H4sIAAAAAAAAAAXBwQrCMAwA0IMIu-ziXSie1EvsmJf9jKRZnWVpA8la2O_4pXuvO106yPAarY23HhbwnnzLFN7787rSBLlaItBIovOHMUSekEPN9j8POZGKyXdzP2Rxg8NSUotqqLu7i6YlFWRnUsu8KdL6OABikDd5bwAAAA",
+        "image": "https://serpapi.com/searches/69c3a78ae396eb0f84851015/images/mmOxcJMSvyvCwOY2-VfXZFRrTrxuLucfpEniaoWCDBg.jpeg"
+      },
+      {
+        "name": "Halo: Spartan Assault (Original Soundtrack) (2013, Atlas Plug)",
+        "extensions": [
+          "2013, Atlas Plug"
+        ],
+        "link": "https://www.google.com/search?sca_esv=d196a2435af0af2e&gl=tn&hl=fr&q=microsoft+halo:+spartan+assault+(original+soundtrack)&stick=H4sIAAAAAAAAABXGsQrCQAwA0EGE4thdCE7a5Rwqyv2MpGnVo7mLJLmiv-OXSt_0mk3bhBzOvS39Ybfu6zf_XLv9TDHkaomCTiQ63hmHiSPyULP9tpecSMXk4fBClgj2RnUsgGZY2eEomp6pIINJLaMr0nz6A368FBhvAAAA&sa=X&ved=2ahUKEwiZ5_ab27qTAxWWliYFHagoO1oQxA16BAgZEAY",
+        "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=tn&google_domain=google.com&hl=fr&num=10&q=microsoft+halo%3A+spartan+assault+%28original+soundtrack%29&stick=H4sIAAAAAAAAABXGsQrCQAwA0EGE4thdCE7a5Rwqyv2MpGnVo7mLJLmiv-OXSt_0mk3bhBzOvS39Ybfu6zf_XLv9TDHkaomCTiQ63hmHiSPyULP9tpecSMXk4fBClgj2RnUsgGZY2eEomp6pIINJLaMr0nz6A368FBhvAAAA",
+        "image": "https://serpapi.com/searches/69c3a78ae396eb0f84851015/images/mmOxcJMSvyvCwOY2-VfXZGG6cDuB5t_dj902lHwg1jQ.jpeg"
+      },
+      {
+        "name": "Halo: Spartan Strike (Original Soundtrack) (2015, Atlas Plug)",
+        "extensions": [
+          "2015, Atlas Plug"
+        ],
+        "link": "https://www.google.com/search?sca_esv=d196a2435af0af2e&gl=tn&hl=fr&q=microsoft+halo:+spartan+strike+(original+soundtrack)&stick=H4sIAAAAAAAAAAXBSwrCMBAA0IUI3XTjXgiuqpuxECjkMmWSxjrkM2UmEbyOJ_W94XQZoMDT6sfeRthhnv2ytm-px-OagoPSlQJIDCzbmtHH7DD7XvR3toWCsPKrmTdmdkYPlIbVaBNK0UwstFPFbJR73ZpgSPc_JZ_fBHEAAAA&sa=X&ved=2ahUKEwiZ5_ab27qTAxWWliYFHagoO1oQxA16BAgZEAk",
+        "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=tn&google_domain=google.com&hl=fr&num=10&q=microsoft+halo%3A+spartan+strike+%28original+soundtrack%29&stick=H4sIAAAAAAAAAAXBSwrCMBAA0IUI3XTjXgiuqpuxECjkMmWSxjrkM2UmEbyOJ_W94XQZoMDT6sfeRthhnv2ytm-px-OagoPSlQJIDCzbmtHH7DD7XvR3toWCsPKrmTdmdkYPlIbVaBNK0UwstFPFbJR73ZpgSPc_JZ_fBHEAAAA",
+        "image": "https://serpapi.com/searches/69c3a78ae396eb0f84851015/images/mmOxcJMSvyvCwOY2-VfXZCwJPiUIFvh4k8gr_OudX3U.jpeg"
+      },
+      {
+        "name": "Battletoads (Original Soundtrack) (2020, Battletoads)",
+        "extensions": [
+          "2020, Battletoads"
+        ],
+        "link": "https://www.google.com/search?sca_esv=d196a2435af0af2e&gl=tn&hl=fr&q=microsoft+battletoads+(original+soundtrack)&stick=H4sIAAAAAAAAAAXBwQrCMAwA0IMIu-ziXSieph6yQUHYz0iadrOsWTBp90F-qe91p0sHDKO3w996WGGaPgd_x-XlH9eNZuBmmUATicZ3wZDKjCU0tt_5yZlUTJbqAtZaUhWM5gbRvOYdizNpe6yKtN3_Y7mSqWgAAAA&sa=X&ved=2ahUKEwiZ5_ab27qTAxWWliYFHagoO1oQxA16BAgZEAw",
+        "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=tn&google_domain=google.com&hl=fr&num=10&q=microsoft+battletoads+%28original+soundtrack%29&stick=H4sIAAAAAAAAAAXBwQrCMAwA0IMIu-ziXSieph6yQUHYz0iadrOsWTBp90F-qe91p0sHDKO3w996WGGaPgd_x-XlH9eNZuBmmUATicZ3wZDKjCU0tt_5yZlUTJbqAtZaUhWM5gbRvOYdizNpe6yKtN3_Y7mSqWgAAAA",
+        "image": "https://serpapi.com/searches/69c3a78ae396eb0f84851015/images/mmOxcJMSvyvCwOY2-VfXZOgDeqddtp0bDPfNI6pD-s8.jpeg"
+      }
+    ]
+  },
+  "related_searches": [
+    "Microsoft login",
+    "Microsoft 365",
+    "Microsoft compte",
+    "Microsoft Store",
+    "Microsoft en Français",
+    "Microsoft Word",
+    "Microsoft Teams",
+    "Microsoft Office"
+  ]
 }

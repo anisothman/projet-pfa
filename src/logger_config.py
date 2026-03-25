@@ -3,7 +3,7 @@ import os
 import sys
 from datetime import datetime
 
-def setup_logger(name: str = "pfa_2026") -> logging.Logger:
+def setup_logger(name: str = "projet-pfa") -> logging.Logger:
     os.makedirs("logs", exist_ok=True)
     
     logger = logging.getLogger(name)
