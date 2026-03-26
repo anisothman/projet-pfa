@@ -1,6 +1,6 @@
-from google import genai
 import os
 from dotenv import load_dotenv
+from google import genai
 from logger_config import logger
 
 load_dotenv()
