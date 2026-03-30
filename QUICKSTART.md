@@ -422,21 +422,4 @@ if __name__ == "__main__":
     analyze_company_complete("Samsung")
 ```
 
----
 
-## 🚨 Besoin d'Aide?
-
-**Q: Ça ne marche pas!**
-A: Lire l'erreur → Consulter `ARCHITECTURE_JSON.md` section correspondante → Vérifier regex patterns
-
-**Q: Comment parser mon propre texte?**
-A: Voir `GUIDE_PROMPTS_GEMINI.md` pour structure optimale du prompt
-
-**Q: Puis-je ajouter mes propres champs?**
-A: Oui! Modifier le schéma dans `company_analysis_schema.json` + mettre à jour ResponseFormatter
-
----
-
-**⏱️ Temps lecture:** 5 min  
-**⏱️ Temps intégration:** 15 min  
-**✅ Prêt:** Oui!
