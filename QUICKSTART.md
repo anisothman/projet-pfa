@@ -1,6 +1,5 @@
 # ⚡ QUICK START - Utiliser ResponseFormatter en 5 min
 
-## 🎯 Tl;dr
 
 Tu as une réponse texte de Gemini? La convertir en JSON structuré en 3 lignes:
 
