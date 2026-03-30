@@ -280,32 +280,6 @@ Ouvrez-les pour voir la structure exacte!
 
 ---
 
-## 📚 Documentation Complète
-
-Si tu as besoin de plus de détails:
-
-| Besoin | Lire |
-|--------|------|
-| Vue complète | `ARCHITECTURE_JSON.md` |
-| Structure détaillée | `example_company_report.json` |
-| Schéma JSON | `company_analysis_schema.json` |
-| Comment intégrer | `INTEG_RESPONSE_FORMATTER.md` |
-| Optimiser prompts | `GUIDE_PROMPTS_GEMINI.md` |
-| Diagrammes | `DIAGRAMMES_ARCHITECTURE.md` |
-
----
-
-## ✅ Checklist Intégration (15 min)
-
-- [ ] Copier `response_formatter.py`
-- [ ] Importer dans mon code
-- [ ] Tester avec données de test
-- [ ] Valider structure JSON
-- [ ] Intégrer dans main.py
-- [ ] Sauvegarder en JSON au lieu de TXT
-- [ ] ✓ Fait!
-
----
 
 ## 🎓 Exemple Complet (Copier/Coller)
 
