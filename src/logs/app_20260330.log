@@ -1,0 +1,14 @@
+2026-03-30 20:26:46 |     INFO | text_cleaner.py:49 | Nettoyage du texte brut Gemini...
+2026-03-30 20:26:46 |     INFO | text_cleaner.py:72 | Texte nettoyé avec succès
+2026-03-30 20:26:46 |     INFO | text_cleaner.py:49 | Nettoyage du texte brut Gemini...
+2026-03-30 20:26:46 |     INFO | text_cleaner.py:72 | Texte nettoyé avec succès
+2026-03-30 20:26:46 |  WARNING | cleaning_integration.py:58 | ⚠️  Qualité faible (30/100). Parsing peut être imprécis.
+2026-03-30 20:26:46 |     INFO | response_formatter.py:107 | Formatage de la réponse diagnostic pour Apple
+2026-03-30 20:26:46 |  WARNING | response_formatter.py:195 | Section non trouvée: points?\s+faibles?
+2026-03-30 20:26:46 |  WARNING | response_formatter.py:195 | Section non trouvée: opportunit[éè]es?
+2026-03-30 20:26:46 |     INFO | response_formatter.py:129 | Diagnostic structuré avec succès
+2026-03-30 20:26:46 |     INFO | text_cleaner.py:49 | Nettoyage du texte brut Gemini...
+2026-03-30 20:26:46 |     INFO | text_cleaner.py:72 | Texte nettoyé avec succès
+2026-03-30 20:26:46 |     INFO | response_formatter.py:145 | Formatage du plan d'action pour Apple
+2026-03-30 20:26:46 |  WARNING | response_formatter.py:243 | Section action non trouvée: long\s+terme\s*\(6-12\s+mois?\)
+2026-03-30 20:26:46 |     INFO | response_formatter.py:170 | Plan d'action structuré avec succès

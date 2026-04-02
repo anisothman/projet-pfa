@@ -1,0 +1,38 @@
+2026-03-19 22:16:28 |  WARNING | error_handler.py:53 | Tentative 1/2 Nouvel essai dans 1.2s
+2026-03-19 22:16:28 |  WARNING | error_handler.py:53 | Tentative 2/2 Nouvel essai dans 2.0s
+2026-03-19 22:16:28 |    ERROR | error_handler.py:50 | Echec apres 2 tentatives Timeout
+2026-03-19 22:16:28 |  WARNING | error_handler.py:53 | Tentative 1/3 Nouvel essai dans 1.0s
+2026-03-19 22:16:28 |  WARNING | error_handler.py:53 | Tentative 2/3 Nouvel essai dans 2.1s
+2026-03-19 22:16:28 |    DEBUG | error_handler.py:98 | Chemin a.b.c interrompu pas un dict
+2026-03-19 22:16:28 |    DEBUG | error_handler.py:105 | Valeur None pour a.b
+2026-03-19 22:16:28 |    ERROR | error_handler.py:79 | API a retourne une erreur Invalid API key
+2026-03-19 22:16:28 |    ERROR | error_handler.py:75 | Reponse vide recue
+2026-03-19 22:16:28 |  WARNING | error_handler.py:87 | 'place_results' manquant dans la reponse
+2026-03-19 22:16:28 |     INFO | error_handler.py:89 | Reponse API valide
+2026-03-19 22:16:28 |    ERROR | error_handler.py:72 | Reponse None recue
+2026-03-19 22:16:28 |    ERROR | error_handler.py:79 | API a retourne une erreur Quota exceeded
+2026-03-19 22:16:28 |     INFO | error_handler.py:89 | Reponse API valide
+2026-03-19 22:16:28 |    ERROR | error_handler.py:75 | Reponse vide recue
+2026-03-19 22:16:28 |     INFO | error_handler.py:89 | Reponse API valide
+2026-03-19 22:16:28 |    DEBUG | error_handler.py:101 | Clee address manquante dans place_results.address
+2026-03-19 22:16:28 |    DEBUG | error_handler.py:101 | Clee rating manquante dans place_results.rating
+2026-03-19 22:16:28 |     INFO | error_handler.py:89 | Reponse API valide
+2026-03-19 22:16:42 |  WARNING | error_handler.py:53 | Tentative 1/2 Nouvel essai dans 1.0s
+2026-03-19 22:16:42 |  WARNING | error_handler.py:53 | Tentative 2/2 Nouvel essai dans 2.4s
+2026-03-19 22:16:42 |    ERROR | error_handler.py:50 | Echec apres 2 tentatives Timeout
+2026-03-19 22:16:42 |  WARNING | error_handler.py:53 | Tentative 1/3 Nouvel essai dans 1.0s
+2026-03-19 22:16:42 |  WARNING | error_handler.py:53 | Tentative 2/3 Nouvel essai dans 2.3s
+2026-03-19 22:16:42 |    DEBUG | error_handler.py:99 | Chemin a.b.c interrompu pas un dict
+2026-03-19 22:16:42 |    DEBUG | error_handler.py:106 | Valeur None pour a.b
+2026-03-19 22:16:42 |    ERROR | error_handler.py:80 | API a retourne une erreur Invalid API key
+2026-03-19 22:16:42 |    ERROR | error_handler.py:75 | Reponse vide recue
+2026-03-19 22:16:42 |  WARNING | error_handler.py:88 | 'place_results' manquant dans la reponse
+2026-03-19 22:16:42 |     INFO | error_handler.py:90 | Reponse API valide
+2026-03-19 22:16:42 |    ERROR | error_handler.py:72 | Reponse None recue
+2026-03-19 22:16:42 |    ERROR | error_handler.py:80 | API a retourne une erreur Quota exceeded
+2026-03-19 22:16:42 |     INFO | error_handler.py:90 | Reponse API valide
+2026-03-19 22:16:42 |    ERROR | error_handler.py:75 | Reponse vide recue
+2026-03-19 22:16:42 |     INFO | error_handler.py:90 | Reponse API valide
+2026-03-19 22:16:42 |    DEBUG | error_handler.py:102 | Clee address manquante dans place_results.address
+2026-03-19 22:16:42 |    DEBUG | error_handler.py:102 | Clee rating manquante dans place_results.rating
+2026-03-19 22:16:42 |     INFO | error_handler.py:90 | Reponse API valide
