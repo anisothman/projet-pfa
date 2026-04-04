@@ -465,7 +465,7 @@ RÉPONDS UNIQUEMENT EN JSON VALIDE :
             logger.warning(" Pas de placeholders de données {data[...]}")
             return False
         
-        logger.info("✅ Prompt valide!")
+        logger.info(" Prompt valide!")
         return True
 
     # ══════════════════════════════════════════════════════════════

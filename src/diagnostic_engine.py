@@ -136,7 +136,7 @@ class DiagnosticEngine:
             logger.error("JSON invalide: " + file_path)
             return {"company_name": company_name, "results": []}
     
-    def call_gemini(self, prompt: str, model: str = "gemini-2.0-flash") -> str:
+    def call_gemini(self, prompt: str, model: str = "gemini-1.5-flash-8b") -> str:
         """
         Appelle l'API Gemini avec un prompt
         """

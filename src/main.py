@@ -4,6 +4,8 @@ from serp_client import rechercher
 from json_extractor import JSONExtractor
 from logger_config import logger
 from config import check_keys
+from PDF_generator import export_all_pdf
+import time
 
 # =====================================================
 # Chemins absolus
@@ -11,7 +13,6 @@ from config import check_keys
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BASE_DIR / "data"
 REPORTS_DIR = BASE_DIR / "reports"
-
 
 def rechercher_et_extraire(nom_entreprise: str) -> None:
     """
@@ -37,7 +38,6 @@ def rechercher_et_extraire(nom_entreprise: str) -> None:
     else:
         logger.error("Structure JSON invalide!")
 
-
 def lancer_diagnostic_complet() -> None:
     """
     Lance le diagnostic complet apres avoir recupere les donnees
@@ -49,9 +49,9 @@ def lancer_diagnostic_complet() -> None:
     engine = DiagnosticEngine()
     rapports = engine.generate_all_reports()
     engine.export_all(rapports)
+    export_all_pdf(rapports)
     
     logger.info("Diagnostic complet termine!")
-
 
 if __name__ == "__main__":
     # Verifier les cles API
@@ -63,6 +63,7 @@ if __name__ == "__main__":
     for entreprise in entreprises:
         rechercher_et_extraire(entreprise)
         logger.info("-" * 50)
+        time.sleep(10)  # attendre 10 secondes entre chaque
     
-    # Etape 2: Lancer le diagnostic complet
-    lancer_diagnostic_complet() 
+    # Etape 2: Lancer le diagnostic complet (une seule fois)
+    lancer_diagnostic_complet()
