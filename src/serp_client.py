@@ -1,9 +1,5 @@
 from serpapi import GoogleSearch
-from dotenv import load_dotenv
-import os
-
-load_dotenv()
-API_KEY = os.getenv("SERPAPI_KEY")
+from config import SERPAPI_KEY
 
 def rechercher(entreprise):
     params = {
@@ -11,11 +7,11 @@ def rechercher(entreprise):
         "hl": "fr",
         "gl": "tn",
         "num": 10,
-        "api_key": API_KEY
+        "api_key": SERPAPI_KEY
     }
     search = GoogleSearch(params)
     return search.get_dict()
 
-# Test
-résultat = rechercher("Samsung")
-print(résultat)
+if __name__ == "__main__":
+    resultat = rechercher("Samsung")
+    print(resultat)

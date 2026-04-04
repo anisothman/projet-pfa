@@ -1,4 +1,0 @@
-2026-03-21 23:50:34 |    DEBUG | error_handler.py:102 | Clee c manquante dans a.c
-2026-03-21 23:50:34 |     INFO | error_handler.py:90 | Reponse API valide
-2026-03-21 23:50:40 |    ERROR | error_handler.py:72 | Reponse None recue
-2026-03-21 23:50:40 |    ERROR | error_handler.py:80 | API a retourne une erreur Invalid API key

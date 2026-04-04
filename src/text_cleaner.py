@@ -11,7 +11,7 @@ Classe TextCleaner pour:
 import re
 import unicodedata
 from typing import Dict, List, Optional, Tuple
-from logger_config import logger
+from src.logger_config import logger
 
 
 class TextCleaner:

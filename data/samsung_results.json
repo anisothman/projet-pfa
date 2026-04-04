@@ -2,8 +2,8 @@
   "company": "Samsung",
   "search_metadata": {
     "status": "Success",
-    "processed_at": "2026-03-25 09:14:39 UTC",
-    "total_results": 1970000000
+    "processed_at": "2026-04-04 00:30:44 UTC",
+    "total_results": 1950000000
   },
   "organic_results": [
     {
@@ -29,30 +29,23 @@
     },
     {
       "position": 4,
+      "title": "Smartphone Samsung Tunisie : Achat ou Location flexible",
+      "link": "https://samsunglocation.tn/product-category/smartphone/",
+      "snippet": "Vous pouvez acquérir votre smartphone Samsung au meilleur prix, avec des offres adaptées à chaque budget. Comparez facilement les modèles Galaxy A, S ou Z selon ...",
+      "date": null
+    },
+    {
+      "position": 5,
       "title": "Samsung Brand Shop Tunisie | Smartphone, TV et ...",
       "link": "https://www.samsungshop.tn/",
       "snippet": "L'exception Samsung Shop.Electroménager. · Réfrigérateurs · Climatiseurs · Aspirateurs · Lave & sèche-linge · Lave vaisselle · Plaques de cuisson · Micro-ondes ...",
       "date": null
     },
     {
-      "position": 5,
-      "title": "Boutique Samsung Officielle Tunisie : Mobile, TV ...",
-      "link": "https://www.samsungtunisia.com/",
-      "snippet": "Samsung Branshop Tunisia est un revendeur officiel de la marque Samsung en Tunisie dans la vente des smartphones, électroménagers, Téléviseurs, Tablettes, ...",
-      "date": null
-    },
-    {
       "position": 6,
       "title": "Vente produits Samsung en ligne - Tunisianet.com.tn",
-      "link": "https://www.tunisianet.com.tn/12_samsung?srsltid=AfmBOoqUY5ardCoJVK8WklaQEBzG8qC_G5tZR8FrOG4DUM82rt80qDGt",
+      "link": "https://www.tunisianet.com.tn/12_samsung?srsltid=AfmBOorav_0n7Qn_mIMOAf1Es9GQSsDA_PmHvk2flzOjNWeBQyXMBG7v",
       "snippet": "Vous retrouvez plus de choix des articles Samsung chez Tunisianet - téléphone portable, Galaxy S9, réfrigérateurs, lave-linge, micro-ondes et fours, ...",
-      "date": null
-    },
-    {
-      "position": 7,
-      "title": "Smartphone Samsung : innovation, performance et design",
-      "link": "https://fnac.tn/110-smartphone-samsung",
-      "snippet": "Découvrez la gamme de smartphones Samsung, alliant innovation, performance et design. Du Galaxy A06 au Galaxy S25 Ultra, trouvez le modèle qui vous ...",
       "date": null
     }
   ],
@@ -61,79 +54,79 @@
     "entity_type": "companies, shopping_merchant",
     "kgmid": "/m/01nn79",
     "knowledge_graph_search_link": "https://www.google.com/search?kgmid=/m/01nn79&hl=fr-TN&q=Samsung+Electronics",
-    "serpapi_knowledge_graph_search_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=tn&google_domain=google.com&hl=fr-TN&kgmid=%2Fm%2F01nn79&num=10&q=Samsung+Electronics",
+    "serpapi_knowledge_graph_search_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=tn&google_domain=google.com&hl=fr-TN&kgmid=%2Fm%2F01nn79&q=Samsung+Electronics",
     "header_images": [
       {
-        "image": "https://serpapi.com/searches/69c3a77fa26f568a5d4e59c1/images/rKd0rKELRLrKztH1kh_55c6hiuJU-sgaH4mru6PrLazqAfjuy_IwO7CR0ehUkDp2.webp",
-        "source": "https://fr.wikipedia.org/wiki/Samsung_Galaxy"
+        "image": "https://serpapi.com/searches/69d05bb4634a637782fe38d8/images/9BbBmsCHjZvEeRgbgbie0xC_ltJxL8TEBHkKV3nNBHeisrGDDKzciIJPI49TAq7I.webp",
+        "source": "https://www.samsung.com/fr/smartphones/all-smartphones/"
       }
     ],
     "fondateur": "Lee Byung-chul",
     "fondateur_links": [
       {
         "text": "Lee Byung-chul",
-        "link": "https://www.google.com/search?sca_esv=d196a2435af0af2e&hl=fr&gl=tn&q=Lee+Byung-chul&si=AL3DRZEaipurC9pse1xO2aCwuJWfKA_Njx1c7Qs8ap9rx81jmjRBzHxS4t2-W_fmDpYmx_e8QIlkjO-dln_8RF-Z9Fmt_tjjOXnwN0OfTekjKsMhmrOTzFAlSRMKfWNtoHsctYLzvjRVCpJXKEzXpY41AKqulRH31t6nzPsTIhEDvk59yx1B02w2vr_-v3ApRstnRh6oJsW4&sa=X&ved=2ahUKEwjPoKuV27qTAxVFVEEAHYv-IdYQmxN6BAgrEAI"
+        "link": "https://www.google.com/search?sca_esv=38754e05de5ef311&gl=tn&hl=fr&q=Lee+Byung-chul&si=AL3DRZEaipurC9pse1xO2aCwuJWfKA_Njx1c7Qs8ap9rx81jmjRBzHxS4t2-W_fmDpYmx_e8QIlkjO-dln_8RF-Z9Fmt_tjjOXnwN0OfTekjKsMhmrOTzFAlSRMKfWNtoHsctYLzvjRVCpJXKEzXpY41AKqulRH31t6nzPsTIhEDvk59yx1B02w2vr_-v3ApRstnRh6oJsW4&sa=X&ved=2ahUKEwiLl_Da-NKTAxU_QvEDHfRfOrEQmxN6BAgsEAI"
       }
     ],
     "siège_social": "Suwon, Corée du Sud",
     "siège_social_links": [
       {
         "text": "Suwon, Corée du Sud",
-        "link": "https://www.google.com/search?sca_esv=d196a2435af0af2e&hl=fr&gl=tn&q=Suwon&si=AL3DRZEaipurC9pse1xO2aCwuJWfKA_Njx1c7Qs8ap9rx81jmn43G5edCCSE5oB-70YXgIRwmWO1OuBGBsVAKXUQZkexpNawNrw-X5fAbenu45Na4WtpSIK5k2lUq2N0HFQWKUWrpPLoTm32qZ8hXAcrEILAEOILXfgobR7uJDZ2yFkL9qpFq4jx_-PpOgP9UCWA5rddb2sH&sa=X&ved=2ahUKEwjPoKuV27qTAxVFVEEAHYv-IdYQmxN6BAgqEAI"
+        "link": "https://www.google.com/search?sca_esv=38754e05de5ef311&gl=tn&hl=fr&q=Suwon&si=AL3DRZEaipurC9pse1xO2aCwuJWfKA_Njx1c7Qs8ap9rx81jmn43G5edCCSE5oB-70YXgIRwmWO1OuBGBsVAKXUQZkexpNawNrw-X5fAbenu45Na4WtpSIK5k2lUq2N0HFQWKUWrpPLoTm32qZ8hXAcrEILAEOILXfgobR7uJDZ2yFkL9qpFq4jx_-PpOgP9UCWA5rddb2sH&sa=X&ved=2ahUKEwiLl_Da-NKTAxU_QvEDHfRfOrEQmxN6BAgqEAI"
       }
     ],
     "création": "13 janvier 1969, Suwon, Corée du Sud",
     "création_links": [
       {
         "text": "Suwon, Corée du Sud",
-        "link": "https://www.google.com/search?sca_esv=d196a2435af0af2e&hl=fr&gl=tn&q=Suwon&si=AL3DRZEaipurC9pse1xO2aCwuJWfKA_Njx1c7Qs8ap9rx81jmn43G5edCCSE5oB-70YXgIRwmWO1OuBGBsVAKXUQZkexpNawNrw-X5fAbenu45Na4WtpSIK5k2lUq2N0HFQWKUWrpPLoTm32qZ8hXAcrEILAEOILXfgobR7uJDZ2yFkL9qpFq4jx_-PpOgP9UCWA5rddb2sH&sa=X&ved=2ahUKEwjPoKuV27qTAxVFVEEAHYv-IdYQmxN6BAgtEAI"
+        "link": "https://www.google.com/search?sca_esv=38754e05de5ef311&gl=tn&hl=fr&q=Suwon&si=AL3DRZEaipurC9pse1xO2aCwuJWfKA_Njx1c7Qs8ap9rx81jmn43G5edCCSE5oB-70YXgIRwmWO1OuBGBsVAKXUQZkexpNawNrw-X5fAbenu45Na4WtpSIK5k2lUq2N0HFQWKUWrpPLoTm32qZ8hXAcrEILAEOILXfgobR7uJDZ2yFkL9qpFq4jx_-PpOgP9UCWA5rddb2sH&sa=X&ved=2ahUKEwiLl_Da-NKTAxU_QvEDHfRfOrEQmxN6BAgtEAI"
       }
     ],
     "organisation_mère": "Groupe Samsung",
     "organisation_mère_links": [
       {
         "text": "Groupe Samsung",
-        "link": "https://www.google.com/search?sca_esv=d196a2435af0af2e&hl=fr&gl=tn&q=Groupe+Samsung&si=AL3DRZEaipurC9pse1xO2aCwuJWfKA_Njx1c7Qs8ap9rx81jmlmVsawTAhXaKgqPS980eMRicgFdTsP8DT7Puy4eqx0_7fJOlS81q9VT1d4vq5CtHJ3-Q9kQqxB92t7lEHHnlAa6W7ZpdNHeKLwFRbjyKxSyFQfc2G-RcO8BM5q0N3kClvtkk_Lxd7f54mbPgCP99MWsgtPX&sa=X&ved=2ahUKEwjPoKuV27qTAxVFVEEAHYv-IdYQmxN6BAgsEAI"
+        "link": "https://www.google.com/search?sca_esv=38754e05de5ef311&gl=tn&hl=fr&q=Groupe+Samsung&si=AL3DRZEaipurC9pse1xO2aCwuJWfKA_Njx1c7Qs8ap9rx81jmlmVsawTAhXaKgqPS980eMRicgFdTsP8DT7Puy4eqx0_7fJOlS81q9VT1d4vq5CtHJ3-Q9kQqxB92t7lEHHnlAa6W7ZpdNHeKLwFRbjyKxSyFQfc2G-RcO8BM5q0N3kClvtkk_Lxd7f54mbPgCP99MWsgtPX&sa=X&ved=2ahUKEwiLl_Da-NKTAxU_QvEDHfRfOrEQmxN6BAgrEAI"
       }
     ],
     "président": "Hongkun Park",
     "président_links": [
       {
         "text": "Hongkun Park",
-        "link": "https://www.google.com/search?sca_esv=d196a2435af0af2e&hl=fr&gl=tn&q=Hongkun+Park&si=AL3DRZGDMkmBg1SB5TH8o8Xeh03tgmwpgZCgiYi5BFB_ELNOTDztmmNccWIC4fI9zZ850eO6BKmUtDGCErwifAsB532qLxb1z0BXf_WegKCX-LZxtkkyrL4LguWxiuPPjM42WQEuonL0Nkp03VsfyjukOq1Z30-VR0oEwim0m7WyXHFIES8DQs4emM8Yws0uPMREhvlmHpqE&sa=X&ved=2ahUKEwjPoKuV27qTAxVFVEEAHYv-IdYQmxN6BAgpEAI"
+        "link": "https://www.google.com/search?sca_esv=38754e05de5ef311&gl=tn&hl=fr&q=Hongkun+Park&si=AL3DRZGDMkmBg1SB5TH8o8Xeh03tgmwpgZCgiYi5BFB_ELNOTDztmmNccWIC4fI9zZ850eO6BKmUtDGCErwifAsB532qLxb1z0BXf_WegKCX-LZxtkkyrL4LguWxiuPPjM42WQEuonL0Nkp03VsfyjukOq1Z30-VR0oEwim0m7WyXHFIES8DQs4emM8Yws0uPMREhvlmHpqE&sa=X&ved=2ahUKEwiLl_Da-NKTAxU_QvEDHfRfOrEQmxN6BAgpEAI"
       }
     ],
     "profils": [
       {
         "name": "Instagram",
         "link": "https://www.instagram.com/samsung/",
-        "image": "https://serpapi.com/searches/69c3a77fa26f568a5d4e59c1/images/rKd0rKELRLrKztH1kh_55Yg-z5OMmyYwGapEJQkiqhI.png"
+        "image": "https://serpapi.com/searches/69d05bb4634a637782fe38d8/images/9BbBmsCHjZvEeRgbgbie06b5JXCBDHgKDX7UYB2htnM.png"
       },
       {
         "name": "Facebook",
         "link": "https://www.facebook.com/samsungelectronics",
-        "image": "https://serpapi.com/searches/69c3a77fa26f568a5d4e59c1/images/rKd0rKELRLrKztH1kh_55YSTJ8y0cHpclF9cI86yc-4.png"
+        "image": "https://serpapi.com/searches/69d05bb4634a637782fe38d8/images/9BbBmsCHjZvEeRgbgbie03sv1tUe18iuVCOzoiebnBU.png"
       },
       {
         "name": "X (Twitter)",
         "link": "https://x.com/samsung",
-        "image": "https://serpapi.com/searches/69c3a77fa26f568a5d4e59c1/images/rKd0rKELRLrKztH1kh_55Z8quQpMQmt07lIEJ8h1i_Q.png"
+        "image": "https://serpapi.com/searches/69d05bb4634a637782fe38d8/images/9BbBmsCHjZvEeRgbgbie05lIyXVh8GpwGOneEs5gACk.png"
       },
       {
         "name": "LinkedIn",
         "link": "https://www.linkedin.com/company/samsung-electronics",
-        "image": "https://serpapi.com/searches/69c3a77fa26f568a5d4e59c1/images/rKd0rKELRLrKztH1kh_55ePobOnCE73hP_I6laJkFKc.png"
+        "image": "https://serpapi.com/searches/69d05bb4634a637782fe38d8/images/9BbBmsCHjZvEeRgbgbie07zu-VSOYG1rYjNtlny94Vs.png"
       }
     ]
   },
   "related_searches": [
     "Samsung Tunisie",
-    "Samsung Mobile",
     "Samsung FR",
     "Samsung Tunisie prix",
     "SAMSUNG Mytek",
-    "Galaxy téléphone Samsung",
     "Samsung Megrine",
-    "Téléphone Samsung prix"
+    "Samsung tlf",
+    "Samsung Galaxy S",
+    "Maison Samsung Tunisie"
   ]
 }

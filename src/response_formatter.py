@@ -13,7 +13,7 @@ from datetime import datetime
 from typing import Dict, List, Any, Optional, Tuple
 from dataclasses import dataclass, asdict
 from enum import Enum
-from logger_config import logger
+from src.logger_config import logger
 
 
 class Impact(str, Enum):
@@ -186,7 +186,7 @@ class ResponseFormatter:
         
         # Chercher la section
         section_match = re.search(
-            f"{section_pattern}[:\s]*(.+?)(?=\n\n(?:points?|opportunit|risques?|actions?|mdonnées)|\Z)",
+            f"{section_pattern}[:\\s]*(.+?)(?=\\n\\n(?:points?|opportunit|risques?|actions?|mdonnées)|\\Z)",
             text,
             re.IGNORECASE | re.DOTALL
         )
@@ -234,7 +234,7 @@ class ResponseFormatter:
         actions = []
         
         section_match = re.search(
-            f"{section_pattern}[:\s]*(.+?)(?=\n\n(?:court|moyen|long|risques?|KPI)|\Z)",
+            f"{section_pattern}[:\\s]*(.+?)(?=\\n\\n(?:court|moyen|long|risques?|KPI)|\\Z)",
             text,
             re.IGNORECASE | re.DOTALL
         )

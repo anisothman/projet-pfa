@@ -2,9 +2,15 @@ import logging
 import os
 import sys
 from datetime import datetime
+from pathlib import Path
+
+# Dossier logs à la racine du projet
+BASE_DIR = Path(__file__).resolve().parent.parent
+LOGS_DIR = BASE_DIR / "logs"
 
 def setup_logger(name: str = "projet-pfa") -> logging.Logger:
-    os.makedirs("logs", exist_ok=True)
+    """Configure et retourne un logger"""
+    os.makedirs(LOGS_DIR, exist_ok=True)
     
     logger = logging.getLogger(name)
     logger.setLevel(logging.DEBUG)
@@ -17,10 +23,8 @@ def setup_logger(name: str = "projet-pfa") -> logging.Logger:
         datefmt="%Y-%m-%d %H:%M:%S",
     )
     
-    file_handler = logging.FileHandler(
-        f"logs/app_{datetime.now().strftime('%Y%m%d')}.log", 
-        encoding="utf-8"
-    )
+    log_filename = LOGS_DIR / f"app_{datetime.now().strftime('%Y%m%d')}.log"
+    file_handler = logging.FileHandler(log_filename, encoding="utf-8")
     file_handler.setLevel(logging.DEBUG)
     file_handler.setFormatter(formatter)
     
@@ -33,4 +37,13 @@ def setup_logger(name: str = "projet-pfa") -> logging.Logger:
     
     return logger
 
-logger = setup_logger()
+_LOGGER_CACHE = {}
+
+def get_logger(name: str = "projet-pfa") -> logging.Logger:
+    """Retourne un logger mis en cache"""
+    if name not in _LOGGER_CACHE:
+        _LOGGER_CACHE[name] = setup_logger(name)
+    return _LOGGER_CACHE[name]
+
+# Logger par défaut
+logger = get_logger("projet-pfa")
