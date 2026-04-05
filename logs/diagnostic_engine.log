@@ -2677,3 +2677,95 @@ Résultat : 3/3 rapport(s) générés avec succès
 2026-04-05 16:32:45 |     INFO | diagnostic_engine.py:233 | JSON exporté : C:\Users\lenovo\Documents\GitHub\projet-pfa\reports\diagnostic_samsung_20260405_163245.json
 2026-04-05 16:32:45 |     INFO | diagnostic_engine.py:260 | TXT exporté : C:\Users\lenovo\Documents\GitHub\projet-pfa\reports\diagnostic_samsung_20260405_163245.txt
 2026-04-05 16:32:45 |     INFO | main.py:55 | Diagnostic terminé!
+2026-04-05 16:48:08 |     INFO | diagnostic_engine.py:63 | Module PromptDiagnostic (Isra) chargé
+2026-04-05 16:48:09 |     INFO | main.py:48 | Lancement du diagnostic IA...
+2026-04-05 16:48:09 |     INFO | diagnostic_engine.py:107 | Entreprises trouvées: ['apple', 'microsoft', 'samsung']
+2026-04-05 16:48:09 |     INFO | diagnostic_engine.py:98 | Engine initialisé | 3 entreprise(s) détectée(s)
+2026-04-05 16:48:09 |     INFO | diagnostic_engine.py:205 | 
+============================================================
+2026-04-05 16:48:09 |     INFO | diagnostic_engine.py:206 | GÉNÉRATION DE 3 RAPPORT(S)
+2026-04-05 16:48:09 |     INFO | diagnostic_engine.py:207 | ============================================================
+2026-04-05 16:48:09 |     INFO | diagnostic_engine.py:163 | 
+============================================================
+2026-04-05 16:48:09 |     INFO | diagnostic_engine.py:164 | DIAGNOSTIC COMPLET : APPLE
+2026-04-05 16:48:09 |     INFO | diagnostic_engine.py:165 | ============================================================
+2026-04-05 16:48:12 |     INFO | diagnostic_engine.py:123 | Données chargées : apple (8 résultats)
+2026-04-05 16:48:12 |     INFO | diagnostic_engine.py:177 | Étape 1/2 → Analyse SWOT
+2026-04-05 16:48:12 |     INFO | diagnostic_engine.py:135 | [SWOT] Début pour apple
+2026-04-05 16:48:12 |     INFO | prompt_diagnostic.py:170 |  company_data valide
+2026-04-05 16:48:12 |     INFO | prompt_diagnostic.py:256 |  Données extraites pour: Inconnu
+2026-04-05 16:48:12 |     INFO | prompt_diagnostic.py:281 | Données standardisées: Inconnu
+2026-04-05 16:48:12 |     INFO | prompt_diagnostic.py:375 | Prompt optimisé créé pour : Inconnu
+2026-04-05 16:48:12 |  WARNING | prompt_diagnostic.py:460 |  Pas de template JSON trouvé ({{ et }})
+2026-04-05 16:48:12 |     INFO | gemini_analyzer.py:78 | [DIAGNOSTIC] Génération SWOT pour Apple...
+2026-04-05 16:48:13 |     INFO | gemini_client.py:116 | [GEMINI] Appel → llama-3.3-70b-versatile
+2026-04-05 16:48:16 |     INFO | _client.py:1025 | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-05 16:48:16 |     INFO | gemini_client.py:128 | [OK] llama-3.3-70b-versatile | 1971 caractères reçus
+2026-04-05 16:48:16 |     INFO | gemini_analyzer.py:81 | [DIAGNOSTIC OK] Apple → 1971 caractères
+2026-04-05 16:48:16 |     INFO | diagnostic_engine.py:181 | Étape 2/2 → Plan d'action
+2026-04-05 16:48:16 |     INFO | diagnostic_engine.py:153 | [PLAN] Début pour apple
+2026-04-05 16:48:16 |     INFO | gemini_analyzer.py:142 | [PLAN ACTION] Génération pour Apple...
+2026-04-05 16:48:17 |     INFO | gemini_client.py:116 | [GEMINI] Appel → llama-3.3-70b-versatile
+2026-04-05 16:48:19 |     INFO | _client.py:1025 | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-05 16:48:19 |     INFO | gemini_client.py:128 | [OK] llama-3.3-70b-versatile | 1768 caractères reçus
+2026-04-05 16:48:19 |     INFO | gemini_analyzer.py:145 | [PLAN ACTION OK] Apple → 1768 caractères
+2026-04-05 16:48:19 |     INFO | diagnostic_engine.py:200 | ✓ Diagnostic terminé : apple
+2026-04-05 16:48:19 |     INFO | diagnostic_engine.py:163 | 
+============================================================
+2026-04-05 16:48:19 |     INFO | diagnostic_engine.py:164 | DIAGNOSTIC COMPLET : MICROSOFT
+2026-04-05 16:48:19 |     INFO | diagnostic_engine.py:165 | ============================================================
+2026-04-05 16:48:19 |     INFO | diagnostic_engine.py:123 | Données chargées : microsoft (6 résultats)
+2026-04-05 16:48:19 |     INFO | diagnostic_engine.py:177 | Étape 1/2 → Analyse SWOT
+2026-04-05 16:48:19 |     INFO | diagnostic_engine.py:135 | [SWOT] Début pour microsoft
+2026-04-05 16:48:19 |     INFO | prompt_diagnostic.py:170 |  company_data valide
+2026-04-05 16:48:19 |     INFO | prompt_diagnostic.py:256 |  Données extraites pour: Inconnu
+2026-04-05 16:48:19 |     INFO | prompt_diagnostic.py:281 | Données standardisées: Inconnu
+2026-04-05 16:48:19 |     INFO | prompt_diagnostic.py:375 | Prompt optimisé créé pour : Inconnu
+2026-04-05 16:48:19 |  WARNING | prompt_diagnostic.py:460 |  Pas de template JSON trouvé ({{ et }})
+2026-04-05 16:48:19 |     INFO | gemini_analyzer.py:78 | [DIAGNOSTIC] Génération SWOT pour Microsoft...
+2026-04-05 16:48:20 |     INFO | gemini_client.py:116 | [GEMINI] Appel → llama-3.3-70b-versatile
+2026-04-05 16:48:22 |     INFO | _client.py:1025 | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-05 16:48:22 |     INFO | gemini_client.py:128 | [OK] llama-3.3-70b-versatile | 2083 caractères reçus
+2026-04-05 16:48:22 |     INFO | gemini_analyzer.py:81 | [DIAGNOSTIC OK] Microsoft → 2083 caractères
+2026-04-05 16:48:22 |     INFO | diagnostic_engine.py:181 | Étape 2/2 → Plan d'action
+2026-04-05 16:48:22 |     INFO | diagnostic_engine.py:153 | [PLAN] Début pour microsoft
+2026-04-05 16:48:22 |     INFO | gemini_analyzer.py:142 | [PLAN ACTION] Génération pour Microsoft...
+2026-04-05 16:48:23 |     INFO | gemini_client.py:116 | [GEMINI] Appel → llama-3.3-70b-versatile
+2026-04-05 16:48:26 |     INFO | _client.py:1025 | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-05 16:48:26 |     INFO | gemini_client.py:128 | [OK] llama-3.3-70b-versatile | 1556 caractères reçus
+2026-04-05 16:48:26 |     INFO | gemini_analyzer.py:145 | [PLAN ACTION OK] Microsoft → 1556 caractères
+2026-04-05 16:48:26 |     INFO | diagnostic_engine.py:200 | ✓ Diagnostic terminé : microsoft
+2026-04-05 16:48:26 |     INFO | diagnostic_engine.py:163 | 
+============================================================
+2026-04-05 16:48:26 |     INFO | diagnostic_engine.py:164 | DIAGNOSTIC COMPLET : SAMSUNG
+2026-04-05 16:48:26 |     INFO | diagnostic_engine.py:165 | ============================================================
+2026-04-05 16:48:28 |     INFO | diagnostic_engine.py:123 | Données chargées : samsung (7 résultats)
+2026-04-05 16:48:28 |     INFO | diagnostic_engine.py:177 | Étape 1/2 → Analyse SWOT
+2026-04-05 16:48:28 |     INFO | diagnostic_engine.py:135 | [SWOT] Début pour samsung
+2026-04-05 16:48:28 |     INFO | prompt_diagnostic.py:170 |  company_data valide
+2026-04-05 16:48:28 |     INFO | prompt_diagnostic.py:256 |  Données extraites pour: Inconnu
+2026-04-05 16:48:28 |     INFO | prompt_diagnostic.py:281 | Données standardisées: Inconnu
+2026-04-05 16:48:28 |     INFO | prompt_diagnostic.py:375 | Prompt optimisé créé pour : Inconnu
+2026-04-05 16:48:28 |  WARNING | prompt_diagnostic.py:460 |  Pas de template JSON trouvé ({{ et }})
+2026-04-05 16:48:28 |     INFO | gemini_analyzer.py:78 | [DIAGNOSTIC] Génération SWOT pour Samsung...
+2026-04-05 16:48:30 |     INFO | gemini_client.py:116 | [GEMINI] Appel → llama-3.3-70b-versatile
+2026-04-05 16:48:31 |     INFO | _client.py:1025 | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-05 16:48:31 |     INFO | gemini_client.py:128 | [OK] llama-3.3-70b-versatile | 1585 caractères reçus
+2026-04-05 16:48:31 |     INFO | gemini_analyzer.py:81 | [DIAGNOSTIC OK] Samsung → 1585 caractères
+2026-04-05 16:48:31 |     INFO | diagnostic_engine.py:181 | Étape 2/2 → Plan d'action
+2026-04-05 16:48:31 |     INFO | diagnostic_engine.py:153 | [PLAN] Début pour samsung
+2026-04-05 16:48:31 |     INFO | gemini_analyzer.py:142 | [PLAN ACTION] Génération pour Samsung...
+2026-04-05 16:48:33 |     INFO | gemini_client.py:116 | [GEMINI] Appel → llama-3.3-70b-versatile
+2026-04-05 16:48:35 |     INFO | _client.py:1025 | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-05 16:48:35 |     INFO | gemini_client.py:128 | [OK] llama-3.3-70b-versatile | 2217 caractères reçus
+2026-04-05 16:48:35 |     INFO | gemini_analyzer.py:145 | [PLAN ACTION OK] Samsung → 2217 caractères
+2026-04-05 16:48:35 |     INFO | diagnostic_engine.py:200 | ✓ Diagnostic terminé : samsung
+2026-04-05 16:48:35 |     INFO | diagnostic_engine.py:222 | 
+Résultat : 3/3 rapport(s) générés avec succès
+2026-04-05 16:48:35 |     INFO | diagnostic_engine.py:233 | JSON exporté : C:\Users\lenovo\Documents\GitHub\projet-pfa\reports\diagnostic_apple_20260405_164835.json
+2026-04-05 16:48:35 |     INFO | diagnostic_engine.py:260 | TXT exporté : C:\Users\lenovo\Documents\GitHub\projet-pfa\reports\diagnostic_apple_20260405_164835.txt
+2026-04-05 16:48:35 |     INFO | diagnostic_engine.py:233 | JSON exporté : C:\Users\lenovo\Documents\GitHub\projet-pfa\reports\diagnostic_microsoft_20260405_164835.json
+2026-04-05 16:48:35 |     INFO | diagnostic_engine.py:260 | TXT exporté : C:\Users\lenovo\Documents\GitHub\projet-pfa\reports\diagnostic_microsoft_20260405_164835.txt
+2026-04-05 16:48:35 |     INFO | diagnostic_engine.py:233 | JSON exporté : C:\Users\lenovo\Documents\GitHub\projet-pfa\reports\diagnostic_samsung_20260405_164835.json
+2026-04-05 16:48:35 |     INFO | diagnostic_engine.py:260 | TXT exporté : C:\Users\lenovo\Documents\GitHub\projet-pfa\reports\diagnostic_samsung_20260405_164835.txt
+2026-04-05 16:48:35 |     INFO | main.py:55 | Diagnostic terminé!
