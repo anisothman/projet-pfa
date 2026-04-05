@@ -2,8 +2,8 @@
   "company": "Samsung",
   "search_metadata": {
     "status": "Success",
-    "processed_at": "2026-04-05 14:37:07 UTC",
-    "total_results": 1940000000
+    "processed_at": "2026-04-05 15:47:52 UTC",
+    "total_results": 1950000000
   },
   "organic_results": [
     {
@@ -29,30 +29,30 @@
     },
     {
       "position": 4,
-      "title": "Samsung (@SamsungTunisie)",
-      "link": "https://www.facebook.com/SamsungTunisie/?locale=fr_FR",
-      "snippet": "Bienvenue sur la page officielle de Samsung Tunisie. 󱞴 Electronics Company. 󱙶. Follow. Details. 󰡍. 94% recommend (1,653 Reviews). Links. 󰤂. samsung.com ...",
-      "date": null
-    },
-    {
-      "position": 5,
       "title": "Samsung Smartphone Tunisie - Vente Samsung Officiel en ...",
       "link": "https://www.samsungshop.tn/12-smartphone-samsung-galaxy",
       "snippet": "Découvrez toute la gamme de Smartphone Samsung. Achetez votre téléphone Samsung à Tunis avec facture et garantie Samsung officiel.",
       "date": null
     },
     {
+      "position": 5,
+      "title": "Samsung Tunisie: Vente produits Samsung en ligne",
+      "link": "https://www.tunisianet.com.tn/12_samsung?srsltid=AfmBOoqfaDikVKGO629X7Yfb_aED_Hegh0XxkUCmauXldzZXc6Pf8Uoe",
+      "snippet": "Vous retrouvez plus de choix des articles Samsung chez Tunisianet - téléphone portable, Galaxy S9, réfrigérateurs, lave-linge, micro-ondes et fours, ...",
+      "date": null
+    },
+    {
       "position": 6,
-      "title": "Samsung Electronics",
-      "link": "https://fr.wikipedia.org/wiki/Samsung_Electronics",
-      "snippet": "Samsung Electronics (coréen : 삼성전자) est une entreprise sud-coréenne spécialisée dans la fabrication de produits électroniques. C'est une filiale à 100 % du ...",
+      "title": "Samsung Brand Shop Tunisie | Smartphone, TV et ...",
+      "link": "https://www.samsungshop.tn/",
+      "snippet": "L'exception Samsung Shop.Electroménager. · Réfrigérateurs · Climatiseurs · Aspirateurs · Lave & sèche-linge · Lave vaisselle · Plaques de cuisson · Micro-ondes ...",
       "date": null
     },
     {
       "position": 7,
-      "title": "SAMSUNG Smartphones Et Smart TV En Tunisie",
-      "link": "https://wiki.tn/brand/samsung/?srsltid=AfmBOoq-tomos5REKDSRzmgaeHj-8OVFoqzheUpGbOTVe9k-h1OJGnud",
-      "snippet": "Découvrez la gamme de smartphones Samsung Galaxy et des tablettes Galaxy tab, une large gamme complète de téléviseurs Samsung Smart TV QLED, UHD, ...",
+      "title": "Smartphone Samsung : innovation, performance et design",
+      "link": "https://fnac.tn/110-smartphone-samsung",
+      "snippet": "Découvrez la gamme de smartphones Samsung, alliant innovation, performance et design. Du Galaxy A06 au Galaxy S25 Ultra, trouvez le modèle qui vous ...",
       "date": null
     }
   ],
@@ -64,7 +64,7 @@
     "serpapi_knowledge_graph_search_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=tn&google_domain=google.com&hl=fr-TN&kgmid=%2Fm%2F01nn79&q=Samsung+Electronics",
     "header_images": [
       {
-        "image": "https://serpapi.com/searches/69d2739369819d0c9bd64037/images/9BbBmsCHjZvEeRgbgbie0xC_ltJxL8TEBHkKV3nNBHeisrGDDKzciIJPI49TAq7I.webp",
+        "image": "https://serpapi.com/searches/69d28428f9c5e968a7a7de65/images/9BbBmsCHjZvEeRgbgbie0xC_ltJxL8TEBHkKV3nNBHeisrGDDKzciIJPI49TAq7I.webp",
         "source": "https://fr.wikipedia.org/wiki/Samsung_Galaxy"
       }
     ],
@@ -72,57 +72,57 @@
     "fondateur_links": [
       {
         "text": "Lee Byung-chul",
-        "link": "https://www.google.com/search?sca_esv=961d7d2aee6e1575&hl=fr&gl=tn&q=Lee+Byung-chul&si=AL3DRZEaipurC9pse1xO2aCwuJWfKA_Njx1c7Qs8ap9rx81jmjRBzHxS4t2-W_fmDpYmx_e8QIlkjO-dln_8RF-Z9Fmt_tjjOXnwN0OfTekjKsMhmrOTzFAlSRMKfWNtoHsctYLzvjRVCpJXKEzXpY41AKqulRH31t6nzPsTIhEDvk59yx1B02w2vr_-v3ApRstnRh6oJsW4&sa=X&ved=2ahUKEwjWqK3h99aTAxWQKzQIHZyqGx0QmxN6BAgcEAI"
+        "link": "https://www.google.com/search?sca_esv=2a599bbdcd493e7b&hl=fr&gl=tn&q=Lee+Byung-chul&si=AL3DRZEaipurC9pse1xO2aCwuJWfKA_Njx1c7Qs8ap9rx81jmjRBzHxS4t2-W_fmDpYmx_e8QIlkjO-dln_8RF-Z9Fmt_tjjOXnwN0OfTekjKsMhmrOTzFAlSRMKfWNtoHsctYLzvjRVCpJXKEzXpY41AKqulRH31t6nzPsTIhEDvk59yx1B02w2vr_-v3ApRstnRh6oJsW4&sa=X&ved=2ahUKEwja6ejIh9eTAxUVg4kEHT7NBbsQmxN6BAgkEAI"
       }
     ],
     "siège_social": "Suwon, Corée du Sud",
     "siège_social_links": [
       {
         "text": "Suwon, Corée du Sud",
-        "link": "https://www.google.com/search?sca_esv=961d7d2aee6e1575&hl=fr&gl=tn&q=Suwon&si=AL3DRZEaipurC9pse1xO2aCwuJWfKA_Njx1c7Qs8ap9rx81jmn43G5edCCSE5oB-70YXgIRwmWO1OuBGBsVAKXUQZkexpNawNrw-X5fAbenu45Na4WtpSIK5k2lUq2N0HFQWKUWrpPLoTm32qZ8hXAcrEILAEOILXfgobR7uJDZ2yFkL9qpFq4jx_-PpOgP9UCWA5rddb2sH&sa=X&ved=2ahUKEwjWqK3h99aTAxWQKzQIHZyqGx0QmxN6BAgeEAI"
+        "link": "https://www.google.com/search?sca_esv=2a599bbdcd493e7b&hl=fr&gl=tn&q=Suwon&si=AL3DRZEaipurC9pse1xO2aCwuJWfKA_Njx1c7Qs8ap9rx81jmn43G5edCCSE5oB-70YXgIRwmWO1OuBGBsVAKXUQZkexpNawNrw-X5fAbenu45Na4WtpSIK5k2lUq2N0HFQWKUWrpPLoTm32qZ8hXAcrEILAEOILXfgobR7uJDZ2yFkL9qpFq4jx_-PpOgP9UCWA5rddb2sH&sa=X&ved=2ahUKEwja6ejIh9eTAxUVg4kEHT7NBbsQmxN6BAglEAI"
       }
     ],
     "création": "13 janvier 1969, Suwon, Corée du Sud",
     "création_links": [
       {
         "text": "Suwon, Corée du Sud",
-        "link": "https://www.google.com/search?sca_esv=961d7d2aee6e1575&hl=fr&gl=tn&q=Suwon&si=AL3DRZEaipurC9pse1xO2aCwuJWfKA_Njx1c7Qs8ap9rx81jmn43G5edCCSE5oB-70YXgIRwmWO1OuBGBsVAKXUQZkexpNawNrw-X5fAbenu45Na4WtpSIK5k2lUq2N0HFQWKUWrpPLoTm32qZ8hXAcrEILAEOILXfgobR7uJDZ2yFkL9qpFq4jx_-PpOgP9UCWA5rddb2sH&sa=X&ved=2ahUKEwjWqK3h99aTAxWQKzQIHZyqGx0QmxN6BAgfEAI"
+        "link": "https://www.google.com/search?sca_esv=2a599bbdcd493e7b&hl=fr&gl=tn&q=Suwon&si=AL3DRZEaipurC9pse1xO2aCwuJWfKA_Njx1c7Qs8ap9rx81jmn43G5edCCSE5oB-70YXgIRwmWO1OuBGBsVAKXUQZkexpNawNrw-X5fAbenu45Na4WtpSIK5k2lUq2N0HFQWKUWrpPLoTm32qZ8hXAcrEILAEOILXfgobR7uJDZ2yFkL9qpFq4jx_-PpOgP9UCWA5rddb2sH&sa=X&ved=2ahUKEwja6ejIh9eTAxUVg4kEHT7NBbsQmxN6BAgxEAI"
       }
     ],
     "organisation_mère": "Groupe Samsung",
     "organisation_mère_links": [
       {
         "text": "Groupe Samsung",
-        "link": "https://www.google.com/search?sca_esv=961d7d2aee6e1575&hl=fr&gl=tn&q=Groupe+Samsung&si=AL3DRZEaipurC9pse1xO2aCwuJWfKA_Njx1c7Qs8ap9rx81jmlmVsawTAhXaKgqPS980eMRicgFdTsP8DT7Puy4eqx0_7fJOlS81q9VT1d4vq5CtHJ3-Q9kQqxB92t7lEHHnlAa6W7ZpdNHeKLwFRbjyKxSyFQfc2G-RcO8BM5q0N3kClvtkk_Lxd7f54mbPgCP99MWsgtPX&sa=X&ved=2ahUKEwjWqK3h99aTAxWQKzQIHZyqGx0QmxN6BAghEAI"
+        "link": "https://www.google.com/search?sca_esv=2a599bbdcd493e7b&hl=fr&gl=tn&q=Groupe+Samsung&si=AL3DRZEaipurC9pse1xO2aCwuJWfKA_Njx1c7Qs8ap9rx81jmlmVsawTAhXaKgqPS980eMRicgFdTsP8DT7Puy4eqx0_7fJOlS81q9VT1d4vq5CtHJ3-Q9kQqxB92t7lEHHnlAa6W7ZpdNHeKLwFRbjyKxSyFQfc2G-RcO8BM5q0N3kClvtkk_Lxd7f54mbPgCP99MWsgtPX&sa=X&ved=2ahUKEwja6ejIh9eTAxUVg4kEHT7NBbsQmxN6BAgwEAI"
       }
     ],
     "président": "Hongkun Park",
     "président_links": [
       {
         "text": "Hongkun Park",
-        "link": "https://www.google.com/search?sca_esv=961d7d2aee6e1575&hl=fr&gl=tn&q=Hongkun+Park&si=AL3DRZGDMkmBg1SB5TH8o8Xeh03tgmwpgZCgiYi5BFB_ELNOTDztmmNccWIC4fI9zZ850eO6BKmUtDGCErwifAsB532qLxb1z0BXf_WegKCX-LZxtkkyrL4LguWxiuPPjM42WQEuonL0Nkp03VsfyjukOq1Z30-VR0oEwim0m7WyXHFIES8DQs4emM8Yws0uPMREhvlmHpqE&sa=X&ved=2ahUKEwjWqK3h99aTAxWQKzQIHZyqGx0QmxN6BAgiEAI"
+        "link": "https://www.google.com/search?sca_esv=2a599bbdcd493e7b&hl=fr&gl=tn&q=Hongkun+Park&si=AL3DRZGDMkmBg1SB5TH8o8Xeh03tgmwpgZCgiYi5BFB_ELNOTDztmmNccWIC4fI9zZ850eO6BKmUtDGCErwifAsB532qLxb1z0BXf_WegKCX-LZxtkkyrL4LguWxiuPPjM42WQEuonL0Nkp03VsfyjukOq1Z30-VR0oEwim0m7WyXHFIES8DQs4emM8Yws0uPMREhvlmHpqE&sa=X&ved=2ahUKEwja6ejIh9eTAxUVg4kEHT7NBbsQmxN6BAguEAI"
       }
     ],
     "profils": [
       {
         "name": "Instagram",
         "link": "https://www.instagram.com/samsung/",
-        "image": "https://serpapi.com/searches/69d2739369819d0c9bd64037/images/9BbBmsCHjZvEeRgbgbie06b5JXCBDHgKDX7UYB2htnM.png"
+        "image": "https://serpapi.com/searches/69d28428f9c5e968a7a7de65/images/9BbBmsCHjZvEeRgbgbie06b5JXCBDHgKDX7UYB2htnM.png"
       },
       {
         "name": "Facebook",
         "link": "https://www.facebook.com/samsungelectronics",
-        "image": "https://serpapi.com/searches/69d2739369819d0c9bd64037/images/9BbBmsCHjZvEeRgbgbie03sv1tUe18iuVCOzoiebnBU.png"
+        "image": "https://serpapi.com/searches/69d28428f9c5e968a7a7de65/images/9BbBmsCHjZvEeRgbgbie03sv1tUe18iuVCOzoiebnBU.png"
       },
       {
         "name": "X (Twitter)",
         "link": "https://x.com/samsung",
-        "image": "https://serpapi.com/searches/69d2739369819d0c9bd64037/images/9BbBmsCHjZvEeRgbgbie05lIyXVh8GpwGOneEs5gACk.png"
+        "image": "https://serpapi.com/searches/69d28428f9c5e968a7a7de65/images/9BbBmsCHjZvEeRgbgbie05lIyXVh8GpwGOneEs5gACk.png"
       },
       {
         "name": "LinkedIn",
         "link": "https://www.linkedin.com/company/samsung-electronics",
-        "image": "https://serpapi.com/searches/69d2739369819d0c9bd64037/images/9BbBmsCHjZvEeRgbgbie07zu-VSOYG1rYjNtlny94Vs.png"
+        "image": "https://serpapi.com/searches/69d28428f9c5e968a7a7de65/images/9BbBmsCHjZvEeRgbgbie07zu-VSOYG1rYjNtlny94Vs.png"
       }
     ]
   },
