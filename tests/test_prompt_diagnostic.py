@@ -46,7 +46,7 @@ class TestPromptDiagnostic(unittest.TestCase):
     def test_schema_structure(self):
         """Test structure du schéma"""
         schema = self.prompt_creator.get_schema()
-        required_keys = ["company_name", "strengths", "weaknesses", "opportunities"]
+        required_keys = ["company_name", "points_forts", "points_faibles", "opportunites"]
         for key in required_keys:
             self.assertIn(key, schema)
 

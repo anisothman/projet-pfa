@@ -11,9 +11,9 @@ Montre comment utiliser les deux classes ensemble pour:
 
 import json
 from datetime import datetime
-from text_cleaner import TextCleaner
-from response_formatter import ResponseFormatter
-from logger_config import logger
+from src.text_cleaner import TextCleaner
+from src.response_formatter import ResponseFormatter
+from src.logger_config import logger
 
 
 def pipeline_complet_avec_nettoyage(
@@ -42,7 +42,7 @@ def pipeline_complet_avec_nettoyage(
     # ========================================================================
     # ÉTAPE 1: NETTOYER
     # ========================================================================
-    print("📝 ÉTAPE 1: Nettoyage du texte...")
+    print("ÉTAPE 1: Nettoyage du texte...")
     
     cleaner = TextCleaner()
     clean_result = cleaner.full_pipeline(gemini_raw_response)
@@ -55,12 +55,12 @@ def pipeline_complet_avec_nettoyage(
     print(f"   ✓ Sections détectées: {sections_detected}")
     
     if quality_score < 50:
-        logger.warning(f"⚠️  Qualité faible ({quality_score}/100). Parsing peut être imprécis.")
+        logger.warning(f"  Qualité faible ({quality_score}/100). Parsing peut être imprécis.")
     
     # ========================================================================
     # ÉTAPE 2: FORMATTER
     # ========================================================================
-    print("📊 ÉTAPE 2: Formatage en JSON...")
+    print(" ÉTAPE 2: Formatage en JSON...")
     
     formatter = ResponseFormatter(
         company_name=company_name,
@@ -79,14 +79,14 @@ def pipeline_complet_avec_nettoyage(
     # ========================================================================
     # ÉTAPE 3: VALIDER
     # ========================================================================
-    print("✅ ÉTAPE 3: Validation schéma...")
+    print(" ÉTAPE 3: Validation schéma...")
     
     is_valid, errors = formatter.validate_against_schema(structured)
     
     if is_valid:
-        print(f"   ✓ Validation RÉUSSIE ✅")
+        print(f"   ✓ Validation RÉUSSIE ")
     else:
-        print(f"   ❌ Validation ÉCHOUÉE:")
+        print(f"    Validation ÉCHOUÉE:")
         for error in errors:
             print(f"      - {error}")
         logger.error(f"Validation failed: {errors}")
@@ -94,7 +94,7 @@ def pipeline_complet_avec_nettoyage(
     # ========================================================================
     # ÉTAPE 4: AFFICHER RÉSUMÉ
     # ========================================================================
-    print("📋 RÉSUMÉ:")
+    print("RÉSUMÉ:")
     
     if prompt_type == "diagnostic":
         diag = structured['diagnostic']
@@ -129,7 +129,7 @@ def demo_gemini_sale_vs_propre():
     
     # Texte SALE (comme pourrait rendre Gemini)
     gemini_sale = """
-    🔥 FORCES ET POINTS FORTS DE L'ENTREPRISE 🔥
+    FORCES ET POINTS FORTS DE L'ENTREPRISE 
     
     [on commence avec les forces]
     
@@ -169,7 +169,7 @@ def demo_gemini_sale_vs_propre():
         "review_count": 2543
     }
     
-    print("\n📝 AVANT NETTOYAGE:")
+    print("\n AVANT NETTOYAGE:")
     print("-" * 70)
     print(gemini_sale[:300] + "...[truncated]")
     
@@ -182,7 +182,7 @@ def demo_gemini_sale_vs_propre():
     print("-" * 70)
     print(clean_result['clean_text'][:300] + "...[truncated]")
     
-    print(f"\n📊 STATISTIQUES:")
+    print(f"\n STATISTIQUES:")
     print(f"   - Qualité: {clean_result['quality_score']}/100")
     print(f"   - Sections: {list(clean_result['sections_content'].keys())}")
     print(f"   - Longueur avant: {len(gemini_sale)} chars")
@@ -190,7 +190,7 @@ def demo_gemini_sale_vs_propre():
     
     # Parser en JSON
     print(f"\n" + "="*70)
-    print("📊 CONVERSION EN JSON:")
+    print(" CONVERSION EN JSON:")
     print("="*70)
     
     result = pipeline_complet_avec_nettoyage(
