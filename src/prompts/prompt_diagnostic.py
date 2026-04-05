@@ -278,7 +278,7 @@ class PromptDiagnostic:
             "recherches_associees": extracted["recherches_associees"]
         }
         
-        logger.info(f"✅ Données standardisées: {standardized['nom']}")
+        logger.info(f"Données standardisées: {standardized['nom']}")
         return standardized
 
     # ════════════════��═════════════════════════════════════════════
@@ -465,7 +465,7 @@ RÉPONDS UNIQUEMENT EN JSON VALIDE :
             logger.warning(" Pas de placeholders de données {data[...]}")
             return False
         
-        logger.info("✅ Prompt valide!")
+        logger.info("Prompt valide!")
         return True
 
     # ══════════════════════════════════════════════════════════════

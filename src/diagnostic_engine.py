@@ -1,385 +1,309 @@
 """
-Moteur de diagnostic IA
-Responsable: Maram
-Sprint 2 - Orchestration complete des analyses Gemini
+╔══════════════════════════════════════════════════════════════╗
+║  diagnostic_engine.py — Sprint 2 : Orchestration IA         ║
+║  Responsable : Maram                                         ║
+║  Dépend de   : gemini_client.py + gemini_analyzer.py        ║
+╚══════════════════════════════════════════════════════════════╝
+
+Orchestre la génération complète des diagnostics :
+  1. Charge les données JSON du Sprint 1
+  2. Génère l'analyse SWOT (via gemini_analyzer)
+  3. Génère le plan d'action (via gemini_analyzer)
+  4. Exporte les rapports JSON + TXT
 """
 
 import io
 import os
 import sys
 import json
+import glob
 import logging
 from datetime import datetime
+from pathlib import Path
 from dotenv import load_dotenv
-from google import genai
 
-# Fix Windows console encoding
-if sys.platform == 'win32':
-    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
-    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
-# =====================================================
-# IMPORT DES MODULES DE L'EQUIPE
-#====================================================
+# Fix encodage Windows
+if sys.platform == "win32":
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8")
 
-# Module d'Isra : Creation des prompts SWOT
-from prompts.prompt_diagnostic import PromptDiagnostic
+# ── Chemins absolus ────────────────────────────────────────────────────────────
+BASE_DIR    = Path(__file__).resolve().parent.parent
+DATA_DIR    = BASE_DIR / "data"
+REPORTS_DIR = BASE_DIR / "reports"
+LOGS_DIR    = BASE_DIR / "logs"
 
-# Module de Maram : Generation des plans d'action
-from gemini_analyzer import generer_plan_depuis_fichier
-
-# =====================================================
-# CORRECTION: Configuration des chemins absolus
-# =====================================================
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA_DIR = os.path.join(BASE_DIR, "data")
-REPORTS_DIR = os.path.join(BASE_DIR, "reports")
-LOGS_DIR = os.path.join(BASE_DIR, "logs")
-
-# =====================================================
-# CONFIGURATION
-# =====================================================
+# Add src/ to sys.path so all local imports resolve correctly
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 load_dotenv()
 
-# Configuration des logs avec chemin absolu
-os.makedirs(LOGS_DIR, exist_ok=True)
-log_path = os.path.join(LOGS_DIR, "diagnostic_engine.log")
-
+# ── Logging ────────────────────────────────────────────────────────────────────
+LOGS_DIR.mkdir(exist_ok=True)
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    format="%(asctime)s | %(levelname)8s | %(filename)s:%(lineno)d | %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S",
     handlers=[
-        logging.FileHandler(log_path, encoding='utf-8'),
-        logging.StreamHandler()
-    ]
+        logging.FileHandler(LOGS_DIR / "diagnostic_engine.log", encoding="utf-8"),
+        logging.StreamHandler(sys.stdout),
+    ],
 )
-logger = logging.getLogger(__name__)
+logger = logging.getLogger("projet-pfa")
+
+# ── Imports modules Sprint 2 ───────────────────────────────────────────────────
+from gemini_analyzer import prompt_diagnostic, generer_plan_depuis_fichier
+from gemini_client import call_gemini, get_stats
+
+# ── Import PromptDiagnostic (guarded) ─────────────────────────────────────────
+try:
+    from prompts.prompt_diagnostic import PromptDiagnostic
+    _HAS_PROMPT_MODULE = True
+    logger.info("Module PromptDiagnostic (Isra) chargé")
+except ImportError:
+    _HAS_PROMPT_MODULE = False
+    logger.warning("prompts.prompt_diagnostic absent → fallback intégré utilisé")
+
+    class PromptDiagnostic:
+        """Fallback si le module d'Isra n'est pas encore présent."""
+        def create_diagnostic_prompt(self, company_data: dict) -> str:
+            return None  # Signal → on utilisera prompt_diagnostic() directement
+
+        def validate_prompt(self, prompt) -> bool:
+            return prompt is not None and len(str(prompt)) > 50
 
 
+# ══════════════════════════════════════════════════════════════════════════════
 class DiagnosticEngine:
     """
-    Moteur d'orchestration des diagnostics IA
+    Moteur d'orchestration des diagnostics IA.
+    Génère SWOT + Plan d'action pour chaque entreprise.
     """
-    
+
     def __init__(self, data_dir: str = None, output_dir: str = None):
-        """
-        Initialise le moteur de diagnostic
-        """
-        # CORRECTION: Utiliser les chemins absolus
-        if data_dir is None:
-            self.data_dir = DATA_DIR
-        else:
-            self.data_dir = data_dir
-            
-        if output_dir is None:
-            self.output_dir = REPORTS_DIR
-        else:
-            self.output_dir = output_dir
-        
-        os.makedirs(self.data_dir, exist_ok=True)
-        os.makedirs(self.output_dir, exist_ok=True)
-        
+        self.data_dir   = Path(data_dir)   if data_dir   else DATA_DIR
+        self.output_dir = Path(output_dir) if output_dir else REPORTS_DIR
+
+        self.data_dir.mkdir(exist_ok=True)
+        self.output_dir.mkdir(exist_ok=True)
+
         self.prompt_creator = PromptDiagnostic()
-        logger.info("Module PromptDiagnostic charge")
-        
         self.companies = self._detect_companies()
-        logger.info("Entreprises detectees: " + str(self.companies))
-        
+
         self.api_key = os.getenv("GEMINI_API_KEY")
         if not self.api_key:
-            logger.warning("GEMINI_API_KEY non trouvee dans .env")
-            self.client = None
+            logger.error("GEMINI_API_KEY manquante dans .env")
         else:
-            self.client = genai.Client(api_key=self.api_key)
-            logger.info("Client Gemini initialise")
-    
-    def _detect_companies(self) -> list:
-        """Detecte automatiquement les fichiers JSON dans data/"""
-        import glob #  Importer le module glob (recherche de fichiers)
+            logger.info(f"Engine initialisé | {len(self.companies)} entreprise(s) détectée(s)")
 
-        json_files = glob.glob(os.path.join(self.data_dir, "*_results.json"))
-        companies = []
-         #Parcourir chaque fichier trouvé
-        for f in json_files:
-             # 4
-             #  Extraire juste le nom du fichier (sans le chemin)
-            basename = os.path.basename(f)
-             #  Supprimer le suffixe "_results.json"
-            company_name = basename.replace("_results.json", "")
-            companies.append(company_name)
-             # Si aucun fichier trouvé, utiliser la liste par défaut
-        return companies if companies else ["apple", "microsoft", "samsung"]
-    
+    # ── Détection des entreprises depuis data/ ─────────────────────────────
+    def _detect_companies(self) -> list:
+        files = glob.glob(str(self.data_dir / "*_results.json"))
+        names = [Path(f).stem.replace("_results", "") for f in files]
+        if not names:
+            logger.warning("Aucun fichier *_results.json trouvé → liste par défaut")
+            return ["apple", "microsoft", "samsung"]
+        logger.info(f"Entreprises trouvées: {names}")
+        return names
+
+    # ── Chargement des données JSON (Sprint 1) ─────────────────────────────
     def load_company_data(self, company_name: str) -> dict:
-        """
-        Charge les donnees JSON d'une entreprise depuis le Sprint 1
-        """
-        file_path = os.path.join(self.data_dir, f"{company_name}_results.json")
-         #  Standardiser le format (uniformiser pour tout le projet)
+        file_path = self.data_dir / f"{company_name}_results.json"
         try:
             with open(file_path, "r", encoding="utf-8") as f:
-                raw_data = json.load(f)
-                
-                standardized_data = {
-                    "company_name": raw_data.get("company", company_name),
-                    "results": raw_data.get("organic_results", []),# liste vide sinon
-                    "search_metadata": raw_data.get("search_metadata", {}) # Récupère les métadonnées ou dict vide si absent
-                }
-                
-                logger.info("Donnees chargees pour " + company_name + " (" + str(len(standardized_data['results'])) + " resultats)")
-                return standardized_data
-                
+                raw = json.load(f)
+
+            # Normalisation de la structure (sprint 1 → sprint 2)
+            data = {
+                "company_name": raw.get("company", company_name),
+                "results":      raw.get("organic_results", raw.get("results", [])),
+                "search_metadata": raw.get("search_metadata", {}),
+            }
+            logger.info(f"Données chargées : {company_name} ({len(data['results'])} résultats)")
+            return data
+
         except FileNotFoundError:
-            logger.error("Fichier non trouve: " + file_path)
+            logger.error(f"Fichier introuvable: {file_path}")
             return {"company_name": company_name, "results": []}
-        except json.JSONDecodeError:
-            logger.error("JSON invalide: " + file_path)
+        except json.JSONDecodeError as e:
+            logger.error(f"JSON invalide ({file_path}): {e}")
             return {"company_name": company_name, "results": []}
-    
-    def call_gemini(self, prompt: str, model: str = "gemini-2.0-flash") -> str:
-        """
-        Appelle l'API Gemini avec un prompt
-        """
-        if self.client is None:
-            logger.error("Client Gemini non initialise")
-            return "Erreur: Client Gemini non disponible"
-        
-        try:
-            logger.info("Envoi du prompt a Gemini...")
-            response = self.client.models.generate_content(
-                model=model,
-                contents=prompt
-            )
-            logger.info("Reponse recue de Gemini")
-            return response.text
-        except Exception as e:
-            logger.error("Erreur appel Gemini: " + str(e))
-            return "Erreur: " + str(e)
-    
+
+    # ── Génération SWOT ────────────────────────────────────────────────────
     def generate_swot_analysis(self, company_name: str, company_data: dict) -> str:
-        """
-        Genere l'analyse SWOT en utilisant le module d'Isra
-        """
+        logger.info(f"[SWOT] Début pour {company_name}")
         try:
-            logger.info("Creation du prompt SWOT avec PromptDiagnostic  pour " + company_name)
-            swot_prompt = self.prompt_creator.create_diagnostic_prompt(company_data)
-            
-            if self.prompt_creator.validate_prompt(swot_prompt):
-                logger.info("Prompt SWOT valide pour " + company_name)
-            else:
-                logger.warning("Prompt SWOT pourrait etre incomplet pour " + company_name)
-            
-            logger.info("Envoi du prompt SWOT a Gemini pour " + company_name)
-            swot_analysis = self.call_gemini(swot_prompt)
-            
-            return swot_analysis
-            
+            # Si le module d'Isra est présent, on l'utilise pour créer le prompt
+            if _HAS_PROMPT_MODULE:
+                custom_prompt = self.prompt_creator.create_diagnostic_prompt(company_data)
+                if self.prompt_creator.validate_prompt(custom_prompt):
+                    logger.info(f"[SWOT] Prompt Isra utilisé pour {company_name}")
+                    return call_gemini(custom_prompt)
+
+            # Sinon, fallback sur notre prompt_diagnostic()
+            return prompt_diagnostic(company_data)
+
         except Exception as e:
-            logger.error("Erreur generation SWOT pour " + company_name + ": " + str(e))
-            return "Erreur lors de la generation SWOT: " + str(e)
-    
+            logger.error(f"[SWOT ERREUR] {company_name}: {e}")
+            return f"Erreur SWOT {company_name}: {e}"
+
+    # ── Génération Plan d'action ───────────────────────────────────────────
     def generate_action_plan(self, company_name: str, swot_analysis: str = None) -> str:
-        """
-        Genere le plan d'action en utilisant le SWOT si disponible
-        """
+        logger.info(f"[PLAN] Début pour {company_name}")
         try:
-            json_path = os.path.join(self.data_dir, f"{company_name}_results.json")
-            
-            logger.info("Appel de generer_plan_d'action pour " + company_name)
-            
-            if swot_analysis:
-                logger.info("Plan d'action enrichi avec l'analyse SWOT")
-                action_plan = generer_plan_depuis_fichier(json_path, swot_analysis)
-            else:
-                logger.warning("Pas de SWOT fourni, plan base uniquement sur les donnees brutes")
-                action_plan = generer_plan_depuis_fichier(json_path)
-            
-            if "Erreur" in action_plan or "erreur" in action_plan.lower():
-                logger.warning("Plan d'action pourrait avoir des erreurs pour " + company_name)
-            else:
-                logger.info("Plan d'action genere pour " + company_name + " (" + str(len(action_plan)) + " caracteres)")
-            
-            return action_plan
-            
+            json_path = str(self.data_dir / f"{company_name}_results.json")
+            return generer_plan_depuis_fichier(json_path, swot_analysis)
         except Exception as e:
-            logger.error("Erreur generation plan d'action pour " + company_name + ": " + str(e))
-            return "Erreur lors de la generation du plan d'action: " + str(e)
-    
+            logger.error(f"[PLAN ERREUR] {company_name}: {e}")
+            return f"Erreur plan {company_name}: {e}"
+
+    # ── Diagnostic complet (SWOT + Plan) ──────────────────────────────────
     def generate_diagnostic(self, company_name: str) -> dict:
-        """
-        Genere un diagnostic complet pour une entreprise
-        """
-        logger.info("===== DEBUT DIAGNOSTIC POUR " + company_name.upper() + " =====")
-        
+        logger.info(f"\n{'='*60}")
+        logger.info(f"DIAGNOSTIC COMPLET : {company_name.upper()}")
+        logger.info(f"{'='*60}")
+
         company_data = self.load_company_data(company_name)
         if not company_data.get("results"):
-            logger.error("Aucune donnee trouvee pour" + company_name)
+            logger.error(f"Aucune donnée disponible pour {company_name}")
             return {
                 "company_name": company_name,
-                "error": "Impossible de charger les donnees des fichiers JSON",
-                "generated_at": datetime.now().isoformat()
+                "error": "Données JSON manquantes (relancer le sprint 1)",
+                "generated_at": datetime.now().isoformat(),
             }
-        
-        logger.info("Etape 1/2 - Generation SWOT pour " + company_name)
-        swot_analysis = self.generate_swot_analysis(company_name, company_data)
-        
-        logger.info("Etape 2/2 - Generation du plan d'action pour " + company_name)
-        action_plan = self.generate_action_plan(company_name, swot_analysis)
-        
+
+        # Étape 1 : SWOT
+        logger.info(f"Étape 1/2 → Analyse SWOT")
+        swot = self.generate_swot_analysis(company_name, company_data)
+
+        # Étape 2 : Plan d'action (enrichi avec le SWOT)
+        logger.info(f"Étape 2/2 → Plan d'action")
+        plan = self.generate_action_plan(company_name, swot)
+
         rapport = {
             "company_name": company_name,
             "generated_at": datetime.now().isoformat(),
-            "swot_analysis": swot_analysis,
-            "action_plan": action_plan,
+            "swot_analysis": swot,
+            "action_plan":   plan,
             "metadata": {
-                "data_source": f"{company_name}_results.json",
-                "data_results_count": len(company_data.get("results", [])),
-                "engine_version": "1.0",
-                "models_used": {
-                    "swot_model": "gemini-2.0-flash",
-                    "action_plan_model": "gemini-2.0-flash"
-                }
-            }
+                "data_source":        f"{company_name}_results.json",
+                "results_count":      len(company_data.get("results", [])),
+                "engine_version":     "2.0",
+                "swot_length":        len(swot),
+                "plan_length":        len(plan),
+                "models_used":        "gemini-2.5-flash-preview-04-17 (+ fallback chain)",
+                "api_stats":          get_stats(),
+            },
         }
-        
-        logger.info("Diagnostic complet pour " + company_name + " genere avec succes")
+
+        logger.info(f"✓ Diagnostic terminé : {company_name}")
         return rapport
-    
+
+    # ── Tous les rapports ──────────────────────────────────────────────────
     def generate_all_reports(self) -> list:
-        """
-        Genere des rapports pour toutes les entreprises
-        """
-        logger.info("=" * 70)
-        logger.info("DEBUT GENERATION DES RAPPORTS POUR TOUTES LES ENTREPRISES")
-        logger.info("=" * 70)
-        
+        logger.info(f"\n{'='*60}")
+        logger.info(f"GÉNÉRATION DE {len(self.companies)} RAPPORT(S)")
+        logger.info(f"{'='*60}")
+
         results = []
-        
         for company in self.companies:
             try:
-                rapport = self.generate_diagnostic(company)
-                results.append(rapport)
-                logger.info("Rapport termine pour " + company)
+                results.append(self.generate_diagnostic(company))
             except Exception as e:
-                logger.error("Echec pour " + company + ": " + str(e))
+                logger.error(f"Échec {company}: {e}")
                 results.append({
                     "company_name": company,
                     "error": str(e),
-                    "generated_at": datetime.now().isoformat()
+                    "generated_at": datetime.now().isoformat(),
                 })
-        
-        success_count = len([r for r in results if 'error' not in r])
-        logger.info("Generation terminee: " + str(success_count) + "/" + str(len(self.companies)) + " succes")
+
+        ok = sum(1 for r in results if "error" not in r)
+        logger.info(f"\nRésultat : {ok}/{len(self.companies)} rapport(s) générés avec succès")
         return results
-    
+
+    # ── Export JSON ────────────────────────────────────────────────────────
     def export_json(self, rapport: dict) -> str:
-        """
-        Exporte un rapport au format JSON
-        """
-        os.makedirs(self.output_dir, exist_ok=True)
-        
         company = rapport.get("company_name", "unknown")
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        filename = os.path.join(self.output_dir, f"diagnostic_{company}_{timestamp}.json")
-        
+        ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+        path = self.output_dir / f"diagnostic_{company}_{ts}.json"
         try:
-            with open(filename, "w", encoding="utf-8") as f:
+            with open(path, "w", encoding="utf-8") as f:
                 json.dump(rapport, f, indent=2, ensure_ascii=False)
-            logger.info("Rapport JSON exporte: " + filename)
-            return filename
+            logger.info(f"JSON exporté : {path}")
+            return str(path)
         except Exception as e:
-            logger.error("Erreur export JSON: " + str(e))
+            logger.error(f"Erreur export JSON: {e}")
             return ""
-    
+
+    # ── Export TXT lisible ─────────────────────────────────────────────────
     def export_text(self, rapport: dict) -> str:
-        """
-        Exporte un rapport au format texte lisible
-        """
-        os.makedirs(self.output_dir, exist_ok=True)
-        
         company = rapport.get("company_name", "unknown")
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        filename = os.path.join(self.output_dir, f"diagnostic_{company}_{timestamp}.txt")
-        
+        ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+        path = self.output_dir / f"diagnostic_{company}_{ts}.txt"
         try:
-            with open(filename, "w", encoding="utf-8") as f:
+            with open(path, "w", encoding="utf-8") as f:
                 f.write("=" * 70 + "\n")
-                f.write("DIAGNOSTIC COMPLET - " + company.upper() + "\n")
-                f.write("Date de generation: " + rapport.get('generated_at', datetime.now().isoformat()) + "\n")
+                f.write(f"DIAGNOSTIC — {company.upper()}\n")
+                f.write(f"Généré le : {rapport.get('generated_at','')}\n")
                 f.write("=" * 70 + "\n\n")
-                
-                f.write("ANALYSE SWOT\n")
-                f.write("-" * 50 + "\n")
+                f.write("ANALYSE SWOT\n" + "-" * 50 + "\n")
                 f.write(rapport.get("swot_analysis", "Non disponible") + "\n\n")
-                
-                f.write("PLAN D'ACTION STRATEGIQUE\n")
-                f.write("-" * 50 + "\n")
+                f.write("PLAN D'ACTION\n" + "-" * 50 + "\n")
                 f.write(rapport.get("action_plan", "Non disponible") + "\n\n")
-                
+                meta = rapport.get("metadata", {})
+                f.write("MÉTADONNÉES\n" + "-" * 50 + "\n")
+                f.write(f"Modèle     : {meta.get('models_used','')}\n")
+                f.write(f"SWOT       : {meta.get('swot_length',0)} caractères\n")
+                f.write(f"Plan       : {meta.get('plan_length',0)} caractères\n")
                 f.write("=" * 70 + "\n")
-                f.write("Genere par LocalGuide AI - Diagnostic Engine\n")
-                f.write("Donnees sources: " + rapport.get('metadata', {}).get('data_source', 'inconnu') + "\n")
-                f.write("=" * 70 + "\n")
-            
-            logger.info("Rapport texte exporte: " + filename)
-            return filename
+            logger.info(f"TXT exporté : {path}")
+            return str(path)
         except Exception as e:
-            logger.error("Erreur export texte: " + str(e))
+            logger.error(f"Erreur export TXT: {e}")
             return ""
-    
+
+    # ── Export tous les formats ────────────────────────────────────────────
     def export_all(self, rapports: list):
-        """
-        Exporte tous les rapports (JSON + texte)
-        """
-        logger.info("Export de tous les rapports...")
-        for rapport in rapports:
-            if "error" not in rapport:
-                self.export_json(rapport)
-                self.export_text(rapport)
+        for r in rapports:
+            if "error" not in r:
+                self.export_json(r)
+                self.export_text(r)
             else:
-                logger.warning("Rapport avec erreur non exporte: " + rapport.get('company_name'))
+                logger.warning(f"Rapport ignoré (erreur) : {r.get('company_name')}")
 
 
-# =====================================================
-# POINT D'ENTREE - EXECUTION DU DIAGNOSTIC
-# =====================================================
-
+# ══════════════════════════════════════════════════════════════════════════════
+# POINT D'ENTRÉE
+# ══════════════════════════════════════════════════════════════════════════════
 if __name__ == "__main__":
     print("\n" + "=" * 70)
-    print("LOCALGUIDE AI - DIAGNOSTIC ENGINE v1.0")
+    print("  LOCALGUIDE AI — DIAGNOSTIC ENGINE v2.0")
     print("=" * 70)
-    print("Integration des modules :")
-    print("  - PromptDiagnostic (Isra) - SWOT Analysis")
-    print("  - generer_plan_depuis_fichier (Maram) - Action Plan")
-    print("  - Gemini API - IA Engine")
-    print("\nGeneration des diagnostics pour: Apple, Microsoft, Samsung\n")
-    
+
     engine = DiagnosticEngine()
-    
+
     if not engine.api_key:
-        print("ERREUR: GEMINI_API_KEY non trouvee dans le fichier .env")
-        print("Verifiez que votre fichier .env contient: GEMINI_API_KEY=AIza...")
-        print("Le fichier .env doit etre a la racine du projet (projet-pfa/.env)")
-        exit(1)
-    
+        print("\n⚠  GEMINI_API_KEY manquante dans .env — arrêt.")
+        sys.exit(1)
+
     rapports = engine.generate_all_reports()
-    
     engine.export_all(rapports)
-    
+
     print("\n" + "=" * 70)
-    print("RESUME DES DIAGNOSTICS")
+    print("  RÉSUMÉ FINAL")
     print("=" * 70)
-    for rapport in rapports:
-        company = rapport.get("company_name", "inconnu")
-        if "error" in rapport:
-            print("ERREUR " + company.upper() + ": " + rapport['error'])
+    for r in rapports:
+        company = r.get("company_name", "?")
+        if "error" in r:
+            print(f"  ✗ {company.upper():12} → ERREUR : {r['error']}")
         else:
-            swot = rapport.get("swot_analysis", "")
-            action = rapport.get("action_plan", "")
-            print("SUCCES " + company.upper() + ":")
-            print("   SWOT: " + str(len(swot)) + " caracteres")
-            print("   Plan d'action: " + str(len(action)) + " caracteres")
-            print()
-    
-    print("Rapports exportes dans: " + engine.output_dir)
+            print(f"  ✓ {company.upper():12} → SWOT: {len(r.get('swot_analysis',''))} chars | "
+                  f"Plan: {len(r.get('action_plan',''))} chars")
+
+    stats = get_stats()
+    print(f"\n  API calls : {stats['total']} total | "
+          f"{stats['cache_hits']} cache | "
+          f"{stats['quota_errors']} quota errors")
+    print(f"  Rapports  : {engine.output_dir}")
     print("=" * 70)

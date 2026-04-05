@@ -18,3 +18,202 @@
 2026-04-04 02:04:48 |     INFO | gemini_analyzer.py:50 | Generation du plan d'action pour: entreprise
 2026-04-04 02:04:48 |    ERROR | gemini_analyzer.py:59 | Erreur Gemini: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash\nPlease retry in 10.224163669s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_input_token_count', 'quotaId': 'GenerateContentInputTokensPerModelPerMinute-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '10s'}]}}
 2026-04-04 02:04:48 |     INFO | main.py:53 | Diagnostic complet termine!
+2026-04-04 12:46:27 |     INFO | gemini_analyzer.py:50 | Generation du plan d'action pour: entreprise
+2026-04-04 12:46:28 |    ERROR | gemini_analyzer.py:59 | Erreur Gemini: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\nPlease retry in 31.609615298s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_input_token_count', 'quotaId': 'GenerateContentInputTokensPerModelPerMinute-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '31s'}]}}
+2026-04-04 12:46:28 |     INFO | gemini_analyzer.py:50 | Generation du plan d'action pour: entreprise
+2026-04-04 12:46:28 |    ERROR | gemini_analyzer.py:59 | Erreur Gemini: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash\nPlease retry in 31.266198393s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_input_token_count', 'quotaId': 'GenerateContentInputTokensPerModelPerMinute-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '31s'}]}}
+2026-04-04 12:46:28 |     INFO | gemini_analyzer.py:50 | Generation du plan d'action pour: entreprise
+2026-04-04 12:46:28 |    ERROR | gemini_analyzer.py:59 | Erreur Gemini: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\nPlease retry in 30.930298025s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_input_token_count', 'quotaId': 'GenerateContentInputTokensPerModelPerMinute-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '30s'}]}}
+2026-04-04 12:50:19 |     INFO | gemini_analyzer.py:50 | Generation du plan d'action pour: entreprise
+2026-04-04 12:50:19 |    ERROR | gemini_analyzer.py:59 | Erreur Gemini: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash\nPlease retry in 40.119589292s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.0-flash', 'location': 'global'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_input_token_count', 'quotaId': 'GenerateContentInputTokensPerModelPerMinute-FreeTier', 'quotaDimensions': {'model': 'gemini-2.0-flash', 'location': 'global'}}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '40s'}]}}
+2026-04-04 12:50:19 |     INFO | gemini_analyzer.py:50 | Generation du plan d'action pour: entreprise
+2026-04-04 12:50:19 |    ERROR | gemini_analyzer.py:59 | Erreur Gemini: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\nPlease retry in 39.877170983s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_input_token_count', 'quotaId': 'GenerateContentInputTokensPerModelPerMinute-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '39s'}]}}
+2026-04-04 12:50:20 |     INFO | gemini_analyzer.py:50 | Generation du plan d'action pour: entreprise
+2026-04-04 12:50:20 |    ERROR | gemini_analyzer.py:59 | Erreur Gemini: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\nPlease retry in 39.59186844s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_input_token_count', 'quotaId': 'GenerateContentInputTokensPerModelPerMinute-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '39s'}]}}
+2026-04-04 12:56:31 |     INFO | gemini_analyzer.py:50 | Generation du plan d'action pour: entreprise
+2026-04-04 12:56:32 |  WARNING | gemini_analyzer.py:67 | Quota exceeded, retrying in 30s (attempt 1/3)
+2026-04-04 12:57:05 |  WARNING | gemini_analyzer.py:67 | Quota exceeded, retrying in 60s (attempt 2/3)
+2026-04-04 12:58:08 |    ERROR | gemini_analyzer.py:73 | Erreur Gemini: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash\nPlease retry in 52.19059858s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_input_token_count', 'quotaId': 'GenerateContentInputTokensPerModelPerMinute-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '52s'}]}}
+2026-04-04 12:59:48 |     INFO | gemini_analyzer.py:50 | Generation du plan d'action pour: entreprise
+2026-04-04 12:59:50 |  WARNING | gemini_analyzer.py:67 | Quota exceeded, retrying in 30s (attempt 1/3)
+2026-04-04 13:00:24 |  WARNING | gemini_analyzer.py:67 | Quota exceeded, retrying in 60s (attempt 2/3)
+2026-04-04 13:00:52 |     INFO | gemini_analyzer.py:50 | Generation du plan d'action pour: entreprise
+2026-04-04 13:00:54 |  WARNING | gemini_analyzer.py:67 | Quota exceeded, retrying in 30s (attempt 1/3)
+2026-04-04 13:01:25 |  WARNING | gemini_analyzer.py:67 | Quota exceeded, retrying in 60s (attempt 2/3)
+2026-04-04 13:01:25 |    ERROR | gemini_analyzer.py:73 | Erreur Gemini: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash\nPlease retry in 34.265722953s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.0-flash', 'location': 'global'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.0-flash', 'location': 'global'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_input_token_count', 'quotaId': 'GenerateContentInputTokensPerModelPerMinute-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '34s'}]}}
+2026-04-04 13:02:29 |    ERROR | gemini_analyzer.py:73 | Erreur Gemini: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\nPlease retry in 31.374583844s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_input_token_count', 'quotaId': 'GenerateContentInputTokensPerModelPerMinute-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '31s'}]}}
+2026-04-04 13:03:02 |     INFO | gemini_analyzer.py:50 | Generation du plan d'action pour: entreprise
+2026-04-04 13:03:04 |  WARNING | gemini_analyzer.py:67 | Quota exceeded, retrying in 30s (attempt 1/3)
+2026-04-04 13:07:30 |     INFO | main.py:20 | Recherche en cours pour: Samsung
+2026-04-04 13:07:33 |     INFO | main.py:28 | Structure JSON valide!
+2026-04-04 13:07:33 |     INFO | main.py:34 | Donnees sauvegardees dans: C:\Users\lenovo\Documents\GitHub\projet-pfa\data\samsung_results.json
+2026-04-04 13:07:33 |     INFO | main.py:65 | --------------------------------------------------
+2026-04-04 13:07:33 |     INFO | main.py:20 | Recherche en cours pour: Apple
+2026-04-04 13:07:35 |     INFO | main.py:28 | Structure JSON valide!
+2026-04-04 13:07:35 |     INFO | main.py:34 | Donnees sauvegardees dans: C:\Users\lenovo\Documents\GitHub\projet-pfa\data\apple_results.json
+2026-04-04 13:07:35 |     INFO | main.py:65 | --------------------------------------------------
+2026-04-04 13:07:35 |     INFO | main.py:20 | Recherche en cours pour: Microsoft
+2026-04-04 13:07:38 |     INFO | main.py:28 | Structure JSON valide!
+2026-04-04 13:07:38 |     INFO | main.py:34 | Donnees sauvegardees dans: C:\Users\lenovo\Documents\GitHub\projet-pfa\data\microsoft_results.json
+2026-04-04 13:07:38 |     INFO | main.py:65 | --------------------------------------------------
+2026-04-04 13:11:50 |     INFO | gemini_analyzer.py:50 | Generation du plan d'action pour: entreprise
+2026-04-04 13:11:51 |  WARNING | gemini_analyzer.py:67 | Quota exceeded, retrying in 30s (attempt 1/3)
+2026-04-04 13:12:22 |  WARNING | gemini_analyzer.py:67 | Quota exceeded, retrying in 60s (attempt 2/3)
+2026-04-04 13:13:22 |    ERROR | gemini_analyzer.py:73 | Erreur Gemini: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash\nPlease retry in 36.936385193s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.0-flash', 'location': 'global'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.0-flash', 'location': 'global'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_input_token_count', 'quotaId': 'GenerateContentInputTokensPerModelPerMinute-FreeTier', 'quotaDimensions': {'model': 'gemini-2.0-flash', 'location': 'global'}}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '36s'}]}}
+2026-04-04 13:14:54 |     INFO | gemini_analyzer.py:50 | Generation du plan d'action pour: entreprise
+2026-04-04 13:14:55 |  WARNING | gemini_analyzer.py:67 | Quota exceeded, retrying in 30s (attempt 1/3)
+2026-04-04 13:15:25 |  WARNING | gemini_analyzer.py:67 | Quota exceeded, retrying in 60s (attempt 2/3)
+2026-04-04 13:16:26 |    ERROR | gemini_analyzer.py:73 | Erreur Gemini: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash\nPlease retry in 33.462727057s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.0-flash', 'location': 'global'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_input_token_count', 'quotaId': 'GenerateContentInputTokensPerModelPerMinute-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '33s'}]}}
+2026-04-04 13:17:58 |     INFO | gemini_analyzer.py:50 | Generation du plan d'action pour: entreprise
+2026-04-04 13:17:58 |  WARNING | gemini_analyzer.py:67 | Quota exceeded, retrying in 30s (attempt 1/3)
+2026-04-04 13:18:29 |  WARNING | gemini_analyzer.py:67 | Quota exceeded, retrying in 60s (attempt 2/3)
+2026-04-04 13:24:31 |     INFO | gemini_analyzer.py:56 | Generation du plan d'action pour: entreprise
+2026-04-04 13:24:31 |    ERROR | gemini_analyzer.py:79 | Erreur Gemini: name 'client' is not defined
+2026-04-04 13:24:31 |     INFO | gemini_analyzer.py:56 | Generation du plan d'action pour: entreprise
+2026-04-04 13:24:31 |    ERROR | gemini_analyzer.py:79 | Erreur Gemini: name 'client' is not defined
+2026-04-04 13:24:31 |     INFO | gemini_analyzer.py:56 | Generation du plan d'action pour: entreprise
+2026-04-04 13:24:31 |    ERROR | gemini_analyzer.py:79 | Erreur Gemini: name 'client' is not defined
+2026-04-04 13:26:21 |     INFO | gemini_analyzer.py:56 | Generation du plan d'action pour: entreprise
+2026-04-04 13:26:21 |  WARNING | gemini_analyzer.py:71 | Quota exceeded, retrying in 30s (attempt 1/3)
+2026-04-04 13:26:52 |  WARNING | gemini_analyzer.py:71 | Quota exceeded, retrying in 60s (attempt 2/3)
+2026-04-04 13:27:52 |    ERROR | gemini_analyzer.py:77 | Erreur Gemini: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash
+Please retry in 7.102914006s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_input_token_count"
+  quota_id: "GenerateContentInputTokensPerModelPerMinute-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.0-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerMinutePerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.0-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.0-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+}
+, retry_delay {
+  seconds: 7
+}
+]
+2026-04-04 13:29:23 |     INFO | gemini_analyzer.py:56 | Generation du plan d'action pour: entreprise
+2026-04-04 13:29:23 |  WARNING | gemini_analyzer.py:71 | Quota exceeded, retrying in 30s (attempt 1/3)
+2026-04-04 13:29:53 |  WARNING | gemini_analyzer.py:71 | Quota exceeded, retrying in 60s (attempt 2/3)
+2026-04-04 13:30:56 |     INFO | main.py:20 | Recherche en cours pour: Samsung
+2026-04-04 13:30:57 |     INFO | main.py:28 | Structure JSON valide!
+2026-04-04 13:30:57 |     INFO | main.py:34 | Donnees sauvegardees dans: C:\Users\lenovo\Documents\GitHub\projet-pfa\data\samsung_results.json
+2026-04-04 13:30:57 |     INFO | main.py:65 | --------------------------------------------------
+2026-04-04 13:30:57 |     INFO | main.py:20 | Recherche en cours pour: Apple
+2026-04-04 13:30:58 |     INFO | main.py:28 | Structure JSON valide!
+2026-04-04 13:30:58 |     INFO | main.py:34 | Donnees sauvegardees dans: C:\Users\lenovo\Documents\GitHub\projet-pfa\data\apple_results.json
+2026-04-04 13:30:58 |     INFO | main.py:65 | --------------------------------------------------
+2026-04-04 13:30:58 |     INFO | main.py:20 | Recherche en cours pour: Microsoft
+2026-04-04 13:30:58 |     INFO | main.py:28 | Structure JSON valide!
+2026-04-04 13:30:58 |     INFO | main.py:34 | Donnees sauvegardees dans: C:\Users\lenovo\Documents\GitHub\projet-pfa\data\microsoft_results.json
+2026-04-04 13:30:58 |     INFO | main.py:65 | --------------------------------------------------
+2026-04-04 13:31:30 |     INFO | main.py:20 | Recherche en cours pour: Samsung
+2026-04-04 13:31:31 |     INFO | main.py:28 | Structure JSON valide!
+2026-04-04 13:31:31 |     INFO | main.py:34 | Donnees sauvegardees dans: C:\Users\lenovo\Documents\GitHub\projet-pfa\data\samsung_results.json
+2026-04-04 13:31:31 |     INFO | main.py:65 | --------------------------------------------------
+2026-04-04 13:31:31 |     INFO | main.py:20 | Recherche en cours pour: Apple
+2026-04-04 13:31:31 |     INFO | main.py:28 | Structure JSON valide!
+2026-04-04 13:31:31 |     INFO | main.py:34 | Donnees sauvegardees dans: C:\Users\lenovo\Documents\GitHub\projet-pfa\data\apple_results.json
+2026-04-04 13:31:31 |     INFO | main.py:65 | --------------------------------------------------
+2026-04-04 13:31:31 |     INFO | main.py:20 | Recherche en cours pour: Microsoft
+2026-04-04 13:31:32 |     INFO | main.py:28 | Structure JSON valide!
+2026-04-04 13:31:32 |     INFO | main.py:34 | Donnees sauvegardees dans: C:\Users\lenovo\Documents\GitHub\projet-pfa\data\microsoft_results.json
+2026-04-04 13:31:32 |     INFO | main.py:65 | --------------------------------------------------
+2026-04-04 13:31:34 |     INFO | main.py:47 | Lancement du diagnostic complet...
+2026-04-04 13:33:36 |     INFO | main.py:20 | Recherche en cours pour: Samsung
+2026-04-04 13:33:37 |     INFO | main.py:28 | Structure JSON valide!
+2026-04-04 13:33:37 |     INFO | main.py:34 | Donnees sauvegardees dans: C:\Users\lenovo\Documents\GitHub\projet-pfa\data\samsung_results.json
+2026-04-04 13:33:37 |     INFO | main.py:65 | --------------------------------------------------
+2026-04-04 13:33:37 |     INFO | main.py:20 | Recherche en cours pour: Apple
+2026-04-04 13:33:37 |     INFO | main.py:28 | Structure JSON valide!
+2026-04-04 13:33:37 |     INFO | main.py:34 | Donnees sauvegardees dans: C:\Users\lenovo\Documents\GitHub\projet-pfa\data\apple_results.json
+2026-04-04 13:33:37 |     INFO | main.py:65 | --------------------------------------------------
+2026-04-04 13:33:37 |     INFO | main.py:20 | Recherche en cours pour: Microsoft
+2026-04-04 13:33:38 |     INFO | main.py:28 | Structure JSON valide!
+2026-04-04 13:33:38 |     INFO | main.py:34 | Donnees sauvegardees dans: C:\Users\lenovo\Documents\GitHub\projet-pfa\data\microsoft_results.json
+2026-04-04 13:33:38 |     INFO | main.py:65 | --------------------------------------------------
+2026-04-04 13:34:11 |     INFO | main.py:20 | Recherche en cours pour: Samsung
+2026-04-04 13:34:12 |     INFO | main.py:28 | Structure JSON valide!
+2026-04-04 13:34:12 |     INFO | main.py:34 | Donnees sauvegardees dans: C:\Users\lenovo\Documents\GitHub\projet-pfa\data\samsung_results.json
+2026-04-04 13:34:12 |     INFO | main.py:65 | --------------------------------------------------
+2026-04-04 13:34:12 |     INFO | main.py:20 | Recherche en cours pour: Apple
+2026-04-04 13:34:12 |     INFO | main.py:28 | Structure JSON valide!
+2026-04-04 13:34:12 |     INFO | main.py:34 | Donnees sauvegardees dans: C:\Users\lenovo\Documents\GitHub\projet-pfa\data\apple_results.json
+2026-04-04 13:34:12 |     INFO | main.py:65 | --------------------------------------------------
+2026-04-04 13:34:12 |     INFO | main.py:20 | Recherche en cours pour: Microsoft
+2026-04-04 13:34:12 |     INFO | main.py:28 | Structure JSON valide!
+2026-04-04 13:34:12 |     INFO | main.py:34 | Donnees sauvegardees dans: C:\Users\lenovo\Documents\GitHub\projet-pfa\data\microsoft_results.json
+2026-04-04 13:34:12 |     INFO | main.py:65 | --------------------------------------------------
+2026-04-04 13:34:15 |     INFO | main.py:47 | Lancement du diagnostic complet...
+2026-04-04 13:35:47 |     INFO | gemini_analyzer.py:29 | Génération du plan d'action (tentative 1/3)
+2026-04-04 13:35:49 |    ERROR | gemini_analyzer.py:40 | Erreur Gemini: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2.0-flash-exp is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-04 13:37:20 |     INFO | gemini_analyzer.py:29 | Génération du plan d'action (tentative 1/3)
+2026-04-04 13:37:22 |    ERROR | gemini_analyzer.py:40 | Erreur Gemini: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2.0-flash-exp is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-04 13:38:53 |     INFO | gemini_analyzer.py:29 | Génération du plan d'action (tentative 1/3)
+2026-04-04 13:38:53 |    ERROR | gemini_analyzer.py:40 | Erreur Gemini: [Errno 2] No such file or directory
+2026-04-04 13:38:53 |     INFO | main.py:53 | Diagnostic complet termine!
+2026-04-04 13:47:32 |     INFO | main.py:20 | Recherche en cours pour: Samsung
+2026-04-04 13:47:32 |     INFO | main.py:28 | Structure JSON valide!
+2026-04-04 13:47:32 |     INFO | main.py:34 | Donnees sauvegardees dans: C:\Users\lenovo\Documents\GitHub\projet-pfa\data\samsung_results.json
+2026-04-04 13:47:32 |     INFO | main.py:65 | --------------------------------------------------
+2026-04-04 13:47:32 |     INFO | main.py:20 | Recherche en cours pour: Apple
+2026-04-04 13:47:33 |     INFO | main.py:28 | Structure JSON valide!
+2026-04-04 13:47:33 |     INFO | main.py:34 | Donnees sauvegardees dans: C:\Users\lenovo\Documents\GitHub\projet-pfa\data\apple_results.json
+2026-04-04 13:47:33 |     INFO | main.py:65 | --------------------------------------------------
+2026-04-04 13:47:33 |     INFO | main.py:20 | Recherche en cours pour: Microsoft
+2026-04-04 13:47:33 |     INFO | main.py:28 | Structure JSON valide!
+2026-04-04 13:47:33 |     INFO | main.py:34 | Donnees sauvegardees dans: C:\Users\lenovo\Documents\GitHub\projet-pfa\data\microsoft_results.json
+2026-04-04 13:47:33 |     INFO | main.py:65 | --------------------------------------------------
+2026-04-04 13:47:38 |     INFO | main.py:47 | Lancement du diagnostic complet...
+2026-04-04 13:49:10 |     INFO | gemini_analyzer.py:29 | Génération du plan d'action (tentative 1/3)
+2026-04-04 13:49:13 |    ERROR | gemini_analyzer.py:40 | Erreur Gemini: 400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key expired. Please renew the API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'API key expired. Please renew the API key.'}]}}
+2026-04-04 13:50:44 |     INFO | gemini_analyzer.py:29 | Génération du plan d'action (tentative 1/3)
+2026-04-04 13:50:46 |    ERROR | gemini_analyzer.py:40 | Erreur Gemini: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2.0-flash-exp is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-04 13:52:17 |     INFO | gemini_analyzer.py:29 | Génération du plan d'action (tentative 1/3)
+2026-04-04 13:52:19 |    ERROR | gemini_analyzer.py:40 | Erreur Gemini: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2.0-flash-exp is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-04 13:52:19 |     INFO | main.py:53 | Diagnostic complet termine!
+2026-04-04 14:08:06 |     INFO | main.py:29 | Recherche en cours pour: Samsung
+2026-04-04 14:08:09 |     INFO | main.py:37 | Structure JSON valide!
+2026-04-04 14:08:09 |     INFO | main.py:42 | Données sauvegardées dans: C:\Users\lenovo\Documents\GitHub\projet-pfa\data\samsung_results.json
+2026-04-04 14:08:09 |     INFO | main.py:71 | --------------------------------------------------
+2026-04-04 14:08:09 |     INFO | main.py:29 | Recherche en cours pour: Apple
+2026-04-04 14:08:17 |     INFO | main.py:37 | Structure JSON valide!
+2026-04-04 14:08:17 |     INFO | main.py:42 | Données sauvegardées dans: C:\Users\lenovo\Documents\GitHub\projet-pfa\data\apple_results.json
+2026-04-04 14:08:17 |     INFO | main.py:71 | --------------------------------------------------
+2026-04-04 14:08:17 |     INFO | main.py:29 | Recherche en cours pour: Microsoft
+2026-04-04 14:08:18 |     INFO | main.py:37 | Structure JSON valide!
+2026-04-04 14:08:18 |     INFO | main.py:42 | Données sauvegardées dans: C:\Users\lenovo\Documents\GitHub\projet-pfa\data\microsoft_results.json
+2026-04-04 14:08:18 |     INFO | main.py:71 | --------------------------------------------------
+2026-04-04 14:08:21 |     INFO | main.py:53 | Lancement du diagnostic complet...

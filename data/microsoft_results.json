@@ -2,8 +2,8 @@
   "company": "Microsoft",
   "search_metadata": {
     "status": "Success",
-    "processed_at": "2026-04-04 00:30:47 UTC",
-    "total_results": 1030000000
+    "processed_at": "2026-04-05 14:37:13 UTC",
+    "total_results": 201
   },
   "organic_results": [
     {
@@ -29,23 +29,23 @@
     },
     {
       "position": 4,
-      "title": "Create your Microsoft account",
-      "link": "https://signup.live.com/",
-      "snippet": "Create your Microsoft account. Enter your email address. Email. Next. Already have an account? Sign in. Help and feedback. Terms of usePrivacy and cookies.",
+      "title": "Microsoft (@Microsoft) / Posts / X",
+      "link": "https://x.com/Microsoft",
+      "snippet": "We're building the most comprehensive digital sovereignty platform to help countries and organizations meet their regulatory, security, and operational needs.",
       "date": null
     },
     {
       "position": 5,
-      "title": "Microsoft 365 Copilot | Sign in to Chat, Search & Create with AI",
-      "link": "https://m365.cloud.microsoft/",
-      "snippet": "Sign in to Microsoft 365 Copilot, the AI-powered app for work. Chat with AI, search your files and email, create content, and automate tasks using Work IQ.",
+      "title": "microsoft office et windows au meilleur prix - Tunis",
+      "link": "https://spacenet.tn/86-microsoft?srsltid=AfmBOoq2-6vavSTfNpKHlYszCIpPYd7OpI-XBTgGoledwewbw7FzqGPY",
+      "snippet": "Microsoft Office Famille ou Entreprise en Tunisie sur Spacenet. Achetez les logiciels Microsoft windows en ligne: Word, Excel, PowerPoint, Outlook avec prix ...",
       "date": null
     },
     {
       "position": 6,
-      "title": "microsoft office et windows au meilleur prix - Tunis",
-      "link": "https://spacenet.tn/86-microsoft?srsltid=AfmBOorC2RO1jGDZ4Vu7YY8RDhmYg7FVmPPXiBEF25kDcJ7rwTWOtJIv",
-      "snippet": "Microsoft Office Famille ou Entreprise en Tunisie sur Spacenet. Achetez les logiciels Microsoft windows en ligne: Word, Excel, PowerPoint, Outlook avec prix ...",
+      "title": "Microsoft (@microsoft) · Redmond, WA",
+      "link": "https://www.instagram.com/microsoft/",
+      "snippet": "Work smarter, innovate faster. #MSIgnite spotlights AI's journey from idea to real-. Work smarter, ...",
       "date": null
     }
   ],
@@ -53,19 +53,19 @@
     "afficher_les_résultats_pour": [
       {
         "name": "Microsoft",
-        "link": "https://www.google.com/search?sca_esv=38754e05de5ef311&hl=fr&gl=tn&q=MICROSOFT&si=AL3DRZELggRpGIGvaNmADlAoxLa7oGwHFuLTw7Wp7VV_i94LknmtAT7oVfY8LsrMKzLXP1-E1c4HPGtVnv2BfD3VqaT0QYHCT_7OOvyxvtCMGolh-o2lOlAL1-OS-dQA5ljz9gWLouSEYq8vj8_sJTKC-SLsU6K_RGXIYF42hfTTrmkDHF4VBg2eLFVu49ow7K95cvbQU2-S&sa=X&ved=2ahUKEwjgo5Pc-NKTAxWmmYkEHRNEFUoQ6RN6BAgiEAE",
-        "image": "https://serpapi.com/searches/69d05bb74632b5a0c6f323d1/images/4LY9x2fxtD9n9P0gF26lCXhbjlEYbBVo9gbM_Z_NDAdYQo3kJbCKcRki5c7C4c1ehtiUY_BnvN6G0GJ-9n6Cug.jpeg"
+        "link": "https://www.google.com/search?sca_esv=961d7d2aee6e1575&gl=tn&hl=fr&q=MICROSOFT&si=AL3DRZELggRpGIGvaNmADlAoxLa7oGwHFuLTw7Wp7VV_i94LknmtAT7oVfY8LsrMKzLXP1-E1c4HPGtVnv2BfD3VqaT0QYHCT_7OOvyxvtCMGolh-o2lOlAL1-OS-dQA5ljz9gWLouSEYq8vj8_sJTKC-SLsU6K_RGXIYF42hfTTrmkDHF4VBg2eLFVu49ow7K95cvbQU2-S&sa=X&ved=2ahUKEwjvtMHn99aTAxXqmmoFHbtFGbkQ6RN6BAgkEAE",
+        "image": "https://serpapi.com/searches/69d2739931aafe186412bd94/images/4LY9x2fxtD9n9P0gF26lCXhbjlEYbBVo9gbM_Z_NDAdYQo3kJbCKcRki5c7C4c1ehtiUY_BnvN6G0GJ-9n6Cug.jpeg"
       }
     ]
   },
   "related_searches": [
     "Microsoft login",
-    "Microsoft compte",
     "Microsoft 365",
+    "Microsoft compte",
     "Microsoft Store",
+    "Microsoft Office",
     "Microsoft en Français",
     "Microsoft account",
-    "Microsoft Office",
-    "Microsoft gratuit"
+    "Microsoft en ligne"
   ]
 }
