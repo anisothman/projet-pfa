@@ -1,24 +1,18 @@
 """
-╔══════════════════════════════════════════════════════════════╗
-║  gemini_analyzer.py — Sprint 2 : Analyse IA                 ║
-║  Utilisé par : diagnostic_engine.py                         ║
-║  Dépend de   : gemini_client.py (Anis)                      ║
-╚══════════════════════════════════════════════════════════════╝
-
-Ce module contient les fonctions d'analyse métier :
-  - prompt_diagnostic()     → génère l'analyse SWOT
-  - prompt_plan_action()    → génère le plan d'action stratégique
-  - generer_plan_depuis_fichier() → lecture JSON + génération plan
+Gemini Analyzer - Generation des plans d'action et rating
+Responsable: Maram
+Sprint 3 - Ajout du rating IA
 """
 
+import os
+import re
 import json
-import logging
-from pathlib import Path
+from google import genai
+from config import GEMINI_API_KEY
+from logger_config import logger
 
-from gemini_client import call_gemini
-
-logger = logging.getLogger("projet-pfa")
-
+# Client Gemini
+client = genai.Client(api_key=GEMINI_API_KEY)
 
 # ══════════════════════════════════════════════════════════════════════════════
 # ANALYSE SWOT / DIAGNOSTIC
@@ -77,9 +71,12 @@ CONCLUSION:
 
     logger.info(f"[DIAGNOSTIC] Génération SWOT pour {company_name}...")
     try:
-        result = call_gemini(prompt)
-        logger.info(f"[DIAGNOSTIC OK] {company_name} → {len(result)} caractères")
-        return result
+        result = client.models.generate_content(
+            model="gemini-2.0-flash",
+            contents=prompt
+        )
+        logger.info(f"[DIAGNOSTIC OK] {company_name} → {len(result.text)} caractères")
+        return result.text
     except Exception as e:
         logger.error(f"[DIAGNOSTIC ERREUR] {company_name}: {e}")
         return f"Erreur lors de la génération du diagnostic pour {company_name}: {e}"
@@ -102,51 +99,116 @@ def prompt_plan_action(company_data: dict, swot_analysis: str = None) -> str:
     company_name = company_data.get("company_name", company_data.get("company", "l'entreprise"))
 
     # Contexte SWOT si disponible
-    swot_context = ""
+    swot_section = ""
     if swot_analysis:
-        swot_context = f"""
-Analyse SWOT préalable :
-{swot_analysis[:1500]}
+        swot_section = f"""
+    ============================================================
+    ANALYSE SWOT PREALABLE (a utiliser pour le plan d'action) :
+    ============================================================
+    {swot_analysis}
+    ============================================================
 
-En tenant compte de cette analyse, """
-    else:
-        swot_context = "En te basant sur tes connaissances de l'entreprise, "
+    IMPORTANT: Base ton plan d'action sur les points faibles et opportunites
+    identifies dans le SWOT ci-dessus.
+    """
 
-    prompt = f"""Plan d'action stratégique pour {company_name} (max 300 mots).
+    prompt = f"""
+    Tu es un expert en strategie d'entreprise et consultant senior.
 
-{swot_context}
+    Voici les donnees collectees sur l'entreprise :
+    {json.dumps(company_data, ensure_ascii=False, indent=2)[:3000]}
+    {swot_section}
 
-Structure requise :
-RÉSUMÉ EXÉCUTIF:
-[2 phrases]
+    Sur la base de ces donnees, genere un plan d'action detaille et structure.
 
-ACTIONS COURT TERME (0-3 mois):
-1. [Action] | Priorité: P0 | [département]
-2. [Action] | Priorité: P1 | [département]
+    STRUCTURE OBLIGATOIRE :
 
-ACTIONS MOYEN TERME (3-6 mois):
-1. [Action] | Priorité: P1 | [département]
-2. [Action] | Priorité: P2 | [département]
+    1. RESUME EXECUTIF
+    2. OBJECTIFS PRIORITAIRES
+       - Court terme (0-3 mois)
+       - Moyen terme (3-6 mois)
+       - Long terme (6-12 mois)
+    3. ACTIONS CONCRETES (minimum 3)
+    4. RISQUES ET MITIGATIONS
+    5. INDICATEURS DE SUCCES (KPIs)
 
-ACTIONS LONG TERME (6-12 mois):
-1. [Action] | Priorité: P2 | [département]
+    Reponds en francais, de maniere professionnelle et actionnable.
+    """
 
-KPIs:
-- [Métrique] : cible [valeur]
-- [Métrique] : cible [valeur]
-
-RISQUES:
-1. [Risque] | Impact: [niveau] | Mitigation: [action]
-"""
-
-    logger.info(f"[PLAN ACTION] Génération pour {company_name}...")
     try:
-        result = call_gemini(prompt)
-        logger.info(f"[PLAN ACTION OK] {company_name} → {len(result)} caractères")
-        return result
+        logger.info(f"Generation du plan d'action pour: {company_name}")
+        response = client.models.generate_content(
+            model="gemini-2.0-flash",
+            contents=prompt
+        )
+        logger.info("Plan d'action genere avec succes !")
+        return response.text
+
     except Exception as e:
         logger.error(f"[PLAN ACTION ERREUR] {company_name}: {e}")
         return f"Erreur lors de la génération du plan pour {company_name}: {e}"
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# RATING IA (SPRINT 3)
+# ══════════════════════════════════════════════════════════════════════════════
+def generer_rating(company_data: dict, swot_analysis: str) -> dict:
+    """
+    Demande a Gemini de generer une note globale sur 100 pour l'entreprise
+    basee sur les donnees et le SWOT.
+
+    Returns:
+        dict avec 'score' (int) et 'justification' (str)
+    """
+    prompt = f"""
+    Tu es un analyste financier et strategique expert.
+
+    Voici les donnees de l'entreprise :
+    {json.dumps(company_data, ensure_ascii=False, indent=2)[:3000]}
+
+    Voici l'analyse SWOT :
+    {swot_analysis[:2000]}
+
+    Donne une note globale de performance et de sante strategique de cette entreprise sur 100.
+
+    CRITERES D'EVALUATION :
+    - Position concurrentielle (20 pts)
+    - Solidite financiere (20 pts)
+    - Innovation et technologie (20 pts)
+    - Satisfaction client et reputation (20 pts)
+    - Potentiel de croissance (20 pts)
+
+    REPONDS UNIQUEMENT avec ce format JSON exact, rien d'autre :
+    {{
+      "score": 74,
+      "justification": "Courte justification en une phrase."
+    }}
+    """
+
+    try:
+        logger.info("Generation du rating Gemini...")
+        response = client.models.generate_content(
+            model="gemini-2.0-flash",
+            contents=prompt
+        )
+        raw = response.text.strip()
+
+        # Nettoyer les backticks markdown si presents
+        raw = re.sub(r"```json|```", "", raw).strip()
+
+        data = json.loads(raw)
+        score = int(data.get("score", 50))
+        score = max(0, min(100, score))  # Clamp entre 0 et 100
+
+        logger.info(f"Rating genere : {score}/100")
+        return {
+            "score": score,
+            "justification": data.get("justification", "")
+        }
+
+    except Exception as e:
+        logger.error(f"Erreur generation rating: {e}")
+        return {"score": 50, "justification": "Rating non disponible"}
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -154,7 +216,7 @@ RISQUES:
 # ══════════════════════════════════════════════════════════════════════════════
 def generer_plan_depuis_fichier(json_path: str, swot_analysis: str = None) -> str:
     """
-    Génère un plan d'action en lisant les données depuis un fichier JSON (sprint 1).
+    Charge un fichier JSON et genere un plan d'action
 
     Args:
         json_path     : Chemin vers le fichier JSON de l'entreprise
@@ -176,11 +238,21 @@ def generer_plan_depuis_fichier(json_path: str, swot_analysis: str = None) -> st
         return prompt_plan_action(company_data, swot_analysis)
 
     except FileNotFoundError:
-        logger.error(f"[FICHIER INTROUVABLE] {json_path}")
-        return f"Erreur: Fichier {json_path} non trouvé"
-    except json.JSONDecodeError as e:
-        logger.error(f"[JSON INVALIDE] {json_path}: {e}")
-        return f"Erreur: Fichier {json_path} n'est pas un JSON valide"
-    except Exception as e:
-        logger.error(f"[ERREUR] generer_plan_depuis_fichier: {e}")
-        return f"Erreur lors de la génération: {e}"
+        logger.error(f"Fichier non trouve: {json_path}")
+        return "Erreur: fichier JSON introuvable"
+    except json.JSONDecodeError:
+        logger.error(f"Fichier JSON invalide: {json_path}")
+        return "Erreur: fichier JSON invalide"
+
+
+if __name__ == "__main__":
+    entreprises = ["samsung", "apple", "microsoft"]
+
+    for entreprise in entreprises:
+        json_path = f"data/{entreprise}_results.json"
+        logger.info(f"Traitement de {entreprise}...")
+        plan = generer_plan_depuis_fichier(json_path)
+        print(f"\n{'='*60}")
+        print(f"PLAN D'ACTION - {entreprise.upper()}")
+        print('='*60)
+        print(plan)

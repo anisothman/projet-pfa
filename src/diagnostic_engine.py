@@ -1,10 +1,8 @@
 """
-╔══════════════════════════════════════════════════════════════╗
-║  diagnostic_engine.py — Sprint 2 : Orchestration IA         ║
-║  Responsable : Maram                                         ║
-║  Dépend de   : gemini_client.py + gemini_analyzer.py        ║
-╚══════════════════════════════════════════════════════════════╝
 
+ diagnostic_engine.py — Sprint 2 : Orchestration IA         
+  Responsable : Maram                                         
+ Dépend de   : gemini_client.py + gemini_analyzer.py      
 Orchestre la génération complète des diagnostics :
   1. Charge les données JSON du Sprint 1
   2. Génère l'analyse SWOT (via gemini_analyzer)
@@ -53,7 +51,7 @@ logging.basicConfig(
 logger = logging.getLogger("projet-pfa")
 
 # ── Imports modules Sprint 2 ───────────────────────────────────────────────────
-from gemini_analyzer import prompt_diagnostic, generer_plan_depuis_fichier
+from gemini_analyzer import prompt_diagnostic, generer_plan_depuis_fichier, generer_rating
 from gemini_client import call_gemini, get_stats
 
 # ── Import PromptDiagnostic (guarded) ─────────────────────────────────────────
@@ -181,11 +179,16 @@ class DiagnosticEngine:
         logger.info(f"Étape 2/2 → Plan d'action")
         plan = self.generate_action_plan(company_name, swot)
 
+        # Étape 3 : Rating IA (Sprint 3)
+        logger.info(f"Étape 3/3 → Rating IA")
+        rating = generer_rating(company_data, swot)
+
         rapport = {
             "company_name": company_name,
             "generated_at": datetime.now().isoformat(),
             "swot_analysis": swot,
             "action_plan":   plan,
+            "rating":        rating,
             "metadata": {
                 "data_source":        f"{company_name}_results.json",
                 "results_count":      len(company_data.get("results", [])),
@@ -251,6 +254,14 @@ class DiagnosticEngine:
                 f.write(rapport.get("swot_analysis", "Non disponible") + "\n\n")
                 f.write("PLAN D'ACTION\n" + "-" * 50 + "\n")
                 f.write(rapport.get("action_plan", "Non disponible") + "\n\n")
+                
+                # Ajouter le rating si disponible
+                rating = rapport.get("rating", {})
+                if rating.get("score"):
+                    f.write("RATING IA\n" + "-" * 50 + "\n")
+                    f.write(f"Score: {rating.get('score')}/100\n")
+                    f.write(f"Justification: {rating.get('justification', '')}\n\n")
+                
                 meta = rapport.get("metadata", {})
                 f.write("MÉTADONNÉES\n" + "-" * 50 + "\n")
                 f.write(f"Modèle     : {meta.get('models_used','')}\n")
@@ -298,8 +309,9 @@ if __name__ == "__main__":
         if "error" in r:
             print(f"  ✗ {company.upper():12} → ERREUR : {r['error']}")
         else:
+            rating_score = r.get("rating", {}).get("score", "N/A")
             print(f"  ✓ {company.upper():12} → SWOT: {len(r.get('swot_analysis',''))} chars | "
-                  f"Plan: {len(r.get('action_plan',''))} chars")
+                  f"Plan: {len(r.get('action_plan',''))} chars | Rating: {rating_score}/100")
 
     stats = get_stats()
     print(f"\n  API calls : {stats['total']} total | "
