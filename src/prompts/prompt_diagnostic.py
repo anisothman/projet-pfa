@@ -1,5 +1,5 @@
 # Créer et écrire dans le fichier
-@"
+
 """
 Module de création des prompts diagnostiques - VERSION OPTIMISÉE
 Responsable optimisation: Nourhene
