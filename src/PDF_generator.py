@@ -1,4 +1,5 @@
 ﻿import json
+import re
 from datetime import datetime
 from pathlib import Path
 from reportlab.lib.pagesizes import A4
@@ -15,8 +16,34 @@ REPORTS_DIR.mkdir(exist_ok=True)
 
 NOM_PROJET = "LOCALGUIDE AI - Diagnostic Intelligence"
 
-def create_rating_bar(rating):
+def calculate_rating_from_swot(forces, faiblesses, opportunites, menaces):
    
+    score = 50  # Score de base
+    
+    # +10 points par force (max 20)
+    score += min(len(forces) * 10, 20)
+    
+    # +10 points par opportunité (max 20)
+    score += min(len(opportunites) * 10, 20)
+    
+    # -10 points par faiblesse (max -20)
+    score -= min(len(faiblesses) * 10, 20)
+    
+    # -10 points par menace (max -20)
+    score -= min(len(menaces) * 10, 20)
+    
+    # Analyse du texte pour ajuster
+    all_text = ' '.join(forces + opportunites).lower()
+    if any(word in all_text for word in ['innovation', 'croissance', 'leader', 'excellence']):
+        score += 5
+    if any(word in all_text for word in ['declin', 'difficile', 'concurrence', 'risque']):
+        score -= 5
+    
+    # Limiter entre 0 et 100
+    return max(0, min(100, score))
+
+def create_rating_bar(rating):
+    
     d = Drawing(350, 40)
     
     # Fond gris clair SANS bordure
@@ -40,7 +67,7 @@ def create_rating_bar(rating):
     return d
 
 def generate_smart_action_plan(forces, faiblesses, opportunites, menaces):
-  
+   
     
     court_terme = []
     moyen_terme = []
@@ -136,38 +163,6 @@ def export_pdf(rapport, output_dir=None):
                           style=[('LINEABOVE', (0,0), (0,0), 1, colors.HexColor('#bdc3c7'))]))
         story.append(Spacer(1, 20))
         
-        # ========== RATING CENTRÉ SANS BORDURE ==========
-        rating_data = rapport.get("rating", {})
-        if isinstance(rating_data, dict):
-            score_global = rating_data.get("score", 50)
-        else:
-            score_global = 50
-        
-        story.append(Paragraph("SCORE GLOBAL", rating_title_style))
-        story.append(Spacer(1, 5))
-        
-        # Ajouter la barre de rating centrée
-        rating_drawing = create_rating_bar(score_global)
-        story.append(rating_drawing)
-        story.append(Spacer(1, 8))
-        
-        # Appréciation
-        if score_global >= 75:
-            appreciation = "EXCELLENT - Performance supérieure"
-            appreciation_color = colors.HexColor('#27ae60')
-        elif score_global >= 50:
-            appreciation = "BON - Performance satisfaisante"
-            appreciation_color = colors.HexColor('#f39c12')
-        else:
-            appreciation = "À AMÉLIORER - Performance insuffisante"
-            appreciation_color = colors.HexColor('#e74c3c')
-        
-        appreciation_style = ParagraphStyle('Appreciation', parent=styles['Normal'], 
-                                           fontSize=12, textColor=appreciation_color, 
-                                           alignment=TA_CENTER, spaceAfter=5, fontName='Helvetica-Bold')
-        story.append(Paragraph(appreciation, appreciation_style))
-        story.append(Spacer(1, 20))
-        
         # ========== PARSER LE SWOT ==========
         swot_str = rapport.get("swot_analysis", "{}")
         try:
@@ -188,6 +183,39 @@ def export_pdf(rapport, output_dir=None):
         if isinstance(faiblesses, str): faiblesses = [faiblesses]
         if isinstance(opportunites, str): opportunites = [opportunites]
         if isinstance(menaces, str): menaces = [menaces]
+        
+        # ========== CALCULER LE RATING INTELLIGENT ==========
+        rating_data = rapport.get("rating", {})
+        if isinstance(rating_data, dict) and rating_data.get("score", 50) != 50:
+            score_global = rating_data.get("score", 50)
+        else:
+            # Utiliser notre calcul intelligent
+            score_global = calculate_rating_from_swot(forces, faiblesses, opportunites, menaces)
+        
+        # ========== RATING CENTRÉ SANS BORDURE ==========
+        story.append(Paragraph("SCORE GLOBAL", rating_title_style))
+        story.append(Spacer(1, 5))
+        
+        rating_drawing = create_rating_bar(score_global)
+        story.append(rating_drawing)
+        story.append(Spacer(1, 8))
+        
+        # Appréciation
+        if score_global >= 75:
+            appreciation = "EXCELLENT - Performance supérieure"
+            appreciation_color = colors.HexColor('#27ae60')
+        elif score_global >= 50:
+            appreciation = "BON - Performance satisfaisante"
+            appreciation_color = colors.HexColor('#f39c12')
+        else:
+            appreciation = "À AMÉLIORER - Performance insuffisante"
+            appreciation_color = colors.HexColor('#e74c3c')
+        
+        appreciation_style = ParagraphStyle('Appreciation', parent=styles['Normal'], 
+                                           fontSize=12, textColor=appreciation_color, 
+                                           alignment=TA_CENTER, spaceAfter=5, fontName='Helvetica-Bold')
+        story.append(Paragraph(appreciation, appreciation_style))
+        story.append(Spacer(1, 20))
         
         # ========== SWOT EN TABLEAU ==========
         story.append(Paragraph("ANALYSE SWOT", section_style))
@@ -247,10 +275,8 @@ def export_pdf(rapport, output_dir=None):
         story.append(Paragraph("PLAN D'ACTION STRATÉGIQUE", section_style))
         story.append(Spacer(1, 10))
         
-        # Générer le plan d'action
         court_terme, moyen_terme, long_terme = generate_smart_action_plan(forces, faiblesses, opportunites, menaces)
         
-        # Style pour les titres d'horizon
         horizon_style = ParagraphStyle('Horizon', parent=styles['Heading3'], fontSize=12, 
                                        textColor=colors.HexColor('#2c3e50'), spaceBefore=10, spaceAfter=5)
         
@@ -280,11 +306,11 @@ def export_pdf(rapport, output_dir=None):
         
         # Générer le PDF
         doc.build(story)
-        print(f"✅ PDF généré avec succès : {filename}")
+        print(f" PDF généré avec succès : {filename}")
         return str(filename)
         
     except Exception as e:
-        print(f"❌ Erreur : {e}")
+        print(f" Erreur : {e}")
         import traceback
         traceback.print_exc()
         return None
@@ -293,3 +319,43 @@ def generate_pdf_from_json(json_path, output_dir=None):
     with open(json_path, 'r', encoding='utf-8') as f:
         rapport = json.load(f)
     return export_pdf(rapport, output_dir)
+
+def export_all_pdf(reports_data, output_dir=None):
+    """Export multiple reports to PDF
+    
+    Args:
+        reports_data: List of report dictionaries or paths to JSON files
+        output_dir: Output directory for PDFs
+    
+    Returns:
+        List of generated PDF paths
+    """""
+    import json
+    from pathlib import Path
+    
+    results = []
+    
+    for report in reports_data:
+        try:
+            # Si c'est un chemin de fichier JSON
+            if isinstance(report, (str, Path)):
+                with open(report, 'r', encoding='utf-8') as f:
+                    rapport = json.load(f)
+            # Si c'est déjà un dictionnaire
+            elif isinstance(report, dict):
+                rapport = report
+            else:
+                print(f" Format non supporté: {type(report)}")
+                continue
+            
+            # Générer le PDF
+            result = export_pdf(rapport, output_dir)
+            if result:
+                results.append(result)
+                
+        except Exception as e:
+            print(f" Erreur lors de la génération du PDF: {e}")
+            continue
+    
+    print(f"{len(results)} PDF(s) généré(s)")
+    return results

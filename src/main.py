@@ -67,10 +67,10 @@ def rechercher_et_extraire(nom_entreprise: str) -> bool:
         # Sauvegarde
         filename = DATA_DIR / f"{nom_entreprise.lower()}_results.json"
         if extractor.save_to_json(structured, str(filename)):
-            logger.info(f"✓ Données sauvegardées : {filename}")
+            logger.info(f" Données sauvegardées : {filename}")
             return True
         else:
-            logger.error(f"✗ Erreur sauvegarde JSON pour {nom_entreprise}")
+            logger.error(f" Erreur sauvegarde JSON pour {nom_entreprise}")
             return False
             
     except Exception as e:
@@ -109,7 +109,7 @@ def lancer_diagnostic_complet() -> list:
         logger.info("[SPRINT 2] Export JSON et TXT...")
         engine.export_all(rapports)
         
-        logger.info("✓ Diagnostic complet terminé!")
+        logger.info(" Diagnostic complet terminé!")
         return rapports
         
     except Exception as e:
@@ -180,7 +180,7 @@ def main():
     }
     
     # ─ SPRINT 1 : Collecte des données ───────────────────────────────────
-    print("\n" + "▼"*70)
+    print("\n" + "-"*70)
     print("  COLLECTE DES DONNÉES (SerpAPI)")
     print("▼"*70)
     
@@ -211,11 +211,11 @@ def main():
     
     if stats['sprint1_success'] == 0:
         logger.error("Aucune donnée collectée. Arrêt du pipeline.")
-        print("\n  ⚠️  Aucune donnée pour continuer. Pipeline arrêté.")
+        print("\n    Aucune donnée pour continuer. Pipeline arrêté.")
         return
     
     # ─ SPRINT 2 : Analyse IA (SWOT + Plan + Rating) ─────────────────────
-    print("\n" + "▼"*70)
+    print("\n" + "-"*70)
     print(" ANALYSE IA (SWOT + Plan d'Action + Rating)")
     print("▼"*70)
     
@@ -230,7 +230,7 @@ def main():
         return
     
     # ─ SPRINT 3 : Génération des PDFs ────────────────────────────────────
-    print("\n" + "▼"*70)
+    print("\n" + "-"*70)
     print("   GÉNÉRATION DES RAPPORTS PDF")
     print("▼"*70)
     

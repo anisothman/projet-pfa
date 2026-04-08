@@ -58,7 +58,7 @@ from gemini_client import call_gemini, get_stats
 try:
     from prompts.prompt_diagnostic import PromptDiagnostic
     _HAS_PROMPT_MODULE = True
-    logger.info("Module PromptDiagnostic (Isra) chargé")
+    logger.info("Module PromptDiagnosticchargé")
 except ImportError:
     _HAS_PROMPT_MODULE = False
     logger.warning("prompts.prompt_diagnostic absent → fallback intégré utilisé")
