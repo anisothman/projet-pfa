@@ -32,9 +32,9 @@ REPORTS_DIR.mkdir(exist_ok=True, parents=True)
 LOGS_DIR.mkdir(exist_ok=True, parents=True)
 
 
-# ══════════════════════════════════════════════════════════════════════════════
+
 # SPRINT 1 : COLLECTE DES DONNÉES (SerpAPI)
-# ══════════════════════════════════════════════════════════════════════════════
+
 
 def rechercher_et_extraire(nom_entreprise: str) -> bool:
     """
@@ -78,9 +78,9 @@ def rechercher_et_extraire(nom_entreprise: str) -> bool:
         return False
 
 
-# ══════════════════════════════════════════════════════════════════════════════
+
 # SPRINT 2 : ANALYSE IA (SWOT + Plan d'Action + Rating)
-# ══════════════════════════════════════════════════════════════════════════════
+
 
 def lancer_diagnostic_complet() -> list:
     """
@@ -117,16 +117,13 @@ def lancer_diagnostic_complet() -> list:
         return []
 
 
-# ══════════════════════════════════════════════════════════════════════════════
 # SPRINT 3 : GÉNÉRATION DES RAPPORTS PDF PROFESSIONNELS
-# ══════════════════════════════════════════════════════════════════════════════
-
 def generer_rapports_pdf(rapports: list) -> int:
     """
-    Génère les rapports PDF professionnels (Sprint 3)
+    Génère les rapports PDF professionnels 
     
     Args:
-        rapports: Liste des rapports générés par Sprint 2
+        rapports: Liste des rapports générés 
         
     Returns:
         int: Nombre de PDFs générés avec succès
@@ -166,7 +163,7 @@ def main():
     print(f" Logs Dir    : {LOGS_DIR}")
     print("="*70 + "\n")
     
-    # ─ Vérification des clés ─────────────────────────────────────────────
+    # ─ Vérification des clés
     logger.info("Vérification des configurations...")
     check_keys()
     
@@ -179,7 +176,7 @@ def main():
         "sprint3_pdfs": 0,
     }
     
-    # ─ SPRINT 1 : Collecte des données ───────────────────────────────────
+    # ─ SPRINT 1 : Collecte des données 
     print("\n" + "-"*70)
     print("  COLLECTE DES DONNÉES (SerpAPI)")
     print("▼"*70)
@@ -217,7 +214,7 @@ def main():
     # ─ SPRINT 2 : Analyse IA (SWOT + Plan + Rating) ─────────────────────
     print("\n" + "-"*70)
     print(" ANALYSE IA (SWOT + Plan d'Action + Rating)")
-    print("▼"*70)
+    print("-"*70)
     
     rapports = lancer_diagnostic_complet()
     stats['sprint2_reports'] = len([r for r in rapports if "error" not in r])
@@ -249,9 +246,9 @@ def main():
     print(f"      Sprint 3 (PDF Report) : {stats['sprint3_pdfs']}/{len(entreprises)} ✅")
     
     print(f"\n FICHIERS GÉNÉRÉS:")
-    print(f"      Data     : {DATA_DIR}")
-    print(f"      Reports  : {REPORTS_DIR}")
-    print(f"      Logs     : {LOGS_DIR}")
+    print(f"  Data     : {DATA_DIR}")
+    print(f"  Reports  : {REPORTS_DIR}")
+    print(f" Logs     : {LOGS_DIR}")
     
     print(f"\n   Heure : {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}")
     print("="*70 + "\n")
