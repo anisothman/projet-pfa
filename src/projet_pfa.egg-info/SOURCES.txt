@@ -1,0 +1,10 @@
+README.md
+pyproject.toml
+src/projet_pfa.egg-info/PKG-INFO
+src/projet_pfa.egg-info/SOURCES.txt
+src/projet_pfa.egg-info/dependency_links.txt
+src/projet_pfa.egg-info/requires.txt
+src/projet_pfa.egg-info/top_level.txt
+src/prompts/prompt_diagnostic.py
+tests/test_prompt_diagnostic.py
+tests/test_serp.py

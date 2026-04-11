@@ -1,0 +1,359 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Company Analysis Report Schema",
+  "description": "Schéma standardisé pour les rapports d'analyse d'entreprises avec diagnostic et plan d'action",
+  "type": "object",
+  "required": ["entreprise", "diagnostic", "plan_action", "metadonnees"],
+  "properties": {
+    "entreprise": {
+      "type": "object",
+      "description": "Données brutes de l'entreprise collectées via SerpAPI",
+      "required": ["id_entreprise", "nom", "adresse"],
+      "properties": {
+        "id_entreprise": {
+          "type": "string",
+          "description": "Identifiant unique de l'entreprise (hash ou SERP ID)"
+        },
+        "nom": {
+          "type": "string",
+          "description": "Nom officiel de l'entreprise"
+        },
+        "adresse": {
+          "type": "string",
+          "description": "Adresse complète"
+        },
+        "telephone": {
+          "type": ["string", "null"],
+          "description": "Numéro de téléphone"
+        },
+        "site_web": {
+          "type": ["string", "null"],
+          "description": "URL du site web"
+        },
+        "categorie": {
+          "type": ["string", "null"],
+          "description": "Catégorie/type d'activité"
+        },
+        "horaires": {
+          "type": ["object", "null"],
+          "description": "Horaires d'ouverture",
+          "properties": {
+            "lundi": {"type": "string"},
+            "mardi": {"type": "string"},
+            "mercredi": {"type": "string"},
+            "jeudi": {"type": "string"},
+            "vendredi": {"type": "string"},
+            "samedi": {"type": "string"},
+            "dimanche": {"type": "string"}
+          }
+        },
+        "note_moyenne": {
+          "type": ["number", "null"],
+          "description": "Note moyenne (ex: 4.5/5)",
+          "minimum": 0,
+          "maximum": 5
+        },
+        "nombre_avis": {
+          "type": ["integer", "null"],
+          "description": "Nombre total d'avis"
+        },
+        "photos": {
+          "type": ["array", "null"],
+          "description": "URLs des photos",
+          "items": {"type": "string"}
+        }
+      }
+    },
+    "diagnostic": {
+      "type": "object",
+      "description": "Analyse diagnostic générée par Gemini",
+      "required": ["points_forts", "points_faibles", "opportunites"],
+      "properties": {
+        "points_forts": {
+          "type": "array",
+          "description": "Points forts identifiés",
+          "items": {
+            "type": "object",
+            "required": ["titre", "description"],
+            "properties": {
+              "titre": {
+                "type": "string",
+                "description": "Titre court du point fort"
+              },
+              "description": {
+                "type": "string",
+                "description": "Description détaillée"
+              },
+              "impact": {
+                "type": "string",
+                "enum": ["critique", "majeur", "modéré", "faible"],
+                "description": "Impact estimé du point fort"
+              }
+            }
+          }
+        },
+        "points_faibles": {
+          "type": "array",
+          "description": "Points faibles et opportunités d'amélioration",
+          "items": {
+            "type": "object",
+            "required": ["titre", "description"],
+            "properties": {
+              "titre": {
+                "type": "string",
+                "description": "Titre court du point faible"
+              },
+              "description": {
+                "type": "string",
+                "description": "Description détaillée"
+              },
+              "severite": {
+                "type": "string",
+                "enum": ["critique", "majeur", "modéré", "faible"],
+                "description": "Niveau de sévérité"
+              },
+              "impact_client": {
+                "type": "string",
+                "description": "Impact sur les clients/utilisateurs"
+              }
+            }
+          }
+        },
+        "opportunites": {
+          "type": "array",
+          "description": "Opportunités identifiées",
+          "items": {
+            "type": "object",
+            "required": ["titre", "description"],
+            "properties": {
+              "titre": {
+                "type": "string",
+                "description": "Titre court de l'opportunité"
+              },
+              "description": {
+                "type": "string",
+                "description": "Description détaillée"
+              },
+              "potentiel": {
+                "type": "string",
+                "enum": ["très élevé", "élevé", "modéré", "faible"],
+                "description": "Potentiel estimé"
+              }
+            }
+          }
+        }
+      }
+    },
+    "plan_action": {
+      "type": "object",
+      "description": "Plan d'action détaillé par horizon temporel",
+      "required": ["court_terme", "moyen_terme", "long_terme"],
+      "properties": {
+        "resume_executif": {
+          "type": ["string", "null"],
+          "description": "Résumé exécutif du plan"
+        },
+        "court_terme": {
+          "type": "array",
+          "description": "Actions court terme (0-3 mois)",
+          "items": {
+            "type": "object",
+            "required": ["action", "description"],
+            "properties": {
+              "action": {
+                "type": "string",
+                "description": "Titre de l'action"
+              },
+              "description": {
+                "type": "string",
+                "description": "Description détaillée"
+              },
+              "priorite": {
+                "type": "string",
+                "enum": ["P0", "P1", "P2", "P3"],
+                "description": "Niveau de priorité"
+              },
+              "responsable": {
+                "type": ["string", "null"],
+                "description": "Responsable estimé"
+              },
+              "delai_jours": {
+                "type": ["integer", "null"],
+                "description": "Délai estimé en jours"
+              },
+              "budget_estime": {
+                "type": ["number", "null"],
+                "description": "Budget estimé"
+              }
+            }
+          }
+        },
+        "moyen_terme": {
+          "type": "array",
+          "description": "Actions moyen terme (3-6 mois)",
+          "items": {
+            "type": "object",
+            "required": ["action", "description"],
+            "properties": {
+              "action": {"type": "string"},
+              "description": {"type": "string"},
+              "priorite": {
+                "type": "string",
+                "enum": ["P0", "P1", "P2", "P3"]
+              },
+              "responsable": {"type": ["string", "null"]},
+              "delai_mois": {
+                "type": ["integer", "null"],
+                "description": "Délai estimé en mois"
+              }
+            }
+          }
+        },
+        "long_terme": {
+          "type": "array",
+          "description": "Actions long terme (6-12 mois)",
+          "items": {
+            "type": "object",
+            "required": ["action", "description"],
+            "properties": {
+              "action": {"type": "string"},
+              "description": {"type": "string"},
+              "priorite": {
+                "type": "string",
+                "enum": ["P0", "P1", "P2", "P3"]
+              }
+            }
+          }
+        },
+        "kpis": {
+          "type": ["array", "null"],
+          "description": "KPIs à suivre",
+          "items": {
+            "type": "object",
+            "properties": {
+              "metrique": {
+                "type": "string",
+                "description": "Nom de la métrique"
+              },
+              "baseline": {
+                "type": ["string", "number", "null"],
+                "description": "Valeur actuelle"
+              },
+              "cible": {
+                "type": ["string", "number", "null"],
+                "description": "Valeur cible"
+              },
+              "frequence_mesure": {
+                "type": "string",
+                "description": "Fréquence (quotidien, hebdo, mensuel, etc.)"
+              }
+            }
+          }
+        },
+        "risques": {
+          "type": ["array", "null"],
+          "description": "Risques identifiés et mitigations",
+          "items": {
+            "type": "object",
+            "properties": {
+              "risque": {
+                "type": "string",
+                "description": "Description du risque"
+              },
+              "probabilite": {
+                "type": "string",
+                "enum": ["très faible", "faible", "modéré", "élevé", "très élevé"]
+              },
+              "impact": {
+                "type": "string",
+                "enum": ["critique", "majeur", "modéré", "faible"]
+              },
+              "mitigation": {
+                "type": "string",
+                "description": "Actions de mitigation"
+              }
+            }
+          }
+        }
+      }
+    },
+    "analyse_avis": {
+      "type": ["object", "null"],
+      "description": "Analyse qualitative des avis clients (optionnel)",
+      "properties": {
+        "themes_positifs": {
+          "type": ["array", "null"],
+          "description": "Thèmes positifs récurrents",
+          "items": {
+            "type": "object",
+            "properties": {
+              "theme": {"type": "string"},
+              "frequence": {
+                "type": "string",
+                "enum": ["très fréquent", "fréquent", "modéré", "rare"]
+              },
+              "exemple": {"type": ["string", "null"]}
+            }
+          }
+        },
+        "themes_negatifs": {
+          "type": ["array", "null"],
+          "description": "Thèmes négatifs récurrents",
+          "items": {
+            "type": "object",
+            "properties": {
+              "theme": {"type": "string"},
+              "frequence": {
+                "type": "string",
+                "enum": ["très fréquent", "fréquent", "modéré", "rare"]
+              },
+              "exemple": {"type": ["string", "null"]}
+            }
+          }
+        },
+        "sentiment_general": {
+          "type": ["string", "null"],
+          "enum": ["très positif", "positif", "neutre", "négatif", "très négatif"]
+        }
+      }
+    },
+    "metadonnees": {
+      "type": "object",
+      "description": "Métadonnées techniques et traçabilité",
+      "required": ["date_analyse", "version_prompt"],
+      "properties": {
+        "date_analyse": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date/heure de l'analyse (ISO 8601)"
+        },
+        "version_prompt": {
+          "type": "string",
+          "description": "Version du prompt utilisé (ex: 1.0, 1.1)"
+        },
+        "modele_gemini": {
+          "type": "string",
+          "description": "Modèle Gemini utilisé (ex: gemini-2.0-flash)"
+        },
+        "temps_reponse_ms": {
+          "type": ["integer", "null"],
+          "description": "Temps de réponse Gemini en millisecondes"
+        },
+        "langue": {
+          "type": "string",
+          "default": "fr",
+          "description": "Langue de l'analyse"
+        },
+        "qualite_donnees": {
+          "type": ["string", "null"],
+          "enum": ["excellente", "bonne", "acceptable", "limitée"],
+          "description": "Qualité des données d'entrée"
+        },
+        "id_analyse": {
+          "type": "string",
+          "description": "Identifiant unique de cette analyse"
+        }
+      }
+    }
+  }
+}
