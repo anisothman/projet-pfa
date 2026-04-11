@@ -1,0 +1,50 @@
+======================================================================
+DIAGNOSTIC — MICROSOFT
+Généré le : 2026-04-08T01:30:42.633863
+======================================================================
+
+ANALYSE SWOT
+--------------------------------------------------
+{
+    "company_name": "Microsoft",
+    "points_forts": [
+        "L'entreprise possède une large gamme de produits et services innovants, tels que Microsoft 365, Copilot, Teams, Xbox, Windows, qui répondent aux besoins de diverses clientèles.",
+        "Microsoft a une présence mondiale et une réputation solide, ce qui lui permet de maintenir une position de leader sur le marché de l'informatique et des logiciels.",
+        "L'entreprise investit considérablement dans la recherche et le développement, notamment dans le domaine de l'intelligence artificielle (IA), ce qui lui permet de rester à la pointe de la technologie."
+    ],
+    "points_faibles": [
+        "Microsoft est fortement dépendant de ses produits phares, tels que Windows et Office, ce qui peut la rendre vulnérable à la concurrence et aux changements du marché.",
+        "L'entreprise a parfois du mal à adapter ses produits et services aux besoins spécifiques des petites et moyennes entreprises (PME) ou des utilisateurs individuels.",
+        "Microsoft a été critiquée pour sa politique de confidentialité et de sécurité des données, ce qui peut affecter la confiance des clients et des utilisateurs."
+    ],
+    "opportunites": [
+        "Le développement de l'intelligence artificielle (IA) et de l'apprentissage automatique offre à Microsoft des opportunités pour créer de nouveaux produits et services innovants et pour améliorer l'expérience utilisateur.",
+        "L'expansion des marchés émergents et la croissance de la demande de solutions numériques offrent à Microsoft des possibilités de développement et de croissance à l'échelle mondiale."
+    ],
+    "menaces": [
+        "La concurrence accrue de la part d'entreprises telles que Google, Amazon et Apple, qui offrent des produits et services similaires, peut menacer la position de leader de Microsoft.",
+        "Les changements réglementaires et les préoccupations concernant la confidentialité et la sécurité des données peuvent affecter les activités de Microsoft et obliger l'entreprise à adapter ses stratégies."
+    ],
+    "score_reputation": 85,
+    "recommandations": [
+        "Microsoft devrait continuer à investir dans la recherche et le développement pour améliorer ses produits et services et rester à la pointe de la technologie.",
+        "L'entreprise devrait renforcer ses efforts pour améliorer la confidentialité et la sécurité des données, afin de répondre aux préoccupations des clients et des utilisateurs.",
+        "Microsoft devrait développer des stratégies pour mieux répondre aux besoins des petites et moyennes entreprises (PME) et des utilisateurs individuels, afin de diversifier ses revenus et de réduire sa dépendance à l'égard de ses produits phares."
+    ]
+}
+
+PLAN D'ACTION
+--------------------------------------------------
+Erreur lors de la génération du plan pour Microsoft: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash\nPlease retry in 15.882248352s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_input_token_count', 'quotaId': 'GenerateContentInputTokensPerModelPerMinute-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '15s'}]}}
+
+RATING IA
+--------------------------------------------------
+Score: 50/100
+Justification: Rating non disponible
+
+MÉTADONNÉES
+--------------------------------------------------
+Modèle     : gemini-2.5-flash-preview-04-17 (+ fallback chain)
+SWOT       : 2739 caractères
+Plan       : 1866 caractères
+======================================================================

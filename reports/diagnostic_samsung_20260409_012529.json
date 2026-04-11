@@ -1,0 +1,35 @@
+{
+  "company_name": "samsung",
+  "generated_at": "2026-04-09T01:25:04.827162",
+  "swot_analysis": {
+    "points_forts": [
+      {
+        "titre": "Donnée non disponible",
+        "description": "L'analyse n'a pas pu être parsée."
+      }
+    ],
+    "points_faibles": [
+      {
+        "titre": "Donnée non disponible",
+        "description": "L'analyse n'a pas pu être parsée."
+      }
+    ],
+    "opportunites": [
+      {
+        "titre": "Donnée non disponible",
+        "description": "L'analyse n'a pas pu être parsée."
+      }
+    ],
+    "menaces": [
+      {
+        "titre": "Donnée non disponible",
+        "description": "L'analyse n'a pas pu être parsée."
+      }
+    ]
+  },
+  "action_plan": {},
+  "rating": {
+    "score": 50,
+    "justification": "Rating non disponible"
+  }
+}
