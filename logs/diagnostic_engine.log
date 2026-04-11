@@ -1,0 +1,79 @@
+2026-04-11 01:02:45 |  WARNING | diagnostic_engine.py:64 | prompts.prompt_diagnostic absent â†’ fallback intÃ©grÃ© utilisÃ©
+2026-04-11 01:16:08,943 - diagnostic_engine - WARNING - Import relatif échoué: attempted relative import with no known parent package
+2026-04-11 01:16:09,166 - diagnostic_engine - WARNING - Import relatif échoué: attempted relative import with no known parent package
+2026-04-11 01:16:09,730 - diagnostic_engine - INFO - DiagnosticEngine initialisé avec data_dir: C:\Users\dell\Desktop\PFA-projet\data
+2026-04-11 01:16:09,767 - diagnostic_engine - INFO - DiagnosticEngine initialisé avec data_dir: C:\Users\dell\Desktop\PFA-projet\data
+2026-04-11 01:16:09,797 - werkzeug - WARNING -  * Debugger is active!
+2026-04-11 01:16:09,806 - werkzeug - INFO -  * Debugger PIN: 609-519-366
+2026-04-11 01:16:09,837 - werkzeug - WARNING -  * Debugger is active!
+2026-04-11 01:16:09,847 - werkzeug - INFO -  * Debugger PIN: 609-519-366
+2026-04-11 01:16:09,885 - diagnostic_engine - WARNING - Import relatif échoué: attempted relative import with no known parent package
+2026-04-11 01:16:10,433 - diagnostic_engine - INFO - DiagnosticEngine initialisé avec data_dir: C:\Users\dell\Desktop\PFA-projet\data
+2026-04-11 01:16:10,454 - werkzeug - WARNING -  * Debugger is active!
+2026-04-11 01:16:10,458 - werkzeug - INFO -  * Debugger PIN: 609-519-366
+2026-04-11 01:16:26,602 - diagnostic_engine - WARNING - Import relatif échoué: attempted relative import with no known parent package
+2026-04-11 01:16:27,030 - diagnostic_engine - INFO - DiagnosticEngine initialisé avec data_dir: C:\Users\dell\Desktop\PFA-projet\data
+2026-04-11 01:16:27,099 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.100.7:5000
+2026-04-11 01:16:27,099 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-11 01:16:27,103 - werkzeug - INFO -  * Restarting with stat
+2026-04-11 01:16:27,589 - diagnostic_engine - WARNING - Import relatif échoué: attempted relative import with no known parent package
+2026-04-11 01:16:27,969 - diagnostic_engine - INFO - DiagnosticEngine initialisé avec data_dir: C:\Users\dell\Desktop\PFA-projet\data
+2026-04-11 01:16:28,010 - werkzeug - WARNING -  * Debugger is active!
+2026-04-11 01:16:28,015 - werkzeug - INFO -  * Debugger PIN: 609-519-366
+2026-04-11 01:16:44,279 - diagnostic_engine - INFO - Données chargées pour apple
+2026-04-11 01:16:44,279 - diagnostic_engine - INFO - Génération SWOT pour apple...
+2026-04-11 01:16:44,279 - prompt_diagnostic - INFO - Prompt créé pour: Apple
+2026-04-11 01:16:44,280 - diagnostic_engine - INFO - Génération plan d'action pour apple...
+2026-04-11 01:16:44,281 - projet-pfa - INFO - [PLAN] Génération pour Apple avec Groq...
+2026-04-11 01:16:44,281 - projet-pfa - ERROR - Groq client non initialisé
+2026-04-11 01:16:44,282 - diagnostic_engine - INFO - Génération rating pour apple...
+2026-04-11 01:16:44,283 - werkzeug - INFO - 127.0.0.1 - - [11/Apr/2026 01:16:44] "POST /api/analyze HTTP/1.1" 200 -
+2026-04-11 01:21:57,898 - diagnostic_engine - WARNING - Import relatif échoué: attempted relative import with no known parent package
+2026-04-11 01:21:59,505 - diagnostic_engine - INFO - DiagnosticEngine initialisé avec data_dir: C:\Users\dell\Desktop\PFA-projet\data
+2026-04-11 01:21:59,598 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.100.7:5000
+2026-04-11 01:21:59,598 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-11 01:21:59,601 - werkzeug - INFO -  * Restarting with stat
+2026-04-11 01:22:00,111 - diagnostic_engine - WARNING - Import relatif échoué: attempted relative import with no known parent package
+2026-04-11 01:22:01,299 - diagnostic_engine - INFO - DiagnosticEngine initialisé avec data_dir: C:\Users\dell\Desktop\PFA-projet\data
+2026-04-11 01:22:01,345 - werkzeug - WARNING -  * Debugger is active!
+2026-04-11 01:22:01,351 - werkzeug - INFO -  * Debugger PIN: 609-519-366
+2026-04-11 01:22:21,207 - diagnostic_engine - INFO - Données chargées pour apple
+2026-04-11 01:22:21,207 - diagnostic_engine - INFO - Génération SWOT pour apple...
+2026-04-11 01:22:21,208 - prompt_diagnostic - INFO - Prompt créé pour: Apple
+2026-04-11 01:22:21,208 - diagnostic_engine - INFO - Génération plan d'action pour apple...
+2026-04-11 01:22:21,209 - projet-pfa - INFO - [PLAN] Génération pour Apple avec Groq...
+2026-04-11 01:22:21,210 - projet-pfa - ERROR - Groq client non initialisé
+2026-04-11 01:22:21,211 - diagnostic_engine - INFO - Génération rating pour apple...
+2026-04-11 01:22:21,212 - werkzeug - INFO - 127.0.0.1 - - [11/Apr/2026 01:22:21] "POST /api/analyze HTTP/1.1" 200 -
+2026-04-11 01:24:37,884 - diagnostic_engine - WARNING - Import relatif échoué: attempted relative import with no known parent package
+2026-04-11 01:24:39,457 - diagnostic_engine - INFO - DiagnosticEngine initialisé avec data_dir: C:\Users\dell\Desktop\PFA-projet\data
+2026-04-11 01:24:39,538 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.100.7:5000
+2026-04-11 01:24:39,538 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-11 01:24:39,540 - werkzeug - INFO -  * Restarting with stat
+2026-04-11 01:24:39,963 - diagnostic_engine - WARNING - Import relatif échoué: attempted relative import with no known parent package
+2026-04-11 01:24:41,014 - diagnostic_engine - INFO - DiagnosticEngine initialisé avec data_dir: C:\Users\dell\Desktop\PFA-projet\data
+2026-04-11 01:24:41,049 - werkzeug - WARNING -  * Debugger is active!
+2026-04-11 01:24:41,054 - werkzeug - INFO -  * Debugger PIN: 609-519-366
+2026-04-11 01:24:56,227 - diagnostic_engine - INFO - Données chargées pour apple
+2026-04-11 01:24:56,228 - diagnostic_engine - INFO - Génération SWOT pour apple...
+2026-04-11 01:24:56,228 - prompt_diagnostic - INFO - Prompt créé pour: Apple
+2026-04-11 01:24:56,229 - diagnostic_engine - INFO - Génération plan d'action pour apple...
+2026-04-11 01:24:56,229 - projet-pfa - INFO - [PLAN] Génération pour Apple avec Groq...
+2026-04-11 01:24:56,230 - projet-pfa - ERROR - Groq client non initialisé
+2026-04-11 01:24:56,231 - diagnostic_engine - INFO - Génération rating pour apple...
+2026-04-11 01:24:56,232 - werkzeug - INFO - 127.0.0.1 - - [11/Apr/2026 01:24:56] "POST /api/analyze HTTP/1.1" 200 -
+2026-04-11 01:26:06,911 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dell\\Desktop\\PFA-projet\\src\\diagnostic_engine.py', reloading
+2026-04-11 01:26:07,162 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dell\\Desktop\\PFA-projet\\src\\diagnostic_engine.py', reloading
+2026-04-11 01:26:07,252 - werkzeug - INFO -  * Restarting with stat
+2026-04-11 01:26:07,394 - werkzeug - INFO -  * Restarting with stat
+2026-04-11 01:26:07,467 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dell\\Desktop\\PFA-projet\\src\\diagnostic_engine.py', reloading
+2026-04-11 01:26:07,758 - werkzeug - INFO -  * Restarting with stat
