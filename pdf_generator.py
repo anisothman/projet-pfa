@@ -1,0 +1,283 @@
+﻿"""
+pdf_generator.py - Version sans barre de rating
+Sprint 3 — Generation PDF professionnelle
+"""
+
+import json
+import re
+from datetime import datetime
+from pathlib import Path
+
+from reportlab.lib import colors
+from reportlab.lib.enums import TA_CENTER, TA_LEFT
+from reportlab.lib.pagesizes import A4
+from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
+from reportlab.lib.units import cm
+from reportlab.platypus import (
+    HRFlowable, Paragraph, SimpleDocTemplate, Spacer, Table, TableStyle
+)
+
+REPORTS_DIR = Path(__file__).parent / "reports"
+REPORTS_DIR.mkdir(parents=True, exist_ok=True)
+
+# Couleurs professionnelles
+DARK_BLUE = colors.HexColor("#1B3A5C")
+MEDIUM_BLUE = colors.HexColor("#2C5F8A")
+GREEN = colors.HexColor("#2E7D64")
+RED = colors.HexColor("#C62828")
+ORANGE = colors.HexColor("#F57C00")
+LIGHT_GREEN = colors.HexColor("#E8F5E9")
+LIGHT_RED = colors.HexColor("#FFEBEE")
+LIGHT_BLUE = colors.HexColor("#E8F4FD")
+LIGHT_ORANGE = colors.HexColor("#FFF3E0")
+GRAY = colors.HexColor("#6B7280")
+WHITE = colors.white
+
+
+def get_styles():
+    styles = getSampleStyleSheet()
+    return {
+        "title": ParagraphStyle("Title", parent=styles["Heading1"], fontSize=18, textColor=WHITE, alignment=TA_CENTER, spaceAfter=20),
+        "subtitle": ParagraphStyle("Subtitle", parent=styles["Normal"], fontSize=10, textColor=colors.HexColor("#D1D5DB"), alignment=TA_CENTER),
+        "section": ParagraphStyle("Section", parent=styles["Heading2"], fontSize=14, textColor=WHITE, leftIndent=8, spaceBefore=15, spaceAfter=8),
+        "swot_header": ParagraphStyle("SwotHeader", parent=styles["Heading3"], fontSize=10, textColor=WHITE, alignment=TA_CENTER),
+        "swot_item": ParagraphStyle("SwotItem", parent=styles["Normal"], fontSize=8, leading=11, spaceAfter=2, leftIndent=6),
+        "plan_header": ParagraphStyle("PlanHeader", parent=styles["Heading3"], fontSize=11, textColor=WHITE, leftIndent=8),
+        "plan_item": ParagraphStyle("PlanItem", parent=styles["Normal"], fontSize=9, leading=13, spaceAfter=4, leftIndent=12),
+        "rating_score": ParagraphStyle("RatingScore", parent=styles["Normal"], fontSize=28, textColor=DARK_BLUE, alignment=TA_CENTER),
+        "rating_label": ParagraphStyle("RatingLabel", parent=styles["Normal"], fontSize=10, textColor=GRAY, alignment=TA_CENTER),
+        "footer": ParagraphStyle("Footer", parent=styles["Normal"], fontSize=8, textColor=GRAY, alignment=TA_CENTER),
+    }
+
+
+def extract_swot_from_diagnostic(diagnostic):
+    """Extrait les données SWOT du diagnostic"""
+    forces = []
+    faiblesses = []
+    opportunites = []
+    menaces = []
+    
+    if isinstance(diagnostic, str):
+        try:
+            diagnostic = json.loads(diagnostic)
+        except:
+            pass
+    
+    if isinstance(diagnostic, dict):
+        forces = diagnostic.get("points_forts", [])
+        faiblesses = diagnostic.get("points_faibles", [])
+        opportunites = diagnostic.get("opportunites", [])
+        menaces = diagnostic.get("menaces", [])
+        
+        if isinstance(forces, str):
+            forces = [forces]
+        if isinstance(faiblesses, str):
+            faiblesses = [faiblesses]
+        if isinstance(opportunites, str):
+            opportunites = [opportunites]
+        if isinstance(menaces, str):
+            menaces = [menaces]
+    
+    def clean_item(item):
+        item = str(item)
+        item = re.sub(r'<br/>', ' ', item)
+        item = re.sub(r'\s+', ' ', item)
+        if len(item) > 70:
+            item = item[:67] + "..."
+        return item.strip()
+    
+    forces = [clean_item(f) for f in forces if f]
+    faiblesses = [clean_item(f) for f in faiblesses if f]
+    opportunites = [clean_item(o) for o in opportunites if o]
+    menaces = [clean_item(m) for m in menaces if m]
+    
+    return forces[:4], faiblesses[:4], opportunites[:4], menaces[:4]
+
+
+def extract_plan_from_action(plan_action):
+    """Extrait les données du plan d'action"""
+    court = []
+    moyen = []
+    long = []
+    text = str(plan_action)
+    current = None
+    
+    for line in text.split('\n'):
+        line_lower = line.lower().strip()
+        if 'court terme' in line_lower:
+            current = 'court'
+            continue
+        elif 'moyen terme' in line_lower:
+            current = 'moyen'
+            continue
+        elif 'long terme' in line_lower:
+            current = 'long'
+            continue
+        
+        if current and line.strip():
+            item = re.sub(r'^[\d\.\-\*\•\s"\']+', '', line.strip())
+            item = re.sub(r'\*\*', '', item)
+            item = re.sub(r'\s+', ' ', item)
+            if item and len(item) > 5 and len(item) < 100:
+                if current == 'court':
+                    court.append(item)
+                elif current == 'moyen':
+                    moyen.append(item)
+                elif current == 'long':
+                    long.append(item)
+    
+    if not court:
+        court = ["Analyser les donnees collectees", "Identifier les axes d'amelioration"]
+    if not moyen:
+        moyen = ["Developper une strategie digitale", "Optimiser la presence en ligne"]
+    if not long:
+        long = ["Leader sur les marches cibles", "Innover en continu"]
+    
+    return court[:4], moyen[:3], long[:3]
+
+
+def generate_pdf(company_name, diagnostic, plan_action, rating=None):
+    try:
+        company_name = str(company_name).upper()
+        
+        forces, faiblesses, opportunites, menaces = extract_swot_from_diagnostic(diagnostic)
+        court, moyen, long = extract_plan_from_action(plan_action)
+        
+        score = 75
+        justification = "Analyse basee sur les donnees disponibles"
+        if rating:
+            score = rating.get("score", 75)
+            justification = rating.get("justification", justification)
+        
+        safe_name = re.sub(r'[^a-zA-Z0-9]', '_', company_name)[:20]
+        filename = f"Diagnostic_{safe_name}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.pdf"
+        filepath = REPORTS_DIR / filename
+        
+        doc = SimpleDocTemplate(str(filepath), pagesize=A4, topMargin=1.5*cm, bottomMargin=1.5*cm, leftMargin=1.5*cm, rightMargin=1.5*cm)
+        styles = get_styles()
+        page_width = A4[0] - 3*cm
+        story = []
+        
+        # ===== EN-TÊTE =====
+        header_bg = Table([[Paragraph("RAPPORT D'ANALYSE STRATEGIQUE", styles["title"])]], colWidths=[page_width])
+        header_bg.setStyle(TableStyle([("BACKGROUND", (0,0), (-1,-1), DARK_BLUE), ("TOPPADDING", (0,0), (-1,-1), 20), ("BOTTOMPADDING", (0,0), (-1,-1), 8)]))
+        story.append(header_bg)
+        
+        company_bg = Table([[Paragraph(company_name, styles["title"])]], colWidths=[page_width])
+        company_bg.setStyle(TableStyle([("BACKGROUND", (0,0), (-1,-1), DARK_BLUE), ("TOPPADDING", (0,0), (-1,-1), 0), ("BOTTOMPADDING", (0,0), (-1,-1), 5)]))
+        story.append(company_bg)
+        
+        date_bg = Table([[Paragraph(f"Genere le {datetime.now().strftime('%d/%m/%Y a %H:%M')}", styles["subtitle"])]], colWidths=[page_width])
+        date_bg.setStyle(TableStyle([("BACKGROUND", (0,0), (-1,-1), DARK_BLUE), ("TOPPADDING", (0,0), (-1,-1), 0), ("BOTTOMPADDING", (0,0), (-1,-1), 15)]))
+        story.append(date_bg)
+        story.append(Spacer(1, 0.3*cm))
+        
+        # ===== SECTION 1: RATING (sans barre) =====
+        section1 = Table([[Paragraph("1. NOTE GLOBALE", styles["section"])]], colWidths=[page_width])
+        section1.setStyle(TableStyle([("BACKGROUND", (0,0), (-1,-1), MEDIUM_BLUE), ("TOPPADDING", (0,0), (-1,-1), 8), ("BOTTOMPADDING", (0,0), (-1,-1), 8)]))
+        story.append(section1)
+        story.append(Spacer(1, 0.3*cm))
+        
+        # Score uniquement (sans barre)
+        story.append(Paragraph(f"<b>{score} / 100</b>", styles["rating_score"]))
+        story.append(Spacer(1, 0.2*cm))
+        story.append(Paragraph(justification[:250], styles["plan_item"]))
+        story.append(Spacer(1, 0.6*cm))
+        
+        # ===== SECTION 2: SWOT =====
+        section2 = Table([[Paragraph("2. ANALYSE SWOT", styles["section"])]], colWidths=[page_width])
+        section2.setStyle(TableStyle([("BACKGROUND", (0,0), (-1,-1), MEDIUM_BLUE), ("TOPPADDING", (0,0), (-1,-1), 8), ("BOTTOMPADDING", (0,0), (-1,-1), 8)]))
+        story.append(section2)
+        story.append(Spacer(1, 0.3*cm))
+        
+        col_w = page_width / 2 - 0.2*cm
+        
+        def make_swot_cell(title, items, bg_color, border_color):
+            header = Table([[Paragraph(title, styles["swot_header"])]], colWidths=[col_w])
+            header.setStyle(TableStyle([
+                ("BACKGROUND", (0,0), (-1,-1), border_color),
+                ("ALIGN", (0,0), (-1,-1), "CENTER"),
+                ("TOPPADDING", (0,0), (-1,-1), 5),
+                ("BOTTOMPADDING", (0,0), (-1,-1), 5),
+            ]))
+            
+            content_paragraphs = []
+            for item in items[:5]:
+                content_paragraphs.append(Paragraph(f"• {item}", styles["swot_item"]))
+            if not content_paragraphs:
+                content_paragraphs.append(Paragraph("• Non disponible", styles["swot_item"]))
+            
+            content_table = Table([[p] for p in content_paragraphs], colWidths=[col_w])
+            content_table.setStyle(TableStyle([
+                ("BACKGROUND", (0,0), (-1,-1), bg_color),
+                ("TOPPADDING", (0,0), (-1,-1), 4),
+                ("BOTTOMPADDING", (0,0), (-1,-1), 4),
+                ("LEFTPADDING", (0,0), (-1,-1), 8),
+                ("RIGHTPADDING", (0,0), (-1,-1), 8),
+            ]))
+            
+            cell = Table([[header], [content_table]], colWidths=[col_w])
+            cell.setStyle(TableStyle([
+                ("VALIGN", (0,0), (-1,-1), "TOP"),
+                ("TOPPADDING", (0,0), (-1,-1), 0),
+                ("BOTTOMPADDING", (0,0), (-1,-1), 0),
+            ]))
+            return cell
+        
+        top_left = make_swot_cell("FORCES", forces, LIGHT_GREEN, GREEN)
+        top_right = make_swot_cell("FAIBLESSES", faiblesses, LIGHT_RED, RED)
+        bottom_left = make_swot_cell("OPPORTUNITES", opportunites, LIGHT_BLUE, MEDIUM_BLUE)
+        bottom_right = make_swot_cell("MENACES", menaces, LIGHT_ORANGE, ORANGE)
+        
+        swot_table = Table([[top_left, top_right], [bottom_left, bottom_right]], colWidths=[col_w, col_w])
+        swot_table.setStyle(TableStyle([
+            ("VALIGN", (0,0), (-1,-1), "TOP"),
+            ("TOPPADDING", (0,0), (-1,-1), 0),
+            ("BOTTOMPADDING", (0,0), (-1,-1), 0),
+            ("LEFTPADDING", (0,0), (-1,-1), 2),
+            ("RIGHTPADDING", (0,0), (-1,-1), 2),
+        ]))
+        story.append(swot_table)
+        story.append(Spacer(1, 0.6*cm))
+        
+        # ===== SECTION 3: PLAN D'ACTION =====
+        section3 = Table([[Paragraph("3. PLAN D'ACTION", styles["section"])]], colWidths=[page_width])
+        section3.setStyle(TableStyle([("BACKGROUND", (0,0), (-1,-1), MEDIUM_BLUE), ("TOPPADDING", (0,0), (-1,-1), 8), ("BOTTOMPADDING", (0,0), (-1,-1), 8)]))
+        story.append(section3)
+        story.append(Spacer(1, 0.3*cm))
+        
+        def add_plan_section(title, items, color):
+            header = Table([[Paragraph(title, styles["plan_header"])]], colWidths=[page_width])
+            header.setStyle(TableStyle([
+                ("BACKGROUND", (0,0), (-1,-1), color),
+                ("TOPPADDING", (0,0), (-1,-1), 5),
+                ("BOTTOMPADDING", (0,0), (-1,-1), 5),
+                ("LEFTPADDING", (0,0), (-1,-1), 10),
+            ]))
+            story.append(header)
+            for item in items:
+                story.append(Paragraph(f"• {item}", styles["plan_item"]))
+            story.append(Spacer(1, 0.2*cm))
+        
+        add_plan_section("Court terme (0-3 mois)", court, GREEN)
+        add_plan_section("Moyen terme (3-6 mois)", moyen, ORANGE)
+        add_plan_section("Long terme (6-12 mois)", long, MEDIUM_BLUE)
+        
+        # ===== PIED DE PAGE =====
+        story.append(Spacer(1, 0.5*cm))
+        story.append(HRFlowable(width="100%", thickness=0.5, color=colors.HexColor("#E5E7EB")))
+        story.append(Spacer(1, 0.1*cm))
+        story.append(Paragraph(f"Document genere par Localis AI - {datetime.now().year}", styles["footer"]))
+        
+        doc.build(story)
+        return {"success": True, "filepath": str(filepath), "filename": filename}
+        
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return {"success": False, "error": str(e)}
+
+
+if __name__ == "__main__":
+    test = generate_pdf("Apple", {"points_forts": ["Innovation"]}, "COURT TERME: Action", {"score": 85, "justification": "Test"})
+    print(test)
