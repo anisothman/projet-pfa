@@ -1,13 +1,11 @@
-
-diagnostic_engine.py — Sprint 2 : Orchestration IA         
-Responsable : Maram                                         
-Dépend de   : gemini_client.py + gemini_analyzer.py      
-Orchestre la génération complète des diagnostics :
-  1. Charge les données JSON du Sprint 1
-  2. Génère l'analyse SWOT (via gemini_analyzer)
-  3. Génère le plan d'action (via gemini_analyzer)
-  4. Exporte les rapports JSON + TXT
-"""
+# diagnostic_engine.py — Sprint 2 : Orchestration IA
+# Responsable : Maram
+# Dépend de   : gemini_client.py + gemini_analyzer.py
+# Orchestre la génération complète des diagnostics :
+#  1. Charge les données JSON du Sprint 1
+#  2. Génère l'analyse SWOT (via gemini_analyzer)
+#  3. Génère le plan d'action (via gemini_analyzer)
+#  4. Exporte les rapports JSON + TXT
 
 import io
 import os
@@ -135,22 +133,20 @@ class DiagnosticEngine:
             "opportunites": [],
             "menaces": []
         }
-        
+
         if not response:
             return swot
-        
+
         logger.info(f"Parsing SWOT - Réponse reçue: {len(response)} caractères")
-        
+
         # Nettoyer la réponse (enlever les ```json et ```)
         clean_response = response.strip()
         clean_response = re.sub(r'^```json\s*', '', clean_response)
         clean_response = re.sub(r'\s*```$', '', clean_response)
-        
+
         try:
-            # Essayer de parser comme JSON
             data = json.loads(clean_response)
-            
-            # Extraire les points forts
+
             for item in data.get("points_forts", []):
                 if isinstance(item, str):
                     swot["points_forts"].append({"titre": item[:60], "description": ""})
@@ -159,8 +155,7 @@ class DiagnosticEngine:
                         "titre": item.get("titre", item.get("title", ""))[:60],
                         "description": item.get("description", "")[:200]
                     })
-            
-            # Extraire les points faibles
+
             for item in data.get("points_faibles", []):
                 if isinstance(item, str):
                     swot["points_faibles"].append({"titre": item[:60], "description": ""})
@@ -169,8 +164,7 @@ class DiagnosticEngine:
                         "titre": item.get("titre", item.get("title", ""))[:60],
                         "description": item.get("description", "")[:200]
                     })
-            
-            # Extraire les opportunités
+
             for item in data.get("opportunites", []):
                 if isinstance(item, str):
                     swot["opportunites"].append({"titre": item[:60], "description": ""})
@@ -179,8 +173,7 @@ class DiagnosticEngine:
                         "titre": item.get("titre", item.get("title", ""))[:60],
                         "description": item.get("description", "")[:200]
                     })
-            
-            # Extraire les menaces
+
             for item in data.get("menaces", []):
                 if isinstance(item, str):
                     swot["menaces"].append({"titre": item[:60], "description": ""})
@@ -189,28 +182,23 @@ class DiagnosticEngine:
                         "titre": item.get("titre", item.get("title", ""))[:60],
                         "description": item.get("description", "")[:200]
                     })
-            
+
             logger.info(f"JSON parsé: {len(swot['points_forts'])} forces")
-            
+
         except json.JSONDecodeError as e:
             logger.error(f"Erreur JSON: {e}")
-            # Si échec, mettre des données par défaut
             swot["points_forts"] = [{"titre": "Donnée non disponible", "description": "L'analyse n'a pas pu être parsée."}]
             swot["points_faibles"] = [{"titre": "Donnée non disponible", "description": "L'analyse n'a pas pu être parsée."}]
             swot["opportunites"] = [{"titre": "Donnée non disponible", "description": "L'analyse n'a pas pu être parsée."}]
             swot["menaces"] = [{"titre": "Donnée non disponible", "description": "L'analyse n'a pas pu être parsée."}]
-        
-        return swot
-    
 
-    
+        return swot
 
     # ── Génération SWOT ────────────────────────────────────────────────────
     def generate_swot_analysis(self, company_name: str, company_data: dict) -> dict:
         """Génère l'analyse SWOT et retourne un dictionnaire structuré"""
         logger.info(f"[SWOT] Début pour {company_name}")
         try:
-            # Appel à l'API
             if _HAS_PROMPT_MODULE:
                 custom_prompt = self.prompt_creator.create_diagnostic_prompt(company_data)
                 if self.prompt_creator.validate_prompt(custom_prompt):
@@ -219,12 +207,11 @@ class DiagnosticEngine:
                     response = prompt_diagnostic(company_data)
             else:
                 response = prompt_diagnostic(company_data)
-            
-            # Parser la réponse
+
             swot_dict = self._parse_swot_response(response)
             logger.info(f"[SWOT OK] {company_name}: {len(swot_dict['points_forts'])} forces, {len(swot_dict['opportunites'])} opportunités")
             return swot_dict
-            
+
         except Exception as e:
             logger.error(f"[SWOT ERREUR] {company_name}: {e}")
             return {
@@ -242,48 +229,41 @@ class DiagnosticEngine:
             "moyen_terme": [],
             "long_terme": []
         }
-        
+
         if not response or "Erreur" in response:
             return plan
-        
+
         logger.info(f"Parsing Plan - Réponse reçue: {len(response)} caractères")
-        
+
         current_period = None
         lines = response.split('\n')
-        
+
         for line in lines:
             line = line.strip()
             if not line:
                 continue
-            
+
             line_lower = line.lower()
-            
-            # Détection des périodes
+
             if "court terme" in line_lower or "0-3 mois" in line_lower or "court" in line_lower:
                 current_period = "court_terme"
-                logger.info("Période détectée: COURT TERME")
             elif "moyen terme" in line_lower or "3-6 mois" in line_lower or "moyen" in line_lower:
                 current_period = "moyen_terme"
-                logger.info("Période détectée: MOYEN TERME")
             elif "long terme" in line_lower or "6-12 mois" in line_lower or "long" in line_lower:
                 current_period = "long_terme"
-                logger.info("Période détectée: LONG TERME")
-            
-            # Extraction des actions
+
             if current_period and re.match(r'^\s*[\d\-•*]\s+', line):
                 action_text = re.sub(r'^\s*[\d\-•*]\s+', '', line)
                 action_text = re.sub(r'\*\*', '', action_text)
-                
+
                 if action_text and len(action_text) > 3:
-                    # Ignorer les lignes de métadonnées
                     skip_words = ['risque', 'mitigation', 'kpi', 'taux de croissance', 'part de marché', 'indicateur']
                     if not any(word in action_text.lower() for word in skip_words):
                         plan[current_period].append({
                             "action": action_text[:80],
                             "description": ""
                         })
-                        logger.info(f"Ajouté à {current_period}: {action_text[:40]}...")
-        
+
         return plan
 
     # ── Génération Plan d'action ───────────────────────────────────────────
@@ -294,22 +274,20 @@ class DiagnosticEngine:
             json_path = str(self.data_dir / f"{company_name}_results.json")
             swot_json = json.dumps(swot_analysis, ensure_ascii=False) if swot_analysis else None
             response = generer_plan_depuis_fichier(json_path, swot_json)
-            
-            # Vérifier si la réponse est une erreur
+
             if not response or "Erreur" in response or "RESOURCE_EXHAUSTED" in response:
                 logger.warning(f"[PLAN] Aucun plan généré pour {company_name} (API error)")
                 return {}
-            
-            # Parser le plan d'action
+
             plan_dict = self._parse_action_plan(response)
-            
+
             if not plan_dict["court_terme"] and not plan_dict["moyen_terme"] and not plan_dict["long_terme"]:
                 logger.warning(f"[PLAN] Plan vide pour {company_name}")
                 return {}
-            
+
             logger.info(f"[PLAN OK] {company_name}: {len(plan_dict['court_terme'])} CT, {len(plan_dict['moyen_terme'])} MT, {len(plan_dict['long_terme'])} LT")
             return plan_dict
-            
+
         except Exception as e:
             logger.error(f"[PLAN ERREUR] {company_name}: {e}")
             return {}
@@ -320,13 +298,13 @@ class DiagnosticEngine:
         try:
             from groq import Groq
             from config import GROQ_API_KEY
-            
+
             if not GROQ_API_KEY:
                 logger.warning("GROQ_API_KEY non configurée")
                 return {"score": 50, "justification": "Rating non disponible"}
-            
+
             groq_client = Groq(api_key=GROQ_API_KEY)
-            
+
             prompt = f"""
 Tu es un analyste financier expert. Note cette entreprise sur 100.
 
@@ -338,7 +316,7 @@ Analyse SWOT:
 
 Critères (20 points chacun):
 - Position concurrentielle
-- Solidité financière  
+- Solidité financière
 - Innovation et technologie
 - Satisfaction client
 - Potentiel de croissance
@@ -346,7 +324,7 @@ Critères (20 points chacun):
 Réponds UNIQUEMENT avec ce format JSON:
 {{"score": 75, "justification": "Courte justification en une phrase"}}
 """
-            
+
             response = groq_client.chat.completions.create(
                 model="llama-3.3-70b-versatile",
                 messages=[{"role": "user", "content": prompt}],
@@ -371,7 +349,7 @@ Réponds UNIQUEMENT avec ce format JSON:
         logger.info("\n" + "="*60)
         logger.info(f"GÉNÉRATION DE {len(self.companies)} RAPPORT(S)")
         logger.info("="*60)
-        
+
         rapports = []
         for company in self.companies:
             try:
@@ -381,18 +359,17 @@ Réponds UNIQUEMENT avec ce format JSON:
             except Exception as e:
                 logger.error(f"Erreur pour {company}: {e}")
                 rapports.append({"company_name": company, "error": str(e)})
-        
+
         logger.info(f"\nRésultat : {len([r for r in rapports if 'error' not in r])}/{len(self.companies)} rapport(s) générés avec succès")
         return rapports
 
     # ── Diagnostic complet (SWOT + Plan + Rating) ──────────────────────────────
     def generate_report(self, company_name: str, company_data: dict) -> dict:
         """Génère un rapport complet pour une entreprise"""
-        
         logger.info("\n" + "="*60)
         logger.info(f"DIAGNOSTIC COMPLET : {company_name.upper()}")
         logger.info("="*60)
-        
+
         rapport = {
             "company_name": company_name,
             "generated_at": datetime.now().isoformat(),
@@ -400,43 +377,42 @@ Réponds UNIQUEMENT avec ce format JSON:
             "action_plan": {},
             "rating": {}
         }
-        
+
         # Étape 1: Analyse SWOT
         logger.info("Étape 1/3 → Analyse SWOT")
         try:
             swot_dict = self.generate_swot_analysis(company_name, company_data)
             rapport["swot_analysis"] = swot_dict
-            logger.info(f"✓ SWOT généré: {len(swot_dict.get('points_forts', []))} forces, {len(swot_dict.get('opportunites', []))} opportunités")
+            logger.info(f"SWOT généré: {len(swot_dict.get('points_forts', []))} forces, {len(swot_dict.get('opportunites', []))} opportunités")
         except Exception as e:
             logger.error(f"Erreur SWOT: {e}")
             rapport["swot_analysis"] = {"points_forts": [], "points_faibles": [], "opportunites": [], "menaces": []}
-        
+
         # Étape 2: Plan d'action
         logger.info("Étape 2/3 → Plan d'action")
         try:
             plan_dict = self.generate_action_plan(company_name, rapport["swot_analysis"])
             rapport["action_plan"] = plan_dict if plan_dict else {}
-            
             if plan_dict:
-                logger.info(f"✓ Plan généré: {len(plan_dict.get('court_terme', []))} actions CT, {len(plan_dict.get('moyen_terme', []))} MT, {len(plan_dict.get('long_terme', []))} LT")
+                logger.info(f"Plan généré: {len(plan_dict.get('court_terme', []))} CT, {len(plan_dict.get('moyen_terme', []))} MT, {len(plan_dict.get('long_terme', []))} LT")
             else:
-                logger.warning(f"⚠ Aucun plan d'action généré pour {company_name}")
+                logger.warning(f"Aucun plan d'action généré pour {company_name}")
         except Exception as e:
             logger.error(f"Erreur plan: {e}")
             rapport["action_plan"] = {}
-        
+
         # Étape 3: Rating
         logger.info("Étape 3/3 → Rating IA")
         try:
             swot_str = json.dumps(rapport["swot_analysis"], ensure_ascii=False)
             rating_data = self.generate_rating_with_groq(company_data, swot_str)
             rapport["rating"] = rating_data
-            logger.info(f"✓ Rating: {rating_data.get('score')}/100")
+            logger.info(f"Rating: {rating_data.get('score')}/100")
         except Exception as e:
             logger.error(f"Erreur rating: {e}")
             rapport["rating"] = {"score": 50, "justification": "Rating non disponible"}
-        
-        logger.info(f"✓ Diagnostic terminé : {company_name}")
+
+        logger.info(f"Diagnostic terminé : {company_name}")
         return rapport
 
     # ── Export JSON ────────────────────────────────────────────────────────
@@ -464,8 +440,7 @@ Réponds UNIQUEMENT avec ce format JSON:
                 f.write(f"DIAGNOSTIC — {company.upper()}\n")
                 f.write(f"Généré le : {rapport.get('generated_at', '')}\n")
                 f.write("=" * 70 + "\n\n")
-                
-                # SWOT
+
                 f.write("ANALYSE SWOT\n" + "-" * 50 + "\n")
                 swot = rapport.get("swot_analysis", {})
                 f.write("\nPOINTS FORTS:\n")
@@ -473,56 +448,54 @@ Réponds UNIQUEMENT avec ce format JSON:
                     f.write(f"  • {item.get('titre', '')}\n")
                     if item.get('description'):
                         f.write(f"    {item.get('description', '')}\n")
-                
+
                 f.write("\nPOINTS FAIBLES:\n")
                 for item in swot.get("points_faibles", []):
                     f.write(f"  • {item.get('titre', '')}\n")
                     if item.get('description'):
                         f.write(f"    {item.get('description', '')}\n")
-                
+
                 f.write("\nOPPORTUNITÉS:\n")
                 for item in swot.get("opportunites", []):
                     f.write(f"  • {item.get('titre', '')}\n")
                     if item.get('description'):
                         f.write(f"    {item.get('description', '')}\n")
-                
+
                 f.write("\nMENACES:\n")
                 for item in swot.get("menaces", []):
                     f.write(f"  • {item.get('titre', '')}\n")
                     if item.get('description'):
                         f.write(f"    {item.get('description', '')}\n")
-                
-                # Plan d'action
+
                 f.write("\n\nPLAN D'ACTION\n" + "-" * 50 + "\n")
                 plan = rapport.get("action_plan", {})
-                
+
                 if plan.get("court_terme"):
                     f.write("\nCOURT TERME (0-6 mois):\n")
                     for item in plan.get("court_terme", []):
                         f.write(f"  • {item.get('action', '')}\n")
                 else:
                     f.write("\nCOURT TERME: Aucune action définie\n")
-                
+
                 if plan.get("moyen_terme"):
                     f.write("\nMOYEN TERME (6-18 mois):\n")
                     for item in plan.get("moyen_terme", []):
                         f.write(f"  • {item.get('action', '')}\n")
                 else:
                     f.write("\nMOYEN TERME: Aucune action définie\n")
-                
+
                 if plan.get("long_terme"):
                     f.write("\nLONG TERME (18+ mois):\n")
                     for item in plan.get("long_terme", []):
                         f.write(f"  • {item.get('action', '')}\n")
                 else:
                     f.write("\nLONG TERME: Aucune action définie\n")
-                
-                # Rating
+
                 rating = rapport.get("rating", {})
                 f.write("\n\nRATING IA\n" + "-" * 50 + "\n")
                 f.write(f"Score: {rating.get('score', 'N/A')}/100\n")
                 f.write(f"Justification: {rating.get('justification', '')}\n")
-                
+
                 f.write("\n" + "=" * 70 + "\n")
             logger.info(f"TXT exporté : {path}")
             return str(path)
@@ -539,34 +512,31 @@ Réponds UNIQUEMENT avec ce format JSON:
             else:
                 logger.warning(f"Rapport ignoré (erreur) : {r.get('company_name')}")
 
+
 def analyze_company(company_name: str) -> dict:
     import time
-    from datetime import datetime
-    from pathlib import Path
     from serp_client import rechercher
     from json_extractor import JSONExtractor
-    from logger_config import logger
+    from logger_config import logger as api_logger
 
-    DATA_DIR = Path(__file__).resolve().parent.parent / "data"
-    DATA_DIR.mkdir(exist_ok=True)
+    data_dir = Path(__file__).resolve().parent.parent / "data"
+    data_dir.mkdir(exist_ok=True)
 
     try:
         print(f"[API] Starting analysis for: {company_name}")
 
-        # Sprint 1: Search & Extract
         raw_data = rechercher(company_name)
         if not raw_data:
             raise Exception(f"No data found for {company_name}")
 
         extractor = JSONExtractor()
         structured = extractor.extract_company_info(raw_data, company_name)
-        filename = DATA_DIR / f"{company_name.lower()}_results.json"
+        filename = data_dir / f"{company_name.lower()}_results.json"
         extractor.save_to_json(structured, str(filename))
 
-        # Sprint 2: AI Analysis
         engine = DiagnosticEngine(
-            data_dir=str(DATA_DIR),
-            output_dir=str(DATA_DIR / "reports"),
+            data_dir=str(data_dir),
+            output_dir=str(data_dir / "reports"),
         )
         reports = engine.generate_all_reports()
 
@@ -591,8 +561,11 @@ def analyze_company(company_name: str) -> dict:
         raise
 
 
+# Alias for the API
+analyze_company_api = analyze_company
 
-# POINT D'ENTRÉE
+
+# ── POINT D'ENTRÉE ─────────────────────────────────────────────────────────────
 if __name__ == "__main__":
     print("\n" + "=" * 70)
     print("  LOCALGUIDE AI — DIAGNOSTIC ENGINE v2.0")
@@ -613,12 +586,12 @@ if __name__ == "__main__":
     for r in rapports:
         company = r.get("company_name", "?")
         if "error" in r:
-            print(f"  ✗ {company.upper():12} → ERREUR : {r['error']}")
+            print(f"  x {company.upper():12} -> ERREUR : {r['error']}")
         else:
             rating_score = r.get("rating", {}).get("score", "N/A")
             swot_count = len(r.get("swot_analysis", {}).get("points_forts", []))
             plan_count = len(r.get("action_plan", {}).get("court_terme", []))
-            print(f"  ✓ {company.upper():12} → SWOT: {swot_count} forces | Plan: {plan_count} actions | Rating: {rating_score}/100")
+            print(f"  OK {company.upper():12} -> SWOT: {swot_count} forces | Plan: {plan_count} actions | Rating: {rating_score}/100")
 
     stats = get_stats()
     print(f"\n  API calls : {stats['total']} total | "
@@ -626,182 +599,3 @@ if __name__ == "__main__":
           f"{stats['quota_errors']} quota errors")
     print(f"  Rapports  : {engine.output_dir}")
     print("=" * 70)
-
-
-# Alias for the API
-analyze_company_api = analyze_company
-
-diagnostic_engine.py - Sprint 2
-Moteur de diagnostic complet avec SWOT, Plan d'action et Rating
-"""
-
-import json
-import logging
-import os
-import re
-from pathlib import Path
-from typing import Dict, Any, Optional
-
-# Configuration du logger
-os.makedirs("logs", exist_ok=True)
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
-logger = logging.getLogger(__name__)
-
-# Import des modules
-try:
-    from prompt_diagnostic import PromptDiagnostic
-    from gemini_analyzer import prompt_plan_action, generer_rating, groq_client
-    logger.info("✅ Modules importés avec succès")
-except ImportError as e:
-    logger.error(f"Erreur import: {e}")
-    PromptDiagnostic = None
-    prompt_plan_action = None
-    generer_rating = None
-    groq_client = None
-
-
-class DiagnosticEngine:
-    def __init__(self, data_dir=None):
-        if data_dir:
-            self.data_dir = Path(data_dir)
-        else:
-            self.data_dir = Path(__file__).parent.parent / "data"
-        
-        self.prompt_diagnostic = PromptDiagnostic() if PromptDiagnostic else None
-        logger.info(f"DiagnosticEngine initialisé avec data_dir: {self.data_dir}")
-    
-    def load_company_data(self, company_name: str) -> Optional[Dict]:
-        json_path = self.data_dir / f"{company_name.lower()}_results.json"
-        if not json_path.exists():
-            logger.error(f"Fichier non trouvé: {json_path}")
-            return None
-        with open(json_path, "r", encoding="utf-8") as f:
-            data = json.load(f)
-        
-        # Normalisation
-        if "company" in data and "company_name" not in data:
-            data["company_name"] = data["company"]
-        if "organic_results" in data and "results" not in data:
-            data["results"] = data["organic_results"]
-        
-        return data
-    
-    def generate_swot(self, company_name: str, data: Dict) -> str:
-        """Génère le SWOT en utilisant l'IA"""
-        try:
-            if self.prompt_diagnostic:
-                prompt = self.prompt_diagnostic.create_diagnostic_prompt(data)
-                
-                if groq_client:
-                    response = groq_client.chat.completions.create(
-                        model="llama-3.3-70b-versatile",
-                        messages=[{"role": "user", "content": prompt}],
-                        temperature=0.3,
-                        max_tokens=1500
-                    )
-                    result = response.choices[0].message.content
-                    logger.info(f"SWOT généré pour {company_name}")
-                    return result
-                else:
-                    return self._fallback_swot(company_name)
-            else:
-                return self._fallback_swot(company_name)
-        except Exception as e:
-            logger.error(f"Erreur génération SWOT: {e}")
-            return self._fallback_swot(company_name)
-    
-    def _fallback_swot(self, company_name: str) -> str:
-        return f"""
-ANALYSE SWOT DE {company_name.upper()}:
-
-FORCES:
-- Innovation technologique
-- Marque reconnue mondialement
-- Équipe talentueuse
-
-FAIBLESSES:
-- Dépendance à certains marchés
-- Prix premium
-
-OPPORTUNITES:
-- Expansion dans les marchés émergents
-- Nouveaux segments de clientèle
-
-MENACES:
-- Concurrence intense
-- Réglementations strictes
-"""
-    
-    def analyze_company(self, company_name: str) -> Dict:
-        data = self.load_company_data(company_name)
-        
-        if not data:
-            return {
-                "success": False,
-                "error": f"Entreprise '{company_name}' non trouvee"
-            }
-        
-        # Générer SWOT
-        swot = self.generate_swot(company_name, data)
-        
-        # Générer plan d'action
-        plan = ""
-        if prompt_plan_action:
-            try:
-                plan = prompt_plan_action(data, swot)
-                logger.info(f"Plan d'action généré pour {company_name}")
-            except Exception as e:
-                logger.error(f"Erreur plan action: {e}")
-                plan = self._fallback_plan(company_name)
-        else:
-            plan = self._fallback_plan(company_name)
-        
-        # Générer rating
-        rating = {"score": 50, "justification": "Non disponible"}
-        if generer_rating:
-            try:
-                rating = generer_rating(data, swot)
-                logger.info(f"Rating généré: {rating.get('score')}/100")
-            except Exception as e:
-                logger.error(f"Erreur rating: {e}")
-        
-        return {
-            "success": True,
-            "company_name": company_name,
-            "swot": swot,
-            "action_plan": plan,
-            "rating": rating,
-            "data_source": str(self.data_dir / f"{company_name}_results.json")
-        }
-    
-    def _fallback_plan(self, company_name: str) -> str:
-        return f"""
-COURT TERME (0-3 mois):
-- Analyser les données web collectées
-- Identifier les axes d'amélioration
-
-MOYEN TERME (3-6 mois):
-- Développer une stratégie digitale
-- Optimiser la présence en ligne
-
-LONG TERME (6-12 mois):
-- Leader sur les marchés cibles
-- Innover en continu
-"""
-
-
-def quick_analyze(company_name: str, data_dir: str = None):
-    engine = DiagnosticEngine(data_dir)
-    return engine.analyze_company(company_name)
-
-
-if __name__ == "__main__":
-    engine = DiagnosticEngine()
-    result = engine.analyze_company("apple")
-    print("SWOT:", result["swot"][:200])
-    print("PLAN:", result["action_plan"][:200])
-    print("RATING:", result["rating"])
-
