@@ -1,0 +1,160 @@
+"""
+app.py - Sprint 3 Backend Flask
+Responsable : Anis
+"""
+
+from flask import Flask, request, jsonify, send_file
+from flask_cors import CORS
+import json
+import sys
+from pathlib import Path
+
+# ===== CHEMINS =====
+def get_projet_root():
+    """Trouve la racine du projet"""
+    current = Path(__file__).resolve()
+    for parent in current.parents:
+        if (parent / "sprint1").exists() or (parent / "sprint2").exists():
+            return parent
+    return current.parent.parent
+
+PROJET_ROOT = get_projet_root()
+# Cherche les données d'abord dans data/, puis dans sprint1/data/
+DATA_DIR = PROJET_ROOT / "data"
+if not DATA_DIR.exists():
+    DATA_DIR = PROJET_ROOT / "sprint1" / "data"
+SPRINT2_SRC_DIR = PROJET_ROOT / "sprint2" / "src"
+SPRINT3_DIR = PROJET_ROOT / "sprint3"
+
+# Ajouter les chemins
+sys.path.insert(0, str(SPRINT2_SRC_DIR))
+sys.path.insert(0, str(SPRINT3_DIR))
+
+# Import depuis sprint2
+try:
+    from gemini_client import call_gemini
+    print("✅ gemini_client chargé depuis sprint2")
+except ImportError as e:
+    print(f"⚠️ Erreur import gemini_client: {e}")
+    def call_gemini(prompt):
+        return f"[SIMULATION] Réponse pour: {prompt[:100]}..."
+
+app = Flask(__name__)
+CORS(app)
+
+
+@app.route("/api/health", methods=["GET"])
+def health_check():
+    return jsonify({
+        "status": "ok",
+        "message": "API Sprint 3 opérationnelle"
+    })
+
+
+@app.route("/api/companies", methods=["GET"])
+def list_companies():
+    """Liste les entreprises disponibles"""
+    try:
+        json_files = list(SPRINT1_DATA_DIR.glob("*_results.json"))
+        companies = [f.stem.replace("_results", "") for f in json_files]
+        return jsonify({
+            "success": True,
+            "companies": companies,
+            "count": len(companies)
+        })
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)}), 500
+
+
+@app.route("/api/analyze", methods=["POST"])
+def analyze_company():
+    """Analyse une entreprise et retourne diagnostic + plan d'action"""
+    try:
+        data = request.json
+        company_name = data.get("company_name", "").strip().lower()
+        
+        if not company_name:
+            return jsonify({
+                "success": False,
+                "error": "Nom d'entreprise requis"
+            }), 400
+        
+        # Charger les données JSON du Sprint 1
+        json_path = SPRINT1_DATA_DIR / f"{company_name}_results.json"
+        
+        if not json_path.exists():
+            return jsonify({
+                "success": False,
+                "error": f"Entreprise '{company_name}' non trouvée"
+            }), 404
+        
+        with open(json_path, "r", encoding="utf-8") as f:
+            business_data = json.load(f)
+        
+        # Générer le diagnostic (SWOT)
+        prompt_diagnostic = f"""
+        Analyse SWOT de {company_name}:
+        Points forts, points faibles, opportunités, menaces.
+        Données: {json.dumps(business_data, ensure_ascii=False)[:2000]}
+        """
+        diagnostic = call_gemini(prompt_diagnostic)
+        
+        # Générer le plan d'action
+        prompt_plan = f"""
+        Plan d'action pour {company_name} basé sur:
+        {diagnostic[:1500]}
+        Structure: Court terme, Moyen terme, Long terme.
+        """
+        plan_action = call_gemini(prompt_plan)
+        
+        return jsonify({
+            "success": True,
+            "company_name": company_name,
+            "diagnostic": diagnostic,
+            "plan_action": plan_action
+        })
+        
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)}), 500
+
+
+@app.route("/api/generate-pdf", methods=["POST"])
+def generate_pdf():
+    """Génère un PDF à partir du diagnostic et plan d'action"""
+    try:
+        data = request.json
+        company_name = data.get("company_name", "entreprise")
+        diagnostic = data.get("diagnostic", "")
+        plan_action = data.get("plan_action", "")
+        
+        # Importer pdf_generator de MARAM
+        from pdf_generator import generate_pdf as generate_pdf_report
+        
+        result = generate_pdf_report(company_name, diagnostic, plan_action)
+        
+        if result.get("success"):
+            return send_file(
+                result["filepath"],
+                as_attachment=True,
+                download_name=f"diagnostic_{company_name}.pdf"
+            )
+        else:
+            return jsonify({"success": False, "error": result.get("error")}), 500
+            
+    except ImportError:
+        return jsonify({"success": False, "error": "pdf_generator.py non trouvé"}), 500
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)}), 500
+
+
+if __name__ == "__main__":
+    print("\n" + "="*50)
+    print("  SPRINT 3 - BACKEND (Anis)")
+    print("="*50)
+    print(f"  📁 Racine projet: {PROJET_ROOT}")
+    print(f"  📁 Donnees: {DATA_DIR}")
+    print(f"  📁 Sprint2 src: {SPRINT2_SRC_DIR}")
+    print(f"  🌐 API: http://localhost:5000")
+    print("="*50 + "\n")
+    
+    app.run(debug=True, host='0.0.0.0', port=5000)
