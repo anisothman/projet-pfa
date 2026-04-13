@@ -1,0 +1,447 @@
+{
+  "search_metadata": {
+    "id": "69dd5790f7ae8d61906c59f1",
+    "status": "Success",
+    "json_endpoint": "https://serpapi.com/searches/AhLUn_fS6SCg35Gab-H3wQ/69dd5790f7ae8d61906c59f1.json",
+    "pixel_position_endpoint": "https://serpapi.com/searches/AhLUn_fS6SCg35Gab-H3wQ/69dd5790f7ae8d61906c59f1.json_with_pixel_position",
+    "created_at": "2026-04-13 20:52:32 UTC",
+    "processed_at": "2026-04-13 20:52:32 UTC",
+    "google_url": "https://www.google.com/search?q=isimm&oq=isimm&hl=fr&gl=tn&sourceid=chrome&ie=UTF-8",
+    "raw_html_file": "https://serpapi.com/searches/AhLUn_fS6SCg35Gab-H3wQ/69dd5790f7ae8d61906c59f1.html",
+    "total_time_taken": 3.24
+  },
+  "search_parameters": {
+    "engine": "google",
+    "q": "isimm",
+    "google_domain": "google.com",
+    "hl": "fr",
+    "gl": "tn",
+    "device": "desktop"
+  },
+  "search_information": {
+    "query_displayed": "isimm",
+    "total_results": 92200,
+    "time_taken_displayed": 0.3,
+    "organic_results_state": "Results for exact spelling"
+  },
+  "knowledge_graph": {
+    "title": "Institut Supérieur d'Informatique et de Mathématiques de Monastir",
+    "type": "Institut supérieur public",
+    "entity_type": "local_nav",
+    "kgmid": "/g/1218f5gc",
+    "knowledge_graph_search_link": "https://www.google.com/search?kgmid=/g/1218f5gc&hl=fr-TN&q=Institut+Sup%C3%A9rieur+d%27Informatique+et+de+Math%C3%A9matiques+de+Monastir",
+    "serpapi_knowledge_graph_search_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=tn&google_domain=google.com&hl=fr-TN&kgmid=%2Fg%2F1218f5gc&q=Institut+Sup%C3%A9rieur+d%27Informatique+et+de+Math%C3%A9matiques+de+Monastir",
+    "place_id": "ChIJl2AB39YSAhMRd87uJOXBjFI",
+    "website": "http://www.isimm.rnu.tn/",
+    "avis": "https://www.google.com/search?sca_esv=f0f46d557053f7c4&gl=tn&hl=fr&si=AL3DRZHrmvnFAVQPOO2Bzhf8AX9KZZ6raUI_dT7DG_z0kV2_x14z7xS1KJ82NL2fyudbUbmY-F9O8kUSjPLt8P-JH2ebRS2ssI4Qzw1Smcmt_JsF91-a5_GWed48clbdQpyWI7xrZfbMhpnvAMuXf-D2IFKNZ0w0pRWYQoXDIgC6UyiihhfOl1SEj2NeiYviASy17_hZAjFW&q=Institut+Sup%C3%A9rieur+d%27Informatique+et+de+Math%C3%A9matiques+de+Monastir+Avis&sa=X&ved=2ahUKEwiR1bPM2uuTAxWtrisGHTSTNFsQ0bkNegQIJxAH",
+    "description": "L'Institut supérieur d'informatique et de mathématiques de Monastir ou ISIMM est un établissement public tunisien d'enseignement supérieur et de recherche scientifique.",
+    "local_map": {
+      "image": "https://serpapi.com/searches/69dd5790f7ae8d61906c59f1/images/rhjKoeREjuEUWj7XLIBh9l1GLdsONc7a0FbtcByR3kU.webp",
+      "link": "https://www.google.com/maps/place/Institut+Sup%C3%A9rieur+d'Informatique+et+de+Math%C3%A9matiques+de+Monastir/data=!4m2!3m1!1s0x0:0x528cc1e524eece77?sa=X&ved=2ahUKEwiR1bPM2uuTAxWtrisGHTSTNFsQ_BJ6BAgVEAA&hl=fr&gl=tn"
+    },
+    "rating": 3.8,
+    "review_count": 70,
+    "source": {
+      "name": "Wikipédia",
+      "link": "https://fr.wikipedia.org/wiki/Institut_sup%C3%A9rieur_d'informatique_et_de_math%C3%A9matiques_de_Monastir"
+    },
+    "adresse": "QR7R+Q8P, BP 223 Av. de la Corniche, Monastir 5000",
+    "adresse_links": [
+      {
+        "text": "Adresse",
+        "link": "https://www.google.com/search?sca_esv=f0f46d557053f7c4&gl=tn&hl=fr&q=institut+sup%C3%A9rieur+d%27informatique+et+de+math%C3%A9matiques+de+monastir+adresse&ludocid=5948342397760884343&sa=X&ved=2ahUKEwiR1bPM2uuTAxWtrisGHTSTNFsQ6BN6BAgjEAI"
+      }
+    ],
+    "création": "9 juillet 2002",
+    "téléphone": "70 011 920",
+    "directeur": "Mohamed Graiet",
+    "nom_officiel": "المعهد العـالي للإعـلامية و الريـاضيــات بالمنـستير",
+    "merchant_description": "\"The Higher Institute of Informatics and Mathematics [ISIMM], established by decree No. 1623 on July 9th, 2002, is a scientific public institution of higher education under the supervision of the Ministry of Higher Education and Scientific Research at the University of Monastir. Initially, the institute focused on hprograms related to Computer Science and its applications, Mathematics and its applications (Modeling, Statistics), but over time it has been authorized to diversify its programs and now offers a wide range of programs from undergraduate to research and professional Master's degrees, as well as a program for electronics engineering.\"",
+    "reviews_from_the_web": [
+      {
+        "company": "Facebook",
+        "link": "https://www.facebook.com/p/ISIMM-Institut-Sup%C3%A9rieur-dInformatique-et-de-Math%C3%A9matiques-de-Monastir-100063489403806/",
+        "rating": 1,
+        "review_count": 1
+      }
+    ],
+    "unclaimed_listing": true,
+    "profils": [
+      {
+        "name": "Facebook",
+        "link": "https://www.facebook.com/isimm.rnu.tn/",
+        "image": "https://serpapi.com/searches/69dd5790f7ae8d61906c59f1/images/rhjKoeREjuEUWj7XLIBh9uTVn_Je-ONNna3gmqRQo1Y.png"
+      },
+      {
+        "name": "LinkedIn",
+        "link": "https://www.linkedin.com/school/isimm/",
+        "image": "https://serpapi.com/searches/69dd5790f7ae8d61906c59f1/images/rhjKoeREjuEUWj7XLIBh9rTAOJ24WiFpPhZPFKinbwc.png"
+      },
+      {
+        "name": "X (Twitter)",
+        "link": "https://twitter.com/_ISIMM",
+        "image": "https://serpapi.com/searches/69dd5790f7ae8d61906c59f1/images/rhjKoeREjuEUWj7XLIBh9oxgkW4NujAaDy9hfPk4JfM.png"
+      }
+    ],
+    "les_internautes_recherchent_aussi": [
+      {
+        "name": "Faculté des Sciences de Monastir",
+        "link": "https://www.google.com/search?sca_esv=f0f46d557053f7c4&gl=tn&hl=fr&si=AL3DRZELanY_V96Y0q8q1FLKlfOvH_NlT58VxGyuYFaMYKzFM1-I-HewRLvUghVXqTx7ztwNxYv9vK1Cpy9pkOj2lCT6xdFGPaTwPLH0Mw1hkyMzEknLo4R7BtglPXRmY4kg1XdQ09tXqQjBKq9z5T0tUyAi95luG3qgGk_JM4t6MBXcR4aEFKZQuIC1cY-T48GAweFkNIEv8mTlfquB2eeqYL_TQK9GT-dem0FDfkiM25ZKBcWh8iqW3Mi6UUeocVdMNq2gyruZmOcOZNZ9apAbT_Z6xNJ3RKqpO1lQA7HffhKtqwnupfcyu4bQ_1KTm57n978fXgxIOg8y3hiHwNmhimX_sX--uA%3D%3D&q=Facult%C3%A9+des+Sciences+de+Monastir&sa=X&ved=2ahUKEwiR1bPM2uuTAxWtrisGHTSTNFsQs9oBKAB6BAgcEAU",
+        "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=tn&google_domain=google.com&hl=fr&q=Facult%C3%A9+des+Sciences+de+Monastir&si=AL3DRZELanY_V96Y0q8q1FLKlfOvH_NlT58VxGyuYFaMYKzFM1-I-HewRLvUghVXqTx7ztwNxYv9vK1Cpy9pkOj2lCT6xdFGPaTwPLH0Mw1hkyMzEknLo4R7BtglPXRmY4kg1XdQ09tXqQjBKq9z5T0tUyAi95luG3qgGk_JM4t6MBXcR4aEFKZQuIC1cY-T48GAweFkNIEv8mTlfquB2eeqYL_TQK9GT-dem0FDfkiM25ZKBcWh8iqW3Mi6UUeocVdMNq2gyruZmOcOZNZ9apAbT_Z6xNJ3RKqpO1lQA7HffhKtqwnupfcyu4bQ_1KTm57n978fXgxIOg8y3hiHwNmhimX_sX--uA%3D%3D",
+        "image": "https://serpapi.com/searches/69dd5790f7ae8d61906c59f1/images/rhjKoeREjuEUWj7XLIBh9l0hoOD9SDT6e5pvctXjUJozVB1UGz_b1lQpnfPNm_Py8qeogxudGJ_ZXYXgFUbCEA.jpeg"
+      },
+      {
+        "name": "Institut Supérieur d'Informatique de Mahdia (ISIMa)",
+        "link": "https://www.google.com/search?sca_esv=f0f46d557053f7c4&gl=tn&hl=fr&si=AL3DRZELanY_V96Y0q8q1FLKlfOvH_NlT58VxGyuYFaMYKzFM8KxciFy8AAZAYAHDm3m8MpOCbXyISOQTTxj1WFssX4VjFC1qF4TvyTSTXpIvQCP2urXqszPK6oO29-HA0atZCZ3wQuaUlumNF7d8o7w66UIL_mN-oA_GP0vLkb06sSuCVrGHXVPUPl1zEFqwWD1c_HjzbCaE0XaCr49VgQa7dC7eqoHaHa31PVFTjDQoW14aSI7gJqUNLUvFIZ8IVGUClsCMg-pQ4YuHUxQvkfa6sL8Kj9x5HhRDfnyrh80v1SGZT1G0KMoTttlQ4VA6LQRdLXAx2_6wDm-VF3zsRpHpyw7dOsJ0w2Yxk_sJSB4UYN9rh9BAaY%3D&q=Institut+sup%C3%A9rieur+d%27informatique+de+Mahdia&sa=X&ved=2ahUKEwiR1bPM2uuTAxWtrisGHTSTNFsQs9oBKAB6BAgcEAk",
+        "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=tn&google_domain=google.com&hl=fr&q=Institut+sup%C3%A9rieur+d%27informatique+de+Mahdia&si=AL3DRZELanY_V96Y0q8q1FLKlfOvH_NlT58VxGyuYFaMYKzFM8KxciFy8AAZAYAHDm3m8MpOCbXyISOQTTxj1WFssX4VjFC1qF4TvyTSTXpIvQCP2urXqszPK6oO29-HA0atZCZ3wQuaUlumNF7d8o7w66UIL_mN-oA_GP0vLkb06sSuCVrGHXVPUPl1zEFqwWD1c_HjzbCaE0XaCr49VgQa7dC7eqoHaHa31PVFTjDQoW14aSI7gJqUNLUvFIZ8IVGUClsCMg-pQ4YuHUxQvkfa6sL8Kj9x5HhRDfnyrh80v1SGZT1G0KMoTttlQ4VA6LQRdLXAx2_6wDm-VF3zsRpHpyw7dOsJ0w2Yxk_sJSB4UYN9rh9BAaY%3D",
+        "image": "https://serpapi.com/searches/69dd5790f7ae8d61906c59f1/images/rhjKoeREjuEUWj7XLIBh9l0hoOD9SDT6e5pvctXjUJozVB1UGz_b1lQpnfPNm_PyspELN5SUpqWBNouJwKSuGQ.jpeg"
+      },
+      {
+        "name": "ISAMM Institut Supérieur des Arts Multimédia de la Manouba",
+        "link": "https://www.google.com/search?sca_esv=f0f46d557053f7c4&gl=tn&hl=fr&si=AL3DRZELanY_V96Y0q8q1FLKlfOvH_NlT58VxGyuYFaMYKzFM0lG8raLZh5dTjSRngr7PHVmBopewGCq-Io6xZWiV534jiox2iGlGK4l940l7hoKsaCRnO8L_nGjOvEGIkAYGtoq1dzEn8sSE8y1Za8KM1m99GpxU2XjgKzeEz__4--4fM10mdgyCjk6veVHrDBtQY5yQXnd57oTUDS8BM0kQAbdYDUqQmxNwYnxIRRR_7lyohP7_BcWfM5H_KW2DGTFI-HbypyI_ciobPOyBhOBBxRk7E622raNp7RZEUAyQGs3wtvfrDWPzbA14SajPlZm7nb56GDW-rOlhJsi5OgvNysvR5P1THehS45k8saLLZ1N_hm97gI%3D&q=Institut+sup%C3%A9rieur+des+arts+multim%C3%A9dia+de+La+Manouba&sa=X&ved=2ahUKEwiR1bPM2uuTAxWtrisGHTSTNFsQs9oBKAB6BAgcEA0",
+        "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=tn&google_domain=google.com&hl=fr&q=Institut+sup%C3%A9rieur+des+arts+multim%C3%A9dia+de+La+Manouba&si=AL3DRZELanY_V96Y0q8q1FLKlfOvH_NlT58VxGyuYFaMYKzFM0lG8raLZh5dTjSRngr7PHVmBopewGCq-Io6xZWiV534jiox2iGlGK4l940l7hoKsaCRnO8L_nGjOvEGIkAYGtoq1dzEn8sSE8y1Za8KM1m99GpxU2XjgKzeEz__4--4fM10mdgyCjk6veVHrDBtQY5yQXnd57oTUDS8BM0kQAbdYDUqQmxNwYnxIRRR_7lyohP7_BcWfM5H_KW2DGTFI-HbypyI_ciobPOyBhOBBxRk7E622raNp7RZEUAyQGs3wtvfrDWPzbA14SajPlZm7nb56GDW-rOlhJsi5OgvNysvR5P1THehS45k8saLLZ1N_hm97gI%3D",
+        "image": "https://serpapi.com/searches/69dd5790f7ae8d61906c59f1/images/rhjKoeREjuEUWj7XLIBh9l0hoOD9SDT6e5pvctXjUJozVB1UGz_b1lQpnfPNm_PyLky_KwujYcx7EnbSRzermA.jpeg"
+      },
+      {
+        "name": "Institut Supérieur d'Informatique et des Technologies de Communication",
+        "link": "https://www.google.com/search?sca_esv=f0f46d557053f7c4&gl=tn&hl=fr&si=AL3DRZELanY_V96Y0q8q1FLKlfOvH_NlT58VxGyuYFaMYKzFM-2gA5dimif-qft_mmCbHQRRahXbVu1j48GWC8LMlKHl2osiwh94uLyzH6XsiRLNcy9oO2tlaug-6EYQ991fOoBXgxd1orvtjAN3-wz0zlnZu_61x5L35lUgDqmmVAan56gGoKd2J2yjWzBv8e0URjv7dE1m-lvlWUEUPXU6TZcYJl37vEgo3ihBORd-dFrM9h-cGgLOY9IK8F35iGz6Xt94NCnMYBIDveA519KPRMEe9rSnj7pm0p60G_v34dSNGLzkfME%3D&q=isitcom&sa=X&ved=2ahUKEwiR1bPM2uuTAxWtrisGHTSTNFsQs9oBKAB6BAgcEBE",
+        "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=tn&google_domain=google.com&hl=fr&q=isitcom&si=AL3DRZELanY_V96Y0q8q1FLKlfOvH_NlT58VxGyuYFaMYKzFM-2gA5dimif-qft_mmCbHQRRahXbVu1j48GWC8LMlKHl2osiwh94uLyzH6XsiRLNcy9oO2tlaug-6EYQ991fOoBXgxd1orvtjAN3-wz0zlnZu_61x5L35lUgDqmmVAan56gGoKd2J2yjWzBv8e0URjv7dE1m-lvlWUEUPXU6TZcYJl37vEgo3ihBORd-dFrM9h-cGgLOY9IK8F35iGz6Xt94NCnMYBIDveA519KPRMEe9rSnj7pm0p60G_v34dSNGLzkfME%3D",
+        "image": "https://serpapi.com/searches/69dd5790f7ae8d61906c59f1/images/rhjKoeREjuEUWj7XLIBh9l0hoOD9SDT6e5pvctXjUJozVB1UGz_b1lQpnfPNm_PygQ_VBYjLrC8rpUGCd2TeOQ.jpeg"
+      }
+    ],
+    "les_internautes_recherchent_aussi_link": "https://www.google.com/search?sca_esv=f0f46d557053f7c4&gl=tn&hl=fr&q=Institut+Sup%C3%A9rieur+d%27Informatique+et+de+Math%C3%A9matiques+de+Monastir&stick=H4sIAAAAAAAAAONgFuLWT9c3NDK0SDNNT1ZC5mgJBmempJYnVhb7pVaUBJekFhT_YhQNSk3OSC0C4mKFxOLi_OTMwytTixexOnvmFZdklpSWKASXFhxeWZSZWlqkkKLumZeWX5SbWJJZWJqqkFqikJKq4JtYknF4JVSsGCySn5cI1Fy0g5XxFpskw1Ll2_xpez-Fn1u4XH4m64P_joLe4n96Hy8BALKS-GesAAAA&sa=X&ved=2ahUKEwiR1bPM2uuTAxWtrisGHTSTNFsQzO0BKAR6BAgcEBM",
+    "les_internautes_recherchent_aussi_stick": "H4sIAAAAAAAAAONgFuLWT9c3NDK0SDNNT1ZC5mgJBmempJYnVhb7pVaUBJekFhT_YhQNSk3OSC0C4mKFxOLi_OTMwytTixexOnvmFZdklpSWKASXFhxeWZSZWlqkkKLumZeWX5SbWJJZWJqqkFqikJKq4JtYknF4JVSsGCySn5cI1Fy0g5XxFpskw1Ll2_xpez-Fn1u4XH4m64P_joLe4n96Hy8BALKS-GesAAAA"
+  },
+  "related_questions": [
+    {
+      "question": "Où se trouve Istam ?",
+      "type": "featured_snippet",
+      "snippet": "L'Institut Supérieur Technique Privé des Arts et Métiers (ISTAM) est un établissement d'enseignement supérieur privé situé à Hamdallaye, Bamako, au Mali.",
+      "title": "Institut Supérieur Technique Privé des Arts et Métiers (ISTAM)",
+      "link": "https://legrandfrere.africa/etablissement/institut-superieur-technique-prive-des-arts-et-metiers/#:~:text=L'Institut%20Sup%C3%A9rieur%20Technique%20Priv%C3%A9,Hamdallaye%2C%20Bamako%2C%20au%20Mali.",
+      "displayed_link": "https://legrandfrere.africa › etablissement › institut-superi...",
+      "source_logo": "https://serpapi.com/searches/69dd5790f7ae8d61906c59f1/images/S-pCxm874AGW2v_8tKuEVAhTCwD_5JaKMRE8O_Xbxk4.png",
+      "next_page_token": "eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUVzR6TFhsU2RUSk5RazR6VG1nMFNVcEZiVFJNTjBoMlVGTnJlR2xHYUhwMk1YQlliblpuVTA1amFrZDJjbFZWUm1Ga2IwMWxjelpMYVVGTWVFMXhOVU4zZUVNNFVXaGxUWHByY2psdVpETmljR0pKVjNSZk5UVTNkMVZJVG1jM1FSSVhhekZtWkdGa1IxOUhTek5rY25WRlVIUkxZbE15VVZVYUlrRktTMHhHYlVsNlIxTnBVVnB2YzNGRk56VkVWRU5zY20weU0wZG1OMFZ2VldjIiwiZmN2IjoiMyIsImVpIjoiazFmZGFkR19HSzNkcnVFUHRLYlMyUVUiLCJxYyI6IkNnVnBjMmx0YlJBRWZVbzBTRDgiLCJxdWVzdGlvbiI6Ik/DuSBzZSB0cm91dmUgSXN0YW0gPyIsImxrIjoiR2hOdnc3a2djMlVnZEhKdmRYWmxJR2x6ZEdGdCIsImJzIjoiYy1NeTVCTDFQN3hUb1RoVm9hUW92N1FzVmNHenVDUXhWOEZlNHBDa2thaVVjRDZLWENaSWpzdURTeU93TkRVbko3VllvVGdfcjBRQnhFaExUQzdOS1RtOHNsamg4QUlGM195OHhPS1N6Q0tnS2R1VWpTU2x4SkZWS0NRcTVFTGxCUmdCIiwiaWQiOiJmY19rMWZkYWRHX0dLM2RydUVQdEtiUzJRVV8xIn0=",
+      "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google_related_questions&google_domain=google.com&next_page_token=eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUVzR6TFhsU2RUSk5RazR6VG1nMFNVcEZiVFJNTjBoMlVGTnJlR2xHYUhwMk1YQlliblpuVTA1amFrZDJjbFZWUm1Ga2IwMWxjelpMYVVGTWVFMXhOVU4zZUVNNFVXaGxUWHByY2psdVpETmljR0pKVjNSZk5UVTNkMVZJVG1jM1FSSVhhekZtWkdGa1IxOUhTek5rY25WRlVIUkxZbE15VVZVYUlrRktTMHhHYlVsNlIxTnBVVnB2YzNGRk56VkVWRU5zY20weU0wZG1OMFZ2VldjIiwiZmN2IjoiMyIsImVpIjoiazFmZGFkR19HSzNkcnVFUHRLYlMyUVUiLCJxYyI6IkNnVnBjMmx0YlJBRWZVbzBTRDgiLCJxdWVzdGlvbiI6Ik%2FDuSBzZSB0cm91dmUgSXN0YW0gPyIsImxrIjoiR2hOdnc3a2djMlVnZEhKdmRYWmxJR2x6ZEdGdCIsImJzIjoiYy1NeTVCTDFQN3hUb1RoVm9hUW92N1FzVmNHenVDUXhWOEZlNHBDa2thaVVjRDZLWENaSWpzdURTeU93TkRVbko3VllvVGdfcjBRQnhFaExUQzdOS1RtOHNsamg4QUlGM195OHhPS1N6Q0tnS2R1VWpTU2x4SkZWS0NRcTVFTGxCUmdCIiwiaWQiOiJmY19rMWZkYWRHX0dLM2RydUVQdEtiUzJRVV8xIn0%3D"
+    },
+    {
+      "question": "Quelles sont les facultés à Monastir ?",
+      "type": "featured_snippet",
+      "title": "Université de Monastir Accueil",
+      "link": "https://um.rnu.tn/",
+      "list": [
+        "Facultés.",
+        "Faculté de Pharmacie de Monastir.",
+        "Faculté des Sciences de Monastir.",
+        "Faculté de Médecine dentaire de Monastir.",
+        "Faculté de Médecine de Monastir.",
+        "Faculté des Sciences Economiques et de gestion de Mahdia."
+      ],
+      "source_logo": "https://serpapi.com/searches/69dd5790f7ae8d61906c59f1/images/S-pCxm874AGW2v_8tKuEVA7cDF1vl1Gd4AmWO5fpukc.png",
+      "next_page_token": "eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUVzR6TFhsU2RUSk5RazR6VG1nMFNVcEZiVFJNTjBoMlVGTnJlR2xHYUhwMk1YQlliblpuVTA1amFrZDJjbFZWUm1Ga2IwMWxjelpMYVVGTWVFMXhOVU4zZUVNNFVXaGxUWHByY2psdVpETmljR0pKVjNSZk5UVTNkMVZJVG1jM1FSSVhhekZtWkdGa1IxOUhTek5rY25WRlVIUkxZbE15VVZVYUlrRktTMHhHYlVsNlIxTnBVVnB2YzNGRk56VkVWRU5zY20weU0wZG1OMFZ2VldjIiwiZmN2IjoiMyIsImVpIjoiazFmZGFkR19HSzNkcnVFUHRLYlMyUVUiLCJxYyI6IkNnVnBjMmx0YlJBRWZVbzBTRDgiLCJxdWVzdGlvbiI6IlF1ZWxsZXMgc29udCBsZXMgZmFjdWx0w6lzIMOgIE1vbmFzdGlyID8iLCJsayI6IkdoZHNaWE1nWm1GamRXeDB3NmtnWVNCdGIyNWhjM1JwY2ciLCJicyI6ImMtTXk1QkwxUDd4VG9UaFZvYVFvdjdRc1ZjR3p1Q1F4VjhGZTRwQ2trYWlVY0Q2S1hDWklqc3VEU3lPd05EVW5KN1ZZb1RnX3IwUUJ4RWhMVEM3TktUbThzbGpoOEFJRjNfeTh4T0tTekNLZ0tkdVVqU1NseEpGVktDUXE1RUxsQlJnQiIsImlkIjoiZmNfazFmZGFkR19HSzNkcnVFUHRLYlMyUVVfMSJ9",
+      "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google_related_questions&google_domain=google.com&next_page_token=eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUVzR6TFhsU2RUSk5RazR6VG1nMFNVcEZiVFJNTjBoMlVGTnJlR2xHYUhwMk1YQlliblpuVTA1amFrZDJjbFZWUm1Ga2IwMWxjelpMYVVGTWVFMXhOVU4zZUVNNFVXaGxUWHByY2psdVpETmljR0pKVjNSZk5UVTNkMVZJVG1jM1FSSVhhekZtWkdGa1IxOUhTek5rY25WRlVIUkxZbE15VVZVYUlrRktTMHhHYlVsNlIxTnBVVnB2YzNGRk56VkVWRU5zY20weU0wZG1OMFZ2VldjIiwiZmN2IjoiMyIsImVpIjoiazFmZGFkR19HSzNkcnVFUHRLYlMyUVUiLCJxYyI6IkNnVnBjMmx0YlJBRWZVbzBTRDgiLCJxdWVzdGlvbiI6IlF1ZWxsZXMgc29udCBsZXMgZmFjdWx0w6lzIMOgIE1vbmFzdGlyID8iLCJsayI6IkdoZHNaWE1nWm1GamRXeDB3NmtnWVNCdGIyNWhjM1JwY2ciLCJicyI6ImMtTXk1QkwxUDd4VG9UaFZvYVFvdjdRc1ZjR3p1Q1F4VjhGZTRwQ2trYWlVY0Q2S1hDWklqc3VEU3lPd05EVW5KN1ZZb1RnX3IwUUJ4RWhMVEM3TktUbThzbGpoOEFJRjNfeTh4T0tTekNLZ0tkdVVqU1NseEpGVktDUXE1RUxsQlJnQiIsImlkIjoiZmNfazFmZGFkR19HSzNkcnVFUHRLYlMyUVVfMSJ9"
+    }
+  ],
+  "organic_results": [
+    {
+      "position": 1,
+      "title": "ISIMM | Institut Supérieur d'informatique et de ... - Monastir",
+      "link": "https://isimm.rnu.tn/",
+      "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://isimm.rnu.tn/&ved=2ahUKEwiR1bPM2uuTAxWtrisGHTSTNFsQFnoECEMQAQ",
+      "displayed_link": "https://isimm.rnu.tn",
+      "snippet": "Cette plateforme vous permet de découvrir les différentes formations assurées par l'ISIMM, la vie-estudiantine, l'entreprenariat avec le milieu socio-économique ...",
+      "snippet_highlighted_words": [
+        "ISIMM"
+      ],
+      "sitelinks": {
+        "expanded": [
+          {
+            "title": "Formation",
+            "link": "https://isimm.rnu.tn/public/formation",
+            "snippet": "Acceuil du site universitaire de l'isimm."
+          },
+          {
+            "title": "Connexion",
+            "link": "https://isimm.rnu.tn/public/login",
+            "snippet": "Connexion · NOTEZ BIEN : · ISIMM - Accueil · Notre page Facebook ..."
+          },
+          {
+            "title": "Actualités",
+            "link": "https://isimm.rnu.tn/public/actualites",
+            "snippet": "Publié le 02/02/2026 - ISIMM. نسخة من بلاغ مناظرات إعادة التوجيه ..."
+          },
+          {
+            "title": "Créer compte",
+            "link": "https://isimm.rnu.tn/public/register",
+            "snippet": "Acceuil du site universitaire de l'isimm."
+          },
+          {
+            "title": "Présentation",
+            "link": "https://isimm.rnu.tn/public/isimm",
+            "snippet": "Acceuil du site universitaire de l'isimm."
+          }
+        ]
+      },
+      "about_this_result": {
+        "source": {
+          "description": "Cette plateforme vous permet de découvrir les différentes formations assurées par l'ISIMM, la vie-estudiantine, l'entreprenariat avec le milieu socio-économique ...",
+          "source_info_link": "https://isimm.rnu.tn/"
+        },
+        "languages": [
+          "fr"
+        ],
+        "regions": [
+          "TN"
+        ]
+      },
+      "about_page_link": "https://www.google.com/search?q=About+https://isimm.rnu.tn/&tbm=ilp",
+      "about_page_serpapi_link": "https://serpapi.com/search.json?engine=google_about_this_result&google_domain=google.com&q=About+https%3A%2F%2Fisimm.rnu.tn%2F",
+      "source": "ISIMM"
+    },
+    {
+      "position": 2,
+      "title": "ISIMM-Institut Supérieur d'Informatique et de ...",
+      "link": "https://www.facebook.com/p/ISIMM-Institut-Sup%C3%A9rieur-dInformatique-et-de-Math%C3%A9matiques-de-Monastir-100063489403806/",
+      "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.facebook.com/p/ISIMM-Institut-Sup%25C3%25A9rieur-dInformatique-et-de-Math%25C3%25A9matiques-de-Monastir-100063489403806/&ved=2ahUKEwiR1bPM2uuTAxWtrisGHTSTNFsQFnoECFIQAQ",
+      "displayed_link": "Plus de 10,4 k abonnés",
+      "favicon": "https://serpapi.com/searches/69dd5790f7ae8d61906c59f1/images/LUrPspStPV1k62JDpFajhma1mTXBLQz-86_UyE3VjMA.png",
+      "snippet": "ISIMM-Institut Supérieur d'Informatique et de Mathématiques de Monastir · Details · Links · Contact info. 󲈷. +216 70 011 920. 󲄿. isimm@isimm.u-monastir ...",
+      "snippet_highlighted_words": [
+        "ISIMM-Institut Supérieur d'Informatique et de Mathématiques de Monastir"
+      ],
+      "about_this_result": {
+        "source": {
+          "description": "ISIMM-Institut Supérieur d'Informatique et de Mathématiques de Monastir · Details · Links · Contact info. 󲈷. +216 70 011 920. 󲄿. isimm@isimm.u-monastir ...",
+          "source_info_link": "https://www.facebook.com/p/ISIMM-Institut-Sup%C3%A9rieur-dInformatique-et-de-Math%C3%A9matiques-de-Monastir-100063489403806/",
+          "icon": "https://serpapi.com/searches/69dd5790f7ae8d61906c59f1/images/LUrPspStPV1k62JDpFajhn6vTeJw9QZ5ChdIlNyGDqUL4hBLmP_am88L6NZhwRU8.png"
+        },
+        "languages": [
+          "fr"
+        ],
+        "regions": [
+          "TN"
+        ]
+      },
+      "about_page_link": "https://www.google.com/search?q=About+https://www.facebook.com/p/ISIMM-Institut-Sup%C3%A9rieur-dInformatique-et-de-Math%C3%A9matiques-de-Monastir-100063489403806/&tbm=ilp",
+      "about_page_serpapi_link": "https://serpapi.com/search.json?engine=google_about_this_result&google_domain=google.com&q=About+https%3A%2F%2Fwww.facebook.com%2Fp%2FISIMM-Institut-Sup%25C3%25A9rieur-dInformatique-et-de-Math%25C3%25A9matiques-de-Monastir-100063489403806%2F",
+      "source": "Facebook · ISIMM-Institut Supérieur d'Informatique et de Mathématiques de Monastir"
+    },
+    {
+      "position": 3,
+      "title": "Institut Superieur d'Informatique et des Mathématiques ...",
+      "link": "https://um.rnu.tn/fr/etablissements/instituts/institut-sup%C3%A9rieur-dinformatique-et-des-math%C3%A9matiques-de-monastir/",
+      "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://um.rnu.tn/fr/etablissements/instituts/institut-sup%25C3%25A9rieur-dinformatique-et-des-math%25C3%25A9matiques-de-monastir/&ved=2ahUKEwiR1bPM2uuTAxWtrisGHTSTNFsQFnoECEcQAQ",
+      "displayed_link": "https://um.rnu.tn › etablissements › instituts › institut-sup...",
+      "favicon": "https://serpapi.com/searches/69dd5790f7ae8d61906c59f1/images/LUrPspStPV1k62JDpFajhuy9VByzNqFKixpsIOu5VDw.png",
+      "snippet": "Licence · Mastère · Cycle Préparatoire · Diplôme National d'Ingénieur · Bibliothèques universitaires · Formation LMD · Etudes d'ingénieurs · Etudes médicales.",
+      "snippet_highlighted_words": [
+        "Licence"
+      ],
+      "about_this_result": {
+        "source": {
+          "description": "Licence · Mastère · Cycle Préparatoire · Diplôme National d'Ingénieur · Bibliothèques universitaires · Formation LMD · Etudes d'ingénieurs · Etudes médicales.",
+          "source_info_link": "https://um.rnu.tn/fr/etablissements/instituts/institut-sup%C3%A9rieur-dinformatique-et-des-math%C3%A9matiques-de-monastir/",
+          "icon": "https://serpapi.com/searches/69dd5790f7ae8d61906c59f1/images/LUrPspStPV1k62JDpFajhhZ-KW8svpm4-5PbL3w5JlJQYKeaz25bUslTSmFucYuq.png"
+        },
+        "languages": [
+          "fr"
+        ],
+        "regions": [
+          "TN"
+        ]
+      },
+      "about_page_link": "https://www.google.com/search?q=About+https://um.rnu.tn/fr/etablissements/instituts/institut-sup%C3%A9rieur-dinformatique-et-des-math%C3%A9matiques-de-monastir/&tbm=ilp",
+      "about_page_serpapi_link": "https://serpapi.com/search.json?engine=google_about_this_result&google_domain=google.com&q=About+https%3A%2F%2Fum.rnu.tn%2Ffr%2Fetablissements%2Finstituts%2Finstitut-sup%25C3%25A9rieur-dinformatique-et-des-math%25C3%25A9matiques-de-monastir%2F",
+      "source": "Université de Monastir"
+    },
+    {
+      "position": 4,
+      "title": "Institut supérieur d'informatique et de mathématiques de ...",
+      "link": "https://fr.wikipedia.org/wiki/Institut_sup%C3%A9rieur_d%27informatique_et_de_math%C3%A9matiques_de_Monastir",
+      "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://fr.wikipedia.org/wiki/Institut_sup%25C3%25A9rieur_d%2527informatique_et_de_math%25C3%25A9matiques_de_Monastir&ved=2ahUKEwiR1bPM2uuTAxWtrisGHTSTNFsQFnoECE0QAQ",
+      "displayed_link": "https://fr.wikipedia.org › wiki › Institut_supérieur_d'inf...",
+      "favicon": "https://serpapi.com/searches/69dd5790f7ae8d61906c59f1/images/LUrPspStPV1k62JDpFajhh924wByOBHwfcNo71DiWYc.png",
+      "snippet": "L'Institut supérieur d'informatique et de mathématiques de Monastir (arabe : المعهد العـالي للإعـلامية و الريـاضيــات بالمنـستير) ou ISIMM est un établissement ...",
+      "snippet_highlighted_words": [
+        "L'Institut supérieur d'informatique et de mathématiques de Monastir"
+      ],
+      "about_this_result": {
+        "source": {
+          "description": "L'Institut supérieur d'informatique et de mathématiques de Monastir (arabe : المعهد العـالي للإعـلامية و الريـاضيــات بالمنـستير) ou ISIMM est un établissement ...",
+          "source_info_link": "https://fr.wikipedia.org/wiki/Institut_sup%C3%A9rieur_d%27informatique_et_de_math%C3%A9matiques_de_Monastir",
+          "icon": "https://serpapi.com/searches/69dd5790f7ae8d61906c59f1/images/LUrPspStPV1k62JDpFajhoBUqM1CUHGQ4dfi15pyx2PXnjcaGq8MYV7XyYE0Ayoo.png"
+        },
+        "languages": [
+          "fr"
+        ],
+        "regions": [
+          "TN"
+        ]
+      },
+      "about_page_link": "https://www.google.com/search?q=About+https://fr.wikipedia.org/wiki/Institut_sup%C3%A9rieur_d%27informatique_et_de_math%C3%A9matiques_de_Monastir&tbm=ilp",
+      "about_page_serpapi_link": "https://serpapi.com/search.json?engine=google_about_this_result&google_domain=google.com&q=About+https%3A%2F%2Ffr.wikipedia.org%2Fwiki%2FInstitut_sup%25C3%25A9rieur_d%2527informatique_et_de_math%25C3%25A9matiques_de_Monastir",
+      "source": "Wikipédia"
+    },
+    {
+      "position": 5,
+      "title": "ISIMM - Institut Supérieur d'Informatique et de ...",
+      "link": "https://www.facebook.com/isimm.rnu.tn/",
+      "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.facebook.com/isimm.rnu.tn/&ved=2ahUKEwiR1bPM2uuTAxWtrisGHTSTNFsQFnoECFMQAQ",
+      "displayed_link": "Plus de 23,7 k abonnés",
+      "favicon": "https://serpapi.com/searches/69dd5790f7ae8d61906c59f1/images/LUrPspStPV1k62JDpFajhq_EX3OoPQLfU-cR4GXW6Zk.png",
+      "snippet": "Page officielle des étudiants, alumni & anciens étudiants de l'ISIMM (depuis 2009). 󱞴 College & university · 󱛪 +216 70 011 920.",
+      "snippet_highlighted_words": [
+        "Page officielle des étudiants, alumni & anciens étudiants de l'ISIMM"
+      ],
+      "about_this_result": {
+        "source": {
+          "description": "Page officielle des étudiants, alumni & anciens étudiants de l'ISIMM (depuis 2009). 󱞴 College & university · 󱛪 +216 70 011 920.",
+          "source_info_link": "https://www.facebook.com/isimm.rnu.tn/",
+          "icon": "https://serpapi.com/searches/69dd5790f7ae8d61906c59f1/images/LUrPspStPV1k62JDpFajhlcH-0tPkQjUn3DmxA81pmb7vbaHE0c95PKgbWC8Ssy4.png"
+        },
+        "languages": [
+          "fr"
+        ],
+        "regions": [
+          "TN"
+        ]
+      },
+      "about_page_link": "https://www.google.com/search?q=About+https://www.facebook.com/isimm.rnu.tn/&tbm=ilp",
+      "about_page_serpapi_link": "https://serpapi.com/search.json?engine=google_about_this_result&google_domain=google.com&q=About+https%3A%2F%2Fwww.facebook.com%2Fisimm.rnu.tn%2F",
+      "source": "Facebook · ISIMM - Institut Supérieur d'Informatique et de Mathématiques de Monastir"
+    },
+    {
+      "position": 6,
+      "title": "ISIMM - Informatique et de Mathématiques de Monastir",
+      "link": "https://tn.linkedin.com/school/isimm/",
+      "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://tn.linkedin.com/school/isimm/&ved=2ahUKEwiR1bPM2uuTAxWtrisGHTSTNFsQFnoECFkQAQ",
+      "displayed_link": "Plus de 9,8 k abonnés",
+      "favicon": "https://serpapi.com/searches/69dd5790f7ae8d61906c59f1/images/LUrPspStPV1k62JDpFajhls7DC-WgZ-3AINEtxwJSq0.png",
+      "snippet": "L'Institut Supérieur d'Informatique et de Mathématiques [ISIMM], créé par décret n° 1623 le 9 juillet 2002, est un établissement public d'enseignement ...",
+      "snippet_highlighted_words": [
+        "ISIMM"
+      ],
+      "about_this_result": {
+        "source": {
+          "description": "L'Institut Supérieur d'Informatique et de Mathématiques [ISIMM], créé par décret n° 1623 le 9 juillet 2002, est un établissement public d'enseignement ...",
+          "source_info_link": "https://tn.linkedin.com/school/isimm/",
+          "icon": "https://serpapi.com/searches/69dd5790f7ae8d61906c59f1/images/LUrPspStPV1k62JDpFajhqzmwVHRgke9oHZOMn_551AJxP8skgod1tW5JF-nytIM.png"
+        },
+        "languages": [
+          "fr"
+        ],
+        "regions": [
+          "TN"
+        ]
+      },
+      "about_page_link": "https://www.google.com/search?q=About+https://tn.linkedin.com/school/isimm/&tbm=ilp",
+      "about_page_serpapi_link": "https://serpapi.com/search.json?engine=google_about_this_result&google_domain=google.com&q=About+https%3A%2F%2Ftn.linkedin.com%2Fschool%2Fisimm%2F",
+      "source": "LinkedIn · ISIMM | Institut Supérieur d'Informatique et de Mathématiques de Monastir"
+    },
+    {
+      "position": 7,
+      "title": "Bienvenue a ISIM",
+      "link": "https://isim.rnu.tn/",
+      "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://isim.rnu.tn/&ved=2ahUKEwiR1bPM2uuTAxWtrisGHTSTNFsQFnoECG8QAQ",
+      "displayed_link": "https://isim.rnu.tn",
+      "snippet": "ISIMed est un établissement Universitaire rattaché à l'université de Gabes. Il est créé par le décret n°1587 du 06 juin 2006.",
+      "snippet_highlighted_words": [
+        "ISIMed est un établissement Universitaire rattaché à l'université de Gabes"
+      ],
+      "about_this_result": {
+        "source": {
+          "description": "ISIMed est un établissement Universitaire rattaché à l'université de Gabes. Il est créé par le décret n°1587 du 06 juin 2006.",
+          "source_info_link": "https://isim.rnu.tn/"
+        },
+        "languages": [
+          "fr"
+        ],
+        "regions": [
+          "TN"
+        ]
+      },
+      "about_page_link": "https://www.google.com/search?q=About+https://isim.rnu.tn/&tbm=ilp",
+      "about_page_serpapi_link": "https://serpapi.com/search.json?engine=google_about_this_result&google_domain=google.com&q=About+https%3A%2F%2Fisim.rnu.tn%2F",
+      "source": "isim.rnu.tn"
+    }
+  ],
+  "related_searches": [
+    {
+      "block_position": 1,
+      "query": "ISIMM en arabe",
+      "link": "https://www.google.com/search?sca_esv=f0f46d557053f7c4&gl=tn&hl=fr&q=ISIMM+en+arabe&sa=X&ved=2ahUKEwiR1bPM2uuTAxWtrisGHTSTNFsQ1QJ6BAhxEAE",
+      "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=tn&google_domain=google.com&hl=fr&q=ISIMM+en+arabe"
+    },
+    {
+      "block_position": 1,
+      "query": "ISIMM emploi de temps",
+      "link": "https://www.google.com/search?sca_esv=f0f46d557053f7c4&gl=tn&hl=fr&q=ISIMM+emploi+de+temps&sa=X&ved=2ahUKEwiR1bPM2uuTAxWtrisGHTSTNFsQ1QJ6BAh9EAE",
+      "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=tn&google_domain=google.com&hl=fr&q=ISIMM+emploi+de+temps"
+    },
+    {
+      "block_position": 1,
+      "query": "ISIMM Monastir",
+      "link": "https://www.google.com/search?sca_esv=f0f46d557053f7c4&gl=tn&hl=fr&q=ISIMM+Monastir&sa=X&ved=2ahUKEwiR1bPM2uuTAxWtrisGHTSTNFsQ1QJ6BAh8EAE",
+      "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=tn&google_domain=google.com&hl=fr&q=ISIMM+Monastir"
+    },
+    {
+      "block_position": 1,
+      "query": "Fiche de renseignement isimm",
+      "link": "https://www.google.com/search?sca_esv=f0f46d557053f7c4&gl=tn&hl=fr&q=Fiche+de+renseignement+isimm&sa=X&ved=2ahUKEwiR1bPM2uuTAxWtrisGHTSTNFsQ1QJ6BAh6EAE",
+      "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=tn&google_domain=google.com&hl=fr&q=Fiche+de+renseignement+isimm"
+    },
+    {
+      "block_position": 1,
+      "query": "ISIMM Master",
+      "link": "https://www.google.com/search?sca_esv=f0f46d557053f7c4&gl=tn&hl=fr&q=ISIMM+Master&sa=X&ved=2ahUKEwiR1bPM2uuTAxWtrisGHTSTNFsQ1QJ6BAh4EAE",
+      "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=tn&google_domain=google.com&hl=fr&q=ISIMM+Master"
+    },
+    {
+      "block_position": 1,
+      "query": "ISIMM logo",
+      "link": "https://www.google.com/search?sca_esv=f0f46d557053f7c4&gl=tn&hl=fr&q=ISIMM+logo&sa=X&ved=2ahUKEwiR1bPM2uuTAxWtrisGHTSTNFsQ1QJ6BAh2EAE",
+      "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=tn&google_domain=google.com&hl=fr&q=ISIMM+logo"
+    },
+    {
+      "block_position": 1,
+      "query": "Isimm compte",
+      "link": "https://www.google.com/search?sca_esv=f0f46d557053f7c4&gl=tn&hl=fr&q=Isimm+compte&sa=X&ved=2ahUKEwiR1bPM2uuTAxWtrisGHTSTNFsQ1QJ6BAh0EAE",
+      "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=tn&google_domain=google.com&hl=fr&q=Isimm+compte"
+    },
+    {
+      "block_position": 1,
+      "query": "Isimm score bac",
+      "link": "https://www.google.com/search?sca_esv=f0f46d557053f7c4&gl=tn&hl=fr&q=Isimm+score+bac&sa=X&ved=2ahUKEwiR1bPM2uuTAxWtrisGHTSTNFsQ1QJ6BAhyEAE",
+      "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=tn&google_domain=google.com&hl=fr&q=Isimm+score+bac"
+    }
+  ],
+  "pagination": {
+    "current": 1,
+    "next": "https://www.google.com/search?q=isimm&sca_esv=f0f46d557053f7c4&gl=tn&hl=fr&ei=k1fdadG_GK3druEPtKbS2QU&start=10&sa=N&sstk=Af77f_dU68334B7fAvRNzrHo1uVenPUVqttqqIT4EP57yAHM5DQxOk5iZ2ypg6YAcBV2pM74XUT3FM4ilI_yzvlDfgT9EpFM0FFOkA&ved=2ahUKEwiR1bPM2uuTAxWtrisGHTSTNFsQ8NMDegQIChAU",
+    "other_pages": {
+      "2": "https://www.google.com/search?q=isimm&sca_esv=f0f46d557053f7c4&gl=tn&hl=fr&ei=k1fdadG_GK3druEPtKbS2QU&start=10&sa=N&sstk=Af77f_dU68334B7fAvRNzrHo1uVenPUVqttqqIT4EP57yAHM5DQxOk5iZ2ypg6YAcBV2pM74XUT3FM4ilI_yzvlDfgT9EpFM0FFOkA&ved=2ahUKEwiR1bPM2uuTAxWtrisGHTSTNFsQ8tMDegQIChAE",
+      "3": "https://www.google.com/search?q=isimm&sca_esv=f0f46d557053f7c4&gl=tn&hl=fr&ei=k1fdadG_GK3druEPtKbS2QU&start=20&sa=N&sstk=Af77f_dU68334B7fAvRNzrHo1uVenPUVqttqqIT4EP57yAHM5DQxOk5iZ2ypg6YAcBV2pM74XUT3FM4ilI_yzvlDfgT9EpFM0FFOkA&ved=2ahUKEwiR1bPM2uuTAxWtrisGHTSTNFsQ8tMDegQIChAG",
+      "4": "https://www.google.com/search?q=isimm&sca_esv=f0f46d557053f7c4&gl=tn&hl=fr&ei=k1fdadG_GK3druEPtKbS2QU&start=30&sa=N&sstk=Af77f_dU68334B7fAvRNzrHo1uVenPUVqttqqIT4EP57yAHM5DQxOk5iZ2ypg6YAcBV2pM74XUT3FM4ilI_yzvlDfgT9EpFM0FFOkA&ved=2ahUKEwiR1bPM2uuTAxWtrisGHTSTNFsQ8tMDegQIChAI",
+      "5": "https://www.google.com/search?q=isimm&sca_esv=f0f46d557053f7c4&gl=tn&hl=fr&ei=k1fdadG_GK3druEPtKbS2QU&start=40&sa=N&sstk=Af77f_dU68334B7fAvRNzrHo1uVenPUVqttqqIT4EP57yAHM5DQxOk5iZ2ypg6YAcBV2pM74XUT3FM4ilI_yzvlDfgT9EpFM0FFOkA&ved=2ahUKEwiR1bPM2uuTAxWtrisGHTSTNFsQ8tMDegQIChAK",
+      "6": "https://www.google.com/search?q=isimm&sca_esv=f0f46d557053f7c4&gl=tn&hl=fr&ei=k1fdadG_GK3druEPtKbS2QU&start=50&sa=N&sstk=Af77f_dU68334B7fAvRNzrHo1uVenPUVqttqqIT4EP57yAHM5DQxOk5iZ2ypg6YAcBV2pM74XUT3FM4ilI_yzvlDfgT9EpFM0FFOkA&ved=2ahUKEwiR1bPM2uuTAxWtrisGHTSTNFsQ8tMDegQIChAM",
+      "7": "https://www.google.com/search?q=isimm&sca_esv=f0f46d557053f7c4&gl=tn&hl=fr&ei=k1fdadG_GK3druEPtKbS2QU&start=60&sa=N&sstk=Af77f_dU68334B7fAvRNzrHo1uVenPUVqttqqIT4EP57yAHM5DQxOk5iZ2ypg6YAcBV2pM74XUT3FM4ilI_yzvlDfgT9EpFM0FFOkA&ved=2ahUKEwiR1bPM2uuTAxWtrisGHTSTNFsQ8tMDegQIChAO",
+      "8": "https://www.google.com/search?q=isimm&sca_esv=f0f46d557053f7c4&gl=tn&hl=fr&ei=k1fdadG_GK3druEPtKbS2QU&start=70&sa=N&sstk=Af77f_dU68334B7fAvRNzrHo1uVenPUVqttqqIT4EP57yAHM5DQxOk5iZ2ypg6YAcBV2pM74XUT3FM4ilI_yzvlDfgT9EpFM0FFOkA&ved=2ahUKEwiR1bPM2uuTAxWtrisGHTSTNFsQ8tMDegQIChAQ",
+      "9": "https://www.google.com/search?q=isimm&sca_esv=f0f46d557053f7c4&gl=tn&hl=fr&ei=k1fdadG_GK3druEPtKbS2QU&start=80&sa=N&sstk=Af77f_dU68334B7fAvRNzrHo1uVenPUVqttqqIT4EP57yAHM5DQxOk5iZ2ypg6YAcBV2pM74XUT3FM4ilI_yzvlDfgT9EpFM0FFOkA&ved=2ahUKEwiR1bPM2uuTAxWtrisGHTSTNFsQ8tMDegQIChAS"
+    }
+  },
+  "serpapi_pagination": {
+    "current": 1,
+    "next_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=tn&google_domain=google.com&hl=fr&q=isimm&start=10",
+    "next": "https://serpapi.com/search.json?device=desktop&engine=google&gl=tn&google_domain=google.com&hl=fr&q=isimm&start=10",
+    "other_pages": {
+      "2": "https://serpapi.com/search.json?device=desktop&engine=google&gl=tn&google_domain=google.com&hl=fr&q=isimm&start=10",
+      "3": "https://serpapi.com/search.json?device=desktop&engine=google&gl=tn&google_domain=google.com&hl=fr&q=isimm&start=20",
+      "4": "https://serpapi.com/search.json?device=desktop&engine=google&gl=tn&google_domain=google.com&hl=fr&q=isimm&start=30",
+      "5": "https://serpapi.com/search.json?device=desktop&engine=google&gl=tn&google_domain=google.com&hl=fr&q=isimm&start=40",
+      "6": "https://serpapi.com/search.json?device=desktop&engine=google&gl=tn&google_domain=google.com&hl=fr&q=isimm&start=50",
+      "7": "https://serpapi.com/search.json?device=desktop&engine=google&gl=tn&google_domain=google.com&hl=fr&q=isimm&start=60",
+      "8": "https://serpapi.com/search.json?device=desktop&engine=google&gl=tn&google_domain=google.com&hl=fr&q=isimm&start=70",
+      "9": "https://serpapi.com/search.json?device=desktop&engine=google&gl=tn&google_domain=google.com&hl=fr&q=isimm&start=80"
+    }
+  }
+}

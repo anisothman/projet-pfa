@@ -1,4 +1,127 @@
+﻿<<<<<<< Updated upstream
 ﻿@app.route("/api/generate-pdf", methods=["POST"])
+=======
+"""
+app.py - Sprint 3 Backend Flask
+Responsable : Anis
+"""
+
+from flask import Flask, request, jsonify, send_file
+from flask_cors import CORS
+import json
+import sys
+from pathlib import Path
+
+# ===== CHEMINS =====
+def get_projet_root():
+    current = Path(__file__).resolve()
+    for parent in current.parents:
+        if (parent / "sprint1").exists() or (parent / "sprint2").exists():
+            return parent
+    return current.parent.parent
+
+PROJET_ROOT = get_projet_root()
+
+DATA_DIR = PROJET_ROOT / "data"
+if not DATA_DIR.exists():
+    DATA_DIR = PROJET_ROOT / "sprint1" / "data"
+
+SPRINT2_SRC_DIR = PROJET_ROOT / "sprint2" / "src"
+SPRINT3_DIR = PROJET_ROOT / "sprint3"
+SRC_DIR = PROJET_ROOT / "src"
+
+sys.path.insert(0, str(SPRINT2_SRC_DIR))
+sys.path.insert(0, str(SPRINT3_DIR))
+sys.path.insert(0, str(SRC_DIR))
+
+try:
+    from diagnostic_engine import DiagnosticEngine
+    print(f"✅ DiagnosticEngine chargé depuis src/")
+    diagnostic_engine = DiagnosticEngine(data_dir=DATA_DIR)
+except ImportError as e:
+    print(f"⚠️ Erreur import DiagnosticEngine: {e}")
+    diagnostic_engine = None
+
+app = Flask(__name__)
+CORS(app)
+
+
+@app.route("/api/health", methods=["GET"])
+def health_check():
+    return jsonify({
+        "status": "ok",
+        "message": "API Sprint 3 operationnelle"
+    })
+
+
+@app.route("/api/companies", methods=["GET"])
+def list_companies():
+    try:
+        json_files = list(DATA_DIR.glob("*_results.json"))
+        companies = [f.stem.replace("_results", "") for f in json_files]
+        return jsonify({
+            "success": True,
+            "companies": companies,
+            "count": len(companies)
+        })
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)}), 500
+
+
+@app.route("/api/analyze", methods=["POST"])
+def analyze_company():
+    try:
+        data = request.json
+        company_name = data.get("company_name", "").strip().lower()
+
+        if not company_name:
+            return jsonify({"success": False, "error": "Nom d'entreprise requis"}), 400
+
+        # Si le fichier JSON n'existe pas → collecte via SerpAPI
+        json_path = DATA_DIR / f"{company_name}_results.json"
+        if not json_path.exists():
+            print(f"🔍 Collecte SerpAPI pour : {company_name}")
+            try:
+                from serpapi import GoogleSearch
+                from config import SERPAPI_KEY
+                params = {
+                    "q": company_name,
+                    "hl": "fr",
+                    "gl": "tn",
+                    "num": 10,
+                    "api_key": SERPAPI_KEY
+                }
+                search = GoogleSearch(params)
+                resultat = search.get_dict()
+                DATA_DIR.mkdir(exist_ok=True)
+                with open(json_path, "w", encoding="utf-8") as f:
+                    json.dump(resultat, f, ensure_ascii=False, indent=2)
+                print(f"✅ Données sauvegardées : {json_path}")
+            except Exception as e:
+                return jsonify({"success": False, "error": f"Erreur collecte SerpAPI: {str(e)}"}), 500
+
+        # Analyse avec DiagnosticEngine (Gemini)
+        if diagnostic_engine:
+            result = diagnostic_engine.analyze_company(company_name)
+            if result["success"]:
+                return jsonify({
+                    "success": True,
+                    "company_name": company_name,
+                    "diagnostic": result["swot"],
+                    "plan_action": result["action_plan"],
+                    "rating": result.get("rating", {"score": 50, "justification": "Non disponible"})
+                })
+            else:
+                return jsonify({"success": False, "error": result.get("error", "Erreur d'analyse")}), 404
+        else:
+            return jsonify({"success": False, "error": "DiagnosticEngine non disponible"}), 500
+
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)}), 500
+
+
+@app.route("/api/generate-pdf", methods=["POST"])
+>>>>>>> Stashed changes
 def generate_pdf():
     """Génère un PDF à partir du diagnostic et plan d'action"""
     try:
@@ -65,6 +188,12 @@ def generate_pdf():
             action_plan=action_plan
         )
         
+=======
+
+        sys.path.insert(0, str(Path(__file__).parent.parent))
+        from pdf_generator import generate_pdf as generate_pdf_report
+
+>>>>>>> Stashed changes
         if result.get("success"):
             return send_file(
                 result["filepath"],
@@ -73,7 +202,7 @@ def generate_pdf():
             )
         else:
             return jsonify({"success": False, "error": result.get("error")}), 500
-            
+
     except ImportError as e:
         return jsonify({"success": False, "error": f"pdf01_generator.py non trouve: {str(e)}"}), 500
     except Exception as e:
@@ -161,4 +290,13 @@ def _parse_plan_text(text: str) -> dict:
                 if item and len(item) > 3:
                     plan[current_period].append({"titre": item[:80], "description": ""})
     
-    return plan
+    return plan    print("  SPRINT 3 - BACKEND (Anis)")
+    print("="*50)
+    print(f"  📁 Racine projet: {PROJET_ROOT}")
+    print(f"  📁 Donnees: {DATA_DIR}")
+    print(f"  📁 Src modules: {SRC_DIR}")
+    print(f"  🌐 API: http://localhost:5000")
+    print("="*50 + "\n")
+
+    app.run(debug=True, host='0.0.0.0', port=5000)
+>>>>>>> Stashed changes
