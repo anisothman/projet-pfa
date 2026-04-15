@@ -1,4 +1,4 @@
-﻿"""
+"""
 app.py - API Flask connectée au DiagnosticEngine
 Génère le diagnostic à la volée pour n'importe quelle entreprise
 """
@@ -7,6 +7,7 @@ from flask import Flask, request, jsonify, send_file
 from flask_cors import CORS
 import json
 import os
+import re
 import sys
 
 app = Flask(__name__)
@@ -186,79 +187,193 @@ LONG TERME (6-12 mois):
 # GÉNÉRATION PDF
 # -------------------------
 @app.route('/api/generate-pdf', methods=['POST'])
-def generate_pdf():
+def generate_pdf_route():
     body = request.get_json()
     if not body:
         return jsonify({"success": False, "error": "Données manquantes"}), 400
 
     company_name = body.get("company_name", "Inconnu")
     rating = body.get("rating", {})
-    score = rating.get("score", "N/A") if isinstance(rating, dict) else "N/A"
-    justification = rating.get("justification", "") if isinstance(rating, dict) else ""
-    diagnostic = body.get("swot", body.get("diagnostic", "Non disponible"))
-    action_plan = body.get("action_plan", "Non disponible")
 
-    pdf_path = f"report_{company_name}.pdf"
-
+    # --- Récupération du score ---
+    if isinstance(rating, dict):
+        score_raw = rating.get("score", 50)
+    else:
+        score_raw = 50
     try:
-        from reportlab.lib.pagesizes import A4
-        from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
-        from reportlab.lib.units import cm
-        from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
-        from reportlab.lib import colors
+        score = max(0, min(100, int(score_raw)))
+    except (ValueError, TypeError):
+        score = 50
 
-        doc = SimpleDocTemplate(pdf_path, pagesize=A4,
-                                leftMargin=2*cm, rightMargin=2*cm,
-                                topMargin=2*cm, bottomMargin=2*cm)
-        styles = getSampleStyleSheet()
-        story = []
+    # --- Conversion SWOT texte → structure attendue par pdf01_generator ---
+    # On tente d'abord le format structuré (dict avec listes), puis on fait
+    # un parsing minimal du texte si nécessaire.
+    swot_raw = body.get("swot", body.get("diagnostic", ""))
+    plan_raw = body.get("action_plan", "")
 
-        # Titre
-        title_style = ParagraphStyle('Title', parent=styles['Title'],
-                                     fontSize=18, textColor=colors.HexColor('#1a1a2e'))
-        story.append(Paragraph(f"Rapport Diagnostic — {company_name.upper()}", title_style))
-        story.append(Spacer(1, 0.5*cm))
+    # Si les données sont déjà sous forme de dict structuré (provenant du moteur IA),
+    # on les utilise directement via adapt_for_pdf_generator.
+    # Sinon on les convertit depuis le texte brut.
+    analysis_dict = body.get("structured_analysis")
 
-        # Score
-        story.append(Paragraph(f"<b>Score Global :</b> {score}/100", styles['Normal']))
-        if justification:
-            story.append(Paragraph(f"<i>{justification}</i>", styles['Normal']))
-        story.append(Spacer(1, 0.5*cm))
+    if analysis_dict and isinstance(analysis_dict, dict):
+        # Données structurées disponibles → utiliser l'adaptateur
+        score, swot_analysis, action_plan = adapt_for_pdf_generator(analysis_dict, company_name)
+    else:
+        # Données textuelles brutes → parser et structurer
+        swot_analysis = _parse_swot_text(swot_raw)
+        action_plan   = _parse_plan_text(plan_raw)
 
-        # SWOT
-        story.append(Paragraph("<b>Analyse SWOT</b>", styles['Heading2']))
-        for line in diagnostic.split('\n'):
-            if line.strip():
-                story.append(Paragraph(line, styles['Normal']))
-        story.append(Spacer(1, 0.5*cm))
+    # --- Génération du PDF via pdf01_generator ---
+    try:
+        from pdf01_generator import generate_pdf as pdf_gen
+        import tempfile, os
 
-        # Plan d'action
-        story.append(Paragraph("<b>Plan d'Action</b>", styles['Heading2']))
-        for line in action_plan.split('\n'):
-            if line.strip():
-                story.append(Paragraph(line, styles['Normal']))
+        tmp_path = os.path.join(tempfile.gettempdir(), f"diagnostic_{company_name}.pdf")
+        result = pdf_gen(
+            company_name=company_name,
+            score=score,
+            swot_analysis=swot_analysis,
+            action_plan=action_plan,
+            output_path=tmp_path
+        )
 
-        doc.build(story)
-        return send_file(pdf_path, as_attachment=True,
-                         download_name=f"diagnostic_{company_name}.pdf")
+        if result.get("success"):
+            return send_file(
+                result["filepath"],
+                as_attachment=True,
+                download_name=f"diagnostic_{company_name}.pdf",
+                mimetype="application/pdf"
+            )
+        else:
+            return jsonify({"success": False, "error": result.get("error", "Erreur inconnue")}), 500
 
-    except ImportError:
-        # Fallback PDF minimal sans reportlab avancé
-        try:
-            from reportlab.pdfgen import canvas
-            from reportlab.lib.pagesizes import A4
-            c = canvas.Canvas(pdf_path, pagesize=A4)
-            c.setFont("Helvetica-Bold", 16)
-            c.drawString(50, 800, f"Rapport: {company_name}")
-            c.setFont("Helvetica", 12)
-            c.drawString(50, 780, f"Score: {score}/100")
-            c.drawString(50, 760, "Voir le portail pour le détail complet.")
-            c.save()
-            return send_file(pdf_path, as_attachment=True)
-        except Exception as e:
-            return jsonify({"success": False, "error": f"Erreur PDF: {str(e)}"}), 500
     except Exception as e:
         return jsonify({"success": False, "error": f"Erreur génération PDF: {str(e)}"}), 500
+
+
+# ── Parsers texte brut → structures pdf01_generator ──────────────────────────
+
+def _items_from_lines(lines: list) -> list:
+    """Convertit une liste de lignes en items {titre, description}."""
+    items = []
+    for line in lines:
+        line = line.strip().lstrip("-•*").strip()
+        if line:
+            items.append({"titre": line, "description": ""})
+    return items or [{"titre": "Information non disponible", "description": ""}]
+
+
+def _parse_swot_text(text: str) -> dict:
+    """
+    Parse un texte SWOT brut (sections FORCES / FAIBLESSES / OPPORTUNITÉS / MENACES)
+    en dict structuré attendu par pdf01_generator.
+    """
+    sections = {
+        "points_forts":   [],
+        "points_faibles": [],
+        "opportunites":   [],
+        "menaces":        [],
+    }
+
+    # Mapping souple des en-têtes
+    key_map = {
+        "force": "points_forts", "fort": "points_forts", "strengths": "points_forts",
+        "point fort": "points_forts",
+        "faible": "points_faibles", "weakness": "points_faibles", "amelior": "points_faibles",
+        "point faible": "points_faibles", "faiblesses": "points_faibles",
+        "opportun": "opportunites", "opportunité": "opportunites",
+        "menace": "menaces", "threat": "menaces",
+    }
+
+    current_key = None
+    current_lines = []
+
+    def flush():
+        if current_key and current_lines:
+            sections[current_key].extend(_items_from_lines(current_lines))
+
+    for line in text.split("\n"):
+        stripped = line.strip()
+        if not stripped:
+            continue
+
+        # Détecter un en-tête de section (ligne en majuscules ou contenant ":")
+        upper = stripped.upper()
+        matched_key = None
+        for kw, sk in key_map.items():
+            if kw.upper() in upper:
+                matched_key = sk
+                break
+
+        if matched_key and (stripped.isupper() or stripped.endswith(":")):
+            flush()
+            current_key = matched_key
+            current_lines = []
+        elif current_key:
+            current_lines.append(stripped)
+
+    flush()
+
+    # S'assurer qu'aucune section n'est vide
+    for key in sections:
+        if not sections[key]:
+            sections[key] = [{"titre": "Information non disponible", "description": ""}]
+
+    return sections
+
+
+def _parse_plan_text(text: str) -> dict:
+    """
+    Parse un texte de plan d'action brut (Court/Moyen/Long terme)
+    en dict structuré attendu par pdf01_generator.
+    """
+    plan = {
+        "court_terme":  [],
+        "moyen_terme":  [],
+        "long_terme":   [],
+    }
+
+    key_map = {
+        "court": "court_terme", "0-3": "court_terme", "0 - 3": "court_terme",
+        "immédiat": "court_terme", "immediat": "court_terme",
+        "moyen": "moyen_terme", "3-6": "moyen_terme", "3 - 6": "moyen_terme",
+        "long": "long_terme",   "6-12": "long_terme",  "6 - 12": "long_terme",
+    }
+
+    current_key = None
+    current_lines = []
+
+    def flush():
+        if current_key and current_lines:
+            plan[current_key].extend(_items_from_lines(current_lines))
+
+    for line in text.split("\n"):
+        stripped = line.strip()
+        if not stripped:
+            continue
+
+        upper = stripped.upper()
+        matched_key = None
+        for kw, pk in key_map.items():
+            if kw.upper() in upper:
+                matched_key = pk
+                break
+
+        if matched_key and (stripped.isupper() or stripped.endswith(":")):
+            flush()
+            current_key = matched_key
+            current_lines = []
+        elif current_key:
+            current_lines.append(stripped)
+
+    flush()
+
+    for key in plan:
+        if not plan[key]:
+            plan[key] = [{"titre": "Action non définie", "description": ""}]
+
+    return plan
 
 
 # -------------------------
@@ -275,3 +390,75 @@ def health():
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
+
+
+
+
+
+
+def adapt_for_pdf_generator(analysis: dict, company_name: str) -> tuple:
+    """
+    Adapte la sortie de l'IA au format attendu par pdf01_generator.py
+    Retourne (score, swot_analysis, action_plan)
+    """
+    
+    # 1. S'assurer que le score est un entier entre 0 et 100
+    score = analysis.get("score", 50)
+    if isinstance(score, str):
+        score = int(re.sub(r'[^0-9]', '', score)) if score else 50
+    score = max(0, min(100, int(score)))
+    
+    # 2. Adapter SWOT - S'assurer que chaque item a "titre" et "description"
+    swot = analysis.get("swot_analysis", {})
+    
+    def format_items(items):
+        """Convertit les items au format {titre, description}"""
+        if not items:
+            return []
+        formatted = []
+        for item in items:
+            if isinstance(item, dict):
+                # Si l'item a déjà le bon format
+                if "titre" in item or "title" in item:
+                    titre = item.get("titre") or item.get("title") or str(item)
+                    desc = item.get("description") or item.get("desc") or ""
+                else:
+                    # Si l'item est un dictionnaire mais sans titre/description
+                    keys = list(item.keys())
+                    if keys:
+                        titre = keys[0] if keys else str(item)
+                        desc = item[keys[0]] if keys else ""
+                    else:
+                        titre = "Information"
+                        desc = ""
+            elif isinstance(item, str):
+                # Si l'item est juste une string
+                titre = item
+                desc = ""
+            else:
+                titre = str(item)
+                desc = ""
+            
+            formatted.append({
+                "titre": normalize_text(titre),
+                "description": normalize_text(desc)
+            })
+        return formatted
+    
+    swot_analysis = {
+        "points_forts": format_items(swot.get("points_forts", [])),
+        "points_faibles": format_items(swot.get("points_faibles", [])),
+        "opportunites": format_items(swot.get("opportunites", [])),
+        "menaces": format_items(swot.get("menaces", []))
+    }
+    
+    # 3. Adapter Plan d'action
+    plan = analysis.get("action_plan", {})
+    
+    action_plan = {
+        "court_terme": format_items(plan.get("court_terme", [])),
+        "moyen_terme": format_items(plan.get("moyen_terme", [])),
+        "long_terme": format_items(plan.get("long_terme", []))
+    }
+    
+    return score, swot_analysis, action_plan
