@@ -4,3 +4,4 @@ google-search-results
 flask-cors
 reportlab
 flask 
+groq

@@ -1,302 +1,277 @@
-﻿<<<<<<< Updated upstream
-﻿@app.route("/api/generate-pdf", methods=["POST"])
-=======
-"""
-app.py - Sprint 3 Backend Flask
-Responsable : Anis
+﻿"""
+app.py - API Flask connectée au DiagnosticEngine
+Génère le diagnostic à la volée pour n'importe quelle entreprise
 """
 
 from flask import Flask, request, jsonify, send_file
 from flask_cors import CORS
 import json
+import os
 import sys
-from pathlib import Path
-
-# ===== CHEMINS =====
-def get_projet_root():
-    current = Path(__file__).resolve()
-    for parent in current.parents:
-        if (parent / "sprint1").exists() or (parent / "sprint2").exists():
-            return parent
-    return current.parent.parent
-
-PROJET_ROOT = get_projet_root()
-
-DATA_DIR = PROJET_ROOT / "data"
-if not DATA_DIR.exists():
-    DATA_DIR = PROJET_ROOT / "sprint1" / "data"
-
-SPRINT2_SRC_DIR = PROJET_ROOT / "sprint2" / "src"
-SPRINT3_DIR = PROJET_ROOT / "sprint3"
-SRC_DIR = PROJET_ROOT / "src"
-
-sys.path.insert(0, str(SPRINT2_SRC_DIR))
-sys.path.insert(0, str(SPRINT3_DIR))
-sys.path.insert(0, str(SRC_DIR))
-
-try:
-    from diagnostic_engine import DiagnosticEngine
-    print(f"✅ DiagnosticEngine chargé depuis src/")
-    diagnostic_engine = DiagnosticEngine(data_dir=DATA_DIR)
-except ImportError as e:
-    print(f"⚠️ Erreur import DiagnosticEngine: {e}")
-    diagnostic_engine = None
 
 app = Flask(__name__)
 CORS(app)
 
+DATA_FOLDER = "data"
+os.makedirs(DATA_FOLDER, exist_ok=True)
 
-@app.route("/api/health", methods=["GET"])
-def health_check():
+# -------------------------
+# IMPORT DU MOTEUR
+# -------------------------
+try:
+    from diagnostic_engine import DiagnosticEngine
+    engine = DiagnosticEngine(data_dir=DATA_FOLDER)
+    ENGINE_AVAILABLE = True
+    print("✅ DiagnosticEngine chargé avec succès")
+except ImportError as e:
+    print(f"⚠️ DiagnosticEngine non disponible: {e}")
+    ENGINE_AVAILABLE = False
+    engine = None
+
+
+# -------------------------
+# LISTE ENTREPRISES
+# -------------------------
+@app.route('/api/companies', methods=['GET'])
+def companies():
+    try:
+        files = os.listdir(DATA_FOLDER)
+        # Nettoie les noms : retire le suffixe _results.json
+        company_list = []
+        for f in files:
+            if f.endswith("_results.json"):
+                name = f.replace("_results.json", "")
+                company_list.append(name)
+            elif f.endswith(".json"):
+                name = f.replace(".json", "")
+                company_list.append(name)
+        return jsonify({"success": True, "companies": company_list})
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)}), 500
+
+
+# -------------------------
+# ANALYSE ENTREPRISE
+# -------------------------
+@app.route('/api/analyze', methods=['POST'])
+def analyze():
+    body = request.get_json()
+    if not body:
+        return jsonify({"success": False, "error": "Corps de requête manquant"}), 400
+
+    company = body.get("company_name", "").strip().lower()
+
+    if not company:
+        return jsonify({"success": False, "error": "Nom d'entreprise manquant"}), 400
+
+    # ---------------------------------------------------------
+    # STRATÉGIE : Essayer DiagnosticEngine en premier
+    # Il génère le diagnostic via IA (SWOT + Plan + Rating)
+    # ---------------------------------------------------------
+    if ENGINE_AVAILABLE and engine:
+        try:
+            result = engine.analyze_company(company)
+
+            if result.get("success"):
+                return jsonify({
+                    "success": True,
+                    "company_name": company,
+                    "swot": result.get("swot", ""),
+                    "action_plan": result.get("action_plan", ""),
+                    "rating": result.get("rating", {"score": 50, "justification": "N/A"}),
+                    "diagnostic": result.get("swot", ""),  # Alias pour compatibilité PDF
+                    "source": "diagnostic_engine"
+                })
+            else:
+                # Le moteur a retourné une erreur → tenter fallback JSON
+                pass
+        except Exception as e:
+            print(f"⚠️ Erreur DiagnosticEngine: {e}")
+
+    # ---------------------------------------------------------
+    # FALLBACK : Chercher un fichier JSON existant
+    # Accepte deux formats de nommage : {company}.json et {company}_results.json
+    # ---------------------------------------------------------
+    possible_paths = [
+        os.path.join(DATA_FOLDER, f"{company}_results.json"),
+        os.path.join(DATA_FOLDER, f"{company}.json"),
+    ]
+
+    for file_path in possible_paths:
+        if os.path.exists(file_path):
+            try:
+                with open(file_path, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+
+                # Normalisation des champs
+                swot = data.get("swot", data.get("diagnostic", "Non disponible"))
+                plan = data.get("action_plan", data.get("plan", "Non disponible"))
+                rating = data.get("rating", {"score": 50, "justification": "Non disponible"})
+
+                return jsonify({
+                    "success": True,
+                    "company_name": company,
+                    "swot": swot,
+                    "action_plan": plan,
+                    "rating": rating,
+                    "diagnostic": swot,
+                    "source": "json_file"
+                })
+            except Exception as e:
+                return jsonify({"success": False, "error": f"Erreur lecture fichier: {str(e)}"}), 500
+
+    # ---------------------------------------------------------
+    # DERNIER RECOURS : Générer un diagnostic générique
+    # Au lieu de retourner "entreprise introuvable", on génère
+    # un diagnostic de base avec les infos disponibles.
+    # ---------------------------------------------------------
+    print(f"ℹ️ Aucune donnée pour '{company}', génération d'un diagnostic générique")
+
+    generic_swot = f"""ANALYSE SWOT DE {company.upper()}:
+
+FORCES:
+- Positionnement sur son marché
+- Potentiel d'innovation
+- Base clients existante
+
+FAIBLESSES:
+- Données limitées disponibles pour une analyse approfondie
+- Nécessite une collecte de données supplémentaires
+
+OPPORTUNITÉS:
+- Expansion dans de nouveaux marchés
+- Digitalisation et transformation numérique
+- Nouvelles tendances sectorielles
+
+MENACES:
+- Concurrence croissante
+- Évolutions réglementaires
+- Volatilité économique
+"""
+
+    generic_plan = f"""PLAN D'ACTION POUR {company.upper()}:
+
+COURT TERME (0-3 mois):
+- Collecte et analyse des données de marché
+- Audit de la présence digitale
+- Identification des axes prioritaires
+
+MOYEN TERME (3-6 mois):
+- Développement de la stratégie digitale
+- Optimisation de la présence en ligne
+- Renforcement de la relation client
+
+LONG TERME (6-12 mois):
+- Consolidation du positionnement marché
+- Innovation produit/service
+- Expansion géographique ou sectorielle
+"""
+
     return jsonify({
-        "status": "ok",
-        "message": "API Sprint 3 operationnelle"
+        "success": True,
+        "company_name": company,
+        "swot": generic_swot,
+        "action_plan": generic_plan,
+        "rating": {
+            "score": 50,
+            "justification": "Analyse générique — aucune donnée spécifique disponible pour cette entreprise."
+        },
+        "diagnostic": generic_swot,
+        "source": "generic_fallback",
+        "warning": "Aucune donnée spécifique trouvée. Diagnostic générique généré."
     })
 
 
-@app.route("/api/companies", methods=["GET"])
-def list_companies():
-    try:
-        json_files = list(DATA_DIR.glob("*_results.json"))
-        companies = [f.stem.replace("_results", "") for f in json_files]
-        return jsonify({
-            "success": True,
-            "companies": companies,
-            "count": len(companies)
-        })
-    except Exception as e:
-        return jsonify({"success": False, "error": str(e)}), 500
-
-
-@app.route("/api/analyze", methods=["POST"])
-def analyze_company():
-    try:
-        data = request.json
-        company_name = data.get("company_name", "").strip().lower()
-
-        if not company_name:
-            return jsonify({"success": False, "error": "Nom d'entreprise requis"}), 400
-
-        # Si le fichier JSON n'existe pas → collecte via SerpAPI
-        json_path = DATA_DIR / f"{company_name}_results.json"
-        if not json_path.exists():
-            print(f"🔍 Collecte SerpAPI pour : {company_name}")
-            try:
-                from serpapi import GoogleSearch
-                from config import SERPAPI_KEY
-                params = {
-                    "q": company_name,
-                    "hl": "fr",
-                    "gl": "tn",
-                    "num": 10,
-                    "api_key": SERPAPI_KEY
-                }
-                search = GoogleSearch(params)
-                resultat = search.get_dict()
-                DATA_DIR.mkdir(exist_ok=True)
-                with open(json_path, "w", encoding="utf-8") as f:
-                    json.dump(resultat, f, ensure_ascii=False, indent=2)
-                print(f"✅ Données sauvegardées : {json_path}")
-            except Exception as e:
-                return jsonify({"success": False, "error": f"Erreur collecte SerpAPI: {str(e)}"}), 500
-
-        # Analyse avec DiagnosticEngine (Gemini)
-        if diagnostic_engine:
-            result = diagnostic_engine.analyze_company(company_name)
-            if result["success"]:
-                return jsonify({
-                    "success": True,
-                    "company_name": company_name,
-                    "diagnostic": result["swot"],
-                    "plan_action": result["action_plan"],
-                    "rating": result.get("rating", {"score": 50, "justification": "Non disponible"})
-                })
-            else:
-                return jsonify({"success": False, "error": result.get("error", "Erreur d'analyse")}), 404
-        else:
-            return jsonify({"success": False, "error": "DiagnosticEngine non disponible"}), 500
-
-    except Exception as e:
-        return jsonify({"success": False, "error": str(e)}), 500
-
-
-@app.route("/api/generate-pdf", methods=["POST"])
->>>>>>> Stashed changes
+# -------------------------
+# GÉNÉRATION PDF
+# -------------------------
+@app.route('/api/generate-pdf', methods=['POST'])
 def generate_pdf():
-    """Génère un PDF à partir du diagnostic et plan d'action"""
+    body = request.get_json()
+    if not body:
+        return jsonify({"success": False, "error": "Données manquantes"}), 400
+
+    company_name = body.get("company_name", "Inconnu")
+    rating = body.get("rating", {})
+    score = rating.get("score", "N/A") if isinstance(rating, dict) else "N/A"
+    justification = rating.get("justification", "") if isinstance(rating, dict) else ""
+    diagnostic = body.get("swot", body.get("diagnostic", "Non disponible"))
+    action_plan = body.get("action_plan", "Non disponible")
+
+    pdf_path = f"report_{company_name}.pdf"
+
     try:
-        data = request.json
-        company_name = data.get("company_name", "entreprise")
-        
-        # Récupérer les données structurées
-        diagnostic_data = data.get("diagnostic", {})
-        plan_action_data = data.get("plan_action", {})
-        rating = data.get("rating", {"score": 50, "justification": ""})
-        
-        # Extraire le score
-        score = rating.get("score", 50) if isinstance(rating, dict) else 50
-        
-        # Structurer les données SWOT
-        swot_analysis = {}
-        action_plan = {}
-        
-        # Si diagnostic est une chaîne (texte brut), la parser
-        if isinstance(diagnostic_data, str):
-            swot_analysis = _parse_swot_text(diagnostic_data)
-        elif isinstance(diagnostic_data, dict):
-            swot_analysis = {
-                "points_forts": diagnostic_data.get("points_forts", diagnostic_data.get("forces", [])),
-                "points_faibles": diagnostic_data.get("points_faibles", diagnostic_data.get("faiblesses", [])),
-                "opportunites": diagnostic_data.get("opportunites", diagnostic_data.get("opportunities", [])),
-                "menaces": diagnostic_data.get("menaces", diagnostic_data.get("threats", []))
-            }
-        else:
-            swot_analysis = {
-                "points_forts": [],
-                "points_faibles": [],
-                "opportunites": [],
-                "menaces": []
-            }
-        
-        # Si plan_action est une chaîne (texte brut), la parser
-        if isinstance(plan_action_data, str):
-            action_plan = _parse_plan_text(plan_action_data)
-        elif isinstance(plan_action_data, dict):
-            action_plan = {
-                "court_terme": plan_action_data.get("court_terme", plan_action_data.get("short_term", [])),
-                "moyen_terme": plan_action_data.get("moyen_terme", plan_action_data.get("mid_term", [])),
-                "long_terme": plan_action_data.get("long_terme", plan_action_data.get("long_term", []))
-            }
-        else:
-            action_plan = {
-                "court_terme": [],
-                "moyen_terme": [],
-                "long_terme": []
-            }
-        
-        # ⚠️ IMPORT CORRIGÉ : pdf01_generator.py au lieu de pdf_generator.py
-        import sys
-        from pathlib import Path
-        sys.path.insert(0, str(Path(__file__).parent))
-        from pdf01_generator import generate_pdf as generate_pdf_report
-        
-        # Appeler avec les bons paramètres
-        result = generate_pdf_report(
-            company_name=company_name,
-            score=score,
-            swot_analysis=swot_analysis,
-            action_plan=action_plan
-        )
-        
-=======
+        from reportlab.lib.pagesizes import A4
+        from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+        from reportlab.lib.units import cm
+        from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
+        from reportlab.lib import colors
 
-        sys.path.insert(0, str(Path(__file__).parent.parent))
-        from pdf_generator import generate_pdf as generate_pdf_report
+        doc = SimpleDocTemplate(pdf_path, pagesize=A4,
+                                leftMargin=2*cm, rightMargin=2*cm,
+                                topMargin=2*cm, bottomMargin=2*cm)
+        styles = getSampleStyleSheet()
+        story = []
 
->>>>>>> Stashed changes
-        if result.get("success"):
-            return send_file(
-                result["filepath"],
-                as_attachment=True,
-                download_name=f"diagnostic_{company_name}.pdf"
-            )
-        else:
-            return jsonify({"success": False, "error": result.get("error")}), 500
+        # Titre
+        title_style = ParagraphStyle('Title', parent=styles['Title'],
+                                     fontSize=18, textColor=colors.HexColor('#1a1a2e'))
+        story.append(Paragraph(f"Rapport Diagnostic — {company_name.upper()}", title_style))
+        story.append(Spacer(1, 0.5*cm))
 
-    except ImportError as e:
-        return jsonify({"success": False, "error": f"pdf01_generator.py non trouve: {str(e)}"}), 500
+        # Score
+        story.append(Paragraph(f"<b>Score Global :</b> {score}/100", styles['Normal']))
+        if justification:
+            story.append(Paragraph(f"<i>{justification}</i>", styles['Normal']))
+        story.append(Spacer(1, 0.5*cm))
+
+        # SWOT
+        story.append(Paragraph("<b>Analyse SWOT</b>", styles['Heading2']))
+        for line in diagnostic.split('\n'):
+            if line.strip():
+                story.append(Paragraph(line, styles['Normal']))
+        story.append(Spacer(1, 0.5*cm))
+
+        # Plan d'action
+        story.append(Paragraph("<b>Plan d'Action</b>", styles['Heading2']))
+        for line in action_plan.split('\n'):
+            if line.strip():
+                story.append(Paragraph(line, styles['Normal']))
+
+        doc.build(story)
+        return send_file(pdf_path, as_attachment=True,
+                         download_name=f"diagnostic_{company_name}.pdf")
+
+    except ImportError:
+        # Fallback PDF minimal sans reportlab avancé
+        try:
+            from reportlab.pdfgen import canvas
+            from reportlab.lib.pagesizes import A4
+            c = canvas.Canvas(pdf_path, pagesize=A4)
+            c.setFont("Helvetica-Bold", 16)
+            c.drawString(50, 800, f"Rapport: {company_name}")
+            c.setFont("Helvetica", 12)
+            c.drawString(50, 780, f"Score: {score}/100")
+            c.drawString(50, 760, "Voir le portail pour le détail complet.")
+            c.save()
+            return send_file(pdf_path, as_attachment=True)
+        except Exception as e:
+            return jsonify({"success": False, "error": f"Erreur PDF: {str(e)}"}), 500
     except Exception as e:
-        return jsonify({"success": False, "error": str(e)}), 500
+        return jsonify({"success": False, "error": f"Erreur génération PDF: {str(e)}"}), 500
 
 
-def _parse_swot_text(text: str) -> dict:
-    """Convertit un texte SWOT en dictionnaire structuré"""
-    swot = {
-        "points_forts": [],
-        "points_faibles": [],
-        "opportunites": [],
-        "menaces": []
-    }
-    
-    if not text or not isinstance(text, str):
-        return swot
-    
-    current_section = None
-    lines = text.split('\n')
-    
-    for line in lines:
-        line_lower = line.lower().strip()
-        
-        if 'forces' in line_lower or 'points forts' in line_lower:
-            current_section = 'points_forts'
-            continue
-        elif 'faiblesses' in line_lower or 'points faibles' in line_lower:
-            current_section = 'points_faibles'
-            continue
-        elif 'opportunites' in line_lower:
-            current_section = 'opportunites'
-            continue
-        elif 'menaces' in line_lower:
-            current_section = 'menaces'
-            continue
-        
-        if current_section and line:
-            line_stripped = line.strip()
-            if line_stripped and line_stripped[0] in '-•*':
-                item = line_stripped.lstrip('-•* ').strip()
-                if item and len(item) > 3:
-                    swot[current_section].append({"titre": item[:80], "description": ""})
-    
-    if not any(swot.values()):
-        swot["points_forts"] = [{"titre": "Données en cours d'analyse", "description": ""}]
-    
-    return swot
+# -------------------------
+# HEALTH CHECK
+# -------------------------
+@app.route('/api/health', methods=['GET'])
+def health():
+    return jsonify({
+        "status": "ok",
+        "engine_available": ENGINE_AVAILABLE,
+        "data_folder": DATA_FOLDER
+    })
 
 
-def _parse_plan_text(text: str) -> dict:
-    """Convertit un texte de plan d'action en dictionnaire structuré"""
-    import re
-    
-    plan = {
-        "court_terme": [],
-        "moyen_terme": [],
-        "long_terme": []
-    }
-    
-    if not text or not isinstance(text, str):
-        return plan
-    
-    current_period = None
-    lines = text.split('\n')
-    
-    for line in lines:
-        line_lower = line.lower().strip()
-        line_stripped = line.strip()
-        
-        if 'court terme' in line_lower or '0-6 mois' in line_lower or 'immediate' in line_lower:
-            current_period = 'court_terme'
-            continue
-        elif 'moyen terme' in line_lower or '6-18 mois' in line_lower:
-            current_period = 'moyen_terme'
-            continue
-        elif 'long terme' in line_lower or '18+ mois' in line_lower:
-            current_period = 'long_terme'
-            continue
-        
-        if current_period and line_stripped:
-            first_char = line_stripped[0] if line_stripped else ''
-            if first_char.isdigit() or first_char in '-•*':
-                item = re.sub(r'^[\d\-•*\.\s]+', '', line_stripped).strip()
-                if item and len(item) > 3:
-                    plan[current_period].append({"titre": item[:80], "description": ""})
-    
-    return plan    print("  SPRINT 3 - BACKEND (Anis)")
-    print("="*50)
-    print(f"  📁 Racine projet: {PROJET_ROOT}")
-    print(f"  📁 Donnees: {DATA_DIR}")
-    print(f"  📁 Src modules: {SRC_DIR}")
-    print(f"  🌐 API: http://localhost:5000")
-    print("="*50 + "\n")
-
-    app.run(debug=True, host='0.0.0.0', port=5000)
->>>>>>> Stashed changes
+if __name__ == "__main__":
+    app.run(debug=True, port=5000)

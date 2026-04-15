@@ -1,0 +1,468 @@
+{
+  "search_metadata": {
+    "id": "69de34b632f11dd3aec862f8",
+    "status": "Success",
+    "json_endpoint": "https://serpapi.com/searches/y2f_JFzcMx1xTnCeNfJIiQ/69de34b632f11dd3aec862f8.json",
+    "pixel_position_endpoint": "https://serpapi.com/searches/y2f_JFzcMx1xTnCeNfJIiQ/69de34b632f11dd3aec862f8.json_with_pixel_position",
+    "created_at": "2026-04-14 12:36:06 UTC",
+    "processed_at": "2026-04-14 12:36:06 UTC",
+    "google_url": "https://www.google.com/search?q=isima&oq=isima&hl=fr&gl=tn&sourceid=chrome&ie=UTF-8",
+    "raw_html_file": "https://serpapi.com/searches/y2f_JFzcMx1xTnCeNfJIiQ/69de34b632f11dd3aec862f8.html",
+    "total_time_taken": 2.36
+  },
+  "search_parameters": {
+    "engine": "google",
+    "q": "isima",
+    "google_domain": "google.com",
+    "hl": "fr",
+    "gl": "tn",
+    "device": "desktop"
+  },
+  "search_information": {
+    "query_displayed": "isima",
+    "total_results": 74,
+    "time_taken_displayed": 0.29,
+    "organic_results_state": "Results for exact spelling"
+  },
+  "knowledge_graph": {
+    "title": "Institut Supérieur d'Informatique de Mahdia (ISIMa)",
+    "type": "Université à Hiboun",
+    "entity_type": "local_nav",
+    "kgmid": "/g/122rvklh",
+    "knowledge_graph_search_link": "https://www.google.com/search?kgmid=/g/122rvklh&hl=fr-TN&q=Institut+Sup%C3%A9rieur+d%27Informatique+de+Mahdia+%28ISIMa%29",
+    "serpapi_knowledge_graph_search_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=tn&google_domain=google.com&hl=fr-TN&kgmid=%2Fg%2F122rvklh&q=Institut+Sup%C3%A9rieur+d%27Informatique+de+Mahdia+%28ISIMa%29",
+    "place_id": "ChIJfRLLhWkhAhMRJsNQPuJCoyQ",
+    "website": "http://www.isima.rnu.tn/",
+    "avis": "https://www.google.com/search?sca_esv=19eacb78983cd92f&gl=tn&hl=fr&si=AL3DRZHrmvnFAVQPOO2Bzhf8AX9KZZ6raUI_dT7DG_z0kV2_x8C2zMVcUF_6nSIbyXy71_-Nolvo_jbCUowkZea2f_RJcdLmh-SN1KnXcFdmD03ZArHqTlGtIgstBljGW0Wk_9Xy4sw-4ZZMptZp52y-ZsoIayNHvtADcR_i6RRBiO0bxP-v1Zg%3D&q=Institut+Sup%C3%A9rieur+d%27Informatique+de+Mahdia+%28ISIMa%29+Avis&sa=X&ved=2ahUKEwih55u_re2TAxV3rokEHcgeJuAQ0bkNegQILBAH",
+    "description": "L'Institut supérieur d'informatique de Mahdia ou ISIMa est un établissement universitaire tunisien relevant de l'université de Monastir. Créé par le décret n°2004-1391 du 22 juin 2004, il est situé dans la ville côtière de Mahdia.",
+    "local_map": {
+      "image": "https://serpapi.com/searches/69de34b632f11dd3aec862f8/images/RMnJr7GOB-26rvFGisxOn_nCv-S893xN58mozo9eoj8.webp",
+      "link": "https://www.google.com/maps/place/Institut+Sup%C3%A9rieur+d'Informatique+de+Mahdia+(ISIMa)/data=!4m2!3m1!1s0x0:0x24a342e23e50c326?sa=X&ved=2ahUKEwih55u_re2TAxV3rokEHcgeJuAQ_BJ6BAgWEAA&hl=fr&gl=tn"
+    },
+    "rating": 4.4,
+    "review_count": 30,
+    "source": {
+      "name": "Wikipédia",
+      "link": "https://fr.wikipedia.org/wiki/Institut_sup%C3%A9rieur_d'informatique_de_Mahdia"
+    },
+    "adresse": "sidi massoud, Cité universitaire, Hiboun 5147",
+    "adresse_links": [
+      {
+        "text": "Adresse",
+        "link": "https://www.google.com/search?sca_esv=19eacb78983cd92f&gl=tn&hl=fr&q=institut+sup%C3%A9rieur+d%27informatique+de+mahdia+adresse&ludocid=2640027346044764966&sa=X&ved=2ahUKEwih55u_re2TAxV3rokEHcgeJuAQ6BN6BAgmEAI"
+      }
+    ],
+    "création": "22 juin 2004",
+    "téléphone": "73 683 100",
+    "raw_hours": "Ouvert · Ferme à 17 - 00",
+    "hours": {
+      "mardi": {
+        "opens": "08:00",
+        "closes": "17:00"
+      },
+      "mercredi": {
+        "opens": "08:00",
+        "closes": "17:00"
+      },
+      "jeudi": {
+        "opens": "08:00",
+        "closes": "17:00"
+      },
+      "vendredi": {
+        "opens": "08:00",
+        "closes": "17:00"
+      },
+      "samedi": {
+        "opens": "Fermé"
+      },
+      "dimanche": {
+        "opens": "Fermé"
+      },
+      "lundi": {
+        "opens": "08:00",
+        "closes": "17:00"
+      }
+    },
+    "merchant_description": "\"Mission L’institut fournit trois licences : 1. Licence en Computer Sciences (LCS) - parcours : Génie Logiciel et Système d'Information - parcours : Informatique et Multimédia 2. Licence en Computer Engineering (LCE) - Parcours : Ingénierie des réseaux et systèmes - Parcours : Systèmes embarqués et IoT 3. Licence en Business Computing (LBC) - Parcours: Business Intelligence - Parcours : E-Business Deux Mastères professionnels : 1 Mastère Professionel sciences de données 2. Mastère Professionel Expert Réseaux L’institut est ouvert aux bacheliers des sections : Sciences de L’informatique Mathématiques Sciences Expérimentales Sciences Techniques\"",
+    "reviews_from_the_web": [
+      {
+        "company": "Facebook",
+        "link": "https://www.facebook.com/ISIMahdiaOfficiel/?locale=fr_FR",
+        "rating": 1,
+        "review_count": 1
+      }
+    ],
+    "profils": [
+      {
+        "name": "LinkedIn",
+        "link": "https://tn.linkedin.com/company/dsc-isi-mahdia",
+        "image": "https://serpapi.com/searches/69de34b632f11dd3aec862f8/images/RMnJr7GOB-26rvFGisxOn_hqww8FLQP16c8TMZHhyb8.png"
+      },
+      {
+        "name": "Facebook",
+        "link": "https://www.facebook.com/ISIMahdiaOfficiel",
+        "image": "https://serpapi.com/searches/69de34b632f11dd3aec862f8/images/RMnJr7GOB-26rvFGisxOnywPYyMkuti9mLeq9Sjlelo.png"
+      },
+      {
+        "name": "YouTube",
+        "link": "https://www.youtube.com/@institutsuperieurdinformat1126",
+        "image": "https://serpapi.com/searches/69de34b632f11dd3aec862f8/images/RMnJr7GOB-26rvFGisxOn8LM6ph8ZG-lAWnjBGrlx7M.png"
+      }
+    ],
+    "les_internautes_recherchent_aussi": [
+      {
+        "name": "Faculté des Sciences de Monastir",
+        "link": "https://www.google.com/search?sca_esv=19eacb78983cd92f&gl=tn&hl=fr&si=AL3DRZELanY_V96Y0q8q1FLKlfOvH_NlT58VxGyuYFaMYKzFM1-I-HewRLvUghVXqTx7ztwNxYv9vK1Cpy9pkOj2lCT6xdFGPaTwPLH0Mw1hkyMzEknLo4R7BtglPXRmY4kg1XdQ09tXqQjBKq9z5T0tUyAi95luG3qgGk_JM4t6MBXcR4aEFKZQuIC1cY-T48GAweG0KW0Z2BhPadl-yelJuB1e2Zj7OsDsw2br0xoDuYolUFkBD9K9e3GHutbhbicofCjaXlo1bY-W4B2DjjpcJHKqMdonbSVvHIC1-od-hBTAlCPQ7fyCtkkw_6zwEHh-0uKomwcUFsvqv4C7nxMl3I3Ob4dcLA%3D%3D&q=Facult%C3%A9+des+Sciences+de+Monastir&sa=X&ved=2ahUKEwih55u_re2TAxV3rokEHcgeJuAQs9oBKAB6BAgfEAU",
+        "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=tn&google_domain=google.com&hl=fr&q=Facult%C3%A9+des+Sciences+de+Monastir&si=AL3DRZELanY_V96Y0q8q1FLKlfOvH_NlT58VxGyuYFaMYKzFM1-I-HewRLvUghVXqTx7ztwNxYv9vK1Cpy9pkOj2lCT6xdFGPaTwPLH0Mw1hkyMzEknLo4R7BtglPXRmY4kg1XdQ09tXqQjBKq9z5T0tUyAi95luG3qgGk_JM4t6MBXcR4aEFKZQuIC1cY-T48GAweG0KW0Z2BhPadl-yelJuB1e2Zj7OsDsw2br0xoDuYolUFkBD9K9e3GHutbhbicofCjaXlo1bY-W4B2DjjpcJHKqMdonbSVvHIC1-od-hBTAlCPQ7fyCtkkw_6zwEHh-0uKomwcUFsvqv4C7nxMl3I3Ob4dcLA%3D%3D",
+        "image": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGGmA7fDCVC2uRFjLBydsdPkff5oapNwCDO1Kd5pjRv48kxj2mo5A74Q2IPd1U4Eoz1WOFGO_-jWGc1zSIJI1wyg9Kx-w-bermDVM9EBHmgQxz9hR4jkBX_3aPBkJTMkK_-icw=w168-h115-k-no"
+      },
+      {
+        "name": "Institut Supérieur d'Informatique et de Mathématiques de Monastir",
+        "link": "https://www.google.com/search?sca_esv=19eacb78983cd92f&gl=tn&hl=fr&si=AL3DRZELanY_V96Y0q8q1FLKlfOvH_NlT58VxGyuYFaMYKzFM4uPMXvmDDdmwVCo4_XundxO3zlBzek_aHfLKbdnXM-SEZTwrgssTuM2Ljw0PcgKCuiRDYFJta8EjNjWevts791fbN3x1YQMPjmflBT66HIRrcmDEK4KpLgusvnz6k-eWLD1mMXqNE10mTPAMD8MtAKCKFMybSv694dATdX3sgzf68fuhISHvQJ0mfm9rm95vuDsExJCMM5TQFHbuJG1KXBCnHa4TqKIdSZ15EShie2NUgR06tka9ijVNjxp34khgj8ZT4A_u1sh-gwHPbFc2EvDc4oFzzCWKOrF8jXa9YUf2L1KGAHlcj2QQATJGicURGdh3spqq8YrmAVaFpf9C3B4gS98&q=Institut+Sup%C3%A9rieur+d%27Informatique+et+de+Math%C3%A9matiques+de+Monastir&sa=X&ved=2ahUKEwih55u_re2TAxV3rokEHcgeJuAQs9oBKAB6BAgfEAk",
+        "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=tn&google_domain=google.com&hl=fr&q=Institut+Sup%C3%A9rieur+d%27Informatique+et+de+Math%C3%A9matiques+de+Monastir&si=AL3DRZELanY_V96Y0q8q1FLKlfOvH_NlT58VxGyuYFaMYKzFM4uPMXvmDDdmwVCo4_XundxO3zlBzek_aHfLKbdnXM-SEZTwrgssTuM2Ljw0PcgKCuiRDYFJta8EjNjWevts791fbN3x1YQMPjmflBT66HIRrcmDEK4KpLgusvnz6k-eWLD1mMXqNE10mTPAMD8MtAKCKFMybSv694dATdX3sgzf68fuhISHvQJ0mfm9rm95vuDsExJCMM5TQFHbuJG1KXBCnHa4TqKIdSZ15EShie2NUgR06tka9ijVNjxp34khgj8ZT4A_u1sh-gwHPbFc2EvDc4oFzzCWKOrF8jXa9YUf2L1KGAHlcj2QQATJGicURGdh3spqq8YrmAVaFpf9C3B4gS98",
+        "image": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHSjM6FdFVWQxFxNtIQMKnIbMo0_VciBt5TUFVZSyoFvnjNyxygQiEAQ4Ggud8GxcsbVrqg4ngnA-XNilPveJ0Tzu5_uGBlJ8qQO6ykb4B-toJggyuEg8ta6Ov56BXHf3_rapVR5A=w115-h153-k-no"
+      },
+      {
+        "name": "Faculté des Sciences de Bizerte",
+        "link": "https://www.google.com/search?sca_esv=19eacb78983cd92f&gl=tn&hl=fr&si=AL3DRZELanY_V96Y0q8q1FLKlfOvH_NlT58VxGyuYFaMYKzFM2boNM9e07sAx4Tu1LwO4SC_KHbH-_Douaiihj9TOEzwZ_AEBqknVC5SHgYsGaiS5R1KSRv2z0yDIT9u2Ca_hLfdV2X9-c92DMbdxx1RpiNTefmpPzHcyhPMH9d79mTQDkmoDdSIA8vDtPiRdFHxeqvIMQ9mAHW2nVkcVB39X4KAIwCzqEoyjBspjZejhzw39DnHZVuGl8RxpUywDcETUeXWuJ8cxmwKdPI07YvJ8kWnVnZ4EnZkjab-pvy9Zv1ggdjrG6mFoElwGglChHc7qt3BuiqaEVdoa1wtr6AaEpgq80Mjdw%3D%3D&q=Facult%C3%A9+des+Sciences+de+Bizerte&sa=X&ved=2ahUKEwih55u_re2TAxV3rokEHcgeJuAQs9oBKAB6BAgfEA0",
+        "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=tn&google_domain=google.com&hl=fr&q=Facult%C3%A9+des+Sciences+de+Bizerte&si=AL3DRZELanY_V96Y0q8q1FLKlfOvH_NlT58VxGyuYFaMYKzFM2boNM9e07sAx4Tu1LwO4SC_KHbH-_Douaiihj9TOEzwZ_AEBqknVC5SHgYsGaiS5R1KSRv2z0yDIT9u2Ca_hLfdV2X9-c92DMbdxx1RpiNTefmpPzHcyhPMH9d79mTQDkmoDdSIA8vDtPiRdFHxeqvIMQ9mAHW2nVkcVB39X4KAIwCzqEoyjBspjZejhzw39DnHZVuGl8RxpUywDcETUeXWuJ8cxmwKdPI07YvJ8kWnVnZ4EnZkjab-pvy9Zv1ggdjrG6mFoElwGglChHc7qt3BuiqaEVdoa1wtr6AaEpgq80Mjdw%3D%3D",
+        "image": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEZseo1BB2eToasG9PWm3CTdkDHSWeC5wM6HikVgzpd0zcjwqyJCoOCweBPLArLWHOmfUdg5HNICMeqbzTxF2lOqrDhI1OFaAN1VGBNX4v8t6FhKfLvr7GOlC-h_bCb9yVNoAU=w153-h115-k-no"
+      },
+      {
+        "name": "ISAMM Institut Supérieur des Arts Multimédia de la Manouba",
+        "link": "https://www.google.com/search?sca_esv=19eacb78983cd92f&gl=tn&hl=fr&si=AL3DRZELanY_V96Y0q8q1FLKlfOvH_NlT58VxGyuYFaMYKzFM0lG8raLZh5dTjSRngr7PHVmBopewGCq-Io6xZWiV534jiox2iGlGK4l940l7hoKsaCRnO8L_nGjOvEGIkAYGtoq1dzEn8sSE8y1Za8KM1m99GpxU2XjgKzeEz__4--4fM10mdgyCjk6veVHrDBtQY5yQXnd57oTUDS8BM0kQAbd8LdLrULT1XJBa9hQIpi1pb0NR598hMGYTt3ZpxI6rGBEPGmdTW0CTDWuabtII3JECqweNSC4eE-vGZg7hSsd9wyFv4MvgwVCrT3l4pH36oT9BxZyvH-BA7R-1dUymeZtR0zWuoeTx2huFTw06UXsPxaVj6w%3D&q=Institut+sup%C3%A9rieur+des+arts+multim%C3%A9dia+de+La+Manouba&sa=X&ved=2ahUKEwih55u_re2TAxV3rokEHcgeJuAQs9oBKAB6BAgfEBE",
+        "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=tn&google_domain=google.com&hl=fr&q=Institut+sup%C3%A9rieur+des+arts+multim%C3%A9dia+de+La+Manouba&si=AL3DRZELanY_V96Y0q8q1FLKlfOvH_NlT58VxGyuYFaMYKzFM0lG8raLZh5dTjSRngr7PHVmBopewGCq-Io6xZWiV534jiox2iGlGK4l940l7hoKsaCRnO8L_nGjOvEGIkAYGtoq1dzEn8sSE8y1Za8KM1m99GpxU2XjgKzeEz__4--4fM10mdgyCjk6veVHrDBtQY5yQXnd57oTUDS8BM0kQAbd8LdLrULT1XJBa9hQIpi1pb0NR598hMGYTt3ZpxI6rGBEPGmdTW0CTDWuabtII3JECqweNSC4eE-vGZg7hSsd9wyFv4MvgwVCrT3l4pH36oT9BxZyvH-BA7R-1dUymeZtR0zWuoeTx2huFTw06UXsPxaVj6w%3D",
+        "image": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHVsBqo8HKXtp8y8LtkmvtmV6lEPawxqSbEIvN64ZgTnLzZ4STymne0S-8Jc5k47026KdBpThc6cl_vKzt2f-XxrDqogrVgw0ui633atINkxysA06LXEB8JrGlOsJFhD0tYDBsf=w115-h153-k-no"
+      }
+    ],
+    "les_internautes_recherchent_aussi_link": "https://www.google.com/search?sca_esv=19eacb78983cd92f&gl=tn&hl=fr&q=Institut+sup%C3%A9rieur+d%27informatique+de+Mahdia&stick=H4sIAAAAAAAAAONgFuLWT9c3NDIqKsvOyVBC5mgJBmempJYnVhb7pVaUBJekFhT_YhQNSk3OSC0C4mKFxOLi_OTMwytTixex6njmFZdklpSWKBSXFhxeWZSZWlqkkKKemZeWX5SbWJJZWJqqkJKq4JuYkZKZuIOV8RabJMNS5dv8aXs_hZ9buFx-JuuD_46C3uJ_eh8vAQAFiD1_lQAAAA&sa=X&ved=2ahUKEwih55u_re2TAxV3rokEHcgeJuAQzO0BKAR6BAgfEBM",
+    "les_internautes_recherchent_aussi_stick": "H4sIAAAAAAAAAONgFuLWT9c3NDIqKsvOyVBC5mgJBmempJYnVhb7pVaUBJekFhT_YhQNSk3OSC0C4mKFxOLi_OTMwytTixex6njmFZdklpSWKBSXFhxeWZSZWlqkkKKemZeWX5SbWJJZWJqqkJKq4JuYkZKZuIOV8RabJMNS5dv8aXs_hZ9buFx-JuuD_46C3uJ_eh8vAQAFiD1_lQAAAA"
+  },
+  "related_questions": [
+    {
+      "question": "Quels sont les frais de scolarité à l'ISIMA ?",
+      "type": "featured_snippet",
+      "snippet": "Frais de scolarité Frais d'inscription en Licence universitaire : 175 € (pour 2024-2025) Contribution de vie étudiante et de campus (CVEC) : 95 € Frais spécifiques à Prép'ISIMA : 70 €",
+      "title": "Postuler à Prép'ISIMA en post Bac",
+      "link": "https://www.isima.fr/admission/post-bac-prep-isima/#:~:text=Frais%20de%20scolarit%C3%A9&text=Frais%20d'inscription%20en%20Licence%20universitaire%20%3A%20175%20%E2%82%AC%20(pour,%C3%A0%20Pr%C3%A9p'ISIMA%20%3A%2070%20%E2%82%AC",
+      "displayed_link": "https://www.isima.fr › admission › post-bac-prep-isima",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6eJw6M8LgHYfrdCMrnsYxw-EtENVnR2yXqN56g2PT&s",
+      "source_logo": "https://serpapi.com/searches/69de34b632f11dd3aec862f8/images/ATfuKpvjMQ7m2MKLgi_Ncc0cgpjJvkHY7O88Rf9aXhs.png",
+      "next_page_token": "eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUVzR6TFhsUlpqazViMVpCWW5seFlubHVhVzVJZGpKbGFYSjRaRlZFYmxaeFFuSTVWVWRvYVVsUVNVOVJXamg1U0VsQk5GOWllSE5LTVVsSVRFdHNUbmt4TTBjM1RVSTNabFp1V210bmVFUkRlbVJ1VVZGV1l6bHpNMGRqTVcxRFVSSVhkSHBVWldGbFIzWktkbVpqY0hSUlVIbE1NbGxuVVRRYUlrRktTMHhHYlVzeVRYQnlTemhEYmpWWmExUnJOalpXWW5wQlEyVXRjbTVIVUZFIiwiZmN2IjoiMyIsImVpIjoidHpUZWFlR3ZKdmZjcHRRUHlMMllnUTQiLCJxYyI6IkNnVnBjMmx0WVJBRWZUNGZURDgiLCJxdWVzdGlvbiI6IlF1ZWxzIHNvbnQgbGVzIGZyYWlzIGRlIHNjb2xhcml0w6kgw6AgbCdJU0lNQSA/IiwibGsiOiJHaGxtY21GcGN5QmtaU0J6WTI5c1lYSnBkTU9wSUdsemFXMWgiLCJicyI6ImMyMlBNVzdDUUJSRWxYYXJDS0hJMlJRWktsY1JpaHRLUkltVVNDQU9FRG5tWTMzcHN3Wl9MLWRKNnlJbm9OdzZ4OGc5V0FjSFVWRFB6Tk1ic3pUanBTZFJhT1VhQ0NrMmRjNktOVUdMU3ZLYW05QWlmRUhTLVdyLVBzTTBPWTZ5Sl90NHE4YksyOXlNelRBaW9WdzYzakRoZl9kZFprTTcyRjlINThIQ3ZMNzFkTkxtaFVRSTNoRkNHOUdFWGMySDBCSXFqNTNfRk80STAtUVhXV0lmX2dCOTQxSW96SWVaZEs4NlhQeUVRbkpWMmxKOEdJVWw3Y0hybEYwWldzZms2NHZsajgxRzl2bk12ZHA1NVdqa0tuX285Tzd2VGciLCJpZCI6ImZjX3R6VGVhZUd2SnZmY3B0UVB5TDJZZ1E0XzEifQ==",
+      "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google_related_questions&google_domain=google.com&next_page_token=eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUVzR6TFhsUlpqazViMVpCWW5seFlubHVhVzVJZGpKbGFYSjRaRlZFYmxaeFFuSTVWVWRvYVVsUVNVOVJXamg1U0VsQk5GOWllSE5LTVVsSVRFdHNUbmt4TTBjM1RVSTNabFp1V210bmVFUkRlbVJ1VVZGV1l6bHpNMGRqTVcxRFVSSVhkSHBVWldGbFIzWktkbVpqY0hSUlVIbE1NbGxuVVRRYUlrRktTMHhHYlVzeVRYQnlTemhEYmpWWmExUnJOalpXWW5wQlEyVXRjbTVIVUZFIiwiZmN2IjoiMyIsImVpIjoidHpUZWFlR3ZKdmZjcHRRUHlMMllnUTQiLCJxYyI6IkNnVnBjMmx0WVJBRWZUNGZURDgiLCJxdWVzdGlvbiI6IlF1ZWxzIHNvbnQgbGVzIGZyYWlzIGRlIHNjb2xhcml0w6kgw6AgbCdJU0lNQSA%2FIiwibGsiOiJHaGxtY21GcGN5QmtaU0J6WTI5c1lYSnBkTU9wSUdsemFXMWgiLCJicyI6ImMyMlBNVzdDUUJSRWxYYXJDS0hJMlJRWktsY1JpaHRLUkltVVNDQU9FRG5tWTMzcHN3Wl9MLWRKNnlJbm9OdzZ4OGc5V0FjSFVWRFB6Tk1ic3pUanBTZFJhT1VhQ0NrMmRjNktOVUdMU3ZLYW05QWlmRUhTLVdyLVBzTTBPWTZ5Sl90NHE4YksyOXlNelRBaW9WdzYzakRoZl9kZFprTTcyRjlINThIQ3ZMNzFkTkxtaFVRSTNoRkNHOUdFWGMySDBCSXFqNTNfRk80STAtUVhXV0lmX2dCOTQxSW96SWVaZEs4NlhQeUVRbkpWMmxKOEdJVWw3Y0hybEYwWldzZms2NHZsajgxRzl2bk12ZHA1NVdqa0tuX285Tzd2VGciLCJpZCI6ImZjX3R6VGVhZUd2SnZmY3B0UVB5TDJZZ1E0XzEifQ%3D%3D"
+    },
+    {
+      "question": "Que signifie ISIMA ?",
+      "type": "featured_snippet",
+      "snippet": "L'Institut d'Informatique est la composante de l'UCA qui fédère les formations en informatique de l'université : l'école d'ingénieur en informatique (ISIMA), la licence d'informatique et le master d'informatique.",
+      "title": "ISIMA - Université Clermont Auvergne (uca.fr)",
+      "link": "https://www.uca.fr/formation/nos-formations/par-ufr-ecoles-et-iut/institut-dinformatique-1#:~:text=L'Institut%20d'Informatique%20est,et%20le%20master%20d'informatique.",
+      "displayed_link": "https://www.uca.fr › formation › institut-dinformatique-1",
+      "source_logo": "https://serpapi.com/searches/69de34b632f11dd3aec862f8/images/ATfuKpvjMQ7m2MKLgi_NccjjZblJ_Cqn9UCz7FBzGwI.png",
+      "next_page_token": "eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUVzR6TFhsUlpqazViMVpCWW5seFlubHVhVzVJZGpKbGFYSjRaRlZFYmxaeFFuSTVWVWRvYVVsUVNVOVJXamg1U0VsQk5GOWllSE5LTVVsSVRFdHNUbmt4TTBjM1RVSTNabFp1V210bmVFUkRlbVJ1VVZGV1l6bHpNMGRqTVcxRFVSSVhkSHBVWldGbFIzWktkbVpqY0hSUlVIbE1NbGxuVVRRYUlrRktTMHhHYlVzeVRYQnlTemhEYmpWWmExUnJOalpXWW5wQlEyVXRjbTVIVUZFIiwiZmN2IjoiMyIsImVpIjoidHpUZWFlR3ZKdmZjcHRRUHlMMllnUTQiLCJxYyI6IkNnVnBjMmx0WVJBRWZUNGZURDgiLCJxdWVzdGlvbiI6IlF1ZSBzaWduaWZpZSBJU0lNQSA/IiwibGsiOiJHaEp4ZFdVZ2MybG5ibWxtYVdVZ2FYTnBiV0UiLCJicyI6ImMyMlBNVzdDUUJSRWxYYXJDS0hJMlJRWktsY1JpaHRLUkltVVNDQU9FRG5tWTMzcHN3Wl9MLWRKNnlJbm9OdzZ4OGc5V0FjSFVWRFB6Tk1ic3pUanBTZFJhT1VhQ0NrMmRjNktOVUdMU3ZLYW05QWlmRUhTLVdyLVBzTTBPWTZ5Sl90NHE4YksyOXlNelRBaW9WdzYzakRoZl9kZFprTTcyRjlINThIQ3ZMNzFkTkxtaFVRSTNoRkNHOUdFWGMySDBCSXFqNTNfRk80STAtUVhXV0lmX2dCOTQxSW96SWVaZEs4NlhQeUVRbkpWMmxKOEdJVWw3Y0hybEYwWldzZms2NHZsajgxRzl2bk12ZHA1NVdqa0tuX285Tzd2VGciLCJpZCI6ImZjX3R6VGVhZUd2SnZmY3B0UVB5TDJZZ1E0XzEifQ==",
+      "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google_related_questions&google_domain=google.com&next_page_token=eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUVzR6TFhsUlpqazViMVpCWW5seFlubHVhVzVJZGpKbGFYSjRaRlZFYmxaeFFuSTVWVWRvYVVsUVNVOVJXamg1U0VsQk5GOWllSE5LTVVsSVRFdHNUbmt4TTBjM1RVSTNabFp1V210bmVFUkRlbVJ1VVZGV1l6bHpNMGRqTVcxRFVSSVhkSHBVWldGbFIzWktkbVpqY0hSUlVIbE1NbGxuVVRRYUlrRktTMHhHYlVzeVRYQnlTemhEYmpWWmExUnJOalpXWW5wQlEyVXRjbTVIVUZFIiwiZmN2IjoiMyIsImVpIjoidHpUZWFlR3ZKdmZjcHRRUHlMMllnUTQiLCJxYyI6IkNnVnBjMmx0WVJBRWZUNGZURDgiLCJxdWVzdGlvbiI6IlF1ZSBzaWduaWZpZSBJU0lNQSA%2FIiwibGsiOiJHaEp4ZFdVZ2MybG5ibWxtYVdVZ2FYTnBiV0UiLCJicyI6ImMyMlBNVzdDUUJSRWxYYXJDS0hJMlJRWktsY1JpaHRLUkltVVNDQU9FRG5tWTMzcHN3Wl9MLWRKNnlJbm9OdzZ4OGc5V0FjSFVWRFB6Tk1ic3pUanBTZFJhT1VhQ0NrMmRjNktOVUdMU3ZLYW05QWlmRUhTLVdyLVBzTTBPWTZ5Sl90NHE4YksyOXlNelRBaW9WdzYzakRoZl9kZFprTTcyRjlINThIQ3ZMNzFkTkxtaFVRSTNoRkNHOUdFWGMySDBCSXFqNTNfRk80STAtUVhXV0lmX2dCOTQxSW96SWVaZEs4NlhQeUVRbkpWMmxKOEdJVWw3Y0hybEYwWldzZms2NHZsajgxRzl2bk12ZHA1NVdqa0tuX285Tzd2VGciLCJpZCI6ImZjX3R6VGVhZUd2SnZmY3B0UVB5TDJZZ1E0XzEifQ%3D%3D"
+    },
+    {
+      "question": "L'ISIMA est-elle une école privée ou publique ?",
+      "type": "featured_snippet",
+      "snippet": "L'ISIMA, école publique d'ingénieurs en informatique en Auvergne.",
+      "title": "L'ISIMA, école publique d'ingénieurs en informatique en ...",
+      "link": "https://www.isima.fr/#:~:text=L'ISIMA%2C%20%C3%A9cole%20publique%20d'ing%C3%A9nieurs%20en%20informatique%20en%20Auvergne",
+      "next_page_token": "eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUVzR6TFhsUlpqazViMVpCWW5seFlubHVhVzVJZGpKbGFYSjRaRlZFYmxaeFFuSTVWVWRvYVVsUVNVOVJXamg1U0VsQk5GOWllSE5LTVVsSVRFdHNUbmt4TTBjM1RVSTNabFp1V210bmVFUkRlbVJ1VVZGV1l6bHpNMGRqTVcxRFVSSVhkSHBVWldGbFIzWktkbVpqY0hSUlVIbE1NbGxuVVRRYUlrRktTMHhHYlVzeVRYQnlTemhEYmpWWmExUnJOalpXWW5wQlEyVXRjbTVIVUZFIiwiZmN2IjoiMyIsImVpIjoidHpUZWFlR3ZKdmZjcHRRUHlMMllnUTQiLCJxYyI6IkNnVnBjMmx0WVJBRWZUNGZURDgiLCJxdWVzdGlvbiI6IkwnSVNJTUEgZXN0LWVsbGUgdW5lIMOpY29sZSBwcml2w6llIG91IHB1YmxpcXVlID8iLCJsayI6IkdoWnBjMmx0WVNCd2NtbDJ3NmtnYjNVZ2NIVmliR2xqIiwiYnMiOiJjMjJQTVc3Q1FCUkVsWGFyQ0tISTJSUVpLbGNSaWh0S1JJbVVTQ0FPRURubVkzM3Bzd1pfTC1kSjZ5SW5vTnc2eDhnOVdBY0hVVkRQek5NYnN6VGpwU2RSYU9VYUNDazJkYzZLTlVHTFN2S2FtOUFpZkVIUy1Xci1Qc00wT1k2eUpfdDRxOGJLMjl5TXpUQWlvVnc2M2pEaGZfZGRaa003MkY5SDU4SEN2TDcxZE5MbWhVUUkzaEZDRzlHRVhjMkgwQklxajUzX0ZPNEkwLVFYV1dJZl9nQjk0MUlvekllWmRLODZYUHlFUW5KVjJsSjhHSVVsN2NIcmxGMFpXc2ZrNjR2bGo4MUc5dm5NdmRwNTVXamtLbl9vOU83dlRnIiwiaWQiOiJmY190elRlYWVHdkp2ZmNwdFFQeUwyWWdRNF8xIn0=",
+      "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google_related_questions&google_domain=google.com&next_page_token=eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUVzR6TFhsUlpqazViMVpCWW5seFlubHVhVzVJZGpKbGFYSjRaRlZFYmxaeFFuSTVWVWRvYVVsUVNVOVJXamg1U0VsQk5GOWllSE5LTVVsSVRFdHNUbmt4TTBjM1RVSTNabFp1V210bmVFUkRlbVJ1VVZGV1l6bHpNMGRqTVcxRFVSSVhkSHBVWldGbFIzWktkbVpqY0hSUlVIbE1NbGxuVVRRYUlrRktTMHhHYlVzeVRYQnlTemhEYmpWWmExUnJOalpXWW5wQlEyVXRjbTVIVUZFIiwiZmN2IjoiMyIsImVpIjoidHpUZWFlR3ZKdmZjcHRRUHlMMllnUTQiLCJxYyI6IkNnVnBjMmx0WVJBRWZUNGZURDgiLCJxdWVzdGlvbiI6IkwnSVNJTUEgZXN0LWVsbGUgdW5lIMOpY29sZSBwcml2w6llIG91IHB1YmxpcXVlID8iLCJsayI6IkdoWnBjMmx0WVNCd2NtbDJ3NmtnYjNVZ2NIVmliR2xqIiwiYnMiOiJjMjJQTVc3Q1FCUkVsWGFyQ0tISTJSUVpLbGNSaWh0S1JJbVVTQ0FPRURubVkzM3Bzd1pfTC1kSjZ5SW5vTnc2eDhnOVdBY0hVVkRQek5NYnN6VGpwU2RSYU9VYUNDazJkYzZLTlVHTFN2S2FtOUFpZkVIUy1Xci1Qc00wT1k2eUpfdDRxOGJLMjl5TXpUQWlvVnc2M2pEaGZfZGRaa003MkY5SDU4SEN2TDcxZE5MbWhVUUkzaEZDRzlHRVhjMkgwQklxajUzX0ZPNEkwLVFYV1dJZl9nQjk0MUlvekllWmRLODZYUHlFUW5KVjJsSjhHSVVsN2NIcmxGMFpXc2ZrNjR2bGo4MUc5dm5NdmRwNTVXamtLbl9vOU83dlRnIiwiaWQiOiJmY190elRlYWVHdkp2ZmNwdFFQeUwyWWdRNF8xIn0%3D"
+    },
+    {
+      "question": "Quel est le classement de l'école d'ingénieur ISIMA ?",
+      "type": "featured_snippet",
+      "snippet": "Palmarès. L'étudiant 2020 Voir les résultats complets L'Usine Nouvelle : Dans le classement de l'Usine Nouvelle, nous apparaissons au 18e rang sur la première page du classement recherche (sur 205 écoles d'ingénieur accréditées en France – 122 sont classées par l'Usine nouvelle cette année).",
+      "title": "Archives des L'école - ISIMA",
+      "link": "https://www.isima.fr/category/lecole/#:~:text=Palmar%C3%A8s,'Usine%20nouvelle%20cette%20ann%C3%A9e).",
+      "displayed_link": "https://www.isima.fr › category › lecole",
+      "source_logo": "https://serpapi.com/searches/69de34b632f11dd3aec862f8/images/ATfuKpvjMQ7m2MKLgi_NcShHBohXOX7h8sKD2Y35DWY.png",
+      "next_page_token": "eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUVzR6TFhsUlpqazViMVpCWW5seFlubHVhVzVJZGpKbGFYSjRaRlZFYmxaeFFuSTVWVWRvYVVsUVNVOVJXamg1U0VsQk5GOWllSE5LTVVsSVRFdHNUbmt4TTBjM1RVSTNabFp1V210bmVFUkRlbVJ1VVZGV1l6bHpNMGRqTVcxRFVSSVhkSHBVWldGbFIzWktkbVpqY0hSUlVIbE1NbGxuVVRRYUlrRktTMHhHYlVzeVRYQnlTemhEYmpWWmExUnJOalpXWW5wQlEyVXRjbTVIVUZFIiwiZmN2IjoiMyIsImVpIjoidHpUZWFlR3ZKdmZjcHRRUHlMMllnUTQiLCJxYyI6IkNnVnBjMmx0WVJBRWZUNGZURDgiLCJxdWVzdGlvbiI6IlF1ZWwgZXN0IGxlIGNsYXNzZW1lbnQgZGUgbCfDqWNvbGUgZCdpbmfDqW5pZXVyIElTSU1BID8iLCJsayI6IkdoOXBjMmx0WVNCamJHRnpjMlZ0Wlc1MElIVnphVzVsSUc1dmRYWmxiR3hsIiwiYnMiOiJjMjJQTVc3Q1FCUkVsWGFyQ0tISTJSUVpLbGNSaWh0S1JJbVVTQ0FPRURubVkzM3Bzd1pfTC1kSjZ5SW5vTnc2eDhnOVdBY0hVVkRQek5NYnN6VGpwU2RSYU9VYUNDazJkYzZLTlVHTFN2S2FtOUFpZkVIUy1Xci1Qc00wT1k2eUpfdDRxOGJLMjl5TXpUQWlvVnc2M2pEaGZfZGRaa003MkY5SDU4SEN2TDcxZE5MbWhVUUkzaEZDRzlHRVhjMkgwQklxajUzX0ZPNEkwLVFYV1dJZl9nQjk0MUlvekllWmRLODZYUHlFUW5KVjJsSjhHSVVsN2NIcmxGMFpXc2ZrNjR2bGo4MUc5dm5NdmRwNTVXamtLbl9vOU83dlRnIiwiaWQiOiJmY190elRlYWVHdkp2ZmNwdFFQeUwyWWdRNF8xIn0=",
+      "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google_related_questions&google_domain=google.com&next_page_token=eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUVzR6TFhsUlpqazViMVpCWW5seFlubHVhVzVJZGpKbGFYSjRaRlZFYmxaeFFuSTVWVWRvYVVsUVNVOVJXamg1U0VsQk5GOWllSE5LTVVsSVRFdHNUbmt4TTBjM1RVSTNabFp1V210bmVFUkRlbVJ1VVZGV1l6bHpNMGRqTVcxRFVSSVhkSHBVWldGbFIzWktkbVpqY0hSUlVIbE1NbGxuVVRRYUlrRktTMHhHYlVzeVRYQnlTemhEYmpWWmExUnJOalpXWW5wQlEyVXRjbTVIVUZFIiwiZmN2IjoiMyIsImVpIjoidHpUZWFlR3ZKdmZjcHRRUHlMMllnUTQiLCJxYyI6IkNnVnBjMmx0WVJBRWZUNGZURDgiLCJxdWVzdGlvbiI6IlF1ZWwgZXN0IGxlIGNsYXNzZW1lbnQgZGUgbCfDqWNvbGUgZCdpbmfDqW5pZXVyIElTSU1BID8iLCJsayI6IkdoOXBjMmx0WVNCamJHRnpjMlZ0Wlc1MElIVnphVzVsSUc1dmRYWmxiR3hsIiwiYnMiOiJjMjJQTVc3Q1FCUkVsWGFyQ0tISTJSUVpLbGNSaWh0S1JJbVVTQ0FPRURubVkzM3Bzd1pfTC1kSjZ5SW5vTnc2eDhnOVdBY0hVVkRQek5NYnN6VGpwU2RSYU9VYUNDazJkYzZLTlVHTFN2S2FtOUFpZkVIUy1Xci1Qc00wT1k2eUpfdDRxOGJLMjl5TXpUQWlvVnc2M2pEaGZfZGRaa003MkY5SDU4SEN2TDcxZE5MbWhVUUkzaEZDRzlHRVhjMkgwQklxajUzX0ZPNEkwLVFYV1dJZl9nQjk0MUlvekllWmRLODZYUHlFUW5KVjJsSjhHSVVsN2NIcmxGMFpXc2ZrNjR2bGo4MUc5dm5NdmRwNTVXamtLbl9vOU83dlRnIiwiaWQiOiJmY190elRlYWVHdkp2ZmNwdFFQeUwyWWdRNF8xIn0%3D"
+    }
+  ],
+  "organic_results": [
+    {
+      "position": 1,
+      "title": "ISI MAHDIA - Institut Supérieur d'Informatique de Mahdia",
+      "link": "https://isima.rnu.tn/",
+      "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://isima.rnu.tn/&ved=2ahUKEwih55u_re2TAxV3rokEHcgeJuAQFnoECEMQAQ",
+      "displayed_link": "https://isima.rnu.tn",
+      "snippet": "Technologie Avancée. Développez vos compétences, transformez vos ambitions ; ISIMA Mahdia. FIERS d'être Certifiés ISO 9001 & ISO 21001 ; Innovation numérique.",
+      "snippet_highlighted_words": [
+        "ISIMA"
+      ],
+      "sitelinks": {
+        "expanded": [
+          {
+            "title": "Espace Extranet",
+            "link": "https://isima.rnu.tn/fr/app",
+            "snippet": "Se connecter. Étudiant / Ancien Étudiant / Enseignant ..."
+          },
+          {
+            "title": "Nos Mastères",
+            "link": "https://isima.rnu.tn/fr/categories/28/nos-masteres",
+            "snippet": "isima@isima.rnu.tn. Institut. Loi de création · Politique d'assurance ..."
+          },
+          {
+            "title": "Pré-inscriptions en ligne",
+            "link": "https://isima.rnu.tn/fr/pre-inscriptions-en-ligne",
+            "snippet": "isima@isima.rnu.tn. Institut. Loi de création · Politique d'assurance ..."
+          },
+          {
+            "title": "Contactez nous",
+            "link": "https://isima.rnu.tn/fr/contact-footer",
+            "snippet": "Institut Supérieur d'Informatique de Mahdia, Campus Universitaire ..."
+          },
+          {
+            "title": "Nos Licences",
+            "link": "https://isima.rnu.tn/fr/categories/27/nos-licences",
+            "snippet": "isima@isima.rnu.tn. Institut. Loi de création · Politique d'assurance ..."
+          }
+        ]
+      },
+      "about_this_result": {
+        "source": {
+          "description": "Technologie Avancée. Développez vos compétences, transformez vos ambitions ; ISIMA Mahdia. FIERS d'être Certifiés ISO 9001 & ISO 21001 ; Innovation numérique.",
+          "source_info_link": "https://isima.rnu.tn/"
+        },
+        "languages": [
+          "fr"
+        ],
+        "regions": [
+          "TN"
+        ]
+      },
+      "about_page_link": "https://www.google.com/search?q=About+https://isima.rnu.tn/&tbm=ilp",
+      "about_page_serpapi_link": "https://serpapi.com/search.json?engine=google_about_this_result&google_domain=google.com&q=About+https%3A%2F%2Fisima.rnu.tn%2F",
+      "source": "ISI MAHDIA"
+    },
+    {
+      "position": 2,
+      "title": "L'ISIMA, école publique d'ingénieurs en informatique en ...",
+      "link": "https://www.isima.fr/",
+      "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.isima.fr/&ved=2ahUKEwih55u_re2TAxV3rokEHcgeJuAQFnoECEUQAQ",
+      "displayed_link": "https://www.isima.fr",
+      "favicon": "https://serpapi.com/searches/69de34b632f11dd3aec862f8/images/BQtArduS1DplK2zKmziHt_LQw9_bAcKHDsuFwRttyXM.png",
+      "snippet": "ISIMA, école publique d'ingénieurs informatique en Auvergne, propose un cycle d'ingénieur, des formations IA, cybersécurité et big data...",
+      "snippet_highlighted_words": [
+        "école publique d'ingénieurs informatique en Auvergne"
+      ],
+      "about_this_result": {
+        "source": {
+          "description": "ISIMA, école publique d'ingénieurs informatique en Auvergne, propose un cycle d'ingénieur, des formations IA, cybersécurité et big data...",
+          "source_info_link": "https://www.isima.fr/",
+          "icon": "https://serpapi.com/searches/69de34b632f11dd3aec862f8/images/BQtArduS1DplK2zKmziHtzxpGgywKi-QJfYMqbGDnSxMg3Zo-D68DHkJBARyNTQY.png"
+        },
+        "languages": [
+          "fr"
+        ],
+        "regions": [
+          "TN"
+        ]
+      },
+      "about_page_link": "https://www.google.com/search?q=About+https://www.isima.fr/&tbm=ilp",
+      "about_page_serpapi_link": "https://serpapi.com/search.json?engine=google_about_this_result&google_domain=google.com&q=About+https%3A%2F%2Fwww.isima.fr%2F",
+      "source": "isima.fr"
+    },
+    {
+      "position": 3,
+      "title": "Institut Supérieur d'Informatique de Mahdia - ISIMa",
+      "link": "https://www.facebook.com/ISIMahdiaOfficiel/?locale=fr_FR",
+      "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.facebook.com/ISIMahdiaOfficiel/%3Flocale%3Dfr_FR&ved=2ahUKEwih55u_re2TAxV3rokEHcgeJuAQFnoECEYQAQ",
+      "displayed_link": "Plus de 8 k abonnés",
+      "favicon": "https://serpapi.com/searches/69de34b632f11dd3aec862f8/images/BQtArduS1DplK2zKmziHt9LRQtuHLrzWuoN7xQ4CgUw.png",
+      "snippet": "بلاغ لفائدة طلبة LBC بـ FSEG ليكن في علم طلبة LBC بـ FSEG أنه بإمكانهم الولوج إلى الموقع الرسمي للمعهد العالي للإعلامية عبر فضاء Extranet وذلك للاطلاع على ...",
+      "about_this_result": {
+        "source": {
+          "description": "بلاغ لفائدة طلبة LBC بـ FSEG ليكن في علم طلبة LBC بـ FSEG أنه بإمكانهم الولوج إلى الموقع الرسمي للمعهد العالي للإعلامية عبر فضاء Extranet وذلك للاطلاع على ...",
+          "source_info_link": "https://www.facebook.com/ISIMahdiaOfficiel/?locale=fr_FR",
+          "icon": "https://serpapi.com/searches/69de34b632f11dd3aec862f8/images/BQtArduS1DplK2zKmziHt5fRdRKpVpe19BhJdaqdW9-sXj0Jc6DXtoqa2bINF-1V.png"
+        },
+        "languages": [
+          "fr"
+        ],
+        "regions": [
+          "TN"
+        ]
+      },
+      "about_page_link": "https://www.google.com/search?q=About+https://www.facebook.com/ISIMahdiaOfficiel/?locale=fr_FR&tbm=ilp",
+      "about_page_serpapi_link": "https://serpapi.com/search.json?engine=google_about_this_result&google_domain=google.com&q=About+https%3A%2F%2Fwww.facebook.com%2FISIMahdiaOfficiel%2F%3Flocale%3Dfr_FR",
+      "source": "Facebook · Institut Supérieur d'Informatique de Mahdia - ISIMa"
+    },
+    {
+      "position": 4,
+      "title": "Institut supérieur d'informatique de Mahdia",
+      "link": "https://fr.wikipedia.org/wiki/Institut_sup%C3%A9rieur_d%27informatique_de_Mahdia",
+      "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://fr.wikipedia.org/wiki/Institut_sup%25C3%25A9rieur_d%2527informatique_de_Mahdia&ved=2ahUKEwih55u_re2TAxV3rokEHcgeJuAQFnoECEQQAQ",
+      "displayed_link": "https://fr.wikipedia.org › wiki › Institut_supérieur_d'inf...",
+      "favicon": "https://serpapi.com/searches/69de34b632f11dd3aec862f8/images/BQtArduS1DplK2zKmziHt0QUpsYRlnPv7ID2D6LB_ic.png",
+      "snippet": "L'Institut supérieur d'informatique de Mahdia (arabe : المعهد العالي للإعلامية بالمهدية) ou ISIMa est un établissement universitaire tunisien relevant de ...",
+      "snippet_highlighted_words": [
+        "L'Institut supérieur d'informatique de Mahdia"
+      ],
+      "about_this_result": {
+        "source": {
+          "description": "L'Institut supérieur d'informatique de Mahdia (arabe : المعهد العالي للإعلامية بالمهدية) ou ISIMa est un établissement universitaire tunisien relevant de ...",
+          "source_info_link": "https://fr.wikipedia.org/wiki/Institut_sup%C3%A9rieur_d%27informatique_de_Mahdia",
+          "icon": "https://serpapi.com/searches/69de34b632f11dd3aec862f8/images/BQtArduS1DplK2zKmziHt-KkD0GZG8ZxNqrBKiC-vcX2x_eNyTVKr8BC11DRe5Hk.png"
+        },
+        "languages": [
+          "fr"
+        ],
+        "regions": [
+          "TN"
+        ]
+      },
+      "about_page_link": "https://www.google.com/search?q=About+https://fr.wikipedia.org/wiki/Institut_sup%C3%A9rieur_d%27informatique_de_Mahdia&tbm=ilp",
+      "about_page_serpapi_link": "https://serpapi.com/search.json?engine=google_about_this_result&google_domain=google.com&q=About+https%3A%2F%2Ffr.wikipedia.org%2Fwiki%2FInstitut_sup%25C3%25A9rieur_d%2527informatique_de_Mahdia",
+      "source": "Wikipédia"
+    },
+    {
+      "position": 5,
+      "title": "Institut Supérieur d'Informatique de Mahdia",
+      "link": "https://um.rnu.tn/fr/etablissements/instituts/institut-sup%C3%A9rieur-dinformatique-de-mahdia/",
+      "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://um.rnu.tn/fr/etablissements/instituts/institut-sup%25C3%25A9rieur-dinformatique-de-mahdia/&ved=2ahUKEwih55u_re2TAxV3rokEHcgeJuAQFnoFCIYBEAE",
+      "displayed_link": "https://um.rnu.tn › etablissements › instituts › institut-sup...",
+      "favicon": "https://serpapi.com/searches/69de34b632f11dd3aec862f8/images/BQtArduS1DplK2zKmziHt0UOoymY-I9ZPtqEM9vXRME.png",
+      "snippet": "Institut Supérieur d'Informatique de Mahdia (ISIM) ; Directeur : Pr. Mohamed Tarek HAMDANI ; Secrétaire général : Ibtissem HALAOUI ; E-mail : isima@isima.rnu.tn.",
+      "snippet_highlighted_words": [
+        "Institut Supérieur d'Informatique de Mahdia (ISIM"
+      ],
+      "about_this_result": {
+        "source": {
+          "description": "Institut Supérieur d'Informatique de Mahdia (ISIM) ; Directeur : Pr. Mohamed Tarek HAMDANI ; Secrétaire général : Ibtissem HALAOUI ; E-mail : isima@isima.rnu.tn.",
+          "source_info_link": "https://um.rnu.tn/fr/etablissements/instituts/institut-sup%C3%A9rieur-dinformatique-de-mahdia/",
+          "icon": "https://serpapi.com/searches/69de34b632f11dd3aec862f8/images/BQtArduS1DplK2zKmziHtyCqHS1MZoIkdG-iUFEeEjc-Mns-URJlR2Ej-k3hr2Fd.png"
+        },
+        "languages": [
+          "fr"
+        ],
+        "regions": [
+          "TN"
+        ]
+      },
+      "about_page_link": "https://www.google.com/search?q=About+https://um.rnu.tn/fr/etablissements/instituts/institut-sup%C3%A9rieur-dinformatique-de-mahdia/&tbm=ilp",
+      "about_page_serpapi_link": "https://serpapi.com/search.json?engine=google_about_this_result&google_domain=google.com&q=About+https%3A%2F%2Fum.rnu.tn%2Ffr%2Fetablissements%2Finstituts%2Finstitut-sup%25C3%25A9rieur-dinformatique-de-mahdia%2F",
+      "source": "Université de Monastir"
+    },
+    {
+      "position": 6,
+      "title": "Institut Supérieur d'Informatique de Mahdia (ISIMa)",
+      "link": "https://www.ecoles.com.tn/etablissements/superieur/institut-superieur-dinformatique-de-mahdia-isima",
+      "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.ecoles.com.tn/etablissements/superieur/institut-superieur-dinformatique-de-mahdia-isima&ved=2ahUKEwih55u_re2TAxV3rokEHcgeJuAQFnoFCIQBEAE",
+      "displayed_link": "https://www.ecoles.com.tn › Etablissements › Supérieur",
+      "favicon": "https://serpapi.com/searches/69de34b632f11dd3aec862f8/images/BQtArduS1DplK2zKmziHt4J_7FNBJxJp7M9d2Sf5YlM.png",
+      "snippet": "L'ISIMa créé depuis 2004 est reconnu par la qualité de ses formations. Il attire chaque année plus de bacheliers et leur offre des cursus et débouchés ...",
+      "snippet_highlighted_words": [
+        "L'ISIMa créé depuis 2004 est reconnu par la qualité de ses formations"
+      ],
+      "about_this_result": {
+        "source": {
+          "description": "L'ISIMa créé depuis 2004 est reconnu par la qualité de ses formations. Il attire chaque année plus de bacheliers et leur offre des cursus et débouchés ...",
+          "source_info_link": "https://www.ecoles.com.tn/etablissements/superieur/institut-superieur-dinformatique-de-mahdia-isima",
+          "icon": "https://serpapi.com/searches/69de34b632f11dd3aec862f8/images/BQtArduS1DplK2zKmziHt5MWtvJ7QaH4zKx_g1wtA60t17_T02f9dEo8FYFlcW3K.png"
+        },
+        "languages": [
+          "fr"
+        ],
+        "regions": [
+          "TN"
+        ]
+      },
+      "about_page_link": "https://www.google.com/search?q=About+https://www.ecoles.com.tn/etablissements/superieur/institut-superieur-dinformatique-de-mahdia-isima&tbm=ilp",
+      "about_page_serpapi_link": "https://serpapi.com/search.json?engine=google_about_this_result&google_domain=google.com&q=About+https%3A%2F%2Fwww.ecoles.com.tn%2Fetablissements%2Fsuperieur%2Finstitut-superieur-dinformatique-de-mahdia-isima",
+      "source": "Ecoles.com.tn"
+    },
+    {
+      "position": 7,
+      "title": "L'ISIMA racontée par ses directeurs : 30 ans de vision et d'avenir",
+      "link": "https://www.youtube.com/watch?v=063PUYiNGIw",
+      "displayed_link": "Plus de 600 vues · il y a 1 an",
+      "thumbnail": "https://serpapi.com/searches/69de34b632f11dd3aec862f8/images/BQtArduS1DplK2zKmziHtypnu_gfk1aymPBxPlIDPFE.jpeg",
+      "favicon": "https://serpapi.com/searches/69de34b632f11dd3aec862f8/images/BQtArduS1DplK2zKmziHt2MBGRJR1hQ9ch--aH1nnH0.png",
+      "snippet": "L'ISIMA racontée par ses directeurs : 30 ans de vision et d'avenir. 602 views · 1 year ago ...more. ISIMA_Clermont_Ferrand. 211. Subscribe.",
+      "duration": "11:44",
+      "about_this_result": {
+        "source": {
+          "description": "L'ISIMA racontée par ses directeurs : 30 ans de vision et d'avenir. 602 views · 1 year ago ...more. ISIMA_Clermont_Ferrand. 211. Subscribe.",
+          "source_info_link": "https://www.youtube.com/watch?v=063PUYiNGIw",
+          "icon": "https://serpapi.com/searches/69de34b632f11dd3aec862f8/images/BQtArduS1DplK2zKmziHt428XIak5CDwyH9aCwVYRZHSviKKboh7gzQMP-6naWIC.png"
+        }
+      },
+      "about_page_link": "https://www.google.com/search?q=About+https://www.youtube.com/watch?v=063PUYiNGIw&tbm=ilp",
+      "about_page_serpapi_link": "https://serpapi.com/search.json?engine=google_about_this_result&google_domain=google.com&q=About+https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D063PUYiNGIw",
+      "video_link": "https://encrypted-vtbn0.gstatic.com/video?q=tbn:ANd9GcTXZwMGosLdvyUjJ_vGdEg7DazmHUNMb0qXMw",
+      "source": "YouTube · ISIMA_Clermont_Ferrand"
+    }
+  ],
+  "related_searches": [
+    {
+      "block_position": 1,
+      "query": "ISIMa Extranet",
+      "link": "https://www.google.com/search?sca_esv=19eacb78983cd92f&gl=tn&hl=fr&q=ISIMa+Extranet&sa=X&ved=2ahUKEwih55u_re2TAxV3rokEHcgeJuAQ1QJ6BQiFARAB",
+      "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=tn&google_domain=google.com&hl=fr&q=ISIMa+Extranet"
+    },
+    {
+      "block_position": 1,
+      "query": "Isima fiche de renseignement",
+      "link": "https://www.google.com/search?sca_esv=19eacb78983cd92f&gl=tn&hl=fr&q=Isima+fiche+de+renseignement&sa=X&ved=2ahUKEwih55u_re2TAxV3rokEHcgeJuAQ1QJ6BQiUARAB",
+      "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=tn&google_domain=google.com&hl=fr&q=Isima+fiche+de+renseignement"
+    },
+    {
+      "block_position": 1,
+      "query": "ISIMa MAHDIA",
+      "link": "https://www.google.com/search?sca_esv=19eacb78983cd92f&gl=tn&hl=fr&q=ISIMa+MAHDIA&sa=X&ved=2ahUKEwih55u_re2TAxV3rokEHcgeJuAQ1QJ6BQiSARAB",
+      "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=tn&google_domain=google.com&hl=fr&q=ISIMa+MAHDIA"
+    },
+    {
+      "block_position": 1,
+      "query": "ISIMA Licence",
+      "link": "https://www.google.com/search?sca_esv=19eacb78983cd92f&gl=tn&hl=fr&q=ISIMA+Licence&sa=X&ved=2ahUKEwih55u_re2TAxV3rokEHcgeJuAQ1QJ6BQiQARAB",
+      "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=tn&google_domain=google.com&hl=fr&q=ISIMA+Licence"
+    },
+    {
+      "block_position": 1,
+      "query": "ISIMA master",
+      "link": "https://www.google.com/search?sca_esv=19eacb78983cd92f&gl=tn&hl=fr&q=ISIMA+master&sa=X&ved=2ahUKEwih55u_re2TAxV3rokEHcgeJuAQ1QJ6BQiNARAB",
+      "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=tn&google_domain=google.com&hl=fr&q=ISIMA+master"
+    },
+    {
+      "block_position": 1,
+      "query": "ISIMa Emploi du temps",
+      "link": "https://www.google.com/search?sca_esv=19eacb78983cd92f&gl=tn&hl=fr&q=ISIMa+Emploi+du+temps&sa=X&ved=2ahUKEwih55u_re2TAxV3rokEHcgeJuAQ1QJ6BQiMARAB",
+      "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=tn&google_domain=google.com&hl=fr&q=ISIMa+Emploi+du+temps"
+    },
+    {
+      "block_position": 1,
+      "query": "ISIMA inscription",
+      "link": "https://www.google.com/search?sca_esv=19eacb78983cd92f&gl=tn&hl=fr&q=ISIMA+inscription&sa=X&ved=2ahUKEwih55u_re2TAxV3rokEHcgeJuAQ1QJ6BQiJARAB",
+      "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=tn&google_domain=google.com&hl=fr&q=ISIMA+inscription"
+    },
+    {
+      "block_position": 1,
+      "query": "ISIMa rnu",
+      "link": "https://www.google.com/search?sca_esv=19eacb78983cd92f&gl=tn&hl=fr&q=ISIMa+rnu&sa=X&ved=2ahUKEwih55u_re2TAxV3rokEHcgeJuAQ1QJ6BQiIARAB",
+      "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=tn&google_domain=google.com&hl=fr&q=ISIMa+rnu"
+    }
+  ],
+  "pagination": {
+    "current": 1,
+    "next": "https://www.google.com/search?q=isima&sca_esv=19eacb78983cd92f&gl=tn&hl=fr&ei=tzTeaeGvJvfcptQPyL2YgQ4&start=10&sa=N&sstk=Af77f_fCnqHqOtwfLIw5OaZWxAPg-53I15lnyOolo0be02LSab7VxIwKkNMvrioyC0NHuHUIx_0nZ_icklCyVzr2ej6MUnjF2dT22w&ved=2ahUKEwih55u_re2TAxV3rokEHcgeJuAQ8NMDegQIchAI",
+    "other_pages": {
+      "2": "https://www.google.com/search?q=isima&sca_esv=19eacb78983cd92f&gl=tn&hl=fr&ei=tzTeaeGvJvfcptQPyL2YgQ4&start=10&sa=N&sstk=Af77f_fCnqHqOtwfLIw5OaZWxAPg-53I15lnyOolo0be02LSab7VxIwKkNMvrioyC0NHuHUIx_0nZ_icklCyVzr2ej6MUnjF2dT22w&ved=2ahUKEwih55u_re2TAxV3rokEHcgeJuAQ8tMDegQIchAE",
+      "3": "https://www.google.com/search?q=isima&sca_esv=19eacb78983cd92f&gl=tn&hl=fr&ei=tzTeaeGvJvfcptQPyL2YgQ4&start=20&sa=N&sstk=Af77f_fCnqHqOtwfLIw5OaZWxAPg-53I15lnyOolo0be02LSab7VxIwKkNMvrioyC0NHuHUIx_0nZ_icklCyVzr2ej6MUnjF2dT22w&ved=2ahUKEwih55u_re2TAxV3rokEHcgeJuAQ8tMDegQIchAG"
+    }
+  },
+  "serpapi_pagination": {
+    "current": 1,
+    "next_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=tn&google_domain=google.com&hl=fr&q=isima&start=10",
+    "next": "https://serpapi.com/search.json?device=desktop&engine=google&gl=tn&google_domain=google.com&hl=fr&q=isima&start=10",
+    "other_pages": {
+      "2": "https://serpapi.com/search.json?device=desktop&engine=google&gl=tn&google_domain=google.com&hl=fr&q=isima&start=10",
+      "3": "https://serpapi.com/search.json?device=desktop&engine=google&gl=tn&google_domain=google.com&hl=fr&q=isima&start=20"
+    }
+  }
+}

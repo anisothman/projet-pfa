@@ -1,41 +1,27 @@
 // @flow strict-local
 
-import type {AbortSignal} from 'abortcontroller-polyfill/dist/cjs-ponyfill';
-import type {Async, EnvMap} from '@parcel/types';
-import type {EventType, Options as WatcherOptions} from '@parcel/watcher';
-import type WorkerFarm from '@parcel/workers';
+import invariant, {AssertionError} from 'assert';
+import path from 'path';
+
+import {ContentGraph} from '@parcel/graph';
 import type {
   ContentGraphOpts,
   ContentKey,
   NodeId,
   SerializedContentGraph,
 } from '@parcel/graph';
-import type {
-  ParcelOptions,
-  RequestInvalidation,
-  InternalFileCreateInvalidation,
-  InternalGlob,
-} from './types';
-import type {Deferred} from '@parcel/utils';
-
-import invariant from 'assert';
-import nullthrows from 'nullthrows';
-import path from 'path';
+import logger from '@parcel/logger';
+import {hashString} from '@parcel/rust';
+import type {Async, EnvMap} from '@parcel/types';
 import {
+  type Deferred,
   isGlobMatch,
   isDirectoryInside,
   makeDeferredWithPromise,
 } from '@parcel/utils';
-import {hashString} from '@parcel/rust';
-import {ContentGraph} from '@parcel/graph';
-import {deserialize, serialize} from './serializer';
-import {assertSignalNotAborted, hashFromOption} from './utils';
-import {
-  type ProjectPath,
-  fromProjectPathRelative,
-  toProjectPathUnsafe,
-  toProjectPath,
-} from './projectPath';
+import type {Options as WatcherOptions, Event} from '@parcel/watcher';
+import type WorkerFarm from '@parcel/workers';
+import nullthrows from 'nullthrows';
 
 import {
   PARCEL_VERSION,
@@ -49,9 +35,34 @@ import {
   STARTUP,
   ERROR,
 } from './constants';
-
-import {report} from './ReporterRunner';
-import {PromiseQueue} from '@parcel/utils';
+import {
+  type ProjectPath,
+  fromProjectPathRelative,
+  toProjectPathUnsafe,
+  toProjectPath,
+} from './projectPath';
+import {getConfigKeyContentHash} from './requests/ConfigRequest';
+import type {AssetGraphRequestResult} from './requests/AssetGraphRequest';
+import type {PackageRequestResult} from './requests/PackageRequest';
+import type {ConfigRequestResult} from './requests/ConfigRequest';
+import type {DevDepRequestResult} from './requests/DevDepRequest';
+import type {WriteBundlesRequestResult} from './requests/WriteBundlesRequest';
+import type {WriteBundleRequestResult} from './requests/WriteBundleRequest';
+import type {TargetRequestResult} from './requests/TargetRequest';
+import type {PathRequestResult} from './requests/PathRequest';
+import type {ParcelConfigRequestResult} from './requests/ParcelConfigRequest';
+import type {ParcelBuildRequestResult} from './requests/ParcelBuildRequest';
+import type {EntryRequestResult} from './requests/EntryRequest';
+import type {BundleGraphResult} from './requests/BundleGraphRequest';
+import {deserialize, serialize} from './serializer';
+import type {
+  AssetRequestResult,
+  ParcelOptions,
+  RequestInvalidation,
+  InternalFileCreateInvalidation,
+  InternalGlob,
+} from './types';
+import {BuildAbortError, assertSignalNotAborted, hashFromOption} from './utils';
 
 export const requestGraphEdgeTypes = {
   subrequest: 2,
@@ -61,6 +72,10 @@ export const requestGraphEdgeTypes = {
   invalidated_by_create_above: 6,
   dirname: 7,
 };
+
+class FSBailoutError extends Error {
+  name: string = 'FSBailoutError';
+}
 
 export type RequestGraphEdgeType = $Values<typeof requestGraphEdgeTypes>;
 
@@ -73,7 +88,7 @@ type RequestGraphOpts = {|
   optionNodeIds: Set<NodeId>,
   unpredicatableNodeIds: Set<NodeId>,
   invalidateOnBuildNodeIds: Set<NodeId>,
-  cachedRequestChunks: Set<number>,
+  configKeyNodes: Map<ProjectPath, Set<NodeId>>,
 |};
 
 type SerializedRequestGraph = {|
@@ -85,7 +100,7 @@ type SerializedRequestGraph = {|
   optionNodeIds: Set<NodeId>,
   unpredicatableNodeIds: Set<NodeId>,
   invalidateOnBuildNodeIds: Set<NodeId>,
-  cachedRequestChunks: Set<number>,
+  configKeyNodes: Map<ProjectPath, Set<NodeId>>,
 |};
 
 const FILE: 0 = 0;
@@ -94,6 +109,8 @@ const FILE_NAME: 2 = 2;
 const ENV: 3 = 3;
 const OPTION: 4 = 4;
 const GLOB: 5 = 5;
+const CONFIG_KEY: 6 = 6;
+
 type FileNode = {|id: ContentKey, +type: typeof FILE|};
 
 type GlobNode = {|id: ContentKey, +type: typeof GLOB, value: InternalGlob|};
@@ -115,6 +132,13 @@ type OptionNode = {|
   hash: string,
 |};
 
+type ConfigKeyNode = {|
+  id: ContentKey,
+  +type: typeof CONFIG_KEY,
+  configKey: string,
+  contentHash: string,
+|};
+
 type Request<TInput, TResult> = {|
   id: string,
   +type: RequestType,
@@ -122,13 +146,28 @@ type Request<TInput, TResult> = {|
   run: ({|input: TInput, ...StaticRunOpts<TResult>|}) => Async<TResult>,
 |};
 
+export type RequestResult =
+  | AssetGraphRequestResult
+  | PackageRequestResult
+  | ConfigRequestResult
+  | DevDepRequestResult
+  | WriteBundlesRequestResult
+  | WriteBundleRequestResult
+  | TargetRequestResult
+  | PathRequestResult
+  | ParcelConfigRequestResult
+  | ParcelBuildRequestResult
+  | EntryRequestResult
+  | BundleGraphResult
+  | AssetRequestResult;
+
 type InvalidateReason = number;
 type RequestNode = {|
   id: ContentKey,
   +type: typeof REQUEST,
   +requestType: RequestType,
   invalidateReason: InvalidateReason,
-  result?: mixed,
+  result?: RequestResult,
   resultCacheKey?: ?string,
   hash?: string,
 |};
@@ -151,6 +190,7 @@ export const requestTypes = {
 };
 
 type RequestType = $Values<typeof requestTypes>;
+type RequestTypeName = $Keys<typeof requestTypes>;
 
 type RequestGraphNode =
   | RequestNode
@@ -158,24 +198,30 @@ type RequestGraphNode =
   | GlobNode
   | FileNameNode
   | EnvNode
-  | OptionNode;
+  | OptionNode
+  | ConfigKeyNode;
 
-export type RunAPI<TResult> = {|
+export type RunAPI<TResult: RequestResult> = {|
   invalidateOnFileCreate: InternalFileCreateInvalidation => void,
   invalidateOnFileDelete: ProjectPath => void,
   invalidateOnFileUpdate: ProjectPath => void,
+  invalidateOnConfigKeyChange: (
+    filePath: ProjectPath,
+    configKey: string,
+    contentHash: string,
+  ) => void,
   invalidateOnStartup: () => void,
   invalidateOnBuild: () => void,
   invalidateOnEnvChange: string => void,
   invalidateOnOptionChange: string => void,
   getInvalidations(): Array<RequestInvalidation>,
   storeResult(result: TResult, cacheKey?: string): void,
-  getRequestResult<T>(contentKey: ContentKey): Async<?T>,
-  getPreviousResult<T>(ifMatch?: string): Async<?T>,
+  getRequestResult<T: RequestResult>(contentKey: ContentKey): Async<?T>,
+  getPreviousResult<T: RequestResult>(ifMatch?: string): Async<?T>,
   getSubRequests(): Array<RequestNode>,
   getInvalidSubRequests(): Array<RequestNode>,
   canSkipSubrequest(ContentKey): boolean,
-  runRequest: <TInput, TResult>(
+  runRequest: <TInput, TResult: RequestResult>(
     subRequest: Request<TInput, TResult>,
     opts?: RunRequestOpts,
   ) => Promise<TResult>,
@@ -186,10 +232,10 @@ type RunRequestOpts = {|
 |};
 
 export type StaticRunOpts<TResult> = {|
-  farm: WorkerFarm,
-  options: ParcelOptions,
   api: RunAPI<TResult>,
+  farm: WorkerFarm,
   invalidateReason: InvalidateReason,
+  options: ParcelOptions,
 |};
 
 const nodeFromFilePath = (filePath: ProjectPath): RequestGraphNode => ({
@@ -225,12 +271,22 @@ const nodeFromOption = (option: string, value: mixed): RequestGraphNode => ({
   hash: hashFromOption(value),
 });
 
+const nodeFromConfigKey = (
+  fileName: ProjectPath,
+  configKey: string,
+  contentHash: string,
+): RequestGraphNode => ({
+  id: `config_key:${fromProjectPathRelative(fileName)}:${configKey}`,
+  type: CONFIG_KEY,
+  configKey,
+  contentHash,
+});
+
 const keyFromEnvContentKey = (contentKey: ContentKey): string =>
   contentKey.slice('env:'.length);
 
 const keyFromOptionContentKey = (contentKey: ContentKey): string =>
   contentKey.slice('option:'.length);
-
 export class RequestGraph extends ContentGraph<
   RequestGraphNode,
   RequestGraphEdgeType,
@@ -245,7 +301,7 @@ export class RequestGraph extends ContentGraph<
   // filesystem changes alone. They should rerun on each startup of Parcel.
   unpredicatableNodeIds: Set<NodeId> = new Set();
   invalidateOnBuildNodeIds: Set<NodeId> = new Set();
-  cachedRequestChunks: Set<number> = new Set();
+  configKeyNodes: Map<ProjectPath, Set<NodeId>> = new Map();
 
   // $FlowFixMe[prop-missing]
   static deserialize(opts: RequestGraphOpts): RequestGraph {
@@ -258,7 +314,7 @@ export class RequestGraph extends ContentGraph<
     deserialized.optionNodeIds = opts.optionNodeIds;
     deserialized.unpredicatableNodeIds = opts.unpredicatableNodeIds;
     deserialized.invalidateOnBuildNodeIds = opts.invalidateOnBuildNodeIds;
-    deserialized.cachedRequestChunks = opts.cachedRequestChunks;
+    deserialized.configKeyNodes = opts.configKeyNodes;
     return deserialized;
   }
 
@@ -273,7 +329,7 @@ export class RequestGraph extends ContentGraph<
       optionNodeIds: this.optionNodeIds,
       unpredicatableNodeIds: this.unpredicatableNodeIds,
       invalidateOnBuildNodeIds: this.invalidateOnBuildNodeIds,
-      cachedRequestChunks: this.cachedRequestChunks,
+      configKeyNodes: this.configKeyNodes,
     };
   }
 
@@ -309,14 +365,28 @@ export class RequestGraph extends ContentGraph<
       this.envNodeIds.delete(nodeId);
     } else if (node.type === OPTION) {
       this.optionNodeIds.delete(nodeId);
+    } else if (node.type === CONFIG_KEY) {
+      for (let configKeyNodes of this.configKeyNodes.values()) {
+        configKeyNodes.delete(nodeId);
+      }
     }
     return super.removeNode(nodeId);
   }
 
   getRequestNode(nodeId: NodeId): RequestNode {
     let node = nullthrows(this.getNode(nodeId));
-    invariant(node.type === REQUEST);
-    return node;
+
+    if (node.type === REQUEST) {
+      return node;
+    }
+
+    throw new AssertionError({
+      message: `Expected a request node: ${
+        node.type
+      } (${typeof node.type}) does not equal ${REQUEST} (${typeof REQUEST}).`,
+      expected: REQUEST,
+      actual: node.type,
+    });
   }
 
   replaceSubrequests(
@@ -351,9 +421,6 @@ export class RequestGraph extends ContentGraph<
     for (let parentNode of parentNodes) {
       this.invalidateNode(parentNode, reason);
     }
-
-    // If the node is invalidated, the cached request chunk on disk needs to be re-written
-    this.removeCachedRequestChunkForNode(nodeId);
   }
 
   invalidateUnpredictableNodes() {
@@ -403,6 +470,40 @@ export class RequestGraph extends ContentGraph<
           this.invalidateNode(parentNode, OPTION_CHANGE);
         }
       }
+    }
+  }
+
+  invalidateOnConfigKeyChange(
+    requestNodeId: NodeId,
+    filePath: ProjectPath,
+    configKey: string,
+    contentHash: string,
+  ) {
+    let configKeyNodeId = this.addNode(
+      nodeFromConfigKey(filePath, configKey, contentHash),
+    );
+    let nodes = this.configKeyNodes.get(filePath);
+
+    if (!nodes) {
+      nodes = new Set();
+      this.configKeyNodes.set(filePath, nodes);
+    }
+
+    nodes.add(configKeyNodeId);
+
+    if (
+      !this.hasEdge(
+        requestNodeId,
+        configKeyNodeId,
+        requestGraphEdgeTypes.invalidated_by_update,
+      )
+    ) {
+      this.addEdge(
+        requestNodeId,
+        configKeyNodeId,
+        // Store as an update edge, but file deletes are handled too
+        requestGraphEdgeTypes.invalidated_by_update,
+      );
     }
   }
 
@@ -747,11 +848,38 @@ export class RequestGraph extends ContentGraph<
     }
   }
 
-  respondToFSEvents(
-    events: Array<{|path: ProjectPath, type: EventType|}>,
-  ): boolean {
+  async respondToFSEvents(
+    events: Array<Event>,
+    options: ParcelOptions,
+    threshold: number,
+  ): Async<boolean> {
     let didInvalidate = false;
-    for (let {path: _filePath, type} of events) {
+    let count = 0;
+    let predictedTime = 0;
+    let startTime = Date.now();
+
+    for (let {path: _path, type} of events) {
+      if (++count === 256) {
+        let duration = Date.now() - startTime;
+        predictedTime = duration * (events.length >> 8);
+        if (predictedTime > threshold) {
+          logger.warn({
+            origin: '@parcel/core',
+            message:
+              'Building with clean cache. Cache invalidation took too long.',
+            meta: {
+              trackableEvent: 'cache_invalidation_timeout',
+              watcherEventCount: events.length,
+              predictedTime,
+            },
+          });
+          throw new FSBailoutError(
+            'Responding to file system events exceeded threshold, start with empty cache.',
+          );
+        }
+      }
+
+      let _filePath = toProjectPath(options.projectRoot, _path);
       let filePath = fromProjectPathRelative(_filePath);
       let hasFileRequest = this.hasContentKey(filePath);
 
@@ -759,6 +887,14 @@ export class RequestGraph extends ContentGraph<
       // this means the project root was moved and we need to
       // re-run all requests.
       if (type === 'create' && filePath === '') {
+        logger.verbose({
+          origin: '@parcel/core',
+          message:
+            'Watcher reported project root create event. Invalidate all nodes.',
+          meta: {
+            trackableEvent: 'project_root_create',
+          },
+        });
         for (let [id, node] of this.nodes.entries()) {
           if (node?.type === REQUEST) {
             this.invalidNodeIds.add(id);
@@ -849,33 +985,63 @@ export class RequestGraph extends ContentGraph<
         // to requests as invalidations for future requests.
         this.removeNode(nodeId);
       }
+
+      let configKeyNodes = this.configKeyNodes.get(_filePath);
+      if (configKeyNodes && (type === 'delete' || type === 'update')) {
+        for (let nodeId of configKeyNodes) {
+          let isInvalid = type === 'delete';
+
+          if (type === 'update') {
+            let node = this.getNode(nodeId);
+            invariant(node && node.type === CONFIG_KEY);
+
+            let contentHash = await getConfigKeyContentHash(
+              _filePath,
+              node.configKey,
+              options,
+            );
+
+            isInvalid = node.contentHash !== contentHash;
+          }
+
+          if (isInvalid) {
+            for (let connectedNode of this.getNodeIdsConnectedTo(
+              nodeId,
+              requestGraphEdgeTypes.invalidated_by_update,
+            )) {
+              this.invalidateNode(
+                connectedNode,
+                type === 'delete' ? FILE_DELETE : FILE_UPDATE,
+              );
+            }
+            didInvalidate = true;
+            this.removeNode(nodeId);
+          }
+        }
+      }
     }
+
+    let duration = Date.now() - startTime;
+    logger.verbose({
+      origin: '@parcel/core',
+      message: `RequestGraph.respondToFSEvents duration: ${duration}`,
+      meta: {
+        trackableEvent: 'fsevent_response_time',
+        duration,
+        predictedTime,
+      },
+    });
 
     return didInvalidate && this.invalidNodeIds.size > 0;
   }
-
-  hasCachedRequestChunk(index: number): boolean {
-    return this.cachedRequestChunks.has(index);
-  }
-
-  setCachedRequestChunk(index: number): void {
-    this.cachedRequestChunks.add(index);
-  }
-
-  removeCachedRequestChunkForNode(nodeId: number): void {
-    this.cachedRequestChunks.delete(Math.floor(nodeId / NODES_PER_BLOB));
-  }
 }
-
-// This constant is chosen by local profiling the time to serialise n nodes and tuning until an average time of ~50 ms per blob.
-// The goal is to free up the event loop periodically to allow interruption by the user.
-const NODES_PER_BLOB = 2 ** 14;
 
 export default class RequestTracker {
   graph: RequestGraph;
   farm: WorkerFarm;
   options: ParcelOptions;
   signal: ?AbortSignal;
+  stats: Map<RequestType, number> = new Map();
 
   constructor({
     graph,
@@ -921,7 +1087,7 @@ export default class RequestTracker {
   }
 
   // If a cache key is provided, the result will be removed from the node and stored in a separate cache entry
-  storeResult(nodeId: NodeId, result: mixed, cacheKey: ?string) {
+  storeResult(nodeId: NodeId, result: RequestResult, cacheKey: ?string) {
     let node = this.graph.getNode(nodeId);
     if (node && node.type === REQUEST) {
       node.result = result;
@@ -937,7 +1103,7 @@ export default class RequestTracker {
     );
   }
 
-  async getRequestResult<T>(
+  async getRequestResult<T: RequestResult>(
     contentKey: ContentKey,
     ifMatch?: string,
   ): Promise<?T> {
@@ -971,7 +1137,6 @@ export default class RequestTracker {
     if (node && node.type === REQUEST) {
       node.invalidateReason = VALID;
     }
-    this.graph.removeCachedRequestChunkForNode(nodeId);
   }
 
   rejectRequest(nodeId: NodeId) {
@@ -984,10 +1149,8 @@ export default class RequestTracker {
     }
   }
 
-  respondToFSEvents(
-    events: Array<{|path: ProjectPath, type: EventType|}>,
-  ): boolean {
-    return this.graph.respondToFSEvents(events);
+  respondToFSEvents(events: Array<Event>, threshold: number): Async<boolean> {
+    return this.graph.respondToFSEvents(events, this.options, threshold);
   }
 
   hasInvalidRequests(): boolean {
@@ -1011,11 +1174,12 @@ export default class RequestTracker {
     this.graph.replaceSubrequests(requestNodeId, subrequestContextKeys);
   }
 
-  async runRequest<TInput, TResult>(
+  async runRequest<TInput, TResult: RequestResult>(
     request: Request<TInput, TResult>,
     opts?: ?RunRequestOpts,
   ): Promise<TResult> {
-    let requestId = this.graph.hasContentKey(request.id)
+    let hasKey = this.graph.hasContentKey(request.id);
+    let requestId = hasKey
       ? this.graph.getNodeIdByContentKey(request.id)
       : undefined;
     let hasValidResult = requestId != null && this.hasValidResult(requestId);
@@ -1056,12 +1220,15 @@ export default class RequestTracker {
 
     try {
       let node = this.graph.getRequestNode(requestNodeId);
+
+      this.stats.set(request.type, (this.stats.get(request.type) ?? 0) + 1);
+
       let result = await request.run({
         input: request.input,
         api,
         farm: this.farm,
-        options: this.options,
         invalidateReason: node.invalidateReason,
+        options: this.options,
       });
 
       assertSignalNotAborted(this.signal);
@@ -1070,6 +1237,21 @@ export default class RequestTracker {
       deferred.resolve(true);
       return result;
     } catch (err) {
+      if (
+        !(err instanceof BuildAbortError) &&
+        request.type === requestTypes.dev_dep_request
+      ) {
+        logger.verbose({
+          origin: '@parcel/core',
+          message: `Failed DevDepRequest`,
+          meta: {
+            trackableEvent: 'failed_dev_dep_request',
+            hasKey,
+            hasValidResult,
+          },
+        });
+      }
+
       this.rejectRequest(requestNodeId);
       deferred.resolve(false);
       throw err;
@@ -1078,7 +1260,26 @@ export default class RequestTracker {
     }
   }
 
-  createAPI<TResult>(
+  flushStats(): {[requestType: string]: number} {
+    let requestTypeEntries = {};
+
+    for (let key of (Object.keys(requestTypes): RequestTypeName[])) {
+      requestTypeEntries[requestTypes[key]] = key;
+    }
+
+    let formattedStats = {};
+
+    for (let [requestType, count] of this.stats.entries()) {
+      let requestTypeName = requestTypeEntries[requestType];
+      formattedStats[requestTypeName] = count;
+    }
+
+    this.stats = new Map();
+
+    return formattedStats;
+  }
+
+  createAPI<TResult: RequestResult>(
     requestId: NodeId,
     previousInvalidations: Array<RequestInvalidation>,
   ): {|api: RunAPI<TResult>, subRequestContentKeys: Set<ContentKey>|} {
@@ -1086,6 +1287,13 @@ export default class RequestTracker {
     let api: RunAPI<TResult> = {
       invalidateOnFileCreate: input =>
         this.graph.invalidateOnFileCreate(requestId, input),
+      invalidateOnConfigKeyChange: (filePath, configKey, contentHash) =>
+        this.graph.invalidateOnConfigKeyChange(
+          requestId,
+          filePath,
+          configKey,
+          contentHash,
+        ),
       invalidateOnFileDelete: filePath =>
         this.graph.invalidateOnFileDelete(requestId, filePath),
       invalidateOnFileUpdate: filePath =>
@@ -1106,11 +1314,12 @@ export default class RequestTracker {
       },
       getSubRequests: () => this.graph.getSubRequests(requestId),
       getInvalidSubRequests: () => this.graph.getInvalidSubRequests(requestId),
-      getPreviousResult: <T>(ifMatch?: string): Async<?T> => {
+      getPreviousResult: <T: RequestResult>(ifMatch?: string): Async<?T> => {
         let contentKey = nullthrows(this.graph.getNode(requestId)?.id);
         return this.getRequestResult<T>(contentKey, ifMatch);
       },
-      getRequestResult: <T>(id): Async<?T> => this.getRequestResult<T>(id),
+      getRequestResult: <T: RequestResult>(id): Async<?T> =>
+        this.getRequestResult<T>(id),
       canSkipSubrequest: contentKey => {
         if (
           this.graph.hasContentKey(contentKey) &&
@@ -1122,7 +1331,7 @@ export default class RequestTracker {
 
         return false;
       },
-      runRequest: <TInput, TResult>(
+      runRequest: <TInput, TResult: RequestResult>(
         subRequest: Request<TInput, TResult>,
         opts?: RunRequestOpts,
       ): Promise<TResult> => {
@@ -1136,137 +1345,66 @@ export default class RequestTracker {
 
   async writeToCache(signal?: AbortSignal) {
     let cacheKey = getCacheKey(this.options);
-    let hashedCacheKey = hashString(cacheKey);
-    let requestGraphKey = `requestGraph-${hashedCacheKey}`;
-    let snapshotKey = `snapshot-${hashedCacheKey}`;
+    let requestGraphKey = `${cacheKey}-RequestGraph`;
+    let snapshotKey = `snapshot-${cacheKey}`;
 
     if (this.options.shouldDisableCache) {
       return;
     }
 
-    let serialisedGraph = this.graph.serialize();
-
-    let total = 0;
-    const serialiseAndSet = async (
-      key: string,
-      // $FlowFixMe serialise input is any type
-      contents: any,
-    ): Promise<void> => {
-      if (signal?.aborted) {
-        throw new Error('Serialization was aborted');
+    let keys = [requestGraphKey];
+    let promises = [];
+    for (let node of this.graph.nodes) {
+      if (!node || node.type !== REQUEST) {
+        continue;
       }
 
-      await this.options.cache.setLargeBlob(
-        key,
-        serialize(contents),
-        signal
-          ? {
-              signal: signal,
-            }
-          : undefined,
-      );
-
-      total += 1;
-
-      report({
-        type: 'cache',
-        phase: 'write',
-        total,
-        size: this.graph.nodes.length,
-      });
-    };
-
-    let queue = new PromiseQueue({
-      maxConcurrent: 32,
-    });
-
-    report({
-      type: 'cache',
-      phase: 'start',
-      total,
-      size: this.graph.nodes.length,
-    });
-
-    // Preallocating a sparse array is faster than pushing when N is high enough
-    let cacheableNodes = new Array(serialisedGraph.nodes.length);
-    for (let i = 0; i < serialisedGraph.nodes.length; i += 1) {
-      let node = serialisedGraph.nodes[i];
-
-      let resultCacheKey = node?.resultCacheKey;
-      if (
-        node?.type === REQUEST &&
-        resultCacheKey != null &&
-        node?.result != null
-      ) {
-        queue
-          .add(() => serialiseAndSet(resultCacheKey, node.result))
-          .catch(() => {
-            // Handle promise rejection
-          });
-
-        // eslint-disable-next-line no-unused-vars
-        let {result: _, ...newNode} = node;
-        cacheableNodes[i] = newNode;
-      } else {
-        cacheableNodes[i] = node;
+      let resultCacheKey = node.resultCacheKey;
+      if (resultCacheKey != null && node.result != null) {
+        keys.push(resultCacheKey);
+        promises.push(
+          this.options.cache.setLargeBlob(
+            resultCacheKey,
+            serialize(node.result),
+            {signal},
+          ),
+        );
+        delete node.result;
       }
     }
 
-    for (let i = 0; i * NODES_PER_BLOB < cacheableNodes.length; i += 1) {
-      if (!this.graph.hasCachedRequestChunk(i)) {
-        // We assume the request graph nodes are immutable and won't change
-        queue
-          .add(() =>
-            serialiseAndSet(
-              getRequestGraphNodeKey(i, hashedCacheKey),
-              cacheableNodes.slice(
-                i * NODES_PER_BLOB,
-                (i + 1) * NODES_PER_BLOB,
-              ),
-            ).then(() => {
-              // Succeeded in writing to disk, save that we have completed this chunk
-              this.graph.setCachedRequestChunk(i);
-            }),
-          )
-          .catch(() => {
-            // Handle promise rejection
-          });
-      }
-    }
-
-    queue
-      .add(() =>
-        serialiseAndSet(requestGraphKey, {
-          ...serialisedGraph,
-          nodes: undefined,
-        }),
-      )
-      .catch(() => {
-        // Handle promise rejection
-      });
+    promises.push(
+      this.options.cache.setLargeBlob(requestGraphKey, serialize(this.graph), {
+        signal,
+      }),
+    );
 
     let opts = getWatcherOptions(this.options);
     let snapshotPath = path.join(this.options.cacheDir, snapshotKey + '.txt');
-    queue
-      .add(() =>
-        this.options.inputFS.writeSnapshot(
-          this.options.projectRoot,
-          snapshotPath,
-          opts,
-        ),
-      )
-      .catch(() => {
-        // Handle promise rejection
-      });
+    promises.push(
+      this.options.inputFS.writeSnapshot(
+        this.options.watchDir,
+        snapshotPath,
+        opts,
+      ),
+    );
 
     try {
-      await queue.run();
+      await Promise.all(promises);
     } catch (err) {
-      // If we have aborted, ignore the error and continue
-      if (!signal?.aborted) throw err;
+      if (signal?.aborted) {
+        // If writing to the cache was aborted, delete all of the keys to avoid inconsistent states.
+        for (let key of keys) {
+          try {
+            await this.options.cache.deleteLargeBlob(key);
+          } catch (err) {
+            // ignore.
+          }
+        }
+      } else {
+        throw err;
+      }
     }
-
-    report({type: 'cache', phase: 'end', total, size: this.graph.nodes.length});
   }
 
   static async init({
@@ -1277,24 +1415,29 @@ export default class RequestTracker {
     options: ParcelOptions,
   |}): Async<RequestTracker> {
     let graph = await loadRequestGraph(options);
-    return new RequestTracker({farm, options, graph});
+    return new RequestTracker({farm, graph, options});
   }
 }
 
-export function getWatcherOptions(options: ParcelOptions): WatcherOptions {
-  let vcsDirs = ['.git', '.hg'].map(dir => path.join(options.projectRoot, dir));
-  let ignore = [options.cacheDir, ...vcsDirs];
-  return {ignore};
+export function getWatcherOptions({
+  watchIgnore = [],
+  cacheDir,
+  watchDir,
+  watchBackend,
+}: ParcelOptions): WatcherOptions {
+  const vcsDirs = ['.git', '.hg'];
+  const uniqueDirs = [...new Set([...watchIgnore, ...vcsDirs, cacheDir])];
+  const ignore = uniqueDirs.map(dir => path.resolve(watchDir, dir));
+
+  return {ignore, backend: watchBackend};
 }
 
 function getCacheKey(options) {
-  return `${PARCEL_VERSION}:${JSON.stringify(options.entries)}:${
-    options.mode
-  }:${options.shouldBuildLazily ? 'lazy' : 'eager'}`;
-}
-
-function getRequestGraphNodeKey(index: number, hashedCacheKey: string) {
-  return `requestGraph-nodes-${index}-${hashedCacheKey}`;
+  return hashString(
+    `${PARCEL_VERSION}:${JSON.stringify(options.entries)}:${options.mode}:${
+      options.shouldBuildLazily ? 'lazy' : 'eager'
+    }:${options.watchBackend ?? ''}`,
+  );
 }
 
 async function loadRequestGraph(options): Async<RequestGraph> {
@@ -1303,54 +1446,71 @@ async function loadRequestGraph(options): Async<RequestGraph> {
   }
 
   let cacheKey = getCacheKey(options);
-  let hashedCacheKey = hashString(cacheKey);
-  let requestGraphKey = `requestGraph-${hashedCacheKey}`;
+  let requestGraphKey = `${cacheKey}-RequestGraph`;
+  const snapshotKey = `snapshot-${cacheKey}`;
+  const snapshotPath = path.join(options.cacheDir, snapshotKey + '.txt');
   if (await options.cache.hasLargeBlob(requestGraphKey)) {
-    const getAndDeserialize = async (key: string) => {
-      return deserialize(await options.cache.getLargeBlob(key));
-    };
-
-    let i = 0;
-    let nodePromises = [];
-    while (
-      await options.cache.hasLargeBlob(
-        getRequestGraphNodeKey(i, hashedCacheKey),
-      )
-    ) {
-      nodePromises.push(
-        getAndDeserialize(getRequestGraphNodeKey(i, hashedCacheKey)),
+    try {
+      let requestGraph: RequestGraph = deserialize(
+        await options.cache.getLargeBlob(requestGraphKey),
       );
-      i += 1;
+
+      let opts = getWatcherOptions(options);
+      let events = await options.inputFS.getEventsSince(
+        options.watchDir,
+        snapshotPath,
+        opts,
+      );
+
+      requestGraph.invalidateUnpredictableNodes();
+      requestGraph.invalidateOnBuildNodes();
+      requestGraph.invalidateEnvNodes(options.env);
+      requestGraph.invalidateOptionNodes(options);
+
+      await requestGraph.respondToFSEvents(
+        options.unstableFileInvalidations || events,
+        options,
+        10000,
+      );
+      return requestGraph;
+    } catch (e) {
+      // Prevent logging fs events took too long warning
+      logErrorOnBailout(options, snapshotPath, e);
+      // This error means respondToFSEvents timed out handling the invalidation events
+      // In this case we'll return a fresh RequestGraph
+      return new RequestGraph();
     }
-
-    let serializedRequestGraph = await getAndDeserialize(requestGraphKey);
-    let requestGraph = RequestGraph.deserialize({
-      ...serializedRequestGraph,
-      nodes: (await Promise.all(nodePromises)).flatMap(nodeChunk => nodeChunk),
-    });
-
-    let opts = getWatcherOptions(options);
-    let snapshotKey = `snapshot-${hashedCacheKey}`;
-    let snapshotPath = path.join(options.cacheDir, snapshotKey + '.txt');
-    let events = await options.inputFS.getEventsSince(
-      options.watchDir,
-      snapshotPath,
-      opts,
-    );
-
-    requestGraph.invalidateUnpredictableNodes();
-    requestGraph.invalidateOnBuildNodes();
-    requestGraph.invalidateEnvNodes(options.env);
-    requestGraph.invalidateOptionNodes(options);
-    requestGraph.respondToFSEvents(
-      (options.unstableFileInvalidations || events).map(e => ({
-        type: e.type,
-        path: toProjectPath(options.projectRoot, e.path),
-      })),
-    );
-
-    return requestGraph;
   }
 
   return new RequestGraph();
+}
+function logErrorOnBailout(
+  options: ParcelOptions,
+  snapshotPath: string,
+  e: Error,
+): void {
+  if (e.message && e.message.includes('invalid clockspec')) {
+    const snapshotContents = options.inputFS.readFileSync(
+      snapshotPath,
+      'utf-8',
+    );
+    logger.warn({
+      origin: '@parcel/core',
+      message: `Error reading clockspec from snapshot, building with clean cache.`,
+      meta: {
+        snapshotContents: snapshotContents,
+        trackableEvent: 'invalid_clockspec_error',
+      },
+    });
+  } else if (!(e instanceof FSBailoutError)) {
+    logger.warn({
+      origin: '@parcel/core',
+      message: `Unexpected error loading cache from disk, building with clean cache.`,
+      meta: {
+        errorMessage: e.message,
+        errorStack: e.stack,
+        trackableEvent: 'cache_load_error',
+      },
+    });
+  }
 }

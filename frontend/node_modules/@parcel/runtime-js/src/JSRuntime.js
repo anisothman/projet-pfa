@@ -11,12 +11,7 @@ import type {
 } from '@parcel/types';
 
 import {Runtime} from '@parcel/plugin';
-import {
-  relativeBundlePath,
-  validateSchema,
-  type SchemaEntity,
-} from '@parcel/utils';
-import {encodeJSONKeyComponent} from '@parcel/diagnostic';
+import {relativeBundlePath, urlJoin, getImportMap} from '@parcel/utils';
 import path from 'path';
 import nullthrows from 'nullthrows';
 
@@ -70,52 +65,8 @@ let bundleDependencies = new WeakMap<
   |},
 >();
 
-type JSRuntimeConfig = {|
-  splitManifestThreshold: number,
-|};
-
-let defaultConfig: JSRuntimeConfig = {
-  splitManifestThreshold: 100000,
-};
-
-const CONFIG_SCHEMA: SchemaEntity = {
-  type: 'object',
-  properties: {
-    splitManifestThreshold: {
-      type: 'number',
-    },
-  },
-  additionalProperties: false,
-};
-
 export default (new Runtime({
-  async loadConfig({config, options}): Promise<JSRuntimeConfig> {
-    let packageKey = '@parcel/runtime-js';
-    let conf = await config.getConfig<JSRuntimeConfig>([], {
-      packageKey,
-    });
-
-    if (!conf) {
-      return defaultConfig;
-    }
-    validateSchema.diagnostic(
-      CONFIG_SCHEMA,
-      {
-        data: conf?.contents,
-        source: await options.inputFS.readFile(conf.filePath, 'utf8'),
-        filePath: conf.filePath,
-        prependKey: `/${encodeJSONKeyComponent(packageKey)}`,
-      },
-      packageKey,
-      `Invalid config for ${packageKey}`,
-    );
-
-    return {
-      ...defaultConfig,
-      ...conf?.contents,
-    };
-  },
-  apply({bundle, bundleGraph, options, config}) {
+  apply({bundle, bundleGraph, options}) {
     // Dependency ids in code replaced with referenced bundle names
     // Loader runtime added for bundle groups that don't have a native loader (e.g. HTML/CSS/Worker - isURL?),
     // and which are not loaded by a parent bundle.
@@ -126,6 +77,10 @@ export default (new Runtime({
     if (bundle.type !== 'js') {
       return;
     }
+
+    let useRuntimeManifest = shouldUseRuntimeManifest(bundle, options);
+    let useImportMaps =
+      useRuntimeManifest && shouldUseImportMaps(bundleGraph, bundle);
 
     let {asyncDependencies, otherDependencies} = getDependencies(bundle);
 
@@ -143,7 +98,7 @@ export default (new Runtime({
           // The linker handles this for scope-hoisting.
           assets.push({
             filePath: __filename,
-            code: `module.exports = Promise.resolve(module.bundle.root(${JSON.stringify(
+            code: `module.exports = Promise.resolve(parcelRequire(${JSON.stringify(
               bundleGraph.getAssetPublicId(resolved.value),
             )}))`,
             dependency,
@@ -178,6 +133,8 @@ export default (new Runtime({
           bundleGraph,
           bundleGroup: resolved.value,
           options,
+          useRuntimeManifest,
+          useImportMaps,
         });
 
         if (loaderRuntime != null) {
@@ -232,18 +189,52 @@ export default (new Runtime({
 
       // Skip URL runtimes for library builds. This is handled in packaging so that
       // the url is inlined and statically analyzable.
-      if (bundle.env.isLibrary && dependency.meta?.placeholder != null) {
+      if (bundle.env.isLibrary && mainBundle.bundleBehavior !== 'isolated') {
         continue;
       }
 
       // URL dependency or not, fall back to including a runtime that exports the url
-      assets.push(getURLRuntime(dependency, bundle, mainBundle, options));
+      let mainAsset = mainBundle
+        .getEntryAssets()
+        .find(e => e.id === bundleGroup.entryAssetId);
+      if (
+        dependency.specifierType === 'url' ||
+        mainAsset?.meta.jsRuntime === 'url'
+      ) {
+        assets.push(
+          getURLRuntime(
+            dependency,
+            bundle,
+            mainBundle,
+            options,
+            useRuntimeManifest,
+            useImportMaps,
+          ),
+        );
+        continue;
+      }
+
+      if (mainBundle.type === 'node' && mainBundle.env.isNode()) {
+        let relativePathExpr = getAbsoluteUrlExpr(
+          bundle,
+          mainBundle,
+          options,
+          useRuntimeManifest,
+          useImportMaps,
+        );
+        assets.push({
+          filePath: __filename,
+          code: `module.exports = require('./helpers/node/node-loader.js')(${relativePathExpr});`,
+          dependency,
+          env: {sourceType: 'module'},
+        });
+      }
     }
 
     // In development, bundles can be created lazily. This means that the parent bundle may not
     // know about all of the sibling bundles of a child when it is written for the first time.
     // Therefore, we need to also ensure that the siblings are loaded when the child loads.
-    if (options.shouldBuildLazily && bundle.env.outputFormat === 'global') {
+    if (options.shouldBuildLazily && !bundle.env.shouldScopeHoist) {
       let referenced = bundleGraph.getReferencedBundles(bundle);
       for (let referencedBundle of referenced) {
         let loaders = getLoaders(bundle.env);
@@ -256,14 +247,15 @@ export default (new Runtime({
           continue;
         }
 
-        let relativePathExpr = getRelativePathExpr(
+        let loaderCode = `require(${JSON.stringify(
+          loader,
+        )})( ${getAbsoluteUrlExpr(
           bundle,
           referencedBundle,
           options,
-        );
-        let loaderCode = `require(${JSON.stringify(
-          loader,
-        )})( ${getAbsoluteUrlExpr(relativePathExpr, bundle)})`;
+          useRuntimeManifest,
+          useImportMaps,
+        )})`;
         assets.push({
           filePath: __filename,
           code: loaderCode,
@@ -274,7 +266,10 @@ export default (new Runtime({
     }
 
     if (
-      shouldUseRuntimeManifest(bundle, options) &&
+      useRuntimeManifest &&
+      !useImportMaps &&
+      bundle.env.context !== 'react-server' &&
+      bundle.env.context !== 'react-client' &&
       bundleGraph
         .getChildBundles(bundle)
         .some(b => b.bundleBehavior !== 'inline') &&
@@ -285,11 +280,6 @@ export default (new Runtime({
         code: getRegisterCode(bundle, bundleGraph),
         isEntry: true,
         env: {sourceType: 'module'},
-        priority: getManifestBundlePriority(
-          bundleGraph,
-          bundle,
-          config.splitManifestThreshold,
-        ),
       });
     }
 
@@ -334,12 +324,16 @@ function getLoaderRuntime({
   bundleGroup,
   bundleGraph,
   options,
+  useRuntimeManifest,
+  useImportMaps,
 }: {|
   bundle: NamedBundle,
   dependency: Dependency,
   bundleGroup: BundleGroup,
   bundleGraph: BundleGraph<NamedBundle>,
   options: PluginOptions,
+  useRuntimeManifest: boolean,
+  useImportMaps: boolean,
 |}): ?RuntimeAsset {
   let loaders = getLoaders(bundle.env);
   if (loaders == null) {
@@ -375,7 +369,6 @@ function getLoaderRuntime({
   let needsDynamicImportPolyfill =
     !bundle.env.isLibrary && !bundle.env.supports('dynamic-import', true);
 
-  let needsEsmLoadPrelude = false;
   let loaderModules = [];
 
   for (let to of externalBundles) {
@@ -388,17 +381,23 @@ function getLoaderRuntime({
       to.type === 'js' &&
       to.env.outputFormat === 'esmodule' &&
       !needsDynamicImportPolyfill &&
-      shouldUseRuntimeManifest(bundle, options)
+      useRuntimeManifest
     ) {
-      loaderModules.push(`load(${JSON.stringify(to.publicId)})`);
-      needsEsmLoadPrelude = true;
+      if (useImportMaps) {
+        loaderModules.push(
+          `__parcel__import__(${JSON.stringify(to.publicId)})`,
+        );
+      } else {
+        loaderModules.push(
+          `parcelRequire.load(${JSON.stringify(to.publicId)})`,
+        );
+      }
       continue;
     }
 
-    let relativePathExpr = getRelativePathExpr(bundle, to, options);
-
     // Use esmodule loader if possible
     if (to.type === 'js' && to.env.outputFormat === 'esmodule') {
+      let relativePathExpr = getRelativePathExpr(bundle, to, options);
       if (!needsDynamicImportPolyfill) {
         loaderModules.push(`__parcel__import__("./" + ${relativePathExpr})`);
         continue;
@@ -409,25 +408,25 @@ function getLoaderRuntime({
         `No import() polyfill available for context '${bundle.env.context}'`,
       );
     } else if (to.type === 'js' && to.env.outputFormat === 'commonjs') {
+      let relativePathExpr = getRelativePathExpr(bundle, to, options);
       loaderModules.push(
         `Promise.resolve(__parcel__require__("./" + ${relativePathExpr}))`,
       );
       continue;
     }
 
-    let absoluteUrlExpr = shouldUseRuntimeManifest(bundle, options)
-      ? `require('./helpers/bundle-manifest').resolve(${JSON.stringify(
-          to.publicId,
-        )})`
-      : getAbsoluteUrlExpr(relativePathExpr, bundle);
+    let absoluteUrlExpr = getAbsoluteUrlExpr(
+      bundle,
+      to,
+      options,
+      useRuntimeManifest,
+      useImportMaps,
+    );
     let code = `require(${JSON.stringify(loader)})(${absoluteUrlExpr})`;
 
     // In development, clear the require cache when an error occurs so the
     // user can try again (e.g. after fixing a build error).
-    if (
-      options.mode === 'development' &&
-      bundle.env.outputFormat === 'global'
-    ) {
+    if (options.mode === 'development' && !bundle.env.shouldScopeHoist) {
       code +=
         '.catch(err => {delete module.bundle.cache[module.id]; throw err;})';
     }
@@ -476,25 +475,14 @@ function getLoaderRuntime({
   }
 
   if (mainBundle.type === 'js') {
-    let parcelRequire = bundle.env.shouldScopeHoist
-      ? 'parcelRequire'
-      : 'module.bundle.root';
-    loaderCode += `.then(() => ${parcelRequire}('${bundleGraph.getAssetPublicId(
+    loaderCode += `.then(() => parcelRequire('${bundleGraph.getAssetPublicId(
       bundleGraph.getAssetById(bundleGroup.entryAssetId),
     )}'))`;
   }
 
-  let code = [];
-
-  if (needsEsmLoadPrelude) {
-    code.push(`let load = require('./helpers/browser/esm-js-loader');`);
-  }
-
-  code.push(`module.exports = ${loaderCode};`);
-
   return {
     filePath: __filename,
-    code: code.join('\n'),
+    code: `module.exports = ${loaderCode};`,
     dependency,
     env: {sourceType: 'module'},
   };
@@ -544,16 +532,14 @@ function getHintLoaders(
       bundleGraph.getBundlesInBundleGroup(bundleGroupToPreload);
 
     for (let bundleToPreload of bundlesToPreload) {
-      let relativePathExpr = getRelativePathExpr(
-        from,
-        bundleToPreload,
-        options,
-      );
       let priority = TYPE_TO_RESOURCE_PRIORITY[bundleToPreload.type];
       hintLoaders.push(
         `require(${JSON.stringify(loader)})(${getAbsoluteUrlExpr(
-          relativePathExpr,
           from,
+          bundleToPreload,
+          options,
+          false,
+          false,
         )}, ${priority ? JSON.stringify(priority) : 'null'}, ${JSON.stringify(
           bundleToPreload.target.env.outputFormat === 'esmodule',
         )})`,
@@ -587,29 +573,30 @@ function getURLRuntime(
   from: NamedBundle,
   to: NamedBundle,
   options: PluginOptions,
+  useRuntimeManifest: boolean,
+  useImportMaps: boolean,
 ): RuntimeAsset {
-  let relativePathExpr = getRelativePathExpr(from, to, options);
+  let absoluteUrlExpr = getAbsoluteUrlExpr(
+    from,
+    to,
+    options,
+    useRuntimeManifest,
+    useImportMaps,
+  );
   let code;
 
   if (dependency.meta.webworker === true && !from.env.isLibrary) {
     code = `let workerURL = require('./helpers/get-worker-url');\n`;
-    if (
-      from.env.outputFormat === 'esmodule' &&
-      from.env.supports('import-meta-url')
-    ) {
-      code += `let url = new __parcel__URL__(${relativePathExpr});\n`;
-      code += `module.exports = workerURL(url.toString(), url.origin, ${String(
-        from.env.outputFormat === 'esmodule',
-      )});`;
-    } else {
-      code += `let bundleURL = require('./helpers/bundle-url');\n`;
-      code += `let url = bundleURL.getBundleURL('${from.publicId}') + ${relativePathExpr};`;
-      code += `module.exports = workerURL(url, bundleURL.getOrigin(url), ${String(
-        from.env.outputFormat === 'esmodule',
-      )});`;
-    }
+    code += `let url = new URL(${absoluteUrlExpr});\n`;
+    code += `module.exports = workerURL(url.toString(), url.origin, ${String(
+      from.env.outputFormat === 'esmodule',
+    )});`;
+  } else if (from.env.isServer() && to.env.isBrowser()) {
+    code = `module.exports = ${JSON.stringify(
+      urlJoin(to.target.publicUrl, to.name),
+    )};`;
   } else {
-    code = `module.exports = ${getAbsoluteUrlExpr(relativePathExpr, from)};`;
+    code = `module.exports = ${absoluteUrlExpr};`;
   }
 
   return {
@@ -624,71 +611,49 @@ function getRegisterCode(
   entryBundle: NamedBundle,
   bundleGraph: BundleGraph<NamedBundle>,
 ): string {
-  let mappings = [];
-  bundleGraph.traverseBundles((bundle, _, actions) => {
-    if (bundle.bundleBehavior === 'inline') {
-      return;
-    }
-
-    // To make the manifest as small as possible all bundle key/values are
-    // serialised into a single array e.g. ['id', 'value', 'id2', 'value2'].
-    // `./helpers/bundle-manifest` accounts for this by iterating index by 2
-    mappings.push(
-      bundle.publicId,
-      relativeBundlePath(entryBundle, nullthrows(bundle), {
-        leadingDotSlash: false,
-      }),
-    );
-
-    if (bundle !== entryBundle && isNewContext(bundle, bundleGraph)) {
-      for (let referenced of bundleGraph.getReferencedBundles(bundle)) {
-        mappings.push(
-          referenced.publicId,
-          relativeBundlePath(entryBundle, nullthrows(referenced), {
-            leadingDotSlash: false,
-          }),
-        );
-      }
-      // New contexts have their own manifests, so there's no need to continue.
-      actions.skipChildren();
-    }
-  }, entryBundle);
-
-  let baseUrl =
-    entryBundle.env.outputFormat === 'esmodule' &&
-    entryBundle.env.supports('import-meta-url')
-      ? 'new __parcel__URL__("").toString()' // <-- this isn't ideal. We should use `import.meta.url` directly but it gets replaced currently
-      : `require('./helpers/bundle-url').getBundleURL('${entryBundle.publicId}')`;
-
-  return `require('./helpers/bundle-manifest').register(${baseUrl},JSON.parse(${JSON.stringify(
-    JSON.stringify(mappings),
-  )}));`;
+  let mappings = getImportMap(bundleGraph, entryBundle);
+  return `parcelRequire.extendImportMap(${JSON.stringify(mappings)});`;
 }
 
 function getRelativePathExpr(
   from: NamedBundle,
   to: NamedBundle,
   options: PluginOptions,
+  isURL = to.type !== 'js',
 ): string {
   let relativePath = relativeBundlePath(from, to, {leadingDotSlash: false});
   let res = JSON.stringify(relativePath);
-  if (options.hmrOptions) {
+  if (isURL && options.hmrOptions) {
     res += ' + "?" + Date.now()';
   }
 
   return res;
 }
 
-function getAbsoluteUrlExpr(relativePathExpr: string, bundle: NamedBundle) {
-  if (
-    (bundle.env.outputFormat === 'esmodule' &&
-      bundle.env.supports('import-meta-url')) ||
-    bundle.env.outputFormat === 'commonjs'
-  ) {
+function getAbsoluteUrlExpr(
+  bundle: NamedBundle,
+  to: NamedBundle,
+  options: PluginOptions,
+  useRuntimeManifest: boolean,
+  useImportMaps: boolean,
+) {
+  // let relativePathExpr;
+  if (useRuntimeManifest) {
+    if (useImportMaps) {
+      return `__parcel__import__.meta.resolve(${JSON.stringify(to.publicId)})`;
+    } else {
+      return `parcelRequire.resolve(${JSON.stringify(to.publicId)})`;
+    }
+  } else if (bundle.env.isLibrary) {
     // This will be compiled to new URL(url, import.meta.url) or new URL(url, 'file:' + __filename).
+    let relativePathExpr = getRelativePathExpr(bundle, to, options);
     return `new __parcel__URL__(${relativePathExpr}).toString()`;
   } else {
-    return `require('./helpers/bundle-url').getBundleURL('${bundle.publicId}') + ${relativePathExpr}`;
+    let res = `parcelRequire.resolve(${JSON.stringify(to.name)})`;
+    if (to.type !== 'js' && options.hmrOptions) {
+      res += ' + "?" + Date.now()';
+    }
+    return res;
   }
 }
 
@@ -705,20 +670,14 @@ function shouldUseRuntimeManifest(
   );
 }
 
-function getManifestBundlePriority(
+function shouldUseImportMaps(
   bundleGraph: BundleGraph<NamedBundle>,
   bundle: NamedBundle,
-  threshold: number,
-): $PropertyType<RuntimeAsset, 'priority'> {
-  let bundleSize = 0;
-
-  bundle.traverseAssets((asset, _, actions) => {
-    bundleSize += asset.stats.size;
-
-    if (bundleSize > threshold) {
-      actions.stop();
-    }
-  });
-
-  return bundleSize > threshold ? 'parallel' : 'sync';
+) {
+  return (
+    bundle.env.outputFormat === 'esmodule' &&
+    bundle.env.supports('import-meta-resolve') &&
+    !bundle.env.isIsolated() &&
+    bundleGraph.getEntryBundles().every(entry => entry.type === 'html')
+  );
 }

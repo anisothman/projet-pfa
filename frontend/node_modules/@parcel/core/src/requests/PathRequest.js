@@ -12,6 +12,7 @@ import type {
   Config,
   Dependency,
   DevDepRequest,
+  DevDepRequestRef,
   ParcelOptions,
 } from '../types';
 import type {ConfigAndCachePath} from './ParcelConfigRequest';
@@ -56,9 +57,11 @@ import {requestTypes} from '../RequestTracker';
 export type PathRequest = {|
   id: string,
   +type: typeof requestTypes.path_request,
-  run: (RunOpts<?AssetGroup>) => Async<?AssetGroup>,
+  run: (RunOpts<PathRequestResult>) => Async<PathRequestResult>,
   input: PathRequestInput,
 |};
+
+export type PathRequestResult = null | void | AssetGroup;
 
 export type PathRequestInput = {|
   dependency: Dependency,
@@ -83,7 +86,7 @@ export default function createPathRequest(
   };
 }
 
-async function run({input, api, options}) {
+async function run({input, api, options}): Promise<PathRequestResult> {
   let configResult = nullthrows(
     await api.runRequest<null, ConfigAndCachePath>(createParcelConfigRequest()),
   );
@@ -161,7 +164,7 @@ export class ResolverRunner {
   options: ParcelOptions;
   pluginOptions: PluginOptions;
   previousDevDeps: Map<string, string>;
-  devDepRequests: Map<string, DevDepRequest>;
+  devDepRequests: Map<string, DevDepRequest | DevDepRequestRef>;
   configs: Map<string, Config>;
 
   constructor({config, options, previousDevDeps}: ResolverRunnerOpts) {
@@ -235,7 +238,7 @@ export class ResolverRunner {
     }
   }
 
-  runDevDepRequest(devDepRequest: DevDepRequest) {
+  runDevDepRequest(devDepRequest: DevDepRequest | DevDepRequestRef) {
     let {specifier, resolveFrom} = devDepRequest;
     let key = `${specifier}:${fromProjectPathRelative(resolveFrom)}`;
     this.devDepRequests.set(key, devDepRequest);
@@ -313,7 +316,8 @@ export class ResolverRunner {
           }
 
           if (result.priority != null) {
-            dependency.priority = Priority[result.priority];
+            dependency.priority = dependency.resolverPriority =
+              Priority[result.priority];
           }
 
           if (result.invalidateOnEnvChange) {
@@ -368,7 +372,13 @@ export class ResolverRunner {
             };
           }
 
-          if (result.diagnostics) {
+          if (
+            result.diagnostics != null &&
+            !(
+              Array.isArray(result.diagnostics) &&
+              result.diagnostics.length === 0
+            )
+          ) {
             let errorDiagnostic = errorToDiagnostic(
               new ThrowableDiagnostic({diagnostic: result.diagnostics}),
               {

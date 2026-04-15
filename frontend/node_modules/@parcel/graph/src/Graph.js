@@ -28,6 +28,51 @@ export type SerializedGraph<TNode, TEdgeType: number = 1> = {|
 export type AllEdgeTypes = -1;
 export const ALL_EDGE_TYPES: AllEdgeTypes = -1;
 
+type DFSCommandVisit<TContext> = {|
+  nodeId: NodeId,
+  context: TContext | null,
+|};
+
+type DFSCommandExit<TContext> = {|
+  nodeId: NodeId,
+  exit: GraphTraversalCallback<NodeId, TContext>,
+  context: TContext | null,
+|};
+
+/**
+ * Internal type used for queue iterative DFS implementation.
+ */
+type DFSCommand<TContext> =
+  | DFSCommandVisit<TContext>
+  | DFSCommandExit<TContext>;
+
+/**
+ * Options for DFS traversal.
+ */
+export type DFSParams<TContext> = {|
+  visit: GraphVisitor<NodeId, TContext>,
+  /**
+   * Custom function to get next entries to visit.
+   *
+   * This can be a performance bottleneck as arrays are created on every node visit.
+   *
+   * @deprecated This will be replaced by a static `traversalType` set of orders in the future
+   *
+   * Currently, this is only used in 3 ways:
+   *
+   * - Traversing down the tree (normal DFS)
+   * - Traversing up the tree (ancestors)
+   * - Filtered version of traversal; which does not need to exist at the DFS level as the visitor
+   *   can handle filtering
+   * - Sorted traversal of BundleGraph entries, which does not have a clear use-case, but may
+   *   not be safe to remove
+   *
+   * Only due to the latter we aren't replacing this.
+   */
+  getChildren: (nodeId: NodeId) => Array<NodeId>,
+  startNodeId?: ?NodeId,
+|};
+
 export default class Graph<TNode, TEdgeType: number = 1> {
   nodes: Array<TNode | null>;
   adjacencyList: AdjacencyList<TEdgeType>;
@@ -449,15 +494,16 @@ export default class Graph<TNode, TEdgeType: number = 1> {
     return;
   }
 
+  /**
+   * Iterative implementation of DFS that supports all use-cases.
+   *
+   * This replaces `dfs` and will replace `dfsFast`.
+   */
   dfs<TContext>({
     visit,
     startNodeId,
     getChildren,
-  }: {|
-    visit: GraphVisitor<NodeId, TContext>,
-    getChildren(nodeId: NodeId): Array<NodeId>,
-    startNodeId?: ?NodeId,
-  |}): ?TContext {
+  }: DFSParams<TContext>): ?TContext {
     let traversalStartNode = nullthrows(
       startNodeId ?? this.rootNodeId,
       'A start node is required to traverse',
@@ -486,65 +532,74 @@ export default class Graph<TNode, TEdgeType: number = 1> {
       },
     };
 
-    let walk = (nodeId, context: ?TContext) => {
-      if (!this.hasNode(nodeId)) return;
-      visited.add(nodeId);
+    const queue: DFSCommand<TContext>[] = [
+      {nodeId: traversalStartNode, context: null},
+    ];
+    const enter = typeof visit === 'function' ? visit : visit.enter;
+    while (queue.length !== 0) {
+      const command = queue.pop();
 
-      skipped = false;
-      let enter = typeof visit === 'function' ? visit : visit.enter;
-      if (enter) {
-        let newContext = enter(nodeId, context, actions);
+      if (command.exit != null) {
+        let {nodeId, context, exit} = command;
+        let newContext = exit(nodeId, command.context, actions);
         if (typeof newContext !== 'undefined') {
           // $FlowFixMe[reassign-const]
           context = newContext;
         }
-      }
 
-      if (skipped) {
-        return;
-      }
-
-      if (stopped) {
-        return context;
-      }
-
-      for (let child of getChildren(nodeId)) {
-        if (visited.has(child)) {
+        if (skipped) {
           continue;
         }
 
-        visited.add(child);
-        let result = walk(child, context);
         if (stopped) {
-          return result;
+          this._visited = visited;
+          return context;
+        }
+      } else {
+        let {nodeId, context} = command;
+        if (!this.hasNode(nodeId) || visited.has(nodeId)) continue;
+        visited.add(nodeId);
+
+        skipped = false;
+        if (enter) {
+          let newContext = enter(nodeId, context, actions);
+          if (typeof newContext !== 'undefined') {
+            // $FlowFixMe[reassign-const]
+            context = newContext;
+          }
+        }
+
+        if (skipped) {
+          continue;
+        }
+
+        if (stopped) {
+          this._visited = visited;
+          return context;
+        }
+
+        if (typeof visit !== 'function' && visit.exit) {
+          queue.push({
+            nodeId,
+            exit: visit.exit,
+            context,
+          });
+        }
+
+        // TODO turn into generator function
+        const children = getChildren(nodeId);
+        for (let i = children.length - 1; i > -1; i -= 1) {
+          const child = children[i];
+          if (visited.has(child)) {
+            continue;
+          }
+
+          queue.push({nodeId: child, context});
         }
       }
+    }
 
-      if (
-        typeof visit !== 'function' &&
-        visit.exit &&
-        // Make sure the graph still has the node: it may have been removed between enter and exit
-        this.hasNode(nodeId)
-      ) {
-        let newContext = visit.exit(nodeId, context, actions);
-        if (typeof newContext !== 'undefined') {
-          // $FlowFixMe[reassign-const]
-          context = newContext;
-        }
-      }
-
-      if (skipped) {
-        return;
-      }
-
-      if (stopped) {
-        return context;
-      }
-    };
-
-    let result = walk(traversalStartNode);
     this._visited = visited;
-    return result;
   }
 
   bfs(visit: (nodeId: NodeId) => ?boolean): ?NodeId {
