@@ -52,6 +52,8 @@ export default function ResultDisplay() {
       const data = await res.json();
       console.log("API RESULT =", data);
 
+      
+
       if (!data.success) throw new Error(data.error);
 
       const cleanedData = {

@@ -207,7 +207,7 @@
       });
     }
   }
-})({"4Mor0":[function(require,module,exports,__globalThis) {
+})({"6Xy86":[function(require,module,exports,__globalThis) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
@@ -2260,11 +2260,11 @@ if (root) (0, _clientDefault.default).createRoot(root).render(/*#__PURE__*/ (0, 
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"gZVbG","react":"4mESd","react-dom/client":"iCdCH","./components/ResultDisplay":"godEI","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"gZVbG":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-dom/client":"hrvwu","./components/ResultDisplay":"godEI","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"dVPUn":[function(require,module,exports,__globalThis) {
 'use strict';
-module.exports = require("8547da225c23801b");
+module.exports = require("ee51401569654d91");
 
-},{"8547da225c23801b":"18J8T"}],"18J8T":[function(require,module,exports,__globalThis) {
+},{"ee51401569654d91":"gnlQf"}],"gnlQf":[function(require,module,exports,__globalThis) {
 /**
  * @license React
  * react-jsx-dev-runtime.development.js
@@ -2276,7 +2276,7 @@ module.exports = require("8547da225c23801b");
  */ 'use strict';
 (function() {
     'use strict';
-    var React = require("dadceb4399651175");
+    var React = require("58362d9d82be395f");
     // ATTENTION
     // When adding new symbols to this file,
     // Please consider also adding to 'react-devtools-shared/src/backend/ReactSymbols'
@@ -3108,11 +3108,11 @@ module.exports = require("8547da225c23801b");
     exports.jsxDEV = jsxDEV$1;
 })();
 
-},{"dadceb4399651175":"4mESd"}],"4mESd":[function(require,module,exports,__globalThis) {
+},{"58362d9d82be395f":"jMk1U"}],"jMk1U":[function(require,module,exports,__globalThis) {
 'use strict';
-module.exports = require("ede04d29009c0f32");
+module.exports = require("a569817e6ea559f6");
 
-},{"ede04d29009c0f32":"9ohh8"}],"9ohh8":[function(require,module,exports,__globalThis) {
+},{"a569817e6ea559f6":"ghslp"}],"ghslp":[function(require,module,exports,__globalThis) {
 /**
  * @license React
  * react.development.js
@@ -4979,9 +4979,9 @@ module.exports = require("ede04d29009c0f32");
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== 'undefined' && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop === 'function') __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
 })();
 
-},{}],"iCdCH":[function(require,module,exports,__globalThis) {
+},{}],"hrvwu":[function(require,module,exports,__globalThis) {
 'use strict';
-var m = require("d591e0fde5bdf0f4");
+var m = require("aaccff5d309d9239");
 var i = m.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
 exports.createRoot = function(c, o) {
     i.usingClientEntryPoint = true;
@@ -5000,7 +5000,7 @@ exports.hydrateRoot = function(c, h, o) {
     }
 };
 
-},{"d591e0fde5bdf0f4":"hXUzO"}],"hXUzO":[function(require,module,exports,__globalThis) {
+},{"aaccff5d309d9239":"i4X7T"}],"i4X7T":[function(require,module,exports,__globalThis) {
 'use strict';
 function checkDCE() {
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === 'undefined' || typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== 'function') return;
@@ -5014,9 +5014,9 @@ function checkDCE() {
     // a false positive.
     throw new Error('^_^');
 }
-module.exports = require("2b843ec1d26c2467");
+module.exports = require("b0f0e6b9e8349dac");
 
-},{"2b843ec1d26c2467":"c7emJ"}],"c7emJ":[function(require,module,exports,__globalThis) {
+},{"b0f0e6b9e8349dac":"cLd8p"}],"cLd8p":[function(require,module,exports,__globalThis) {
 /**
  * @license React
  * react-dom.development.js
@@ -5029,8 +5029,8 @@ module.exports = require("2b843ec1d26c2467");
 (function() {
     'use strict';
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== 'undefined' && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart === 'function') __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
-    var React = require("dc8ec98f2e17c169");
-    var Scheduler = require("2199c3ced8316047");
+    var React = require("6f0162e9ab224cd4");
+    var Scheduler = require("8ad4ca65319d28a7");
     var ReactSharedInternals = React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
     var suppressWarning = false;
     function setSuppressWarning(newSuppressWarning) {
@@ -26045,11 +26045,11 @@ module.exports = require("2b843ec1d26c2467");
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== 'undefined' && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop === 'function') __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
 })();
 
-},{"dc8ec98f2e17c169":"4mESd","2199c3ced8316047":"lxwj2"}],"lxwj2":[function(require,module,exports,__globalThis) {
+},{"6f0162e9ab224cd4":"jMk1U","8ad4ca65319d28a7":"4OQ2m"}],"4OQ2m":[function(require,module,exports,__globalThis) {
 'use strict';
-module.exports = require("f6356e156bc4b3e5");
+module.exports = require("ef03b89c8fe2794e");
 
-},{"f6356e156bc4b3e5":"2iRpK"}],"2iRpK":[function(require,module,exports,__globalThis) {
+},{"ef03b89c8fe2794e":"j5hep"}],"j5hep":[function(require,module,exports,__globalThis) {
 /**
  * @license React
  * scheduler.development.js
@@ -26522,11 +26522,16 @@ function ResultDisplay() {
     const [resultat, setResultat] = (0, _react.useState)(null);
     const [loading, setLoading] = (0, _react.useState)(false);
     const [erreur, setErreur] = (0, _react.useState)(null);
+    const [pdfLoading, setPdfLoading] = (0, _react.useState)(false);
     (0, _react.useEffect)(()=>{
         fetch("http://localhost:5000/api/companies").then((res)=>res.json()).then((data)=>{
             if (data.success) setEntreprises(data.companies);
         }).catch(()=>{});
     }, []);
+    const removeStars = (text)=>{
+        if (!text) return "";
+        return text.replace(/\*\*/g, "").replace(/\*/g, "");
+    };
     const analyserEntreprise = async ()=>{
         if (!entreprise.trim()) return;
         setLoading(true);
@@ -26543,9 +26548,18 @@ function ResultDisplay() {
                 })
             });
             const data = await res.json();
-            console.log("API RESULT =", data); // ✅ debug
+            console.log("API RESULT =", data);
             if (!data.success) throw new Error(data.error);
-            setResultat(data);
+            const cleanedData = {
+                ...data,
+                swot: removeStars(data.swot),
+                action_plan: removeStars(data.action_plan),
+                rating: {
+                    ...data.rating,
+                    justification: removeStars(data.rating.justification)
+                }
+            };
+            setResultat(cleanedData);
         } catch (err) {
             setErreur(err.message);
         } finally{
@@ -26554,6 +26568,7 @@ function ResultDisplay() {
     };
     const telechargerPDF = async ()=>{
         if (!resultat) return;
+        setPdfLoading(true);
         try {
             const res = await fetch("http://localhost:5000/api/generate-pdf", {
                 method: "POST",
@@ -26562,276 +26577,319 @@ function ResultDisplay() {
                 },
                 body: JSON.stringify({
                     company_name: resultat.company_name,
-                    diagnostic: resultat.swot,
-                    plan_action: resultat.action_plan,
-                    rating: resultat.rating
+                    rating: resultat.rating,
+                    swot: resultat.swot,
+                    action_plan: resultat.action_plan
                 })
             });
+            if (!res.ok) throw new Error(`Erreur HTTP: ${res.status}`);
             const blob = await res.blob();
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement("a");
             a.href = url;
             a.download = `diagnostic_${resultat.company_name}.pdf`;
+            document.body.appendChild(a);
             a.click();
+            document.body.removeChild(a);
             window.URL.revokeObjectURL(url);
-        } catch  {
-            setErreur("Erreur lors du t\xe9l\xe9chargement du PDF");
+        } catch (err) {
+            setErreur("Erreur lors du t\xe9l\xe9chargement du PDF: " + err.message);
+        } finally{
+            setPdfLoading(false);
         }
     };
-    const scoreColor = resultat ? resultat.rating.score >= 70 ? "#22C55E" : resultat.rating.score >= 40 ? "#F97316" : "#EF4444" : "#3B5BDB";
+    const getScoreColor = (score)=>{
+        if (score >= 70) return "#10B981";
+        if (score >= 40) return "#F59E0B";
+        return "#EF4444";
+    };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         style: {
-            maxWidth: 900,
-            margin: "0 auto"
+            maxWidth: 1000,
+            margin: "0 auto",
+            padding: "20px"
         },
         children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("style", {
+                children: `
+        @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap');
+        * { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+        .main-title {
+          font-size: 2.5rem; font-weight: 800;
+          background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%);
+          -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+          background-clip: text; margin-bottom: 0.75rem; letter-spacing: -0.02em;
+        }
+        .subtitle { font-size: 1.125rem; color: #6B7280; margin-bottom: 2rem; font-weight: 400; }
+        .input-wrapper { display: flex; gap: 1rem; margin-bottom: 2.5rem; }
+        .search-input {
+          flex: 1; padding: 1rem 1.25rem; font-size: 1rem;
+          border: 2px solid #E5E7EB; border-radius: 1rem;
+          transition: all 0.3s ease; background: white; font-weight: 500;
+        }
+        .search-input:focus { outline: none; border-color: #6366F1; box-shadow: 0 0 0 3px rgba(99,102,241,0.1); }
+        .search-input::placeholder { color: #9CA3AF; font-weight: 400; }
+        .analyze-btn {
+          padding: 1rem 2rem; font-size: 1rem; font-weight: 600;
+          background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
+          color: white; border: none; border-radius: 1rem; cursor: pointer;
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .analyze-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 10px 25px -5px rgba(99,102,241,0.4); }
+        .analyze-btn:disabled { opacity: 0.7; cursor: not-allowed; }
+        .result-card {
+          background: white; border-radius: 1.5rem; padding: 2.5rem;
+          box-shadow: 0 20px 40px -12px rgba(0,0,0,0.1); animation: fadeIn 0.5s ease-out;
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .company-name {
+          font-size: 2rem; font-weight: 800;
+          background: linear-gradient(135deg, #1F2937 0%, #4B5563 100%);
+          -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+          background-clip: text; margin-bottom: 1rem; letter-spacing: -0.02em;
+        }
+        .rating-container {
+          display: flex; align-items: center; gap: 0.75rem;
+          margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 2px solid #F3F4F6;
+        }
+        .rating-label { font-size: 0.875rem; font-weight: 600; color: #6B7280; text-transform: uppercase; letter-spacing: 0.05em; }
+        .rating-value { font-size: 1.5rem; font-weight: 700; line-height: 1; }
+        .feature-grid { display: grid; gap: 1.5rem; margin-bottom: 2rem; }
+        .feature-item {
+          background: #F9FAFB; border-radius: 1rem; padding: 1.5rem;
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .feature-item:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        .diagnostic-title { font-size: 1.125rem; font-weight: 700; margin-bottom: 0.75rem; color: #6366F1; }
+        .action-title { font-size: 1.125rem; font-weight: 700; margin-bottom: 0.75rem; color: #8B5CF6; }
+        .justification-title { font-size: 1.125rem; font-weight: 700; margin-bottom: 0.75rem; color: #EC4899; }
+        .feature-content { font-size: 0.9375rem; line-height: 1.6; color: #4B5563; white-space: pre-wrap; font-weight: 400; }
+        .pdf-btn {
+          width: 100%; padding: 1rem; font-size: 1rem; font-weight: 600;
+          background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
+          color: white; border: none; border-radius: 1rem; cursor: pointer; transition: all 0.3s ease;
+        }
+        .pdf-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 10px 25px -5px rgba(99,102,241,0.4); }
+        .pdf-btn:disabled { opacity: 0.7; cursor: not-allowed; }
+        .error-message {
+          background: #FEE2E2; border-left: 4px solid #EF4444; padding: 1rem;
+          border-radius: 0.5rem; margin-bottom: 1rem; color: #991B1B; font-weight: 500; font-size: 0.875rem;
+        }
+        @media (max-width: 768px) {
+          .result-card { padding: 1.5rem; }
+          .company-name { font-size: 1.5rem; }
+          .rating-value { font-size: 1.25rem; }
+          .main-title { font-size: 1.75rem; }
+          .input-wrapper { flex-direction: column; }
+        }
+      `
+            }, void 0, false, {
+                fileName: "src/components/ResultDisplay.tsx",
+                lineNumber: 119,
+                columnNumber: 7
+            }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
-                className: "section-title",
+                className: "main-title",
                 children: "Analyse E-r\xe9putation"
             }, void 0, false, {
                 fileName: "src/components/ResultDisplay.tsx",
-                lineNumber: 96,
-                columnNumber: 5
+                lineNumber: 192,
+                columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                className: "section-sub",
+                className: "subtitle",
                 children: "Entrez le nom d'une entreprise pour obtenir son diagnostic IA"
             }, void 0, false, {
                 fileName: "src/components/ResultDisplay.tsx",
-                lineNumber: 97,
-                columnNumber: 5
+                lineNumber: 193,
+                columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                style: {
-                    display: "flex",
-                    gap: 12,
-                    marginBottom: 40
-                },
+                className: "input-wrapper",
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                        className: "btn-hero-secondary",
+                        className: "search-input",
                         type: "text",
-                        placeholder: "ex: apple, samsung...",
+                        placeholder: "ex: Apple, Samsung, Google",
                         value: entreprise,
                         onChange: (e)=>setEntreprise(e.target.value),
-                        onKeyDown: (e)=>e.key === "Enter" && analyserEntreprise(),
-                        style: {
-                            flex: 1
-                        }
+                        onKeyDown: (e)=>e.key === "Enter" && analyserEntreprise()
                     }, void 0, false, {
                         fileName: "src/components/ResultDisplay.tsx",
-                        lineNumber: 103,
-                        columnNumber: 7
+                        lineNumber: 198,
+                        columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                        className: "btn-hero-primary",
+                        className: "analyze-btn",
                         onClick: analyserEntreprise,
-                        children: loading ? "Analyse..." : "Analyser \u2192"
+                        disabled: loading,
+                        children: loading ? "Analyse en cours..." : "Analyser"
                     }, void 0, false, {
                         fileName: "src/components/ResultDisplay.tsx",
-                        lineNumber: 113,
-                        columnNumber: 7
+                        lineNumber: 206,
+                        columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/components/ResultDisplay.tsx",
-                lineNumber: 102,
-                columnNumber: 5
+                lineNumber: 197,
+                columnNumber: 7
+            }, this),
+            erreur && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "error-message",
+                children: erreur
+            }, void 0, false, {
+                fileName: "src/components/ResultDisplay.tsx",
+                lineNumber: 215,
+                columnNumber: 18
             }, this),
             resultat && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "analytics-card",
-                style: {
-                    width: "100%",
-                    padding: 40,
-                    borderRadius: 24
-                },
+                className: "result-card",
                 children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                        className: "company-name",
+                        children: resultat.company_name.toUpperCase()
+                    }, void 0, false, {
+                        fileName: "src/components/ResultDisplay.tsx",
+                        lineNumber: 219,
+                        columnNumber: 11
+                    }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        style: {
-                            marginBottom: 30
-                        },
+                        className: "rating-container",
                         children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                                style: {
-                                    fontSize: 28,
-                                    fontWeight: 800
-                                },
-                                children: resultat.company_name.toUpperCase()
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                className: "rating-label",
+                                children: "Score de r\xe9putation"
                             }, void 0, false, {
                                 fileName: "src/components/ResultDisplay.tsx",
-                                lineNumber: 131,
-                                columnNumber: 11
+                                lineNumber: 224,
+                                columnNumber: 13
                             }, this),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                className: "rating-value",
                                 style: {
-                                    marginTop: 10
+                                    color: getScoreColor(resultat.rating.score)
                                 },
                                 children: [
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                        style: {
-                                            fontWeight: 600
-                                        },
-                                        children: "Score :"
-                                    }, void 0, false, {
-                                        fileName: "src/components/ResultDisplay.tsx",
-                                        lineNumber: 136,
-                                        columnNumber: 13
-                                    }, this),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                        style: {
-                                            marginLeft: 10,
-                                            fontSize: 32,
-                                            fontWeight: 800,
-                                            color: "#22C55E"
-                                        },
-                                        children: [
-                                            resultat.rating.score,
-                                            "/100"
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "src/components/ResultDisplay.tsx",
-                                        lineNumber: 137,
-                                        columnNumber: 13
-                                    }, this)
+                                    resultat.rating.score,
+                                    "/100"
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/ResultDisplay.tsx",
-                                lineNumber: 135,
-                                columnNumber: 11
+                                lineNumber: 225,
+                                columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/ResultDisplay.tsx",
-                        lineNumber: 130,
-                        columnNumber: 9
+                        lineNumber: 223,
+                        columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        style: {
-                            display: "grid",
-                            gridTemplateColumns: "1fr",
-                            gap: 24
-                        },
+                        className: "feature-grid",
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "feature-card",
+                                className: "feature-item",
                                 children: [
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h4", {
-                                        style: {
-                                            marginBottom: 12
-                                        },
-                                        children: "\uD83D\uDD0D Diagnostic"
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                        className: "diagnostic-title",
+                                        children: "Diagnostic strat\xe9gique"
                                     }, void 0, false, {
                                         fileName: "src/components/ResultDisplay.tsx",
-                                        lineNumber: 161,
-                                        columnNumber: 13
+                                        lineNumber: 235,
+                                        columnNumber: 15
                                     }, this),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("pre", {
-                                        style: {
-                                            whiteSpace: "pre-wrap"
-                                        },
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                        className: "feature-content",
                                         children: resultat.swot
                                     }, void 0, false, {
                                         fileName: "src/components/ResultDisplay.tsx",
-                                        lineNumber: 162,
-                                        columnNumber: 13
+                                        lineNumber: 236,
+                                        columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/ResultDisplay.tsx",
-                                lineNumber: 160,
-                                columnNumber: 11
+                                lineNumber: 234,
+                                columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "feature-card",
+                                className: "feature-item",
                                 children: [
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h4", {
-                                        style: {
-                                            marginBottom: 12
-                                        },
-                                        children: "\uD83C\uDFAF Plan d'action"
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                        className: "action-title",
+                                        children: "Plan d'action recommand\xe9"
                                     }, void 0, false, {
                                         fileName: "src/components/ResultDisplay.tsx",
-                                        lineNumber: 169,
-                                        columnNumber: 13
+                                        lineNumber: 240,
+                                        columnNumber: 15
                                     }, this),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("pre", {
-                                        style: {
-                                            whiteSpace: "pre-wrap"
-                                        },
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                        className: "feature-content",
                                         children: resultat.action_plan
                                     }, void 0, false, {
                                         fileName: "src/components/ResultDisplay.tsx",
-                                        lineNumber: 170,
-                                        columnNumber: 13
+                                        lineNumber: 241,
+                                        columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/ResultDisplay.tsx",
-                                lineNumber: 168,
-                                columnNumber: 11
+                                lineNumber: 239,
+                                columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "feature-card",
+                                className: "feature-item",
                                 children: [
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h4", {
-                                        style: {
-                                            marginBottom: 12
-                                        },
-                                        children: "\uD83D\uDCCA Justification"
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                        className: "justification-title",
+                                        children: "Justification du score"
                                     }, void 0, false, {
                                         fileName: "src/components/ResultDisplay.tsx",
-                                        lineNumber: 177,
-                                        columnNumber: 13
+                                        lineNumber: 245,
+                                        columnNumber: 15
                                     }, this),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                        className: "feature-content",
                                         children: resultat.rating.justification
                                     }, void 0, false, {
                                         fileName: "src/components/ResultDisplay.tsx",
-                                        lineNumber: 178,
-                                        columnNumber: 13
+                                        lineNumber: 246,
+                                        columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/ResultDisplay.tsx",
-                                lineNumber: 176,
-                                columnNumber: 11
+                                lineNumber: 244,
+                                columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/ResultDisplay.tsx",
-                        lineNumber: 151,
-                        columnNumber: 9
+                        lineNumber: 233,
+                        columnNumber: 11
                     }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        style: {
-                            marginTop: 30,
-                            textAlign: "center"
-                        },
-                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                            className: "btn-cta",
-                            onClick: telechargerPDF,
-                            children: "\uD83D\uDCC4 T\xe9l\xe9charger PDF"
-                        }, void 0, false, {
-                            fileName: "src/components/ResultDisplay.tsx",
-                            lineNumber: 185,
-                            columnNumber: 11
-                        }, this)
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                        className: "pdf-btn",
+                        onClick: telechargerPDF,
+                        disabled: pdfLoading,
+                        children: pdfLoading ? "\uD83D\uDCC4 G\xe9n\xe9ration du PDF..." : "\uD83D\uDCE5 T\xe9l\xe9charger le rapport PDF"
                     }, void 0, false, {
                         fileName: "src/components/ResultDisplay.tsx",
-                        lineNumber: 184,
-                        columnNumber: 9
+                        lineNumber: 252,
+                        columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/components/ResultDisplay.tsx",
-                lineNumber: 120,
-                columnNumber: 7
+                lineNumber: 218,
+                columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/components/ResultDisplay.tsx",
-        lineNumber: 94,
-        columnNumber: 3
+        lineNumber: 118,
+        columnNumber: 5
     }, this);
 }
 
@@ -26840,7 +26898,7 @@ function ResultDisplay() {
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"gZVbG","react":"4mESd","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"jnFvT":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"jnFvT":[function(require,module,exports,__globalThis) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -29148,6 +29206,6 @@ function $da9882e673ac146b$var$ErrorOverlay() {
     return null;
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["4Mor0","aqzUV"], "aqzUV", "parcelRequire10c2", {}, null, null, "http://localhost:1234")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["6Xy86","aqzUV"], "aqzUV", "parcelRequire10c2", {}, null, null, "http://localhost:1234")
 
 //# sourceMappingURL=frontend.442a7092.js.map

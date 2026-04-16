@@ -47,9 +47,10 @@ def companies():
                 name = f.replace(".json", "")
                 company_list.append(name)
         return jsonify({"success": True, "companies": company_list})
+
+
     except Exception as e:
         return jsonify({"success": False, "error": str(e)}), 500
-
 
 # -------------------------
 # ANALYSE ENTREPRISE
@@ -84,8 +85,12 @@ def analyze():
                     "source": "diagnostic_engine"
                 })
             else:
-                # Le moteur a retourné une erreur → tenter fallback JSON
-                pass
+                return jsonify({
+                    "success": False,
+                    "error": f"Aucune donnée trouvée pour '{company}'. "
+                    f"Vérifiez que le nom correspond à une entreprise dans notre base."
+            }), 404
+
         except Exception as e:
             print(f"⚠️ Erreur DiagnosticEngine: {e}")
 

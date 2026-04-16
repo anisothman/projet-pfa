@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analyse E-réputation | Localis AI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #eef2f7 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+            padding: 40px;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        h1 {
+            color: #0B1E55;
+            font-size: 28px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .subtitle {
+            color: #475569;
+            margin-bottom: 32px;
+            font-size: 14px;
+            border-left: 3px solid #2563EB;
+            padding-left: 12px;
+        }
+
+        .search-container {
+            margin-bottom: 30px;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        input {
+            flex: 1;
+            padding: 14px 18px;
+            border: 2px solid #e2e8f0;
+            border-radius: 14px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #2563EB;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        button {
+            background: #0B1E55;
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 14px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        button:hover {
+            background: #2563EB;
+            transform: translateY(-2px);
+        }
+
+        button:disabled {
+            background: #94A3B8;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .download-btn {
+            background: #10b981;
+            width: 100%;
+            justify-content: center;
+            margin-top: 20px;
+            font-size: 16px;
+            padding: 16px;
+        }
+
+        .download-btn:hover {
+            background: #059669;
+        }
+
+        .loader {
+            display: none;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .loader-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #e2e8f0;
+            border-top-color: #2563EB;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 12px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .result-card {
+            background: #F8FAFE;
+            border-radius: 20px;
+            padding: 24px;
+            margin-top: 24px;
+            border: 1px solid #DBEAFE;
+        }
+
+        .score-badge {
+            background: linear-gradient(135deg, #0B1E55, #2563EB);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .score-badge h3 {
+            color: rgba(255,255,255,0.8);
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        .score-value {
+            color: white;
+            font-size: 48px;
+            font-weight: bold;
+        }
+
+        .score-max {
+            color: rgba(255,255,255,0.6);
+            font-size: 18px;
+        }
+
+        .section {
+            margin-top: 20px;
+        }
+
+        .section h4 {
+            color: #0B1E55;
+            margin-bottom: 12px;
+            font-size: 16px;
+            border-left: 3px solid #2563EB;
+            padding-left: 10px;
+        }
+
+        .item {
+            background: white;
+            border-radius: 12px;
+            padding: 12px 16px;
+            margin-bottom: 10px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .item strong {
+            color: #0B1E55;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .item p {
+            color: #475569;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .error {
+            background: #FEE2E2;
+            color: #991B1B;
+            padding: 12px;
+            border-radius: 12px;
+            margin-top: 16px;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: none;
+            height: 1px;
+            background: linear-gradient(to right, #DBEAFE, transparent);
+        }
+
+        .info-pdf {
+            background: #EFF6FF;
+            border-radius: 12px;
+            padding: 12px;
+            margin-top: 16px;
+            text-align: center;
+            font-size: 13px;
+            color: #2563EB;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>
+            📊 Analyse E-réputation
+        </h1>
+        <div class="subtitle">
+            Entrez le nom d'une entreprise pour obtenir son diagnostic IA
+        </div>
+
+        <div class="search-container">
+            <div class="input-group">
+                <input type="text" id="companyInput" placeholder="Ex: LPK, Decathlon, Michelin..." value="LPK">
+                <button id="analyzeBtn">
+                    🔍 Analyser
+                </button>
+            </div>
+        </div>
+
+        <div class="loader" id="loader">
+            <div class="loader-spinner"></div>
+            <p style="color: #475569;">Analyse en cours... L'IA prépare votre diagnostic</p>
+        </div>
+
+        <div id="resultArea"></div>
+        <div id="downloadArea"></div>
+    </div>
+
+    <script>
+        let currentFilename = null;
+        let currentCompanyName = null;
+
+        const analyzeBtn = document.getElementById('analyzeBtn');
+        const companyInput = document.getElementById('companyInput');
+        const loader = document.getElementById('loader');
+        const resultArea = document.getElementById('resultArea');
+        const downloadArea = document.getElementById('downloadArea');
+
+        analyzeBtn.addEventListener('click', async () => {
+            const companyName = companyInput.value.trim();
+            if (!companyName) {
+                showError('Veuillez entrer un nom d\'entreprise');
+                return;
+            }
+
+            // Reset UI
+            resultArea.innerHTML = '';
+            downloadArea.innerHTML = '';
+            currentFilename = null;
+            currentCompanyName = companyName;
+            analyzeBtn.disabled = true;
+            loader.style.display = 'block';
+
+            try {
+                const response = await fetch('/analyze', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ company_name: companyName })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    currentFilename = data.filename;
+                    displayAnalysisPreview(data.analysis);
+                    displayDownloadButton();
+                } else {
+                    showError(data.error || 'Erreur lors de l\'analyse');
+                }
+            } catch (error) {
+                showError('Erreur de connexion au serveur');
+                console.error(error);
+            } finally {
+                analyzeBtn.disabled = false;
+                loader.style.display = 'none';
+            }
+        });
+
+        function displayAnalysisPreview(analysis) {
+            if (!analysis) return;
+
+            const swot = analysis.swot_analysis || {};
+            const score = analysis.score || 0;
+
+            let html = `
+                <div class="result-card">
+                    <div class="score-badge">
+                        <h3>SCORE DE RÉPUTATION</h3>
+                        <span class="score-value">${score}</span>
+                        <span class="score-max">/100</span>
+                    </div>
+            `;
+
+            // Points forts
+            if (swot.points_forts && swot.points_forts.length > 0) {
+                html += `<div class="section"><h4>✅ POINTS FORTS</h4>`;
+                swot.points_forts.forEach(item => {
+                    html += `<div class="item"><strong>${escapeHtml(item.titre)}</strong><p>${escapeHtml(item.description)}</p></div>`;
+                });
+                html += `</div>`;
+            }
+
+            // Points à améliorer
+            if (swot.points_faibles && swot.points_faibles.length > 0) {
+                html += `<div class="section"><h4>⚠️ POINTS À AMÉLIORER</h4>`;
+                swot.points_faibles.forEach(item => {
+                    html += `<div class="item"><strong>${escapeHtml(item.titre)}</strong><p>${escapeHtml(item.description)}</p></div>`;
+                });
+                html += `</div>`;
+            }
+
+            // Opportunités
+            if (swot.opportunites && swot.opportunites.length > 0) {
+                html += `<div class="section"><h4>🚀 OPPORTUNITÉS</h4>`;
+                swot.opportunites.forEach(item => {
+                    html += `<div class="item"><strong>${escapeHtml(item.titre)}</strong><p>${escapeHtml(item.description)}</p></div>`;
+                });
+                html += `</div>`;
+            }
+
+            // Menaces
+            if (swot.menaces && swot.menaces.length > 0) {
+                html += `<div class="section"><h4>⚠️ MENACES</h4>`;
+                swot.menaces.forEach(item => {
+                    html += `<div class="item"><strong>${escapeHtml(item.titre)}</strong><p>${escapeHtml(item.description)}</p></div>`;
+                });
+                html += `</div>`;
+            }
+
+            html += `<hr><div class="info-pdf">📄 Le rapport PDF complet sera généré avec :<br>→ Analyse SWOT complète<br>→ Plan d'action stratégique (court, moyen, long terme)<br>→ Design professionnel bleu</div>`;
+            html += `</div>`;
+
+            resultArea.innerHTML = html;
+        }
+
+        function displayDownloadButton() {
+            if (!currentFilename) return;
+
+            downloadArea.innerHTML = `
+                <button class="download-btn" id="downloadPdfBtn">
+                    📥 Télécharger le rapport PDF
+                </button>
+            `;
+
+            const downloadBtn = document.getElementById('downloadPdfBtn');
+            downloadBtn.addEventListener('click', () => {
+                window.location.href = `/download/${currentFilename}`;
+            });
+        }
+
+        function showError(message) {
+            resultArea.innerHTML = `<div class="error">❌ ${escapeHtml(message)}</div>`;
+            downloadArea.innerHTML = '';
+        }
+
+        function escapeHtml(text) {
+            if (!text) return '';
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+    </script>
+</body>
+</html>
