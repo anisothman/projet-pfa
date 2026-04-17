@@ -1,0 +1,50 @@
+======================================================================
+DIAGNOSTIC — MICROSOFT
+Généré le : 2026-04-08T01:18:36.901444
+======================================================================
+
+ANALYSE SWOT
+--------------------------------------------------
+{
+    "company_name": "Microsoft",
+    "points_forts": [
+        "Leader sur le marché du logiciel avec une large gamme de produits et services",
+        "Présence mondiale avec une forte implantation dans de nombreux pays",
+        "Investissements importants dans la recherche et le développement, notamment dans l'intelligence artificielle et le cloud"
+    ],
+    "points_faibles": [
+        "Dépendance à certains produits phares comme Windows et Office",
+        "Concurrence accrue dans le secteur du cloud et des services en ligne",
+        "Perception négative de certains utilisateurs en raison de problèmes de sécurité et de confidentialité"
+    ],
+    "opportunites": [
+        "Développement de nouveaux services et produits basés sur l'intelligence artificielle et le cloud",
+        "Expansion dans de nouveaux marchés et régions, notamment en Asie et en Afrique"
+    ],
+    "menaces": [
+        "Concurrence des entreprises concurrentes comme Google, Amazon et Apple",
+        "Réglementations et lois sur la protection des données et la sécurité qui pourraient impacter les activités de l'entreprise"
+    ],
+    "score_reputation": 85,
+    "recommandations": [
+        "Diversifier les produits et services pour réduire la dépendance à certains produits phares",
+        "Investir dans la sécurité et la confidentialité pour améliorer la perception des utilisateurs",
+        "Développer des stratégies pour exploiter les opportunités de croissance dans de nouveaux marchés et régions"
+    ]
+}
+
+PLAN D'ACTION
+--------------------------------------------------
+Erreur lors de la génération du plan pour Microsoft: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash\nPlease retry in 21.596347056s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_input_token_count', 'quotaId': 'GenerateContentInputTokensPerModelPerMinute-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '21s'}]}}
+
+RATING IA
+--------------------------------------------------
+Score: 50/100
+Justification: Rating non disponible
+
+MÉTADONNÉES
+--------------------------------------------------
+Modèle     : gemini-2.5-flash-preview-04-17 (+ fallback chain)
+SWOT       : 1509 caractères
+Plan       : 1866 caractères
+======================================================================
