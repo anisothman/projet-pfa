@@ -1,15 +1,38 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
 .venv/
-.env
-.pytest_cache/
 venv/
-__pycache__/
-*.pyc
-*.pyo
-data/.venv/
+
+# Node / Next
+node_modules/
+.next/
+.parcel-cache/
+dist/
+out/
+
+# Environment
 .env
-.pytest_cache/
-venv/
-__pycache__/
-*.pyc
-*.pyo
+.env.local
+.env.*.local
+!.env.example
+
+# Generated data
+reports/
+logs/
 data/
+*.pdf
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
