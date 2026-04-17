@@ -1,21 +1,38 @@
 {
-  "name": "localis-frontend",
+  "name": "localis-web",
+  "version": "0.2.0",
   "private": true,
-  "version": "0.0.1",
-  "type": "module",
   "scripts": {
-    "start": "parcel index.html --port 5173",
-    "build": "parcel build index.html --dist-dir dist"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "react": "18.3.1",
-    "react-dom": "18.3.1"
+    "canvas-confetti": "^1.9.3",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.0.0",
+    "lucide-react": "^0.453.0",
+    "next": "^15.1.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "sonner": "^1.7.0",
+    "tailwind-merge": "^2.5.4",
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@types/react": "18.3.23",
-    "@types/react-dom": "18.3.7",
-    "parcel": "2.12.0",
-    "process": "^0.11.10",
-    "typescript": "5.9.2"
+    "@types/canvas-confetti": "^1.6.4",
+    "@types/node": "^22.9.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.14.0",
+    "eslint-config-next": "^15.1.0",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.14",
+    "typescript": "^5.6.3"
   }
 }
